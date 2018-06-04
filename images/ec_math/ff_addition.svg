@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.4, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="1366px" height="768px" viewBox="0 0 1366 768" enable-background="new 0 0 1366 768" xml:space="preserve">
+<g>
+	<g>
+		<circle fill="#FFFFFF" stroke="#000000" stroke-width="3" stroke-miterlimit="10" cx="384.232" cy="272.866" r="131.244"/>
+		<g>
+			<rect x="253" y="271" width="28" height="5"/>
+			<rect x="487" y="271" width="28" height="5"/>
+		</g>
+		<g>
+			<rect x="269.056" y="328.526" transform="matrix(0.866 -0.5 0.5 0.866 -127.59 185.8749)" width="28" height="5"/>
+			<rect x="471.706" y="211.526" transform="matrix(0.866 -0.5 0.5 0.866 -41.9423 271.515)" width="28.001" height="5"/>
+		</g>
+		<g>
+			<rect x="311.882" y="371.352" transform="matrix(0.5 -0.866 0.866 0.5 -160.8252 469.142)" width="27.999" height="5"/>
+			<rect x="428.882" y="168.702" transform="matrix(0.5 -0.866 0.866 0.5 73.1776 469.1498)" width="28" height="5"/>
+		</g>
+		<g>
+			<rect x="381" y="377" width="5" height="28"/>
+			<rect x="381" y="143" width="5" height="28"/>
+		</g>
+		<g>
+			<rect x="428.381" y="371.852" transform="matrix(-0.5 -0.866 0.866 -0.5 339.3801 944.6416)" width="27.999" height="5"/>
+			<rect x="311.381" y="169.202" transform="matrix(-0.5 -0.866 0.866 -0.5 339.3712 539.3406)" width="28" height="5"/>
+		</g>
+		<g>
+			<rect x="471.207" y="329.027" transform="matrix(-0.866 -0.5 0.5 -0.866 739.6531 861.2359)" width="27.999" height="5"/>
+			<rect x="268.556" y="212.026" transform="matrix(-0.866 -0.5 0.5 -0.866 419.989 541.5911)" width="27.999" height="5"/>
+		</g>
+	</g>
+	<circle cx="385.257" cy="272.901" r="5.5"/>
+	
+		<line fill="none" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-miterlimit="10" x1="421.274" y1="337.107" x2="385.524" y2="273.223"/>
+	<rect x="361.89" y="176.734" fill="none" width="44" height="15"/>
+	<text transform="matrix(1 0 0 1 379.7197 187.4443)" font-family="'HelveticaNeue'" font-size="15">0</text>
+	<rect x="453.047" y="267.901" fill="none" width="44" height="15"/>
+	<text transform="matrix(1 0 0 1 470.877 278.6104)" font-family="'HelveticaNeue'" font-size="15">3</text>
+	<rect x="441.882" y="315.736" fill="none" width="44" height="15"/>
+	<text transform="matrix(1 0 0 1 459.7119 326.4463)" font-family="'HelveticaNeue'" font-size="15">4</text>
+	<rect x="287.056" y="315.736" fill="none" width="44" height="15"/>
+	<text transform="matrix(1 0 0 1 304.8862 326.4463)" font-family="'HelveticaNeue-Bold'" font-size="15">8</text>
+	<rect x="407.39" y="345.066" fill="none" width="44" height="15"/>
+	<text transform="matrix(1 0 0 1 425.2197 355.7764)" font-family="'HelveticaNeue'" font-size="15">5</text>
+	<rect x="317.89" y="345.066" fill="none" width="44" height="15"/>
+	<text transform="matrix(1 0 0 1 335.7197 355.7764)" font-family="'HelveticaNeue'" font-size="15">7</text>
+	<rect x="408.39" y="190.45" fill="none" width="44" height="15"/>
+	<text transform="matrix(1 0 0 1 426.2197 201.1602)" font-family="'HelveticaNeue'" font-size="15">1</text>
+	<rect x="315.89" y="190.45" fill="none" width="44" height="15"/>
+	<text transform="matrix(1 0 0 1 329.5498 201.1602)" font-family="'HelveticaNeue'" font-size="15">11</text>
+	<rect x="441.882" y="220.901" fill="none" width="44" height="15"/>
+	<text transform="matrix(1 0 0 1 459.7119 231.6113)" font-family="'HelveticaNeue'" font-size="15">2</text>
+	<rect x="287.056" y="220.901" fill="none" width="44" height="15"/>
+	<text transform="matrix(1 0 0 1 300.7163 231.6113)" font-family="'HelveticaNeue'" font-size="15">10</text>
+	<rect x="271.93" y="267.901" fill="none" width="44" height="15"/>
+	<text transform="matrix(1 0 0 1 289.7598 278.6104)" font-family="'HelveticaNeue'" font-size="15">9</text>
+	<rect x="361.89" y="355.852" fill="none" width="44" height="15"/>
+	<text transform="matrix(1 0 0 1 379.7197 366.5615)" font-family="'HelveticaNeue'" font-size="15">6</text>
+	<g opacity="0.55" enable-background="new    ">
+		<g>
+			<path fill="none" stroke="#E15218" stroke-width="2" stroke-miterlimit="10" stroke-dasharray="4,7" d="M412.253,328.172
+				c-8.081,3.913-17.148,6.107-26.729,6.107c-10.759,0-20.873-2.767-29.667-7.629c-18.924-10.462-31.738-30.623-31.738-53.776
+				c0-33.913,27.492-61.405,61.405-61.405c7.212,0,14.134,1.243,20.562,3.527"/>
+			<g>
+				<polygon fill="#E15218" points="415.105,219.05 400.063,218.685 405.372,214.794 404.623,208.256 				"/>
+			</g>
+		</g>
+	</g>
+	<rect x="419.274" y="249.905" fill="none" width="49.009" height="22.969"/>
+	<text transform="matrix(1 0 0 1 433.3745 262.7559)" fill="#E15218" font-family="'HelveticaNeue-Bold'" font-size="18">+5</text>
+	<g enable-background="new    ">
+		<g>
+			<path fill="none" stroke="#E15218" stroke-width="2" stroke-miterlimit="10" d="M385.524,228.059
+				c24.82,0,44.941,20.121,44.941,44.941c0,14.205-6.59,26.871-16.881,35.106"/>
+			<g>
+				<circle fill="#E15218" cx="385.524" cy="228.059" r="3.309"/>
+			</g>
+			<g>
+				<polygon fill="#E15218" points="413.451,302.995 414.646,307.257 418.542,309.356 408.458,312.209 				"/>
+			</g>
+		</g>
+	</g>
+</g>
+<g>
+	<g>
+		<circle fill="#FFFFFF" stroke="#000000" stroke-width="3" stroke-miterlimit="10" cx="982.232" cy="272.866" r="131.244"/>
+		<g>
+			<rect x="851" y="271" width="28" height="5"/>
+			<rect x="1085" y="271" width="28" height="5"/>
+		</g>
+		<g>
+			<rect x="867.056" y="328.526" transform="matrix(0.866 -0.5 0.5 0.866 -47.4749 484.872)" width="28" height="5"/>
+			<rect x="1069.705" y="211.526" transform="matrix(0.866 -0.5 0.5 0.866 38.1677 570.5031)" width="28.001" height="5"/>
+		</g>
+		<g>
+			<rect x="909.882" y="371.352" transform="matrix(0.5 -0.866 0.866 0.5 138.1687 987.0216)" width="27.999" height="5"/>
+			<rect x="1026.882" y="168.702" transform="matrix(0.5 -0.866 0.866 0.5 372.1805 987.0347)" width="28" height="5"/>
+		</g>
+		<g>
+			<rect x="979" y="377" width="5" height="28"/>
+			<rect x="979" y="143" width="5" height="28"/>
+		</g>
+		<g>
+			<rect x="1026.381" y="371.852" transform="matrix(-0.5 -0.866 0.866 -0.5 1236.3864 1462.5212)" width="27.999" height="5"/>
+			<rect x="909.381" y="169.202" transform="matrix(-0.5 -0.866 0.866 -0.5 1236.3683 1057.2256)" width="28" height="5"/>
+		</g>
+		<g>
+			<rect x="1069.207" y="329.027" transform="matrix(-0.866 -0.5 0.5 -0.866 1855.5417 1160.2264)" width="27.999" height="5"/>
+			<rect x="866.556" y="212.026" transform="matrix(-0.866 -0.5 0.5 -0.866 1535.8685 840.5973)" width="27.999" height="5"/>
+		</g>
+	</g>
+	<rect x="919.115" y="273.223" fill="none" width="49.008" height="22.969"/>
+	<text transform="matrix(1 0 0 1 933.2148 286.0742)" fill="#E15218" font-family="'HelveticaNeue-Bold'" font-size="18">+8</text>
+	<g enable-background="new    ">
+		<g>
+			<path fill="none" stroke="#E15218" stroke-width="2" stroke-miterlimit="10" d="M1010.434,328.018
+				c-6.932,3.381-14.618,5.505-22.785,6.055c-10.735,0.723-21.012-1.359-30.112-5.619c-19.584-9.167-33.725-28.422-35.279-51.523
+				c-2.278-33.836,23.306-63.113,57.143-65.391c7.197-0.484,14.188,0.292,20.757,2.139"/>
+			<g>
+				<circle fill="#E15218" cx="1010.238" cy="328.094" r="4.136"/>
+			</g>
+			<g>
+				<polygon fill="#E15218" points="1009.423,217.116 994.39,217.762 999.425,213.523 998.238,207.051 				"/>
+			</g>
+		</g>
+	</g>
+	<circle cx="983.257" cy="272.901" r="5.5"/>
+	<rect x="959.89" y="176.734" fill="none" width="44" height="15"/>
+	<text transform="matrix(1 0 0 1 977.7197 187.4443)" font-family="'HelveticaNeue'" font-size="15">0</text>
+	<rect x="1051.047" y="267.901" fill="none" width="44" height="15"/>
+	<text transform="matrix(1 0 0 1 1068.877 278.6104)" font-family="'HelveticaNeue'" font-size="15">3</text>
+	<rect x="1039.882" y="315.736" fill="none" width="44" height="15"/>
+	<text transform="matrix(1 0 0 1 1057.7119 326.4463)" font-family="'HelveticaNeue'" font-size="15">4</text>
+	<rect x="885.056" y="315.736" fill="none" width="44" height="15"/>
+	<text transform="matrix(1 0 0 1 902.8867 326.4463)" font-family="'HelveticaNeue-Bold'" font-size="15">8</text>
+	<rect x="1005.39" y="345.066" fill="none" width="44" height="15"/>
+	<text transform="matrix(1 0 0 1 1023.2197 355.7764)" font-family="'HelveticaNeue'" font-size="15">5</text>
+	<rect x="915.89" y="345.066" fill="none" width="44" height="15"/>
+	<text transform="matrix(1 0 0 1 933.7197 355.7764)" font-family="'HelveticaNeue'" font-size="15">7</text>
+	<rect x="1006.39" y="190.45" fill="none" width="44" height="15"/>
+	<text transform="matrix(1 0 0 1 1024.2197 201.1602)" font-family="'HelveticaNeue'" font-size="15">1</text>
+	<rect x="913.89" y="190.45" fill="none" width="44" height="15"/>
+	<text transform="matrix(1 0 0 1 927.5498 201.1602)" font-family="'HelveticaNeue'" font-size="15">11</text>
+	<rect x="1039.882" y="220.901" fill="none" width="44" height="15"/>
+	<text transform="matrix(1 0 0 1 1057.7119 231.6113)" font-family="'HelveticaNeue'" font-size="15">2</text>
+	<rect x="885.056" y="220.901" fill="none" width="44" height="15"/>
+	<text transform="matrix(1 0 0 1 898.7168 231.6113)" font-family="'HelveticaNeue'" font-size="15">10</text>
+	<rect x="869.93" y="267.901" fill="none" width="44" height="15"/>
+	<text transform="matrix(1 0 0 1 887.7598 278.6104)" font-family="'HelveticaNeue'" font-size="15">9</text>
+	<rect x="959.89" y="355.852" fill="none" width="44" height="15"/>
+	<text transform="matrix(1 0 0 1 977.7197 366.5615)" font-family="'HelveticaNeue'" font-size="15">6</text>
+	<g opacity="0.55" enable-background="new    ">
+		<g>
+			<path fill="none" stroke="#E15218" stroke-width="2" stroke-miterlimit="10" d="M981.419,228.059
+				c24.82,0,44.94,20.121,44.94,44.941c0.001,14.205-6.59,26.871-16.881,35.106"/>
+			<g>
+				<circle fill="#E15218" cx="981.419" cy="228.059" r="3.309"/>
+			</g>
+			<g>
+				<polygon fill="#E15218" points="1009.346,302.995 1010.539,307.257 1014.436,309.356 1004.352,312.209 				"/>
+			</g>
+		</g>
+	</g>
+	
+		<line fill="none" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-miterlimit="10" x1="1019.345" y1="209.261" x2="983.453" y2="273.065"/>
+</g>
+<g>
+	<g>
+		
+			<line fill="none" stroke="#000000" stroke-width="3" stroke-linecap="round" stroke-miterlimit="10" x1="541.5" y1="273.223" x2="807.318" y2="273.223"/>
+		<g>
+			<polygon points="828.5,273.223 798.652,285.419 805.734,273.223 798.652,261.03 			"/>
+		</g>
+	</g>
+</g>
+</svg>
