@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.4, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1366px"
+	 height="768px" viewBox="0 0 1366 768" enable-background="new 0 0 1366 768" xml:space="preserve">
+<g id="Layer_1">
+</g>
+<g id="Layer_2">
+	<g opacity="0.66">
+		<g>
+			<path fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" d="M663.203,514.752H264.5c-5.5,0-10-4.5-10-10v-54"
+				/>
+			<g>
+				<polygon points="674.5,514.752 658.581,508.247 662.358,514.752 658.581,521.255 				"/>
+			</g>
+		</g>
+	</g>
+	<g opacity="0.66">
+		<g>
+			<line fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" x1="690" y1="450.752" x2="690" y2="488.287"/>
+			<g>
+				<polygon points="690,499.584 683.495,483.665 690,487.442 696.503,483.665 				"/>
+			</g>
+		</g>
+	</g>
+	<g opacity="0.66">
+		<g>
+			<path fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" d="M690,514.584h409.869c5.5,0,10-4.5,10-10V464"/>
+			<g>
+				<g>
+					<circle fill="#FFFFFF" cx="690" cy="514.584" r="7.52"/>
+					<path d="M690,523.104c4.697,0,8.52-3.822,8.52-8.52s-3.822-8.52-8.52-8.52s-8.52,3.822-8.52,8.52S685.303,523.104,690,523.104
+						S685.303,523.104,690,523.104z M690,508.064c3.596,0,6.52,2.924,6.52,6.52s-2.924,6.52-6.52,6.52s-6.52-2.924-6.52-6.52
+						S686.404,508.064,690,508.064S686.404,508.064,690,508.064z"/>
+				</g>
+			</g>
+			<g>
+				<polygon points="1109.869,452.703 1116.374,468.622 1109.869,464.845 1103.366,468.622 				"/>
+			</g>
+		</g>
+	</g>
+</g>
+</svg>
