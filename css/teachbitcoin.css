@@ -158,6 +158,9 @@ a:focus {
   justify-content: space-between;
 }
 
+.reveal .br_small {
+  line-height: 50%;
+}
 
 .reveal .orange_border {
   border: 3px solid rgba(225, 82, 24, 1);

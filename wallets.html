@@ -1,0 +1,568 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/simple.css">
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/xcode.css">
+		<!-- Theme override for teachbitcoin -->
+		<link rel="stylesheet" href="css/teachbitcoin.css">
+
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+      <!-- *********** BEGIN: Bitcoin P2PKH Address *********** -->
+
+      <section class = "box">
+        <div class = "title">
+          Bitcoin <span class = "title weight">P2PKH Address</span>
+        </div>
+
+        <!-- Derivation Graphic -->
+        <img src="images/wallets/p2pkh_address.svg" class = "image" style = "z-index: -1;">
+
+        <!-- 2 column container -->
+        <!-- 45% div for formula and curve--><!-- 45% text & bulletpoint -->
+        <div class = "multi_text_box_container" style = "padding: 0px 0 0 0; width: 1270px;">
+          <!-- 45% div for formula and curve-->
+          <div class = "" style = "width: 45%; font-size: 27px;">
+          </div>
+          <!-- 45% text & bulletpoint -->
+          <div class = "text_box"
+               style = "width: 36%; font-size: 20px; margin: 40px 0 0 0">
+            <ul style = "margin: 0; padding: 0px; list-style-type: none;">
+              <li style = "font-weight: bold;">1) Bitcoin Short Hash</li>
+              <div class="">
+                <li>RIPEMD160(SHA256(input))</li>
+                <ul>
+                  <li>The compressed or uncompressed public key point can be
+                    used to derive the bitcoin address.</li>
+                </ul>
+                <hr style = "height:3px; visibility:hidden;">
+              </div>
+              <div class = "fragment fade-in">
+                <li style = "font-weight: bold;">2) Bitcoin Hash Checksum</li>
+                <li>double SHA256(input)</li>
+                <ul>
+                  <li>Version prefix</li>
+                  <ul>
+                    <li>Mainnet: 0x00</li>
+                    <li>Testnet: 0x6F</li>
+                  </ul>
+                </ul>
+                <hr style = "height:3px; visibility:hidden;">
+              </div>
+              <div class ="fragment fade-in">
+              <li style = "font-weight: bold;">3) Base58 Encoding</li>
+              <li>(Base58 encoding has built in checksum)</li>
+                <ul>
+                  <li>Bitcoin Address:</li>
+                  <ul>
+                    <li>Mainnet: begins with 1</li>
+                    <li>Testnet: begins with m or n</li>
+                  </ul>
+                </ul>
+              </div>
+            </ul>
+          </div>
+
+        </div><!-- End of 2 column container -->
+
+      </section>
+      <!-- *********** END: Bitcoin P2PKH Address *********** -->
+
+      <!-- *********** BEGIN: Bitcoin WIF format *********** -->
+      <section class = "box">
+        <div class = "title">
+          Private Key - <span class = "title weight">Wallet Import Format</span>
+        </div>
+
+        <!-- Derivation Graphic -->
+        <img src="images/wallets/wif_format.svg" class = "image" style = "z-index: -1;">
+
+        <!-- 2 column container -->
+        <!-- 45% div for formula and curve--><!-- 45% text & bulletpoint -->
+        <div class = "multi_text_box_container" style = "padding: 40px 0 0 0; width: 1270px;">
+          <!-- 45% div for formula and curve-->
+          <div class = "" style = "width: 55%; font-size: 22px;">
+            <div style ="text-align: center;">
+              The WIF private key provides all the information required to
+              recreate a private/public key pair and associated P2PKH address in
+              a wallet.
+            </div>
+          </div>
+          <!-- 45% text & bulletpoint -->
+          <div class = "text_box"
+               style = "width: 37%; font-size: 20px; margin: 0px 0 0 0">
+            <ul style = "margin: 0; padding: 0px; list-style-type: none;">
+              <li style = "font-weight: bold;">1) Bitcoin Hash Checksum</li>
+                <li>Double SHA256(input))</li>
+                <ul>
+                  <li>Checksum: last 4 bytes of 32 byte digest</li>
+                  <li>Version byte:
+                    <ul>
+                      <li>Mainnet: 0x80</li>
+                      <li>Testnet: 0x6F</li>
+                    </ul>
+                  </li>
+                  <li>Compression Marker (0x01) ommited if public key used to generate address(public key) was uncompressed</li>
+                </ul>
+                <hr style = "height:3px; visibility:hidden;">
+
+                <div class ="fragment fade-in">
+                  <li style = "font-weight: bold;">2) Base58 Encoding</li>
+                  <ul>
+                    <li>WIF begins with:
+                      <ul>
+                        <li>Mainnet/Compressed: K/L</li>
+                        <li>Mainnet/Uncompressed: 5</li>
+                        <li>Testnet/Compressed: C</li>
+                        <li>Testnet/Uncompressed: 9</li>
+                      </ul>
+                    </li>
+                  </ul>
+                  <hr style = "height:3px; visibility:hidden;">
+                </div>
+            </ul>
+          </div>
+        </div><!-- End of 2 column container -->
+
+      </section>
+      <!-- *********** END: Bitcoin WIF format *********** -->
+
+      <!-- *********** BEGIN: Mnemonics *********** -->
+      <section class = "box">
+        <div class = "title">
+          <span class = "title weight">Mnemonic Key Words</span>
+        </div>
+
+        <!-- Derivation Graphic -->
+        <img src="images/wallets/mnemonics.svg" class = "image" style = "z-index: -1;">
+
+        <!-- 2 column container -->
+        <!-- 45% div for formula and curve--><!-- 45% text & bulletpoint -->
+        <div class = "multi_text_box_container" style = "padding: 40px 0 0 0; width: 1270px;">
+          <!-- 45% div for formula and curve-->
+          <div class = "" style = "width: 55%; font-size: 22px;">
+            <div style ="text-align: center;">
+            </div>
+          </div>
+          <!-- 45% text & bulletpoint -->
+          <div class = "text_box"
+               style = "width: 37%; font-size: 20px; margin: 0px 0 0 0">
+            <ul style = "margin: 0; padding: 0px; list-style-type: none;">
+
+              <li>Mnemonics are a user-friendly way to encode a secret root seed for a wallet.</li>
+              <hr style = "height:5px; visibility:hidden;">
+              <li style = "font-weight: bold;">1) SHA256 Checksum</li>
+              <li>Secret (128, 132, 134, ... or 256 bits)</li>
+              <li>Checksum: First 4 bytes of 32 byte digest</li>
+              <hr style = "height: 5px; visibility: hidden;">
+
+              <div class ="fragment fade-in">
+                <li style = "font-weight: bold;">2) Concatenate & split into 11-bit chunks</li>
+                <li></li>
+                <li>Sequence of 11-bit chunks needs to be maintained.</li>
+                <hr style = "height: 5px; visibility: hidden;">
+              </div>
+
+              <div class ="fragment fade-in">
+                <li style = "font-weight: bold;">3)11-bit to word mapping</li>
+                <li></li>
+                <li>There are multiple languages mappings available to translate
+                  11-bit chunks into words (BIP39).</li>
+              </div>
+
+            </ul>
+          </div>
+
+        </div><!-- End of 2 column container -->
+
+      </section>
+      <!-- *********** END: Mnemonics *********** -->
+
+      <!-- *********** BEGIN: HD Child Private Keys *********** -->
+      <section class = "box">
+        <div class = "title">
+          <span class = "title weight">HD Private Key Derivation</span>
+        </div>
+
+        <!-- Derivation Graphic -->
+        <img src="images/wallets/hd_child_private.svg" class = "image" style = "z-index: -2;">
+
+        <!-- 2 column container -->
+        <!-- 45% div for formula and curve--><!-- 45% text & bulletpoint -->
+        <div class = "multi_text_box_container" style = "padding: 40px 0 0 0; width: 1270px;">
+          <!-- 45% div for formula and curve-->
+          <div class = "" style = "width: 55%; font-size: 22px;">
+            <div style ="text-align: center;">
+            </div>
+          </div>
+          <!-- 45% text & bulletpoint -->
+          <div class = "text_box"
+               style = "width: 37%; font-size: 20px; margin: 0px 0 0 0">
+            <ul style = "margin: 0; padding: 0px; list-style-type: none;">
+
+              <li>Hierarchical Deterministic (Child) Private Keys are derived from Parent Private Keys.</li>
+              <hr style = "height:5px; visibility:hidden;">
+
+              <li style = "font-weight: bold;">1) HMAC SHA512</li>
+              <li>Resulting 512-bit digest is split into left and right 256 bit chunks.</li>
+              <hr style = "height: 5px; visibility: hidden;">
+
+              <div class ="fragment fade-in">
+                <li style = "font-weight: bold;">2) Parent Private Key + L256</li>
+                <li>Both Private Key and L256 are 256bit scalars which can be added to derive the child private key.</li>
+                <hr style = "height: 5px; visibility: hidden;">
+              </div>
+
+              <div class ="fragment fade-in">
+                <li style = "font-weight: bold;">3) Derive Child Public Key</li>
+                <li>Derive EC point from child private key</li>
+                <hr style = "height: 5px; visibility: hidden;">
+              </div>
+
+              <div class ="fragment fade-in">
+                <li style = "font-weight: bold;">Note: </li>
+                <li>Applying a bit of algebra, it is obvious that the Child Public Key can be derived directly Parent Public Key...</li>
+                <hr style = "height: 5px; visibility: hidden;">
+              </div>
+
+              <div class ="fragment">
+                <img src="images/wallets/hd_child_private_step1.svg" class = "image" style = "z-index: -1;">
+              </div>
+
+              <div class ="fragment">
+                <img src="images/wallets/hd_child_private_step2.svg" class = "image" style = "z-index: -1;">
+              </div>
+
+            </ul>
+          </div>
+
+        </div><!-- End of 2 column container -->
+
+      </section>
+      <!-- *********** END: HD Child Private Keys *********** -->
+
+      <!-- *********** BEGIN: HD Child Public Keys *********** -->
+      <section class = "box">
+        <div class = "title">
+          <span class = "title weight">HD Public Key Derivation</span>
+        </div>
+
+        <!-- Derivation Graphic -->
+        <img src="images/wallets/hd_child_public.svg" class = "image" style = "z-index: -2;">
+
+        <!-- 2 column container -->
+        <!-- 45% div for formula and curve--><!-- 45% text & bulletpoint -->
+        <div class = "multi_text_box_container" style = "padding: 40px 0 0 0; width: 1270px;">
+          <!-- 45% div for formula and curve-->
+          <div class = "" style = "width: 55%; font-size: 22px;">
+            <div style ="text-align: center;">
+            </div>
+          </div>
+          <!-- 45% text & bulletpoint -->
+          <div class = "text_box"
+               style = "width: 37%; font-size: 20px; margin: 0px 0 0 0">
+            <ul style = "margin: 0; padding: 0px; list-style-type: none;">
+
+              <li>...which allows us to know derive HD children without knowledge of the Parent Private Keys.</li>
+              <hr style = "height:5px; visibility:hidden;">
+
+              <li style = "font-weight: bold;">Address Generator</li>
+              <li>Deriving HD public keys from parent public key and the parent chain code is practical in generating fresh addresses in an environment we may not want to expose our private keys to.</li>
+              <hr style = "height: 5px; visibility: hidden;">
+
+            </ul>
+          </div>
+
+        </div><!-- End of 2 column container -->
+
+      </section>
+      <!-- *********** END: HD Child Public Keys *********** -->
+
+      <!-- *********** BEGIN: HD Derivation Paths *********** -->
+      <section class = "box">
+        <div class = "title">
+          <span class = "title weight">HD Derivation Paths</span>
+        </div>
+
+        <!-- Derivation Graphic -->
+        <img src="images/wallets/hd_xkey_path.svg" class = "image" style = "z-index: -2;">
+
+        <!-- 2 column container -->
+        <!-- 45% div for formula and curve--><!-- 45% text & bulletpoint -->
+        <div class = "multi_text_box_container" style = "padding: 40px 0 0 0; width: 1270px;">
+          <!-- 45% div for formula and curve-->
+          <div class = "" style = "width: 55%; font-size: 22px;">
+            <div style ="text-align: center;">
+            </div>
+          </div>
+          <!-- 45% text & bulletpoint -->
+          <div class = "text_box"
+               style = "width: 37%; font-size: 20px; margin: 0px 0 0 0">
+            <ul style = "margin: 0; padding: 0px; list-style-type: none;">
+
+              <hr style = "height:5px; visibility:hidden;">
+              <li style = "font-weight: bold;">HD Public Key derivation path</li>
+              <li>Derivation path can be extended indefinitely by index & derivation depth</li>
+              <hr style = "height: 5px; visibility: hidden;">
+
+              <div class ="fragment">
+                <li style = "font-weight: bold;">Isolation from HD Private Key derivation path</li>
+                <li>Exposed HD public key and chaincode do not expose associated private keys.</li>
+                <hr style = "height: 5px; visibility: hidden;">
+                <img src="images/wallets/hd_xkey_path_step1.svg" class = "image" style = "z-index: -1;">
+                <img src="images/wallets/hd_xkey_path_step2.svg" class = "image" style = "z-index: -1;">
+              </div>
+
+            </ul>
+          </div>
+
+        </div><!-- End of 2 column container -->
+
+      </section>
+      <!-- *********** END: HD Derivation Paths *********** -->
+
+      <!-- *********** BEGIN: HD Derivation Path Example *********** -->
+      <section class = "box">
+
+        <div class = "title">
+          Example: <span class = "title weight">HD Derivation Path</span>
+        </div>
+
+        <img src="images/wallets/hd_xkey_path_example.svg" class = "image" style = "z-index: -2;">
+
+        <div class ="fragment fade-in">
+          <img src="images/wallets/hd_xkey_path_example_step1.svg" class = "image" style = "z-index: -1;">
+        </div>
+
+      </section>
+      <!-- *********** END: HD Derivation Path Example *********** -->
+
+      <!-- *********** BEGIN: HD Key Exposure *********** -->
+      <section class = "box">
+        <div class = "title">
+          <span class = "title weight">HD Parent Key Exposure</span>
+        </div>
+
+        <!-- Derivation Graphic -->
+        <img src="images/wallets/hd_xkey_exposure.svg" class = "image" style = "z-index: -2;">
+
+        <!-- 2 column container -->
+        <!-- 45% div for formula and curve--><!-- 45% text & bulletpoint -->
+        <div class = "multi_text_box_container" style = "padding: 40px 0 0 0; width: 1270px;">
+          <!-- 45% div for formula and curve-->
+          <div class = "" style = "width: 55%; font-size: 22px;">
+            <div style ="text-align: center;">
+            </div>
+          </div>
+          <!-- 45% text & bulletpoint -->
+          <div class = "text_box"
+               style = "width: 37%; font-size: 20px; margin: 0px 0 0 0">
+            <ul style = "margin: 0; padding: 0px; list-style-type: none;">
+
+              <li>However, compromised parent XPUB key and child XPRV keys can result in upstream parent private keys being derived.</li>
+              <hr style = "height:5px; visibility:hidden;">
+              <li style = "font-weight: bold;">1) Exposed Parent XPUB + child private key</li>
+              <hr style = "height: 5px; visibility: hidden;">
+
+              <div class ="fragment fade-in">
+                <li style = "font-weight: bold;">2) All XPUB children are derived</li>
+                <hr style = "height: 5px; visibility: hidden;">
+                <img src="images/wallets/hd_xkey_exposure_step1.svg" class = "image" style = "z-index: -1;">
+              </div>
+
+              <div class ="fragment fade-in">
+                <li style = "font-weight: bold;">3) Parent Private Key is derived</li>
+                <li>Child private key - L256 = Parent private key</li>
+                <hr style = "height: 5px; visibility: hidden;">
+                <img src="images/wallets/hd_xkey_exposure_step2.svg" class = "image" style = "z-index: -1;">
+              </div>
+
+            </ul>
+          </div>
+
+        </div><!-- End of 2 column container -->
+
+      </section>
+      <!-- *********** END: HD Key Exposure *********** -->
+
+      <!-- *********** BEGIN: HD Key Exposure Path *********** -->
+      <section class = "box">
+        <div class = "title">
+          <span class = "title weight">HD Path Exposure</span>
+        </div>
+
+        <!-- Derivation Graphic -->
+        <img src="images/wallets/hd_xkey_exposure_path.svg" class = "image" style = "z-index: -2;">
+
+        <!-- 2 column container -->
+        <!-- 45% div for formula and curve--><!-- 45% text & bulletpoint -->
+        <div class = "multi_text_box_container" style = "padding: 40px 0 0 0; width: 1270px;">
+          <!-- 45% div for formula and curve-->
+          <div class = "" style = "width: 55%; font-size: 22px;">
+            <div style ="text-align: center;">
+            </div>
+          </div>
+          <!-- 45% text & bulletpoint -->
+          <div class = "text_box"
+               style = "width: 36%; font-size: 20px; margin: 0px 0 0 0">
+            <ul style = "margin: 0; padding: 0px; list-style-type: none;">
+
+              <li style = "font-weight: bold;">1) Exposed Parent XPUB + child private key</li>
+              <hr style = "height: 5px; visibility: hidden;">
+
+              <div class ="fragment fade-in">
+                <li style = "font-weight: bold;">2) All XPUB children are derived</li>
+                <li>All child chaincodes are exposed.</li>
+                <li>All derivation paths from child XPUB keys are exposed.</li>
+                <li>All derivation paths from XPRV m/0/1 now exposed.</li>
+
+                <img src="images/wallets/hd_xkey_exposure_path_step1.svg" class = "image" style = "z-index: -1;">
+                <hr style = "height: 5px; visibility: hidden;">
+              </div>
+
+              <div class ="fragment fade-in">
+                <li style = "font-weight: bold;">3) Parent Private Key is derived</li>
+                <li>All derivation paths from m/0 are now exposed.</li>
+                <img src="images/wallets/hd_xkey_exposure_path_step2.svg" class = "image" style = "z-index: -1;">
+                <hr style = "height: 5px; visibility: hidden;">
+              </div>
+
+            </ul>
+          </div>
+
+        </div><!-- End of 2 column container -->
+
+      </section>
+      <!-- *********** END: HD Key Exposure Path *********** -->
+
+      <!-- *********** BEGIN: HD Hardened Child *********** -->
+      <section class = "box">
+        <div class = "title">
+          <span class = "title weight">Hardened HD Children</span>
+        </div>
+
+        <!-- Derivation Graphic -->
+        <img src="images/wallets/hd_hardened_child.svg" class = "image" style = "z-index: -2;">
+
+        <!-- 2 column container -->
+        <!-- 45% div for formula and curve--><!-- 45% text & bulletpoint -->
+        <div class = "multi_text_box_container" style = "padding: 40px 0 0 0; width: 1270px;">
+          <!-- 45% div for formula and curve-->
+          <div class = "" style = "width: 55%; font-size: 22px;">
+            <div style ="text-align: center;">
+            </div>
+          </div>
+          <!-- 45% text & bulletpoint -->
+          <div class = "text_box"
+               style = "width: 37%; font-size: 20px; margin: 0px 0 0 0">
+            <ul style = "margin: 0; padding: 0px; list-style-type: none;">
+
+              <li>HD Key hardening is a method to break certain HD derivation paths to prevent the aforementioned exposure scenario.</li>
+              <hr style = "height:5px; visibility:hidden;">
+
+              <div class ="fragment fade-in">
+                <li style = "font-weight: bold;">1) Replace Parent Public Key with Parent Private Key</li>
+                  <img src="images/wallets/hd_hardened_child_step1.svg" class = "image" style = "z-index: -1;">
+              </div>
+
+              <div class ="fragment fade-in">
+                <li>This will result in a different HMAC hash digest halves we denote L256&#8242 and R256&#8242...</li>
+                <li>and different child keys and chaincode.</li>
+                <hr style = "height: 5px; visibility: hidden;">
+                <img src="images/wallets/hd_hardened_child_step2.svg" class = "image" style = "z-index: -1;">
+              </div>
+
+              <div class ="fragment fade-in">
+                <li style = "font-weight: bold;">2) Break parent XPUB derivation paths</li>
+                <li>Since the parent XPUB cannot produce L256&#8242 and R256&#8242, it cannot derive the hardened children.</li>
+                <img src="images/wallets/hd_hardened_child_step3.svg" class = "image" style = "z-index: -1;">
+              </div>
+
+            </ul>
+          </div>
+
+        </div><!-- End of 2 column container -->
+
+      </section>
+      <!-- *********** END: HD Hardened Child *********** -->
+
+      <!-- *********** BEGIN: HD Hardened Path *********** -->
+      <section class = "box">
+        <div class = "title">
+          <span class = "title weight">Hardened HD Key Path</span>
+        </div>
+
+        <!-- Derivation Graphic -->
+        <img src="images/wallets/hd_hardened_child_path.svg" class = "image" style = "z-index: -2;">
+
+        <!-- 2 column container -->
+        <!-- 45% div for formula and curve--><!-- 45% text & bulletpoint -->
+        <div class = "multi_text_box_container" style = "padding: 40px 0 0 0; width: 1270px;">
+          <!-- 45% div for formula and curve-->
+          <div class = "" style = "width: 55%; font-size: 22px;">
+            <div style ="text-align: center;">
+            </div>
+          </div>
+          <!-- 45% text & bulletpoint -->
+          <div class = "text_box"
+               style = "width: 34%; font-size: 20px; margin: 0px 0 0 0">
+            <ul style = "margin: 0; padding: 0px; list-style-type: none;">
+              <!-- TODO -->
+            </ul>
+          </div>
+
+        </div><!-- End of 2 column container -->
+
+      </section>
+      <!-- *********** END: HD Hardened Path *********** -->
+
+
+      </div><!-- END: Slides Div -->
+		</div><!-- END: Reveal Div -->
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/math/math.js', async: true }
+				],
+
+				math: {
+					mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+					config: 'TeX-AMS_HTML-full'  // See http://docs.mathjax.org/en/latest/config-files.html
+				},
+
+				// The "normal" size of the presentation, aspect ratio will be preserved
+				// when the presentation is scaled to fit different resolutions. Can be
+				// specified using percentage units.
+				width: 1366,
+			  height: 768,
+				// Factor of the display size that should remain empty around the content
+				margin: 0.05,
+
+				// Bounds for smallest/largest possible scale to apply to content
+				minScale: 0.2,
+				maxScale: 1.5
+			});
+		</script>
+	</body>
+</html>
