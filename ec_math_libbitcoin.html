@@ -1,0 +1,264 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>EC Math /w Libbitcoin</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/simple.css">
+		<!-- Highlight.js used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/default.css">
+		<!-- Simple.css theme override for teachbitcoin -->
+		<link rel="stylesheet" href="css/teachbitcoin.css">
+		<!-- Google Fonts -->
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600" rel="stylesheet">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+        <!-- *********** BEGIN: NEW CODE TEMPLATE *********** -->
+        <section class = "box">
+
+          <!-- No Title Bar ... -->
+
+          <div class = "multi_code_box_container" style = "padding: 0;">
+
+            <div class = "text_box code_text_box" style = "width: 28%;">
+              <div class ="text_box_title" >
+                  Private & Public Keys with <span class = "weight">Libbitcoin</span>
+              </div>
+                <div style = "padding:5px;">
+                  <ul style = "margin: 0px; padding: 0px; list-style-type: none; font-size: 18px;">
+                    <li>Libbitcoin provides the basic primitives for EC operations
+                      on the secp256k1 curve, and methods to generate and verify private/public key pairs.
+                      <br><br>
+                      Scalar &#9450 and EC-points &#9312/&#9313 are captured in byte_array classes.
+                      <br><br>
+                      EC-points can be generated from scalar * EC-Point multiplication &#9314.
+                      <br><br>
+                      Bitcoin public keys can be generated from scalar * Generator multiplication &#9315.
+                      <br><br>
+                      <span style="font-style:italic;"
+                      >Note:<br>Not all possible 32-byte values are valid secp256k1 scalars. The verify &#9316
+                      method checks that a 32-byte scalar or EC-point are secp256k1.</span>
+                  </ul>
+              </div>
+            </div>
+
+            <!-- <div id="" style="overflow:scroll; height:400px;"> -->
+            <!-- overflow-y: scroll; -->
+            <!-- <div style = "overflow-y: scroll; height: 500px; width: 70%; text-align: left;"> -->
+            <div style = "width:70%">
+              <pre style = "font-size: 18px; margin: 5px; padding: 0px;"
+              ><code class = "c++"
+                     style = "font-family: monaco; margin: 0px; padding: 10px; max-height:575px ; width:97%"
+
+  >// Libbitcoin Version 3.
+
+// &#9471 secp256k1 EC secret (private key), 32-byte scalar.
+typedef bc::byte_array&lt;ec_secret_size&gt ec_secret;
+
+// &#10102 secp256k1 EC point (public key) uncompressed, 65bytes.
+typedef bc::byte_array&lt;ec_uncompressed_size&gt ec_uncompressed;
+
+// &#10103 secp256k1 EC point compressed, 33bytes.
+typedef bc::byte_array&lt;ec_compressed_size&gt ec_compressed;
+
+// &#10104 EC point *= secret multiplication.
+bool bc::ec_multiply(ec_compressed& point, const ec_secret& secret);
+bool bc::ec_multiply(ec_uncompressed& point, const ec_secret& secret);
+
+// &#10105 Generate public key from secret, using generator point G.
+bool bc::secret_to_public(ec_compressed& out, const ec_secret& secret);
+bool bc::secret_to_public(ec_uncompressed& out, const ec_secret& secret);
+
+// &#10106 Verify secret or point is valid (on secp256k1 curve).
+bool bc::verify(const ec_secret& secret);
+bool bc::verify(const ec_compressed& point);
+bool bc::verify(const ec_uncompressed& point);</code></pre>
+            </div><!-- End of 70% container -->
+          </div><!-- End of multi box container -->
+
+        </section>
+        <!-- *********** END: NEW CODE SLIDE TEPLATE *********** -->
+
+
+				<!-- *********** BEGIN: NEW CODE TEMPLATE *********** -->
+				<section class = "box">
+
+					<!-- No Title Bar ... -->
+
+					<div class = "multi_code_box_container" style = "padding: 0;">
+
+						<div class = "text_box code_text_box" style = "width: 28%;">
+							<div class ="text_box_title" >
+									Create and verify <span class = "weight">Private/Public key pair</span>
+							</div>
+								<div style = "padding:5px;">
+									<ul style = "margin: 0px; padding: 0px; list-style-type: none; font-size: 19px;">
+										<li>In this code example, we will generate Bitcoin private and public
+											keys from scratch with the Libbitcoin library.
+										</li><br>
+										<li>Both private and public keys can be created from hex string literals, or generated from a
+											source of entropy.
+										</li><br>
+										<li>Note that both secret and point classes are stored as fixed-size
+											byte arrays, and that some Libbitcoin methods require a conversion
+											betweeen byte arrays and dynamically sized byte vectors (bc::data chunk):
+										</li>
+										<ul>
+											<li><span class= "inline_code">bc::to_chunk()</span></li>
+											<li><span class= "inline_code">bc::to_array<span><</span>array_size>()</span></li>
+										</ul>
+									</ul>
+									<br>
+						  </div>
+						</div>
+
+						<!-- <div id="" style="overflow:scroll; height:400px;"> -->
+						<!-- overflow-y: scroll; -->
+						<!-- <div style = "overflow-y: scroll; height: 500px; width: 70%; text-align: left;"> -->
+						<div style = "width:70%">
+							<pre style = "font-size: 16px; margin: 5px; padding: 0px;"
+							><code class = "c++"
+										 style = "font-family: monaco; margin: 0px; padding: 10px; max-height:575px ; width:97%"
+
+>#include &lt;bitcoin/bitcoin.hpp&gt
+#include &lt;iostream&gt
+
+int main() {
+
+
+  // &#9471 Create scalar & uncompressed secp256k1 point from hex string.
+  // ---------------------------------------------------------------------------
+
+  bc::ec_secret my_scalar = bc::base16_literal(
+    "28026f91e1c97db3f6453262484ef5f69f71d89474f10926aae24d3c3eeb5f00");
+
+  bc::ec_uncompressed my_uncompressed_point = bc::base16_literal(
+    "04" // Prefix
+    "28026f91e1c97db3f6453262484ef5f69f71d89474f10926aae24d3c3eeb5f00"
+    "c41b6810b8b305a05de2b4448d7e2a079771d4c018b923a9ab860e4b0b4f86f6");
+
+
+  // &#10102 Create a random private key and derive the public key.
+  // ---------------------------------------------------------------------------
+
+  bc::data_chunk my_entropy(bc::ec_secret_size); // Secret size: 32bytes.
+  bc::pseudo_random_fill(my_entropy);
+
+  // Convert data_chunk (byte vector) to ec_secret (byte array).
+  bc::ec_secret my_random_secret = bc::to_array&lt;bc::ec_secret_size>(my_entropy);
+
+
+  // &#10103 Verify that secret is in valid range and derive public key.
+  // ---------------------------------------------------------------------------
+
+  if( bc::verify(my_random_secret) )
+  {
+
+    bc::ec_compressed generator_point = bc::base16_literal(
+      "02"
+      "79be667ef9dcbbac55a06295Ce870b07029bfcdb2dce28d959f2815b16f81798");
+
+    // Multiply with secp256k1 generator point.
+    bc::ec_multiply(generator_point, my_random_secret);
+    bc::ec_compressed my_public_key(generator_point);
+
+    // Point is on secp256k1 curve, since secret was valid.
+    std::cout << bc::verify(my_public_key) << std::endl;
+
+    // Print out public key.
+    // (bc::encode_base16 requires data chunk (byte vector) input.)
+    std::cout << bc::encode_base16(bc::to_chunk(my_public_key)) << std::endl;
+
+
+    // &#10104 Better: Derive public key directly from secret.
+    // ---------------------------------------------------------------------------
+
+    bc::ec_compressed my_public_key_2;
+    bc::secret_to_public(my_public_key_2, my_random_secret);
+    std::cout << (my_public_key == my_public_key_2) << std::endl;
+
+  }
+
+  else
+  {
+    std::cout << "Invalid secret chosen" << std::endl;
+  }
+
+  return 0;
+
+}</code></pre>
+							<pre style = "font-size: 16px; margin: 20px 5px 5px 5px; padding: 0px;"
+							><code class = "shell"
+										 style = "font-family: monaco; margin: 0px; padding: 10px; max-height:120px; width: 97%"
+>$ g++ -std=c++11 -o ec_math ec_math.cpp $(pkg-config --cflags libbitcoin --libs libbitcoin)
+$ ./ec_math
+1                                                                     &#8656&#9313
+02ac6cec0cc97e5bb1139909ac0d3fc2dfed294ca2b3e20e3a12cbccc9d914fd86    &#8656&#9313
+1                                                                     &#8656&#9314
+</code></pre>
+						</div><!-- End of 70% container -->
+					</div><!-- End of multi box container -->
+
+				</section>
+				<!-- *********** END: NEW CODE SLIDE TEPLATE *********** -->
+
+
+
+
+
+			</div><!-- END: Slides Div -->
+		</div><!-- END: Reveal Div -->
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/math/math.js', async: true }
+				],
+
+				math: {
+					mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+					config: 'TeX-AMS_HTML-full'  // See http://docs.mathjax.org/en/latest/config-files.html
+				},
+
+				// The "normal" size of the presentation, aspect ratio will be preserved
+				// when the presentation is scaled to fit different resolutions. Can be
+				// specified using percentage units.
+				width: 1366,
+			  height: 768,
+				// Factor of the display size that should remain empty around the content
+				margin: 0.05,
+
+				// Bounds for smallest/largest possible scale to apply to content
+				minScale: 0.2,
+				maxScale: 1.5
+			});
+			// Shows the slide number using default formatting
+			Reveal.configure({ slideNumber: true });
+		</script>
+	</body>
+</html>

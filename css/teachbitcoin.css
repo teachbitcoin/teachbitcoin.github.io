@@ -1,11 +1,11 @@
 a {
     color: inherit;
     text-decoration: none;
-    padding: 0.1em;
-    margin: 0.1em;
-    background: rgba(200,200,200,0.3);
+    /* padding: 0.1em;
+    margin: 0.1em; */
+    /* background: rgba(200,200,200,0.3); */
     /* text-shadow: -1px 1px 2px rgba(100,100,100,0.9); */
-    border-radius: 0.2em;
+    /* border-radius: 0.2em; */
     /* border-bottom: 1px solid rgba(100,100,100,0.4);
     border-left:   1px solid rgba(100,100,100,0.4); */
     transition:         0.5s;
@@ -15,8 +15,8 @@ a:hover,
 a:focus {
     /* background: rgba(200,200,200,1); */
     /* border: 2px solid rgba(225,82,24,1); */
-    box-shadow:0px 0px 0px 2px rgba(225,82,24,1) inset;
-
+    /* box-shadow:0px 0px 0px 2px rgba(225,82,24,1) inset; */
+    /* color: rgba(225,82,24,1); */
     /* background: rgba(225,82,24,1); */
     /* text-shadow: -1px 1px 2px rgba(100,100,100,0.0); */
 }
@@ -39,9 +39,10 @@ a:focus {
   margin: 0px
   /* box-shadow: 0 2px 6px rgba(0, 0, 0, .3); */
   border: 0px solid rgba(0, 0, 0, .3);
-  border-radius: 10px;
+  /* border-radius: 10px; */
   /* text-shadow: 0 2px 2px rgba(0, 0, 0, .1); */
-  font-family: helvetica Neue;
+  /* font-family: helvetica Neue; */
+  font-family: Open Sans,sans-serif;
   font-size: 40px;
   color: black;
   overflow: hidden;
@@ -85,8 +86,7 @@ a:focus {
 }
 
 .reveal div.title {
-  font-family: helvetica neue;
-  font-weight: lighter;
+  font-weight: 300;
   letter-spacing: 1px;
   margin: 0px;
   padding: 8px 0 8px 0;
@@ -94,11 +94,11 @@ a:focus {
   text-align: center;
   color: white;
   background-color: rgb(45,78,110);
-  /* border-radius: 10px; */
+  border-radius: 7px;
 }
 
 .reveal .weight {
-  font-weight: normal;
+  font-weight: 600;
 }
 
 .reveal .math_normal {
@@ -129,7 +129,7 @@ a:focus {
   font-weight: normal;
   letter-spacing: 0px;
   font-size: 27px;
-  padding: 20px;
+  padding: 15px;
   background-color: white;
   box-shadow: 0 1px 8px rgba(0, 0, 0, .3);
   border: 0px solid rgba(0, 0, 0, 0);
@@ -137,8 +137,30 @@ a:focus {
   overflow: hidden;
 }
 
+/* Only in code pages */
+.reveal .text_box.code_text_box {
+  height: 100%;
+  text-align: left;
+  margin: 5px;
+  padding: 0px;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, .2);
+}
+
+/* Only in code pages */
+.reveal .text_box_title {
+    font-weight: 300;
+    font-size: 25px;
+    background-color: rgb(45,78,110);
+    padding: 10px;
+    text-align: left;
+    color: white;
+    margin: 0;
+    padding: 15px;
+    overflow: hidden;
+}
+
 .reveal .multi_text_box_container {
-  width: 1200px;
+  width: 1250px;
   margin: auto;
   display: flex;
   justify-content: space-between;
@@ -152,7 +174,7 @@ a:focus {
 }
 
 .reveal .multi_code_box_container {
-  width: 95%;
+  width: 100%;
   margin: auto;
   display: flex;
   justify-content: space-between;
@@ -171,7 +193,7 @@ a:focus {
   font-family: monaco;
   background-color: rgb(0,0,0,.1);
   opacity: 0.8;
-  font-size:80%;
+  font-size:90%;
 }
 
 /* Override style of revealjs */
@@ -182,5 +204,22 @@ a:focus {
 .reveal pre code {
   width:100%;
   height: 100%;
-  max-height:600px;
+  /* max-height:600px; */
+  border-radius: 10px;
+  line-height: 1.4;
+}
+
+/* Override of reveal.js */
+
+.reveal .slide-number {
+  color: #000;
+  background-color: rgba(0, 0, 0, 0);
+  font-family: Open Sans,sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.reveal .slide-number-a {
+  color: #000;
+  background-color: rgba(0, 0, 0, 0);
 }

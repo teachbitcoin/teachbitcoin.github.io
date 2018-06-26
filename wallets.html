@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>Wallets</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/simple.css">
@@ -12,17 +12,107 @@
 		<link rel="stylesheet" href="lib/css/xcode.css">
 		<!-- Theme override for teachbitcoin -->
 		<link rel="stylesheet" href="css/teachbitcoin.css">
+		<!-- Google Font Roboto -->
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:thin,thinitalic,light,lightitalic,regular,regularitalic,medium,mediumitalic,bold,bolditalic" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Arimo:bold,bolditalic" rel="stylesheet">
+
 
 	</head>
 	<body>
 		<div class="reveal">
 			<div class="slides">
 
+
+			<!-- TODO: Subtopic Overview -->
+			<!-- TODO: P2PKH Address Derivation Paths. -->
+			<!-- TODO: Wallet Import Format. -->
+
+			<!-- *********** BEGIN: Chapter Subtopics 1 *********** -->
+			<section class ="box">
+
+				<div class = "title">
+					<span class = "title weight">Bitcoin Wallet </span>Subtopics
+				</div>
+
+				<!-- <img src="images/ec_math/chapter_subtopics_arrows.svg" class = "image" style = "z-index: -1;"> -->
+
+				<div class = "multi_text_box_container" style = "padding: 100px 0 0 0;">
+					<div class = "text_box orange_border" style = "width: 550px; font-size: 23px;">
+						<ul style = "margin: 0px; padding: 0px; list-style-type: none;">
+							<li style = "font-weight: 600;">Simple Bitcoin Wallet</li>
+							<li>P2PKH Address Derivation</li>
+							<li>Wallet Import Format</li>
+						</ul>
+					</div>
+					<div class = "text_box" style = "width: 550px; font-size: 23px;">
+						<ul style = "margin: 0px; padding: 0px; list-style-type: none;">
+							<li style = "font-weight: 600;">Hierarchical Determinstic Wallets</li>
+							<li>Mnemnonics & HD Wallet Seeds</li>
+							<li>HD Child Key Derivation</li>
+							<li>HD Child Key Exposure</li>
+							<li>HD Hardened Children Keys</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class = "text_box_horizontal" style = "position: absolute; top: 600px; left: 65px;">
+					<ul style = "margin: 0px; padding: 0px; list-style-type: none;">
+						<li>In this chapter, we will look at how Bitcoin wallets work,
+							how wallet seeds can be restored and wallets can generate fresh addresses.
+						</li>
+						<li>
+						</li>
+					</ul>
+				</div>
+
+			</section>
+			<!-- *********** END: Chapter Subtopics 1 *********** -->
+
+			<!-- *********** BEGIN: Bitcoin P2PKH Derivation Paths *********** -->
+
+      <section class = "box">
+        <div class = "title">
+          Single Private Key -  <span class = "title weight">Multiple Addresses</span>
+        </div>
+
+        <!-- Derivation Graphic -->
+        <img src="images/wallets/p2pkh_address_derivation.svg" class = "image" style = "z-index: -1;">
+
+        <!-- 2 column container -->
+        <!-- 45% div for formula and curve--><!-- 45% text & bulletpoint -->
+        <div class = "multi_text_box_container" style = "padding: 0px 0 0 0; width: 1270px;">
+          <!-- 45% div for formula and curve-->
+          <div class = "" style = "width: 45%; font-size: 27px;">
+          </div>
+          <!-- 45% text & bulletpoint -->
+          <div class = "text_box"
+               style = "width: 36%; font-size: 20px; margin: 40px 0 0 0">
+            <ul style = "margin: 0; padding: 0px; list-style-type: none;">
+              <li style = "font-weight: bold;">P2PKH Address Derivation</li>
+              <ul class="">
+
+								<li>Bitcoin addresses can be derived from uncompressed or
+									compressed public keys. These are called Pay-to-Public-Key-Hash (P2PKH) Addresses.</li><br>
+								<li>However, the resulting address will be different, depending
+								on the type of public key point involved.</li><br>
+								<li>Furthermore, differing mainnet and testnet addresses can be
+								derived from an uncompressed or compressed public key.</li><br>
+								<li><span style="font-weight:600;">Important:</span> A single secret private key can spend from all addresses derived
+									from it, but the wallet must know which were used and received funds (&#9312/&#9313/&#9314/&#9315).</li><br>
+              </ul>
+            </ul>
+          </div>
+
+        </div><!-- End of 2 column container -->
+
+      </section>
+      <!-- *********** END: Bitcoin P2PKH Derivation Paths *********** -->
+
       <!-- *********** BEGIN: Bitcoin P2PKH Address *********** -->
 
       <section class = "box">
         <div class = "title">
-          Bitcoin <span class = "title weight">P2PKH Address</span>
+          From Public Key to <span class = "title weight">P2PKH Address</span>
         </div>
 
         <!-- Derivation Graphic -->
@@ -38,7 +128,7 @@
           <div class = "text_box"
                style = "width: 36%; font-size: 20px; margin: 40px 0 0 0">
             <ul style = "margin: 0; padding: 0px; list-style-type: none;">
-              <li style = "font-weight: bold;">1) Bitcoin Short Hash</li>
+              <li style = "font-weight: bold;">&#9312 Bitcoin Short Hash</li>
               <div class="">
                 <li>RIPEMD160(SHA256(input))</li>
                 <ul>
@@ -47,8 +137,8 @@
                 </ul>
                 <hr style = "height:3px; visibility:hidden;">
               </div>
-              <div class = "fragment fade-in">
-                <li style = "font-weight: bold;">2) Bitcoin Hash Checksum</li>
+              <div class = "">
+                <li style = "font-weight: bold;">&#9313 Bitcoin Hash Checksum</li>
                 <li>double SHA256(input)</li>
                 <ul>
                   <li>Version prefix</li>
@@ -59,8 +149,8 @@
                 </ul>
                 <hr style = "height:3px; visibility:hidden;">
               </div>
-              <div class ="fragment fade-in">
-              <li style = "font-weight: bold;">3) Base58 Encoding</li>
+              <div class ="">
+              <li style = "font-weight: bold;">&#9314 Base58 Encoding</li>
               <li>(Base58 encoding has built in checksum)</li>
                 <ul>
                   <li>Bitcoin Address:</li>
@@ -78,7 +168,7 @@
       </section>
       <!-- *********** END: Bitcoin P2PKH Address *********** -->
 
-      <!-- *********** BEGIN: Bitcoin WIF format *********** -->
+      <!-- *********** BEGIN: Bitcoin Private Key WIF format *********** -->
       <section class = "box">
         <div class = "title">
           Private Key - <span class = "title weight">Wallet Import Format</span>
@@ -135,7 +225,7 @@
         </div><!-- End of 2 column container -->
 
       </section>
-      <!-- *********** END: Bitcoin WIF format *********** -->
+      <!-- *********** END: Bitcoin Private Key WIF format *********** -->
 
       <!-- *********** BEGIN: Mnemonics *********** -->
       <section class = "box">
