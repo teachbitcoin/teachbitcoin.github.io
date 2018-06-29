@@ -58,7 +58,7 @@ a:focus {
   height: auto;
   /* Set up positioning */
   position: fixed;
-  top: 0;
+  /* top: 0; */
   left: 0;
   bottom:0;
   right:0;
@@ -187,6 +187,10 @@ a:focus {
 .reveal .orange_border {
   border: 3px solid rgba(225, 82, 24, 1);
   border-radius: 10px;
+}
+
+.reveal .circled_number {
+  font-size: 23px;
 }
 
 .reveal .inline_code {
