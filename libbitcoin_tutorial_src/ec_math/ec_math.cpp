@@ -11,7 +11,7 @@ int main() {
     "28026f91e1c97db3f6453262484ef5f69f71d89474f10926aae24d3c3eeb5f00");
 
   bc::ec_uncompressed my_uncompressed_point = bc::base16_literal(
-    "04" 
+    "04"
     "28026f91e1c97db3f6453262484ef5f69f71d89474f10926aae24d3c3eeb5f00"
     "c41b6810b8b305a05de2b4448d7e2a079771d4c018b923a9ab860e4b0b4f86f6");
 
@@ -41,11 +41,13 @@ int main() {
     bc::ec_compressed my_public_key(generator_point);
 
     // Point is on secp256k1 curve, since secret was valid.
-    std::cout << bc::verify(my_public_key) << std::endl;
+    std::cout << "Public Key point is on secp256k1 curve: "
+              << bc::verify(my_public_key) << std::endl;
 
-    // Print out public key.
+    // Print out compressed public key.
     // (bc::encode_base16 requires data chunk (byte vector) input.)
-    std::cout << bc::encode_base16(bc::to_chunk(my_public_key)) << std::endl;
+    std::cout << "Compressed Public Key Point: "
+              << bc::encode_base16(bc::to_chunk(my_public_key)) << std::endl;
 
 
     // 3) Better: Derive public key directly from secret.
@@ -53,7 +55,8 @@ int main() {
 
     bc::ec_compressed my_public_key_2;
     bc::secret_to_public(my_public_key_2, my_random_secret);
-    std::cout << (my_public_key == my_public_key_2) << std::endl;
+    std::cout << "Public Key Derivation is consistent with secret_to_public: "
+              << (my_public_key == my_public_key_2) << std::endl;
 
   }
 

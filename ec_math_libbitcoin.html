@@ -38,22 +38,20 @@
 
             <div class = "text_box code_text_box" style = "width: 28%;">
               <div class ="text_box_title" >
-                  Private & Public Keys with <span class = "weight">Libbitcoin</span>
+                  <span class = "weight">Elliptic Curve Classes and Methods</span> in Libbitcoin
               </div>
                 <div style = "padding:5px;">
                   <ul style = "margin: 0px; padding: 0px; list-style-type: none; font-size: 18px;">
                     <li>Libbitcoin provides the basic primitives for EC operations
                       on the secp256k1 curve, and methods to generate and verify private/public key pairs.
                       <br><br>
-                      Scalar &#9450 and EC-points &#9312/&#9313 are captured in byte_array classes.
+                      Scalar values and EC-points are captured in fixed-length byte_array classes.
                       <br><br>
-                      EC-points can be generated from scalar * EC-Point multiplication &#9314.
+                      Bitcoin public keys can be generated from scalar * Generator multiplication.
                       <br><br>
-                      Bitcoin public keys can be generated from scalar * Generator multiplication &#9315.
-                      <br><br>
-                      <span style="font-style:italic;"
-                      >Note:<br>Not all possible 32-byte values are valid secp256k1 scalars. The verify &#9316
-                      method checks that a 32-byte scalar or EC-point are secp256k1.</span>
+                      <span class="weight">Note on scalar values:</span><br>
+											Not all possible 32-byte values are valid secp256k1 scalars. The <span class="inline_code">bc::verify</span>
+                      method checks that a 32-byte scalar is of the secp256k1 curve order.
                   </ul>
               </div>
             </div>
@@ -64,28 +62,28 @@
             <div style = "width:70%">
               <pre style = "font-size: 18px; margin: 5px; padding: 0px;"
               ><code class = "c++"
-                     style = "font-family: Roboto Mono; margin: 0px; padding: 10px; max-height:575px ; width:97%"
+                     style = "background: white; font-family: Roboto Mono; margin: 0px; padding: 10px; max-height:575px ; width:97%"
 
   >// Libbitcoin Version 3.
 
-// &#9471 secp256k1 EC secret (private key), 32-byte scalar.
+// secp256k1 EC secret (private key), 32-byte scalar.
 typedef bc::byte_array&lt;ec_secret_size&gt ec_secret;
 
-// &#10102 secp256k1 EC point (public key) uncompressed, 65bytes.
+// secp256k1 EC point (public key) uncompressed, 65bytes.
 typedef bc::byte_array&lt;ec_uncompressed_size&gt ec_uncompressed;
 
-// &#10103 secp256k1 EC point compressed, 33bytes.
+// secp256k1 EC point compressed, 33bytes.
 typedef bc::byte_array&lt;ec_compressed_size&gt ec_compressed;
 
-// &#10104 EC point *= secret multiplication.
+// EC point *= secret multiplication.
 bool bc::ec_multiply(ec_compressed& point, const ec_secret& secret);
 bool bc::ec_multiply(ec_uncompressed& point, const ec_secret& secret);
 
-// &#10105 Generate public key from secret, using generator point G.
+// Generate public key from secret, using generator point G.
 bool bc::secret_to_public(ec_compressed& out, const ec_secret& secret);
 bool bc::secret_to_public(ec_uncompressed& out, const ec_secret& secret);
 
-// &#10106 Verify secret or point is valid (on secp256k1 curve).
+// Verify secret or point is valid (on secp256k1 curve).
 bool bc::verify(const ec_secret& secret);
 bool bc::verify(const ec_compressed& point);
 bool bc::verify(const ec_uncompressed& point);</code></pre>
@@ -105,7 +103,7 @@ bool bc::verify(const ec_uncompressed& point);</code></pre>
 
 						<div class = "text_box code_text_box" style = "width: 28%;">
 							<div class ="text_box_title" >
-									Create and verify <span class = "weight">Private/Public key pair</span>
+									<span class = "weight">Example:</span><br>Create & Verify Private/Public Key Pair in Libbitcoin
 							</div>
 								<div style = "padding:5px;">
 									<ul style = "margin: 0px; padding: 0px; list-style-type: none; font-size: 19px;">
@@ -142,7 +140,7 @@ bool bc::verify(const ec_uncompressed& point);</code></pre>
 int main() {
 
 
-  // &#9471 Create scalar & uncompressed secp256k1 point from hex string.
+  // 1) Create scalar & uncompressed secp256k1 point from hex string.
   // ---------------------------------------------------------------------------
 
   bc::ec_secret my_scalar = bc::base16_literal(
@@ -154,7 +152,7 @@ int main() {
     "c41b6810b8b305a05de2b4448d7e2a079771d4c018b923a9ab860e4b0b4f86f6");
 
 
-  // &#10102 Create a random private key and derive the public key.
+  // 2) Create a random private key and derive the public key.
   // ---------------------------------------------------------------------------
 
   bc::data_chunk my_entropy(bc::ec_secret_size); // Secret size: 32bytes.
@@ -164,7 +162,7 @@ int main() {
   bc::ec_secret my_random_secret = bc::to_array&lt;bc::ec_secret_size>(my_entropy);
 
 
-  // &#10103 Verify that secret is in valid range and derive public key.
+  // 3) Verify that secret is in valid range and derive public key.
   // ---------------------------------------------------------------------------
 
   if( bc::verify(my_random_secret) )
@@ -179,20 +177,21 @@ int main() {
     bc::ec_compressed my_public_key(generator_point);
 
     // Point is on secp256k1 curve, since secret was valid.
-    std::cout << bc::verify(my_public_key) << std::endl;
+    std::cout << "Public Key point is on secp256k1 curve: "
+              << bc::verify(my_public_key) << std::endl;
 
-    // Print out public key.
+    // Print out compressed public key.
     // (bc::encode_base16 requires data chunk (byte vector) input.)
-    std::cout << bc::encode_base16(bc::to_chunk(my_public_key)) << std::endl;
+    std::cout << "Compressed Public Key Point: "
+              << bc::encode_base16(bc::to_chunk(my_public_key)) << std::endl;
 
-
-    // &#10104 Better: Derive public key directly from secret.
+    // 4) Better: Derive public key directly from secret.
     // ---------------------------------------------------------------------------
 
     bc::ec_compressed my_public_key_2;
     bc::secret_to_public(my_public_key_2, my_random_secret);
-    std::cout << (my_public_key == my_public_key_2) << std::endl;
-
+    std::cout << "Public Key Derivation is consistent with secret_to_public: "
+              << (my_public_key == my_public_key_2) << std::endl;
   }
 
   else
@@ -208,9 +207,9 @@ int main() {
 										 style = "font-family: Roboto Mono; margin: 0px; padding: 10px; max-height:120px; width: 97%"
 >$ g++ -std=c++11 -o ec_math ec_math.cpp $(pkg-config --cflags libbitcoin --libs libbitcoin)
 $ ./ec_math
-1                                                                     &#8656&#9313
-02ac6cec0cc97e5bb1139909ac0d3fc2dfed294ca2b3e20e3a12cbccc9d914fd86    &#8656&#9313
-1                                                                     &#8656&#9314
+Public Key point is on secp256k1 curve: 1
+Compressed Public Key Point: 02ddcd758c1bee377cae98fee971e72f98177fb0174a83d0be14d1284936a86318
+Public Key Derivation is consistent with secret_to_public: 1
 </code></pre>
 						</div><!-- End of 70% container -->
 					</div><!-- End of multi box container -->
@@ -245,6 +244,9 @@ $ ./ec_math
 					mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
 					config: 'TeX-AMS_HTML-full'  // See http://docs.mathjax.org/en/latest/config-files.html
 				},
+
+				// Push each slide change to the browser history
+				history: true,
 
 				// The "normal" size of the presentation, aspect ratio will be preserved
 				// when the presentation is scaled to fit different resolutions. Can be

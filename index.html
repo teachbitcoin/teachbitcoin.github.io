@@ -1,0 +1,179 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Wallets</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/simple.css">
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/xcode.css">
+		<!-- Theme override for teachbitcoin -->
+		<link rel="stylesheet" href="css/teachbitcoin.css">
+		<!-- Google Font Roboto -->
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+
+
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+				<section class ="box">
+
+					<div class = "title">
+						<span class = "title weight">TeachBitcoin</span>.github.io
+					</div>
+
+					<div class = "multi_text_box_container" style = "padding: 30px 0 0 0; font-size:30px">
+						<ul style = "width: 100%;">
+							<li><span class ="weight">Elliptic Curve Math</span>
+								<span style = "float: right;font-weight:300;">
+									<a href="ec_math.html" target="_blank" class ="index">Slides</a>
+									/
+									<a href="ec_math_libbitcoin.html" target="_blank" class ="index">Libbitcoin Examples</a>
+									/
+								Video
+								</span>
+							</li>
+							<li><span class ="weight">Addresses & Wallets</span>
+								<span style = "float: right; font-weight:300;">
+									<a href="wallets.html" target="_blank" class ="index">Slides</a>
+									/
+									<a href="wallets_libbitcoin.html" target="_blank" class ="index">Libbitcoin Examples</a>
+									/
+								Video
+								</span>
+							</li>
+							<li><span class ="weight">Signatures: ECSDA & DER</span>
+								<span style = "float: right; font-weight:300;">
+									Slides
+									/
+									Libbitcoin Examples
+									/
+								Video
+								</span>
+							</li>
+							<!-- Transactions Part -->
+							<li><span class ="weight">Intro to Transactions</span>
+								<span style = "float: right; font-weight:300;">
+									Slides
+									/
+									Libbitcoin Examples
+									/
+									Video
+								</span>
+							</li>
+							<!-- TX Subtopics -->
+							<ul>
+								<li type="circle"><span class ="">sighash: ALL|NONE|SINGLE</span>
+									<span style = "float: right; font-weight:300;">
+										Slides
+										/
+										Libbitcoin Examples
+										/
+										Video
+									</span>
+								</li>
+								<li type="circle"><span class ="">Transaction Witness</span>
+									<span style = "float: right; font-weight:300;">
+										Slides
+										/
+										Libbitcoin Examples
+										/
+										Video
+									</span>
+								</li>
+								<li type="circle"><span class ="">Script Machine</span>
+									<span style = "float: right; font-weight:300;">
+										Slides
+										/
+										Libbitcoin Examples
+										/
+										Video
+									</span>
+								</li>
+							</ul>
+							<!-- Transaction Analysis Part -->
+							<li><span class ="weight">Transaction Entropy</span>
+								<span style = "float: right; font-weight:300;">
+									Slides
+									/
+									Libbitcoin Examples
+									/
+									Video
+								</span>
+							</li>
+							<!-- Transaction Analysis Part -->
+							<li><span class ="weight">Parsing Blocks</span>
+								<span style = "float: right; font-weight:300;">
+									Slides
+									/
+									Libbitcoin Examples
+									/
+									Video
+								</span>
+							</li>
+
+						</ul>
+
+					</div>
+
+				</section>
+
+
+
+      </div><!-- END: Slides Div -->
+		</div><!-- END: Reveal Div -->
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/math/math.js', async: true }
+				],
+
+				math: {
+					mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+					config: 'TeX-AMS_HTML-full'  // See http://docs.mathjax.org/en/latest/config-files.html
+				},
+
+				previewLinks: true,
+
+				// Push each slide change to the browser history
+				history: true,
+
+				// Enable keyboard shortcuts for navigation
+				keyboard: true,
+
+				// Enables touch navigation on devices with touch input
+				touch: true,
+
+				// The "normal" size of the presentation, aspect ratio will be preserved
+				// when the presentation is scaled to fit different resolutions. Can be
+				// specified using percentage units.
+				width: 1366,
+			  height: 768,
+				// Factor of the display size that should remain empty around the content
+				margin: 0.05,
+
+				// Bounds for smallest/largest possible scale to apply to content
+				minScale: 0.2,
+				maxScale: 1.5
+			});
+			Reveal.configure({ slideNumber: true });
+		</script>
+	</body>
+</html>

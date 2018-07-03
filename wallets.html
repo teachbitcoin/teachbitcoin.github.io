@@ -131,7 +131,7 @@
           </div>
           <!-- 45% text & bulletpoint -->
           <div class = "text_box"
-               style = "width: 36%; font-size: 20px; margin: 40px 0 0 0">
+               style = "width: 36%; font-size: 18px; margin: 40px 0 0 0">
             <ul style = "margin: 0; padding: 0px; list-style-type: none;">
               <li style = "font-weight: bold;"><span class = "circled_number">&#10122</span> Bitcoin Short Hash</li>
               <div class="">
@@ -146,17 +146,14 @@
                 <li style = "font-weight: bold;"><span class = "circled_number">&#10123</span> Bitcoin Hash Checksum</li>
                 <li>double SHA256(input)</li>
                 <ul>
-                  <li>Version prefix</li>
+                  <li>Version prefix (Mainnet/Testnet)</li>
                   <ul>
-                    <li>Mainnet: 0x00</li>
-                    <li>Testnet: 0x6F</li>
+                    <li>0x00/0x6F</li>
                   </ul>
                 </ul>
                 <hr style = "height:3px; visibility:hidden;">
               </div>
-              <div class ="">
               <li style = "font-weight: bold;"><span class = "circled_number">&#10124</span> Base58 Encoding</li>
-              <li>(Base58 encoding has built in checksum)</li>
                 <ul>
                   <li>Bitcoin Address:</li>
                   <ul>
@@ -164,7 +161,16 @@
                     <li>Testnet: begins with m or n</li>
                   </ul>
                 </ul>
-              </div>
+							<hr style = "height:3px; visibility:hidden;">
+							<li><a href="wallets_libbitcoin.html#/" target="_blank">
+								<span class = "weight">Example:</span> P2PKH Address with Libbitcoin</a>
+							<li>
+							<li><a href="wallets_libbitcoin.html#/2" target="_blank">
+								<span class = "weight">Private Key Wallet</span> Class in Libbitcoin</a>
+							<li>
+							<li><a href="wallets_libbitcoin.html#/3" target="_blank">
+								<span class = "weight">Public Key Wallet</span> Class in Libbitcoin</a>
+							<li>
             </ul>
           </div>
 
@@ -211,15 +217,18 @@
                 </ul>
                 <hr style = "height:3px; visibility:hidden;">
 
-                <li style = "font-weight: bold;"><span class = "circled_number">&#10123</span> Base58 Encoding</li>
-                  Base58 encoded WIF begins with:
-                    <ul>
-                      <li>Mainnet/Compressed: K/L</li>
-                      <li>Mainnet/Uncompressed: 5</li>
-                      <li>Testnet/Compressed: C</li>
-                      <li>Testnet/Uncompressed: 9</li>
-                    </ul>
-                <hr style = "height:3px; visibility:hidden;">
+              <li style = "font-weight: bold;"><span class = "circled_number">&#10123</span> Base58 Encoding</li>
+                Base58 encoded WIF begins with:
+                  <ul>
+                    <li>Mainnet/Compressed: K/L</li>
+                    <li>Mainnet/Uncompressed: 5</li>
+                    <li>Testnet/Compressed: C</li>
+                    <li>Testnet/Uncompressed: 9</li>
+                  </ul>
+              <hr style = "height:3px; visibility:hidden;">
+							<li><a href="wallets_libbitcoin.html#/1" target="_blank">
+								<span class = "weight">Example:</span> WIF private key with Libbitcoin</a>
+							<li>
             </ul>
           </div>
         </div><!-- End of 2 column container -->
@@ -353,7 +362,10 @@
               <li></li>
               <li>There are multiple languages mappings available to translate
                 11-bit chunks into words (BIP39).</li>
-
+							<br>
+							<li><a href="wallets_libbitcoin.html#/5" target="_blank">
+								<span class = "weight">Example:</span> Mnemonic wordlist with Libbitcoin</a>
+							<li>
             </ul>
           </div>
 
@@ -479,13 +491,21 @@
 							<ul>
 								<li>The public-key to public-key derivation path creates a "fire-wall" between the private keys and public key
 							derivation paths, allowing public and private child keys to be managed in different environments.</li>
-								<li>For example, extended public keys (public key + chain code) can be stored in a potentially exposed
-								environment, to derive new Addresses for a payment sender.</li>
 							</ul>
 							<hr style = "height:5px; visibility:hidden;">
 							<li style = "font-weight: bold;">XPRV & XPUB Keys</li>
 							<li>Extended keys are the combination of the private or public key together with the chaincode, which are both required
 							in order to generate child keys.</li>
+							<hr style = "height:5px; visibility:hidden;">
+							<li><a href="wallets_libbitcoin.html#/6" target="_blank">
+								<span class = "weight">Extended Private Key</span> Class in Libbitcoin</a>
+							<li>
+							<li><a href="wallets_libbitcoin.html#/7" target="_blank">
+								<span class = "weight">Extended Public Key</span> Class in Libbitcoin</a>
+							<li>
+							<li><a href="wallets_libbitcoin.html#/8" target="_blank">
+								<span class = "weight">Example:</span> HD tree derivation with Libbitcoin (See parts 1 & 2)</a>
+							<li>
 
             </ul>
           </div>
@@ -503,7 +523,8 @@
 
 			<img src="images/wallets/hd_extended_keys.svg" class = "image" style = "z-index: -1;">
 			<img src="images/wallets/hd_extended_keys_step1.svg" class = "fragment image" style = "z-index: -1;">
-
+			<a href="wallets_libbitcoin.html#/9" target="_blank" style = "font-size:20px; position: absolute; bottom: 40px; right:100px;">
+				<span class = "weight">Example:</span> XPRV/XPUB key format with Libbitcoin</a>
       </section>
 			<!-- *********** END: Extended Key Format *********** -->
 
@@ -543,6 +564,10 @@
               <li style = "font-weight: bold;"><span class = "circled_number">&#10124</span> Parent Private Key is exposed</li>
               <li>Parent private key = Child private key - L256</li>
               <hr style = "height: 5px; visibility: hidden;">
+
+							<a href="wallets_libbitcoin.html#/9" target="_blank">
+								<span class = "weight">Example:</span> Unhardened Parent Key Exposure<br>with Libbitcoin</a>
+
 
             </ul>
           </div>
@@ -628,8 +653,6 @@
           <div class = "text_box"
                style = "width: 37%; font-size: 20px; margin: 0px 0 0 0">
             <ul style = "margin: 0; padding: 0px; list-style-type: none;">
-              <li>HD Key hardening is a method to break certain HD derivation paths to prevent the aforementioned exposure scenario.</li>
-							<hr style = "height: 5px; visibility: hidden;">
 							<li style = "font-weight: bold;">Child Key Hardening</li>
 							<ul>
 								<li>Hardened child private key derivation simply replaces the public parent key with the parent private key.</li>
@@ -637,9 +660,15 @@
 								<li>Which in turn result result in hardened child private key&#8242, child public key&#8242 and child chaincode&#8242.</li>
 							</ul>
 							<hr style = "height: 5px; visibility: hidden;">
-							<li style = "font-weight: bold;">Important:</li>
-							<li>Hardened private keys can still be used to derive child key generations,
-								but hardened public keys cannot, preventing upstream key exposure scenarios.</li>
+							<li class = "weight">Index of hardened children:</li>
+							<ul>
+								<li>Hardened children have an index of 2^31 (a 32 bit number
+									with the most significant bit set to 1) or higher.</li>
+							</ul>
+							<hr style = "height: 5px; visibility: hidden;">
+							<li><a href="wallets_libbitcoin.html#/8" target="_blank">
+								<span class = "weight">Example:</span> Hardened Child Derivation<br>with Libbitcoin (See part 3)</a>
+							</li>
 
             </ul>
           </div>
@@ -678,7 +707,7 @@
 								<li>This means the child XPUB keys in this example can derive grandchildren XPUB keys.</li>
 							</ul>
 							<li><span style = "font-weight: bold;">Note:</span> In the case of key exposure in any of the subsequent child generations,
-								the upstream key exposure can only propagate up to the hardened parent key.</li>
+								the upstream key exposure cannot propgate up to the hardened parent key.</li>
             </ul>
           </div>
 

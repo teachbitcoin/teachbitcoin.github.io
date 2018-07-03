@@ -1,0 +1,1076 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Wallets</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/simple.css">
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/default.css">
+		<!-- Theme override for teachbitcoin -->
+		<link rel="stylesheet" href="css/teachbitcoin.css">
+		<!-- Google Font Roboto -->
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+
+
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+				<!-- *********** BEGIN: Bitcoin Address *********** -->
+				<section class = "box">
+
+					<!-- No Title Bar ... -->
+
+					<div class = "multi_code_box_container" style = "padding: 0;">
+
+						<div class = "text_box code_text_box" style = "width: 28%;">
+							<div class ="text_box_title" >
+									<span class = "weight">Example:<br></span>Bitcoin Address Derivation<br>with Libbitcoin
+							</div>
+								<div style = "padding:5px;">
+									<ul style = "margin: 0px; padding: 0px; list-style-type: none; font-size: 18px;">
+										<li>In this code example, we will generate a Bitcoin address from a private key.</li>
+										<li>The derivation of the address from the public key is schematically described in the
+											<a href="wallets.html#/2" target="_blank">wallets</a> chapter.</li>
+										<li>In this example, we derive an address from a compressed public key point.</li>
+										<br>
+										<li>Note: Hardcoded address version prefixes are available in Libbitcoin:
+											<li>In the <span class= "inline_code">bc::wallet</span> namespace</li>
+											<ul>
+
+												<li><span class= "inline_code">ec_private::mainnet_p2kh</span></li>
+												<li><span class= "inline_code">ec_private::testnet_p2kh</span></li>
+											</ul>
+										</li>
+									</ul>
+									<br>
+						  </div>
+						</div>
+
+						<!-- <div id="" style="overflow:scroll; height:400px;"> -->
+						<!-- overflow-y: scroll; -->
+						<!-- <div style = "overflow-y: scroll; height: 500px; width: 70%; text-align: left;"> -->
+						<div style = "width:70%">
+							<pre style = "font-size: 18px; margin: 5px; padding: 0px;"
+							><code class = "c++"
+										 style = "font-family: Roboto Mono; margin: 0px; padding: 10px; max-height:575px ; width:97%"
+
+>#include &lt;bitcoin/bitcoin.hpp&gt
+#include &lt;iostream&gt
+
+int main() {
+
+  auto my_secret = bc::base16_literal(
+      "f3c8f9a6198cca98f481edde13bcc031b1470a81e367b838fe9e0a9db0f5993d");
+
+  bc::ec_compressed my_public_key;
+  bc::secret_to_public(my_public_key, my_secret);
+
+  // Public key hash.
+  auto my_public_key_hash = bc::bitcoin_short_hash(my_public_key);
+
+  auto addr_prefix = bc::wallet::ec_private::mainnet_p2kh; // Mainnet = 0x00
+  // auto addr_prefix = bc::wallet::ec_private::testnet_p2kh; // Testnet 0x6f
+
+  // Prefix || public key || checksum(4-bytes)
+  bc::data_chunk prefix_publickey_checksum(bc::to_chunk(addr_prefix));
+  bc::extend_data(prefix_publickey_checksum, my_public_key_hash);
+  bc::append_checksum(prefix_publickey_checksum);
+
+  // Bitcoin Address: Base58 encode byte sequence.
+  std::cout << bc::encode_base58(prefix_publickey_checksum) << std::endl;
+
+}</code></pre>
+							<pre style = "font-size: 16px; margin: 20px 5px 5px 5px; padding: 0px;"
+							><code class = "shell"
+										 style = "font-family: Roboto Mono; margin: 0px; padding: 10px; max-height:120px; width: 97%"
+>$ g++ -std=c++11 -o bitcoin_address bitcoin_address.cpp $(pkg-config --cflags libbitcoin --libs libbitcoin)
+$ ./bitcoin_address
+13ggzjqKyFGQZtxNWUoG4BFDPAgdBijUe4
+</code></pre>
+						</div><!-- End of 70% container -->
+					</div><!-- End of multi box container -->
+
+				</section>
+				<!-- *********** END: Bitcoin Address *********** -->
+
+				<!-- *********** BEGIN: WIF Format *********** -->
+				<section class = "box">
+
+					<!-- No Title Bar ... -->
+
+					<div class = "multi_code_box_container" style = "padding: 0;">
+
+						<div class = "text_box code_text_box" style = "width: 28%;">
+							<div class ="text_box_title" >
+									<span class = "weight">Example:<br></span>WIF Private Key Format<br>with Libbitcoin
+							</div>
+								<div style = "padding:5px;">
+									<ul style = "margin: 0px; padding: 0px; list-style-type: none; font-size: 18px;">
+										<li>In this code example, we will derive a WIF private key from a wallet secret.</li>
+										<li>The derivation of the WIF format is described
+											<a href="wallets.html#/3" target="_blank">here</a>.</li>
+										<br>
+										<li>Note: Hardcoded address wif version prefixes are available in Libbitcoin:
+											<li>In the <span class= "inline_code">bc::wallet</span> namespace</li>
+											<ul>
+												<li><span class= "inline_code">ec_private::mainnet_wif</span></li>
+												<li><span class= "inline_code">ec_private::testnet_wif</span></li>
+											</ul>
+										</li>
+									</ul>
+									<br>
+						  </div>
+						</div>
+
+						<!-- <div id="" style="overflow:scroll; height:400px;"> -->
+						<!-- overflow-y: scroll; -->
+						<!-- <div style = "overflow-y: scroll; height: 500px; width: 70%; text-align: left;"> -->
+						<div style = "width:70%">
+							<pre style = "font-size: 18px; margin: 5px; padding: 0px;"
+							><code class = "c++"
+										 style = "font-family: Roboto Mono; margin: 0px; padding: 10px; max-height:575px ; width:97%"
+
+>#include &lt;bitcoin/bitcoin.hpp&gt
+#include &lt;iostream&gt
+
+int main() {
+
+  auto my_secret = bc::base16_literal(
+      "f3c8f9a6198cca98f481edde13bcc031b1470a81e367b838fe9e0a9db0f5993d");
+
+  auto prefix_secret_comp_checksum =
+      bc::to_chunk(bc::wallet::ec_private::mainnet_wif); // 0x80
+  // auto prefix_secret_comp_checksum =
+  //     bc::to_chunk(bc::wallet::ec_private::mainnet_testnet); // 0xEF
+
+  bc::extend_data(prefix_secret_comp_checksum, my_secret);
+  bc::extend_data(prefix_secret_comp_checksum,
+                  bc::to_chunk(bc::wallet::ec_private::compressed_sentinel)); // 0x01
+  bc::append_checksum(prefix_secret_comp_checksum);
+
+  // WIF (mainnet/compressed).
+  std::cout << bc::encode_base58(prefix_secret_comp_checksum) << std::endl;
+
+}</code></pre>
+							<pre style = "font-size: 16px; margin: 20px 5px 5px 5px; padding: 0px;"
+							><code class = "shell"
+										 style = "font-family: Roboto Mono; margin: 0px; padding: 10px; max-height:120px; width: 97%"
+>$ g++ -std=c++11 -o wif wif.cpp $(pkg-config --cflags libbitcoin --libs libbitcoin)
+$ ./wif
+L5PbbAgFUENjW7XjzPBSMUwtVpV8S62cXq14cwUGDdCq1xt1SiNU
+</code></pre>
+						</div><!-- End of 70% container -->
+					</div><!-- End of multi box container -->
+
+				</section>
+				<!-- *********** END: WIF Format *********** -->
+
+
+				<!-- *********** BEGIN: EC_PRIVATE /EC_PUBLIC *********** -->
+        <section class = "box">
+
+          <!-- No Title Bar ... -->
+
+          <div class = "multi_code_box_container" style = "padding: 0;">
+
+            <div class = "text_box code_text_box" style = "width: 28%;">
+              <div class ="text_box_title" >
+                  <span class = "weight">Private Key Wallet Class</span><br>in Libbitcoin
+              </div>
+                <div style = "padding:5px;">
+                  <ul style = "margin: 0px; padding: 0px; list-style-type: none; font-size: 18px;">
+                    <li>Note on constructors:
+											<ul>
+												<li>A <a href="https://github.com/libbitcoin/libbitcoin/blob/master/include/bitcoin/bitcoin/wallet/ec_private.hpp" target="_blank">
+													<span class= "inline_code">ec_private</span></a>
+													object instantiation requires information on the secret,
+													public key compression, and both address and wif prefixes.
+												</li>
+												<li>Note that address and wif prefixes are not coupled
+													here. The prefixes (8bits each) are individually supplied in the parameters,
+													implied by the wif and explicit address version or a combined
+													version argument (16bits) of:<br>
+													<span class= "inline_code">wif_ver << 8 | address_ver</span>
+												</li>
+												<li>Combined (16bit) address & wif prefixes are hardcoded in:
+													<ul>
+														<li><span class= "inline_code">ec_private::mainnet</span></li>
+														<li><span class= "inline_code">ec_private::testnet</span></li>
+													</ul>
+												</li>
+											</ul>
+										</li>
+										<hr style="visibility:hidden"></hr>
+										<li>Note on serializer:
+											<ul>
+												<li>
+													<span class= "inline_code">ec_private::encoded</span> returns
+													a string of the base58 encoded wif key.
+												</li>
+											</ul>
+										</li>
+										<br>
+                  </ul>
+              </div>
+            </div>
+
+            <!-- <div id="" style="overflow:scroll; height:400px;"> -->
+            <!-- overflow-y: scroll; -->
+            <!-- <div style = "overflow-y: scroll; height: 500px; width: 70%; text-align: left;"> -->
+            <div style = "width:70%">
+              <pre style = "font-size: 18px; margin: 5px; padding: 0px;"
+              ><code class = "c++"
+                     style = "background: white; font-family: Roboto Mono; margin: 0px; padding: 10px; max-height:750px ; width:97%"
+
+  >// Libbitcoin Version 3.
+
+class bc::wallet::ec_private
+{
+  public:
+
+  // Constructors.
+  ec_private();
+  ec_private(const ec_private& other);
+  ec_private(const std::string& wif, uint8_t version=mainnet_p2kh);
+  ec_private(const wif_compressed& wif, uint8_t version=mainnet_p2kh);
+  ec_private(const wif_uncompressed& wif, uint8_t version=mainnet_p2kh);
+  ec_private(const ec_secret& secret, uint16_t version=mainnet,
+	  bool compress=true);
+
+  // Serializer.
+  std::string encoded() const;
+
+  // Accessors.
+  const ec_secret& secret() const;
+  const uint16_t version() const;
+  const uint8_t payment_version() const;
+  const uint8_t wif_version() const;
+  const bool compressed() const;
+
+  // Methods.
+  ec_public to_public() const;
+  payment_address to_payment_address() const;
+
+  // ..
+}</code></pre>
+            </div><!-- End of 70% container -->
+          </div><!-- End of multi box container -->
+
+        </section>
+        <!-- *********** END: EC_PRIVATE *********** -->
+
+				<!-- *********** BEGIN: EC_PUBLIC *********** -->
+        <section class = "box">
+
+          <!-- No Title Bar ... -->
+
+          <div class = "multi_code_box_container" style = "padding: 0;">
+
+            <div class = "text_box code_text_box" style = "width: 28%;">
+              <div class ="text_box_title" >
+                 <span class = "weight">Public Key Wallet Class </span>in Libbitcoin
+              </div>
+                <div style = "padding:5px;">
+                  <ul style = "margin: 0px; padding: 0px; list-style-type: none; font-size: 18px;">
+                    <li>Note on Constructors:
+											<ul>
+												<li>The <a href="https://github.com/libbitcoin/libbitcoin/blob/master/include/bitcoin/bitcoin/wallet/ec_public.hpp" target="_blank">
+													<span class= "inline_code">ec_public</span></a> object can
+													be instantiated from a <span class= "inline_code">ec_private</span>
+													object but loses all information on address prefixes.
+													The public key compression setting will be inherited.
+												</li>
+											</ul>
+                    </li>
+										<hr style="visibility:hidden"></hr>
+										<li>Note on Serializer:
+											<ul>
+												<li>This returns the base16 encoded compressed or uncompressed
+													public key point according to the set compression byte.
+												</li>
+											</ul>
+										</li>
+										<hr style="visibility:hidden"></hr>
+										<li>Note on <span class= "inline_code">ec_public::to_data</span>:
+											<ul>
+												<li>This method outputs the public key in either its ec_compressed
+													or uncompressed form as a data chunk according to the compression byte
+													set in the object.
+												</li>
+											</ul>
+										</li>
+                  </ul>
+              </div>
+            </div>
+
+            <!-- <div id="" style="overflow:scroll; height:400px;"> -->
+            <!-- overflow-y: scroll; -->
+            <!-- <div style = "overflow-y: scroll; height: 500px; width: 70%; text-align: left;"> -->
+            <div style = "width:70%">
+              <pre style = "font-size: 18px; margin: 5px; padding: 0px;"
+              ><code class = "c++"
+                     style = "background: white; font-family: Roboto Mono; margin: 0px; padding: 10px; max-height:750px ; width:97%"
+
+  >// Libbitcoin Version 3.
+
+class bc::wallet::ec_public
+{
+  public:
+
+  // Constructors.
+  ec_public();
+  ec_public(const ec_public& other);
+  ec_public(const ec_private& secret);
+  ec_public(const data_chunk& decoded);
+  ec_public(const std::string& base16);
+  ec_public(const ec_compressed& point, bool compress=true);
+  ec_public(const ec_uncompressed& point, bool compress=false);
+
+  // Serializer.
+  std::string encoded() const;
+
+  // Accessors.
+  const ec_compressed& point() const;
+  const uint8_t payment_version() const;
+  const bool compressed() const;
+
+  // Methods.
+  bool to_data(data_chunk& out) const;
+  bool to_uncompressed(ec_uncompressed& out) const;
+  payment_address to_payment_address(uint8_t version=mainnet_p2kh) const;
+
+  // ..
+}</code></pre>
+            </div><!-- End of 70% container -->
+          </div><!-- End of multi box container -->
+
+        </section>
+        <!-- *********** END: EC_PUBLIC *********** -->
+
+				<!-- *********** BEGIN: Basic Wallet *********** -->
+				<section class = "box">
+
+					<!-- No Title Bar ... -->
+
+					<div class = "multi_code_box_container" style = "padding: 0;">
+
+						<div class = "text_box code_text_box" style = "width: 28%;">
+							<div class ="text_box_title" >
+									<span class = "weight">Example:<br></span>Basic Wallet with Libbitcoin
+							</div>
+								<div style = "padding:5px;">
+									<ul style = "margin: 0px; padding: 0px; list-style-type: none; font-size: 19px;">
+										<li>In this code example, we will create a derive payment
+											addresses from a wallet secret using the private and public
+											wallet Libbitoin classes.
+										</li>
+										<hr style="visibility:hidden"></hr>
+										<li>Note on prefixes:
+										<li>
+											<ul>
+												<li>The WIF will include the mainnet wif prefix, since
+													this is implied in the construction of the private wallet object.</li>
+												<li>However, when deriving the address, the address prefix
+													(mainet/testnet) must be supplied explicitly.</li>
+											</ul>
+										</li>
+									</ul>
+									<br>
+						  </div>
+						</div>
+
+						<!-- <div id="" style="overflow:scroll; height:400px;"> -->
+						<!-- overflow-y: scroll; -->
+						<!-- <div style = "overflow-y: scroll; height: 500px; width: 70%; text-align: left;"> -->
+						<div style = "width:70%">
+							<pre style = "font-size: 18px; margin: 5px; padding: 0px;"
+							><code class = "c++"
+										 style = "font-family: Roboto Mono; margin: 0px; padding: 10px; max-height:575px ; width:97%"
+
+>#include &lt;bitcoin/bitcoin.hpp&gt
+#include &lt;iostream&gt
+
+int main() {
+
+  auto my_secret = bc::base16_literal(
+      "f3c8f9a6198cca98f481edde13bcc031b1470a81e367b838fe9e0a9db0f5993d");
+
+  bc::wallet::ec_private my_private(
+      my_secret,
+      bc::wallet::ec_private::mainnet,
+      true); // Compression = true.
+
+  // WIF private key.
+  std::cout << "WIF private key (Base58): "
+            << my_private.encoded() << std::endl;
+
+  // 1st ec_public from ec_private (compression argument inherited)
+  bc::wallet::ec_public my_public(my_private);
+
+  // 2nd ec_public from point and true compression argument.
+  bc::wallet::ec_public my_public2(my_public.point(), true);
+
+  // Verify my_public/my_public2 are identical.
+  std::cout << "my_public & my_public2 are equal: "
+            << (my_public.encoded() == my_public2.encoded()) << std::endl;
+
+  // Payment addresses: Default to mainnet.
+  std::cout << "Mainnet Address: "
+            << my_public.to_payment_address() << std::endl;
+  std::cout << "Testnet Address: "
+            << my_public.to_payment_address(bc::wallet::ec_private::testnet_p2kh)
+            << std::endl;
+
+}</code></pre>
+							<pre style = "font-size: 16px; margin: 20px 5px 5px 5px; padding: 0px;"
+							><code class = "shell"
+										 style = "font-family: Roboto Mono; margin: 0px; padding: 10px; max-height:125px; width: 97%"
+>$ g++ -std=c++11 wallet.cpp -o wallet  $(pkg-config --cflags libbitcoin --libs libbitcoin)
+$ ./wallet
+WIF private key (Base58): L5PbbAgFUENjW7XjzPBSMUwtVpV8S62cXq14cwUGDdCq1xt1SiNU
+my_public & my_public2 are equal: 1
+Mainnet Address: 13ggzjqKyFGQZtxNWUoG4BFDPAgdBijUe4
+Testnet Address: miCeHnvJnGhfM1RzE3mdt6TYFAHL5Lw4ep
+</code></pre>
+						</div><!-- End of 70% container -->
+					</div><!-- End of multi box container -->
+
+				</section>
+				<!-- *********** END: Basic Wallet *********** -->
+
+				<!-- *********** BEGIN: Example - Mnemonic wordlist *********** -->
+				<section class = "box">
+
+					<!-- No Title Bar ... -->
+
+					<div class = "multi_code_box_container" style = "padding: 0;">
+
+						<div class = "text_box code_text_box" style = "width: 28%;">
+							<div class ="text_box_title" >
+									<span class = "weight">Example:<br></span>Mnemonic Word List<br>with Libbitcoin
+							</div>
+								<div style = "padding:5px;">
+									<ul style = "margin: 0px; padding: 0px; list-style-type: none; font-size: 19px;">
+										<li>In this code example, we generate mnemonic word lists from
+											entropy of various lengths, which can individually be decoded
+											and stretched to 512 bit HD wallet seeds.
+										</li><br>
+										<li>Note on mnemonic methods:
+											<ul>
+												<li>Libbitcoin only provides a method to convert
+											and stretch a wordlist into a 512 bit wallet seed. Decoding
+											a wordlist back to its entropy value must be done with lower
+											level functions.
+												</li>
+											</ul>
+										</li>
+									</ul>
+						  </div>
+						</div>
+
+						<!-- <div id="" style="overflow:scroll; height:400px;"> -->
+						<!-- overflow-y: scroll; -->
+						<!-- <div style = "overflow-y: scroll; height: 500px; width: 70%; text-align: left;"> -->
+						<div style = "width:70%">
+							<pre style = "font-size: 18px; margin: 5px; padding: 0px;"
+							><code class = "c++"
+										 style = "font-family: Roboto Mono; margin: 0px; padding: 10px; max-height:575px ; width:97%"
+
+>#include &lt;bitcoin/bitcoin.hpp&gt
+#include &lt;iostream&gt
+
+int main() {
+
+  // 128, 160, 192, 224, 256 bits of entropy are valid for mnemonic encoding.
+
+  // We generate 128 bits of Entropy
+  bc::data_chunk my_entropy_128(16); //16 bytes = 128 bits
+  bc::pseudo_random_fill(my_entropy_128);
+
+  // We generate 160 bits of Entropy
+  bc::data_chunk my_entropy_160(20); //16 bytes = 128 bits
+  bc::pseudo_random_fill(my_entropy_160);
+
+  // ...
+
+  // We generate 256 bits of Entropy
+  bc::data_chunk my_entropy_256(32); //32 bytes = 256 bits
+  bc::pseudo_random_fill(my_entropy_256);
+
+  // Instantiate mnemonic word_list from entropy.
+  bc::wallet::word_list my_wordlist_128 = bc::wallet::create_mnemonic(my_entropy_128);
+  bc::wallet::word_list my_wordlist_160 = bc::wallet::create_mnemonic(my_entropy_160);
+  bc::wallet::word_list my_wordlist_256 = bc::wallet::create_mnemonic(my_entropy_256);
+  std::cout << "128bit wordlist: " << bc::join(my_wordlist_128) << std::endl;
+  std::cout << "160bit wordlist: "<< bc::join(my_wordlist_160) << std::endl;
+  std::cout << "256bit wordlist: "<< bc::join(my_wordlist_256) << std::endl;
+
+  // Generate a 512-bit HD Wallet Seed from mnemonic.
+  auto seed = bc::to_chunk(bc::wallet::decode_mnemonic(my_wordlist_128));
+  std::cout << "512bit HD Wallet Seed: "
+            << bc::encode_base16(seed) << std::endl;
+
+}</code></pre>
+							<pre style = "font-size: 16px; margin: 20px 5px 5px 5px; padding: 0px;"
+							><code class = "shell"
+										 style = "font-family: Roboto Mono; margin: 0px; padding: 10px; max-height:125px; width: 97%"
+>$ g++ -std=c++11 mnemonic_wordlist.cpp -o mnemonic_wordlist  $(pkg-config --cflags libbitcoin --libs libbitcoin)
+$ ./mnemonic_wordlist
+128bit wordlist: artwork dentist rough start vast obvious icon dinosaur tell kid mention crush
+160bit wordlist: mail lazy fringe parent cycle music slogan diary off mad frame thank great hill dad
+256bit wordlist: eyebrow electric kit obvious result object ankle check fall settle neck idle lake craft identify climb uphold run satisfy town erode pattern ladder giant
+512bit HD Wallet Seed: 7c25cdd3bf3f37036d179debeb73d48018ee17166f629f1634d5bdce8ef86617393b1361c93255262331bb4ed9221060969a45bbbd3a6bd8f4b88e700cb139c8
+</code></pre>
+						</div><!-- End of 70% container -->
+					</div><!-- End of multi box container -->
+
+				</section>
+				<!-- *********** END: Example - Mnemonic wordlist *********** -->
+
+				<!-- *********** BEGIN: Extended Private Key Wallet Class *********** -->
+				<section class = "box">
+
+					<!-- No Title Bar ... -->
+
+					<div class = "multi_code_box_container" style = "padding: 0;">
+
+						<div class = "text_box code_text_box" style = "width: 28%;">
+							<div class ="text_box_title" >
+								 <span class = "weight">Extended Private Key<br>Wallet Class </span>in Libbitcoin
+							</div>
+								<div style = "padding:5px;">
+									<ul style = "margin: 0px; padding: 0px; list-style-type: none; font-size: 18px;">
+										<li>Note on constructors:
+											<ul>
+												<li>The <a href="https://github.com/libbitcoin/libbitcoin/blob/master/include/bitcoin/bitcoin/wallet/hd_private.hpp" target="_blank">
+													<span class= "inline_code">hd_private</span></a>
+													object instantiation requires information on the secret,
+													and private and public extended key versions.
+												</li>
+												<li>The private and public extended key version prefixes are not coupled.
+													The prefixes (32 bits each) are individually supplied in the parameters -
+													implied by the extended private key and explicit public key version or a combined
+													version argument (64bits) of:<br>
+													<span class= "inline_code">private_ver << 32 | public_ver</span>
+												</li>
+												<li>Combined (64bit) private & public extended key prefixes are hardcoded in:
+													<ul>
+														<li><span class= "inline_code">hd_private::mainnet</span></li>
+														<li><span class= "inline_code">hd_private::testnet</span></li>
+													</ul>
+												</li>
+											</ul>
+										</li>
+									</ul>
+							</div>
+						</div>
+
+						<!-- <div id="" style="overflow:scroll; height:400px;"> -->
+						<!-- overflow-y: scroll; -->
+						<!-- <div style = "overflow-y: scroll; height: 500px; width: 70%; text-align: left;"> -->
+						<div style = "width:70%">
+							<pre style = "font-size: 18px; margin: 5px; padding: 0px;"
+							><code class = "c++"
+										 style = "background: white; font-family: Roboto Mono; margin: 0px; padding: 10px; max-height:750px ; width:97%"
+
+	>// Libbitcoin Version 3.
+
+class bc::wallet::hd_private
+{
+  public:
+
+  // Constructors.
+  hd_private();
+  hd_private(const hd_private& other);
+  hd_private(const data_chunk& seed, uint64_t prefixes=mainnet);
+  hd_private(const hd_key& private_key);
+  hd_private(const hd_key& private_key, uint64_t prefixes);
+  hd_private(const hd_key& private_key, uint32_t public_prefix);
+  hd_private(const std::string& encoded);
+  hd_private(const std::string& encoded, uint64_t prefixes);
+  hd_private(const std::string& encoded, uint32_t public_prefix);
+
+  // Serializer.
+  std::string encoded() const;
+
+  // Accessors.
+  const ec_secret& secret() const;
+
+  // Methods.
+  hd_key to_hd_key() const;
+  hd_public to_public() const;
+  hd_private derive_private(uint32_t index) const;
+  hd_public derive_public(uint32_t index) const;
+
+  // ..
+}</code></pre>
+						</div><!-- End of 70% container -->
+					</div><!-- End of multi box container -->
+
+				</section>
+				<!-- *********** END: Extended Private Key Wallet Class *********** -->
+
+				<!-- *********** BEGIN: Extended Public Key Wallet Class *********** -->
+				<section class = "box">
+
+					<!-- No Title Bar ... -->
+
+					<div class = "multi_code_box_container" style = "padding: 0;">
+
+						<div class = "text_box code_text_box" style = "width: 28%;">
+							<div class ="text_box_title" >
+								 <span class = "weight">Extended Public Key<br>Wallet Class </span>in Libbitcoin
+							</div>
+								<div style = "padding:5px;">
+									<ul style = "margin: 0px; padding: 0px; list-style-type: none; font-size: 18px;">
+										<li>Note on Constructors:
+											<ul>
+												<li>The <a href="https://github.com/libbitcoin/libbitcoin/blob/master/include/bitcoin/bitcoin/wallet/hd_public.hpp" target="_blank">
+													<span class= "inline_code">hd_public</span></a> object can
+													be instantiated from an extended public key in a serialized
+													byte array format (hd_key) or a base58 encoded XPUB string.
+												</li>
+											</ul>
+                    </li>
+										<hr style="visibility:hidden"></hr>
+										<li>Note on Serializer:
+											<ul>
+												<li>This returns the base58 encoded XPUB string.
+												</li>
+											</ul>
+										</li>
+										<hr style="visibility:hidden"></hr>
+										<li>Note on <span class= "inline_code">hd_public::hd_lineage</span>:
+											<ul>
+												<li>This <a href="https://github.com/libbitcoin/libbitcoin/blob/master/include/bitcoin/bitcoin/wallet/hd_public.hpp#L45-L54" target="_blank">
+													<span class= "inline_code">struct</span></a> contains
+													private & public prefixes, depth, parent fingerpint and
+													child index information.
+												</li>
+											</ul>
+										</li>
+									</ul>
+							</div>
+						</div>
+
+						<!-- <div id="" style="overflow:scroll; height:400px;"> -->
+						<!-- overflow-y: scroll; -->
+						<!-- <div style = "overflow-y: scroll; height: 500px; width: 70%; text-align: left;"> -->
+						<div style = "width:70%">
+							<pre style = "font-size: 18px; margin: 5px; padding: 0px;"
+							><code class = "c++"
+										 style = "background: white; font-family: Roboto Mono; margin: 0px; padding: 10px; max-height:750px ; width:97%"
+
+	>// Libbitcoin Version 3.
+
+class bc::wallet::hd_public
+{
+  public:
+
+  // Constructors.
+  hd_public();
+  hd_public(const hd_public& other);
+  hd_public(const hd_key& public_key);
+  hd_public(const hd_key& public_key, uint32_t prefix);
+  hd_public(const std::string& encoded);
+  hd_public(const std::string& encoded, uint32_t prefix);
+
+  // Serializer.
+  std::string encoded() const;
+
+  // Accessors.
+  const hd_chain_code& chain_code() const;
+  const hd_lineage& lineage() const;
+  const ec_compressed& point() const;
+
+  // Methods.
+  hd_key to_hd_key() const;
+  hd_public derive_public(uint32_t index) const;
+
+  // ..
+}</code></pre>
+						</div><!-- End of 70% container -->
+					</div><!-- End of multi box container -->
+
+				</section>
+				<!-- *********** END: Extended Public Key Wallet Class *********** -->
+
+				<!-- *********** BEGIN: Example - HD Children *********** -->
+				<section class = "box">
+
+					<!-- No Title Bar ... -->
+
+					<div class = "multi_code_box_container" style = "padding: 0;">
+
+						<div class = "text_box code_text_box" style = "width: 28%;">
+							<div class ="text_box_title" >
+									<span class = "weight">Example:<br></span>HD Child Derivation<br>with Libbitcoin
+							</div>
+								<div style = "padding:5px;">
+									<ul style = "margin: 0px; padding: 0px; list-style-type: none; font-size: 19px;">
+										<li>In this code example, we derive hd children extended keys
+											with Libbitcoin private and public extended key classes.
+										</li>
+										<hr style="visibility:hidden"></hr>
+										<li>HD child derivation paths are described in detail <a href="wallets.html#/9" target="_blank">
+											here</a>.
+										</li>
+										<hr style="visibility:hidden"></hr>
+										<li>Hardened child derivation paths are described <a href="wallets.html#/14" target="_blank">
+											here</a>.
+										</li>
+									</ul>
+						  </div>
+						</div>
+
+						<!-- <div id="" style="overflow:scroll; height:400px;"> -->
+						<!-- overflow-y: scroll; -->
+						<!-- <div style = "overflow-y: scroll; height: 500px; width: 70%; text-align: left;"> -->
+						<div style = "width:70%">
+							<pre style = "font-size: 18px; margin: 5px; padding: 0px;"
+							><code class = "c++"
+										 style = "font-family: Roboto Mono; margin: 0px; padding: 10px; max-height:575px ; width:97%"
+
+>#include &lt;bitcoin/bitcoin.hpp&gt
+#include &lt;iostream&gt
+
+int main() {
+
+  // 1) Derivation of Master Extended Keys from Mnemonic word list.
+  // ---------------------------------------------------------------------------
+
+  // Load mnemonic sentence into word list
+  std::string my_wordlist_string = "market parent marriage drive umbrella "
+                                   "custom leisure fury recipe steak have "
+                                   "enable";
+  auto my_wordlist = bc::split(my_wordlist_string, " ", true);
+  auto hd_seed = bc::to_chunk(bc::wallet::decode_mnemonic(my_wordlist));
+
+  // Instantiate master extended private key m with XPRV||XPUB mainnet prefixes.
+  bc::wallet::hd_private m(hd_seed, bc::wallet::hd_private::mainnet);
+
+  // Derivation of master extended public key M (hd_public).
+  auto M = m.to_public();
+
+
+  // 2) Derivation of Child Extended Keys.
+  // ---------------------------------------------------------------------------
+
+  // Derive children of master private extended key m.
+  auto m0 = m.derive_private(0);
+  auto m1 = m.derive_private(1);
+  auto m2 = m.derive_private(2);
+
+  // Derive grandchild private extended keys.
+  auto m10 = m1.derive_private(0); //Depth 2, Index 0
+  auto m11 = m1.derive_private(1); //Depth 2, Index 1
+  auto m12 = m1.derive_private(2); //Depth 2, Index 2
+  auto m100 = m10.derive_private(0); //Depth 3, Index 0
+  auto m101 = m10.derive_private(1); //Depth 3, Index 1
+  auto m102 = m10.derive_private(2); //Depth 3, Index 1
+
+  // Derive grandchild public extended keys
+  auto M00 = m0.derive_public(0); //Depth 2, Index 0
+  auto M01 = m0.derive_public(1); //Depth 2, Index 1
+  auto M02 = m0.derive_public(2); //Depth 2, Index 2
+  // ...
+
+  // Derive extended public key of any extended private key.
+  // of same depth & index
+  auto M102 = m102.to_public();
+
+  // Derive children of master public extended key M
+  auto M0 = M.derive_public(0); //Depth 1, Index 0
+  auto M1 = M.derive_public(1); //Depth 1, Index 1
+  auto M2 = M.derive_public(2); //Depth 1, Index 2
+
+  // Derive grandchild public extended keys.
+  auto M10 = M1.derive_public(0); //Depth 2, Index 0
+  auto M11 = M1.derive_public(1); //Depth 2, Index 1
+  auto M12 = M1.derive_public(2); //Depth 2, Index 2
+  auto M100 = M10.derive_public(0); //Depth 3, Index 0
+  auto M101 = M10.derive_public(1); //Depth 3, Index 1
+  // ...
+
+
+  // 3) Derivation of Hardened Child Extended Keys.
+  // ---------------------------------------------------------------------------
+
+  // Hardened private key derivation with index >= 1 << 31
+  auto m00h = m0.derive_private(bc::wallet::hd_first_hardened_key);
+  auto m01h = m0.derive_private(1 + bc::wallet::hd_first_hardened_key);
+  auto m02h = m0.derive_private(2 + bc::wallet::hd_first_hardened_key);
+
+  // Hardened public key can only be derived from hardened extended private key
+  auto M00h = m00h.to_public();
+  // or from parent private key.
+  auto M00h_ = m0.derive_public(bc::wallet::hd_first_hardened_key);
+  // Verify that the above keys are equivalent.
+  std::cout << (M00h == M00h_) << std::endl;
+
+}</code></pre>
+							<pre style = "font-size: 16px; margin: 20px 5px 5px 5px; padding: 0px;"
+							><code class = "shell"
+										 style = "font-family: Roboto Mono; margin: 0px; padding: 10px; max-height:125px; width: 97%"
+>$ g++ -std=c++11 hd_children.cpp -o hd_children $(pkg-config --cflags libbitcoin --libs libbitcoin)
+$ ./hd_children
+1
+</code></pre>
+						</div><!-- End of 70% container -->
+					</div><!-- End of multi box container -->
+
+				</section>
+				<!-- *********** END: Example - HD Children *********** -->
+
+				<!-- *********** BEGIN: Example - Extended Keys Format *********** -->
+				<section class = "box">
+
+					<!-- No Title Bar ... -->
+
+					<div class = "multi_code_box_container" style = "padding: 0;">
+
+						<div class = "text_box code_text_box" style = "width: 28%;">
+							<div class ="text_box_title" >
+									<span class = "weight">Example:<br></span>Extended Key Format (XPRV/XPUB) with Libbitcoin
+							</div>
+								<div style = "padding:5px;">
+									<ul style = "margin: 0px; padding: 0px; list-style-type: none; font-size: 19px;">
+										<li>In this code example, we truncate the XPRV extended key
+											format according to its individual components described
+											<a href="wallets.html#/10" target="_blank">here</a>.
+										</li>
+									</ul>
+						  </div>
+						</div>
+
+						<!-- <div id="" style="overflow:scroll; height:400px;"> -->
+						<!-- overflow-y: scroll; -->
+						<!-- <div style = "overflow-y: scroll; height: 500px; width: 70%; text-align: left;"> -->
+						<div style = "width:70%">
+							<pre style = "font-size: 18px; margin: 5px; padding: 0px;"
+							><code class = "c++"
+										 style = "font-family: Roboto Mono; margin: 0px; padding: 10px; max-height:575px ; width:97%"
+
+>#include &lt;bitcoin/bitcoin.hpp&gt
+#include &lt;iostream&gt
+
+int main() {
+
+  // Derive Master Keys from mnemonic.
+  std::string my_wordlist_string = "market parent marriage drive umbrella "
+                                   "custom leisure fury recipe steak have "
+                                   "enable";
+  auto my_wordlist = bc::split(my_wordlist_string, " ", true);
+  auto hd_seed = bc::to_chunk(bc::wallet::decode_mnemonic(my_wordlist));
+  bc::wallet::hd_private m(hd_seed, bc::wallet::hd_private::mainnet);
+  auto m1 = m.derive_private(1);
+
+  // Extended Private Key:
+  auto m1_xprv = m1.to_hd_key();
+
+  std::cout << "Version (4B): "
+            << bc::encode_base16(bc::slice<0,4>(m1_xprv)) << std::endl;
+
+  std::cout << "Depth (1B): "
+            << bc::encode_base16(bc::slice<4,5>(m1_xprv)) << std::endl;
+
+  std::cout << "Parent Fingerprint (4B): "
+            << bc::encode_base16(bc::slice<5,9>(m1_xprv)) << std::endl;
+
+  std::cout << "Index (4B): "
+            << bc::encode_base16(bc::slice<9,13>(m1_xprv)) << std::endl;
+
+  std::cout << "Chain Code (32B): "
+            << bc::encode_base16(bc::slice<13,45>(m1_xprv)) << std::endl;
+
+  std::cout << "Private Key (32B): "
+            << bc::encode_base16(bc::slice<45,78>(m1_xprv)) << std::endl;
+
+  std::cout << "Checksum (4B): "
+            << bc::encode_base16(bc::slice<78,82>(m1_xprv)) << std::endl;
+
+  // Verify Checksum.
+  auto checksum_msg = bc::to_chunk(bc::slice<0,78>(m1_xprv));
+  bc::append_checksum(checksum_msg);
+  auto checksum = bc::slice<78,82>(bc::to_array<82>(checksum_msg));
+  std::cout << "Checksum verification: "
+            << (checksum == bc::slice<78,82>(m1_xprv)) << std::endl;
+
+  // Print out XPRV in base58 encoded format.
+  std::cout << "Base58 encoded XPRV format: "
+            << bc::encode_base58(bc::to_chunk(m1_xprv)) << std::endl;
+
+}</code></pre>
+							<pre style = "font-size: 16px; margin: 20px 5px 5px 5px; padding: 0px;"
+							><code class = "shell"
+										 style = "font-family: Roboto Mono; margin: 0px; padding: 10px; max-height:125px; width: 97%"
+>$ g++ -std=c++11 hd_children.cpp -o hd_children $(pkg-config --cflags libbitcoin --libs libbitcoin)
+$ ./hd_children
+Version (4B): 0488ade4
+Depth (1B): 01
+Parent Fingerprint (4B): bc84f083
+Index (4B): 00000001
+Chain Code (32B): f241333e306f8e51190af377055f2673e701796f923f526e8d7a0aaa3f5d2825
+Private Key (32B): 00e42ba2cd0016aecfd97ef46f7815e8799327f775da339968890916d94073fded
+Checksum (4B): cd8c6bd5
+Checksum verification: 1
+Base58 encoded XPRV format: xprv9vHWkmShDnGvte8183RjQU5ZTXMj69V8GH3fkNBDeXeMFLJ8dbMXsWc73b9tGrDBrsLNKPLyA7a8CN2YBfbaWU4eCmhsTcXyQ5yuQeorvqS
+
+</code></pre>
+						</div><!-- End of 70% container -->
+					</div><!-- End of multi box container -->
+
+				</section>
+				<!-- *********** END: Example - Extended Keys Format *********** -->
+
+				<!-- *********** BEGIN: Example - HD Exposure *********** -->
+				<section class = "box">
+
+					<!-- No Title Bar ... -->
+
+					<div class = "multi_code_box_container" style = "padding: 0;">
+
+						<div class = "text_box code_text_box" style = "width: 28%;">
+							<div class ="text_box_title" >
+									<span class = "weight">Example:<br></span>Unhardened Key Exposure with Libbitcoin
+							</div>
+								<div style = "padding:5px;">
+									<ul style = "margin: 0px; padding: 0px; list-style-type: none; font-size: 19px;">
+										<li>In this code example, we will demonstrate how the exposure
+											of an unhardened child private key and parent extended public key can
+											lead to the exposure of parent private keys and all subsequent
+											child derivation paths.
+										</li>
+										<li>The example closely follows the derivation steps described
+											<a href="wallets.html#/11" target="_blank">here</a>
+										</li>
+									</ul>
+						  </div>
+						</div>
+
+						<!-- <div id="" style="overflow:scroll; height:400px;"> -->
+						<!-- overflow-y: scroll; -->
+						<!-- <div style = "overflow-y: scroll; height: 500px; width: 70%; text-align: left;"> -->
+						<div style = "width:70%">
+							<pre style = "font-size: 18px; margin: 5px; padding: 0px;"
+							><code class = "c++"
+										 style = "font-family: Roboto Mono; margin: 0px; padding: 10px; max-height:575px ; width:97%"
+
+>#include &lt;bitcoin/bitcoin.hpp&gt
+#include &lt;iostream&gt
+#include &lt;secp256k1.h&gt
+#include "secp256k1_initializer.hpp"
+
+
+int main() {
+
+  bc::data_chunk my_entropy_128(16);
+  bc::pseudo_random_fill(my_entropy_128);
+  bc::wallet::hd_private m(my_entropy_128, bc::wallet::hd_private::mainnet);
+
+  // Parent M public key & chaincode are exposed.
+  bc::wallet::hd_public M = m.to_public();
+
+  // Child m_0 secret is exposed.
+  auto m_0_secret = m.derive_private(0).secret();
+
+  // 1) Derive L256 from hmac_sha512_hash(parent public key||index, chaincode).
+  // ---------------------------------------------------------------------------
+  uint32_t index = 0;
+  auto data = bc::splice(M.point(), bc::to_big_endian(index));
+  auto intermediate = bc::split(bc::hmac_sha512_hash(data, M.chain_code()));
+  auto left_256 = intermediate.left;
+
+  // 2) Parent Private(m) = child private(m_0) - L256.
+  // ---------------------------------------------------------------------------
+
+  const auto context = bc::verification.context();
+  if (secp256k1_ec_privkey_negate(context,left_256.data()) != 1)
+  {
+    return 1;
+  }
+  bc::ec_add(left_256, m_0_secret);
+
+  // 3) Verify parent private key derivation is correct.
+  // ---------------------------------------------------------------------------
+  std::cout << (left_256 == m.secret()) << std::endl;
+  std::cout << bc::encode_base16(bc::to_chunk(m.secret())) << std::endl;
+
+  return 0;
+
+}</code></pre>
+							<pre style = "font-size: 16px; margin: 20px 5px 5px 5px; padding: 0px;"
+							><code class = "shell"
+										 style = "font-family: Roboto Mono; margin: 0px; padding: 10px; max-height:125px; width: 97%"
+>$ make hd_parent_exposure
+$ ./hd_parent_exposure
+Derived Parent Private Key is correct: 1
+Parent Private Key: 8f5181cf549dfd58dab4dab74f1febd8e691a37932e75bfea319c36c3c2159a0
+
+</code></pre>
+						</div><!-- End of 70% container -->
+					</div><!-- End of multi box container -->
+
+				</section>
+
+				<!-- *********** END: Example - HD Exposure *********** -->
+
+
+      </div><!-- END: Slides Div -->
+		</div><!-- END: Reveal Div -->
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/math/math.js', async: true }
+				],
+
+				math: {
+					mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+					config: 'TeX-AMS_HTML-full'  // See http://docs.mathjax.org/en/latest/config-files.html
+				},
+
+				// previewLinks: true,
+
+				// Push each slide change to the browser history
+				history: true,
+
+				// Enable keyboard shortcuts for navigation
+				keyboard: true,
+
+				// Enables touch navigation on devices with touch input
+				touch: true,
+
+				// The "normal" size of the presentation, aspect ratio will be preserved
+				// when the presentation is scaled to fit different resolutions. Can be
+				// specified using percentage units.
+				width: 1366,
+			  height: 768,
+				// Factor of the display size that should remain empty around the content
+				margin: 0.05,
+
+				// Bounds for smallest/largest possible scale to apply to content
+				minScale: 0.2,
+				maxScale: 1.5
+			});
+			Reveal.configure({ slideNumber: true });
+		</script>
+	</body>
+</html>
