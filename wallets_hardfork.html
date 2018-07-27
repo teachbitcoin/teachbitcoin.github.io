@@ -1,0 +1,224 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Wallets</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/simple.css">
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/xcode.css">
+		<!-- Theme override for teachbitcoin -->
+		<link rel="stylesheet" href="css/teachbitcoin.css">
+		<!-- Google Font Roboto -->
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+
+
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+				<!-- *********** BEGIN: Chain Forks *********** -->
+				<section class = "box">
+					<div class = "title">
+						<span class = "title weight">Chain Fork & TX Replays</span>
+					</div>
+
+				<!-- 45% div for formula and curve--><!-- 45% text & bulletpoint -->
+					<div class = "multi_text_box_container" style = "padding: 40px 0 0 0; width: 1270px;">
+						<!-- 60% div for formula and curve-->
+						<div class = "" style = "width: 58%; font-size: 22px;">
+							<img src="images/beijing_meetup_july2018/chain_fork0.svg" class = "image" style = "z-index: -3;">
+							<img src="images/beijing_meetup_july2018/chain_fork1.svg" class = "fragment image" style = "z-index: -3;">
+
+							<!-- <img src="images/beijing_meetup_july2018/hd_introduction1.svg" class = "fragment image" style = "z-index: -3;">
+							<img src="images/beijing_meetup_july2018/hd_introduction2.svg" class = "fragment image" style = "z-index: -3;"> -->
+
+							<!-- <img src="images/wallets/hd_child_keys_step_1.svg" class = "fragment image" style = "z-index: -2;">
+							<img src="images/wallets/hd_child_keys_step_2.svg" class = "fragment image" style = "z-index: -1;"> -->
+						</div>
+						<!-- 45% text & bulletpoint -->
+						<div class = "text_box"
+								 style = "width: 45%; font-size: 24px; margin: 0px 0 0 0">
+							<ul style = "margin: 0; padding: 0px; list-style-type: none;">
+
+								<!-- <hr style = "height:5px; visibility:hidden;"> -->
+
+								<li style = "font-weight: bold;">At fork height: Same UXTO set</li>
+								<ul style = "list-style-type: circle;">
+									<li>Wallet keys valid can sign on both chains</li>
+								</ul>
+								<hr style = "height:5px; visibility:hidden;">
+
+								<li style = "font-weight: bold;">Transaction replay across chains</li>
+								<ul style = "list-style-type: circle;">
+									<li>Signatures can be valid on both chains</li>
+								</ul>
+								<hr style = "height:5px; visibility:hidden;">
+
+								<li style = "font-weight: bold;">Hard forked chains have replay projection</li>
+								<ul style = "list-style-type: circle;">
+									<li>Requires modification of transaction signature algorithm</li>
+								</ul>
+								<hr style = "height:5px; visibility:hidden;">
+
+								<li style = "font-weight: bold;">Support new chain parameters required...</li>
+								<hr style = "height:5px; visibility:hidden;">
+
+
+							</ul>
+						</div>
+
+					</div><!-- End of 2 column container -->
+
+				</section>
+				<!-- *********** END: Chain Forks *********** -->
+
+				<!-- *********** TODO: Fork vs. Signature Mod Matrix *********** -->
+
+				<!-- *********** Begin: Modified Sighash *********** -->
+				<section class = "box">
+					<div class = "title">
+						Replay Protection: <span class = "title weight">Modified Sighash</span>
+					</div>
+
+				<!-- 45% div for formula and curve--><!-- 45% text & bulletpoint -->
+					<div class = "multi_text_box_container" style = "padding: 40px 0 0 0; width: 1270px;">
+						<!-- 60% div for formula and curve-->
+						<div class = "" style = "width: 58%; font-size: 22px;">
+							<img src="images/beijing_meetup_july2018/alt_sighash0.svg" class = "image" style = "z-index: -3;">
+							<img src="images/beijing_meetup_july2018/alt_sighash1.svg" class = "fragment image" style = "z-index: -3;">
+							<img src="images/beijing_meetup_july2018/alt_sighash2.svg" class = "fragment image" style = "z-index: -3;">
+
+					</div>
+						<!-- 45% text & bulletpoint -->
+						<div class = "text_box"
+								 style = "width: 45%; font-size: 24px; margin: 0px 0 0 0">
+							<ul style = "margin: 0; padding: 0px; list-style-type: none;">
+
+								<!-- <hr style = "height:5px; visibility:hidden;"> -->
+
+								<li style = "font-weight: bold;">Signature hash is signed by private key</li>
+								<hr style = "height:5px; visibility:hidden;">
+
+								<li style = "font-weight: bold;">Bcash modifies signature hash marker</li>
+								<ul style = "list-style-type: circle;">
+									<li>Sighash marker with forkID</li>
+								</ul>
+								<hr style = "height:5px; visibility:hidden;">
+
+								<li style = "font-weight: bold;">Libbitcoin API parameterises signing</li>
+								<ul style = "list-style-type: circle;">
+									<li>Sighash marker</li>
+									<li>Serialisation Algorithm (e.g. with BIP143)</li>
+								</ul>
+								<hr style = "height:5px; visibility:hidden;">
+
+							</ul>
+						</div>
+
+					</div><!-- End of 2 column container -->
+
+				</section>
+				<!-- *********** END: Modified Sighash *********** -->
+
+				<!-- *********** BEGIN: Multifork Wallet *********** -->
+				<section class = "box">
+					<div class = "title">
+						<span class = "title weight">Multi-Fork</span> Wallet
+					</div>
+
+				<!-- 45% div for formula and curve--><!-- 45% text & bulletpoint -->
+					<div class = "multi_text_box_container" style = "padding: 40px 0 0 0; width: 1270px;">
+						<!-- 60% div for formula and curve-->
+						<div class = "" style = "width: 58%; font-size: 22px;">
+							<img src="images/beijing_meetup_july2018/multi_fork_wallet0.svg" class = "image" style = "z-index: -3;">
+							<img src="images/beijing_meetup_july2018/multi_fork_wallet1.svg" class = "fragment image" style = "z-index: -3;">
+					</div>
+						<!-- 45% text & bulletpoint -->
+						<div class = "text_box"
+								 style = "width: 45%; font-size: 24px; margin: 0px 0 0 0">
+							<ul style = "margin: 0; padding: 0px; list-style-type: none;">
+
+								<!-- <hr style = "height:5px; visibility:hidden;"> -->
+
+								<li style = "font-weight: bold;">Wallet reconstructs HD tree for forked chain</li>
+								<ul style = "list-style-type: circle;">
+									<li>HD structure regenerated after each fork</li>
+									<li>Wallet queries forked chain node for unspent UXTOs</li>
+
+								</ul>
+								<hr style = "height:5px; visibility:hidden;">
+
+								<li style = "font-weight: bold;">Libbitcoin Server w/ new chain parameters</li>
+								<ul style = "list-style-type: circle;">
+									<li>New server for each set of chain parameters</li>
+									<li>Wallet can independently broadcast TXs on each forked chain</li>
+								</ul>
+								<hr style = "height:5px; visibility:hidden;">
+
+							</ul>
+						</div>
+
+					</div><!-- End of 2 column container -->
+
+				</section>
+				<!-- *********** END: Multifork Wallet *********** -->
+
+
+      </div><!-- END: Slides Div -->
+		</div><!-- END: Reveal Div -->
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/math/math.js', async: true }
+				],
+
+				math: {
+					mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+					config: 'TeX-AMS_HTML-full'  // See http://docs.mathjax.org/en/latest/config-files.html
+				},
+
+				previewLinks: true,
+
+				// Push each slide change to the browser history
+				history: true,
+
+				// Enable keyboard shortcuts for navigation
+				keyboard: true,
+
+				// Enables touch navigation on devices with touch input
+				overview: false,
+				touch: false,
+
+				// The "normal" size of the presentation, aspect ratio will be preserved
+				// when the presentation is scaled to fit different resolutions. Can be
+				// specified using percentage units.
+				width: 1366,
+			  height: 768,
+				// Factor of the display size that should remain empty around the content
+				margin: 0.05,
+
+				// Bounds for smallest/largest possible scale to apply to content
+				minScale: 0.2,
+				maxScale: 1.5
+			});
+			Reveal.configure({ slideNumber: true });
+		</script>
+	</body>
+</html>

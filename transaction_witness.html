@@ -1,0 +1,498 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Witness Transactions</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/simple.css">
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/xcode.css">
+		<!-- Theme override for teachbitcoin -->
+		<link rel="stylesheet" href="css/teachbitcoin.css">
+		<!-- Google Font Roboto -->
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+			<!-- *********** BEGIN: P2WPKH *********** -->
+			<section class = "box">
+				<div class = "title">
+					<span class = "title weight">P2WPKH</span> Transaction
+				</div>
+
+			<!-- 45% div for formula and curve--><!-- 45% text & bulletpoint -->
+				<div class = "multi_text_box_container" style = "padding: 40px 0 0 0; width: 1270px;">
+					<!-- 60% div for formula and curve-->
+					<div class = "" style = "width: 58%; font-size: 22px;">
+						<img src="images/transaction_witness/p2wpkh0.svg" class = "image" style = "z-index: -3;">
+						<img src="images/transaction_witness/p2wpkh1.svg" class = "fragment image" style = "z-index: -3;">
+
+					</div>
+					<!-- 45% text & bulletpoint -->
+						<div class = "text_box"
+							 style = "width: 45%; font-size: 20px; margin: 0px 0 0 0">
+						<ul style = "margin: 0; padding: 0px; list-style-type: none;">
+
+							<li>The pay-to-witness-public-key-hash output can be spent without an endorsement in the input script.</li>
+							<hr style = "height:2px; visibility:hidden;">
+
+							<li style = "font-weight: bold;">Pay-to-Witness script begins with empty data push</li>
+							<ul style = "list-style-type: circle;">
+                <li>OP_0 pushes empty array to stack.</li>
+								<li>Signals Version 0 witness script.</li>
+							</ul>
+							<hr style = "height:2px; visibility:hidden;">
+
+							<li style = "font-weight: bold;">Spending TX input script is empty, endorsement is placed in witness</li>
+							<ul style = "list-style-type: circle;">
+                <li>Output is spendable by endorsement from private key of 20-Byte public key hash, equivalent to pay-to-public-key-hash output.</li>
+								<li>Witness is an off-script/off-stack transaction element which is assessed during transaction verification.</li>
+							</ul>
+							<hr style = "height:2px; visibility:hidden;">
+
+						</ul>
+					</div>
+
+				</div><!-- End of 2 column container -->
+
+			</section>
+			<!-- *********** END: P2WPKH *********** -->
+
+			<!-- *********** BEGIN: P2WPKH Run*********** -->
+			<section class = "box">
+				<div class = "title">
+					<span class = "title weight">P2WPKH</span> Script Run
+				</div>
+
+			<!-- 45% div for formula and curve--><!-- 45% text & bulletpoint -->
+				<div class = "multi_text_box_container" style = "padding: 40px 0 0 0; width: 99.5%;">
+					<!-- 60% div for formula and curve-->
+					<div class = "" style = "width: 58%; font-size: 22px;">
+						<img src="images/transaction_witness/p2wpkh_run.svg" class = "image" style = "z-index: -3;">
+					</div>
+
+					<!-- 45% text & bulletpoint -->
+						<div class = "text_box"
+							 style = "width: 45%; font-size: 22px; margin: 0px 0 0 0">
+						<ul style = "margin: 0; padding: 0px; list-style-type: none;">
+
+							<li style = "font-weight: bold;">1) Input & Output Scripts are run</li>
+							<ul style = "list-style-type: circle;">
+                <li>P2WPKH Witness script elements are pushed onto stack.</li>
+							</ul>
+							<hr style = "height:2px; visibility:hidden;">
+
+							<li style = "font-weight: bold;">2) P2WPKH pattern is recognised on stack</li>
+							<ul style = "list-style-type: circle;">
+                <li>Pay-to-witness pattern with a 20-byte data-push is recognised as a P2WPKH script.</li>
+							</ul>
+							<hr style = "height:2px; visibility:hidden;">
+
+							<li style = "font-weight: bold;">3) P2PKH script run</li>
+							<ul style = "list-style-type: circle;">
+                <li>The stack is cleared and witness elements are pushed on.</li>
+								<li>A P2PKH script with the public key hash from the witness script is initiated and run.</li>
+							</ul>
+							<hr style = "height:2px; visibility:hidden;">
+
+							<li style = "font-weight: bold;">4) Final stack evaluation</li>
+							<hr style = "height:2px; visibility:hidden;">
+
+							<li>Note: The pay-to-public-key-hash script is not explicitly expressed in the p2wpkh script, but rather, is implied by the pay-to-witness script pattern.</li>
+
+						</ul>
+					</div>
+
+				</div><!-- End of 2 column container -->
+
+			</section>
+			<!-- *********** END: P2WPKH *********** -->
+
+			<!-- *********** BEGIN: P2W Endorsement *********** -->
+			<section class = "box">
+				<div class = "title">
+					Pay-to-Witness <span class = "title weight">Endorsement</span>
+				</div>
+
+			<!-- 45% div for formula and curve--><!-- 45% text & bulletpoint -->
+				<div class = "multi_text_box_container" style = "padding: 40px 0 0 0; width: 1270px;">
+					<!-- 60% div for formula and curve-->
+					<div class = "" style = "width: 58%; font-size: 22px;">
+						<img src="images/transaction_witness/bip143_sighash0.svg" class = "image" style = "z-index: -3;">
+						<img src="images/transaction_witness/bip143_sighash1.svg" class = "fragment image" style = "z-index: -3;">
+						<img src="images/transaction_witness/bip143_sighash2.svg" class = "fragment image" style = "z-index: -3;">
+						<img src="images/transaction_witness/bip143_sighash3.svg" class = "fragment image" style = "z-index: -3;">
+						<img src="images/transaction_witness/bip143_sighash4.svg" class = "fragment image" style = "z-index: -3;">
+						<img src="images/transaction_witness/bip143_sighash5.svg" class = "fragment image" style = "z-index: -3;">
+
+					</div>
+					<!-- 45% text & bulletpoint -->
+						<div class = "text_box"
+							 style = "width: 45%; font-size: 20px; margin: 0px 0 0 0">
+						<ul style = "margin: 0; padding: 0px; list-style-type: none;">
+
+							<li style = "font-weight: bold;">BIP143	Signature Hash Algorithm for Pay-to-Witness Transactions</li>
+							<ul style = "list-style-type: circle;">
+                <li>Modified signature hash preimage compared to non-witness txid serialisation.</li>
+							</ul>
+							<hr style = "height:2px; visibility:hidden;">
+
+							<li style = "font-weight: bold;">Script Code for P2WPKH(public key) is the P2PKH(public key) Script</li>
+							<ul style = "list-style-type: circle;">
+                <li>Script code is part of signature hash preimage.</li>
+							</ul>
+							<hr style = "height:2px; visibility:hidden;">
+
+							<li style = "font-weight: bold;">Commitment to Inputs and Outputs determined by Sighash Marker</li>
+							<ul style = "list-style-type: circle;">
+                <li>Non-committed input, sequence and output fields are initialised to 0.</li>
+							</ul>
+							<hr style = "height:2px; visibility:hidden;">
+
+						</ul>
+					</div>
+
+				</div><!-- End of 2 column container -->
+
+			</section>
+			<!-- *********** END: P2W Endorsement *********** -->
+			<!-- *********** BEGIN: P2WSH  *********** -->
+			<section class = "box">
+				<div class = "title">
+					<span class = "title weight">P2WSH</span> Transaction
+				</div>
+
+			<!-- 45% div for formula and curve--><!-- 45% text & bulletpoint -->
+				<div class = "multi_text_box_container" style = "padding: 40px 0 0 0; width: 1270px;">
+					<!-- 60% div for formula and curve-->
+					<div class = "" style = "width: 58%; font-size: 22px;">
+						<img src="images/transaction_witness/p2wsh0.svg" class = "image" style = "z-index: -3;">
+						<img src="images/transaction_witness/p2wsh1.svg" class = "fragment image" style = "z-index: -3;">
+
+					</div>
+					<!-- 45% text & bulletpoint -->
+						<div class = "text_box"
+							 style = "width: 45%; font-size: 20px; margin: 0px 0 0 0">
+						<ul style = "margin: 0; padding: 0px; list-style-type: none;">
+
+							<li style = "font-weight: bold;">Pay-to-Witness script begins with empty data push</li>
+							<ul style = "list-style-type: circle;">
+								<li>OP_0 pushes empty array to stack.</li>
+								<li>Signals Version 0 witness script.</li>
+							</ul>
+							<hr style = "height:2px; visibility:hidden;">
+
+							<li style = "font-weight: bold;">Output is spendable by Embedded Script together and its Unlocking Script</li>
+							<ul style = "list-style-type: circle;">
+								<li>Embedded script is sha256 hashed</li>
+								<li>The spending TX witness includes the embedded script and its unlocking script.</li>
+							</ul>
+							<hr style = "height:2px; visibility:hidden;">
+
+							<li style = "font-weight: bold;">Witness Elements:</li>
+							<ul style = "list-style-type: circle;">
+								<li>Unlocking script operations are expressed as individual witness elements.</li>
+								<li>Embedded script is a single witness element.</li>
+							</ul>
+							<hr style = "height:2px; visibility:hidden;">
+
+						</ul>
+					</div>
+
+				</div><!-- End of 2 column container -->
+
+			</section>
+			<!-- *********** END: P2WSH  *********** -->
+
+			<!-- *********** BEGIN: P2WSH Run*********** -->
+			<section class = "box">
+				<div class = "title">
+					<span class = "title weight">P2WSH</span> Script Run
+				</div>
+
+			<!-- 45% div for formula and curve--><!-- 45% text & bulletpoint -->
+				<div class = "multi_text_box_container" style = "padding: 40px 0 0 0; width: 99.5%;">
+					<!-- 60% div for formula and curve-->
+					<div class = "" style = "width: 58%; font-size: 22px;">
+						<img src="images/transaction_witness/p2wsh_run.svg" class = "image" style = "z-index: -3;">
+					</div>
+
+					<!-- 45% text & bulletpoint -->
+						<div class = "text_box"
+							 style = "width: 45%; font-size: 20px; margin: 0px 0 0 0">
+						<ul style = "margin: 0; padding: 0px; list-style-type: none;">
+
+							<li style = "font-weight: bold;">1) Input & Output Scripts are run</li>
+							<ul style = "list-style-type: circle;">
+                <li>P2WSH witness script elements are pushed onto stack.</li>
+							</ul>
+							<hr style = "height:2px; visibility:hidden;">
+
+							<li style = "font-weight: bold;">2) P2WSH pattern is recognised on stack</li>
+							<ul style = "list-style-type: circle;">
+                <li>Pay-to-witness pattern with a 32-byte data-push is recognised as a P2WSH script.</li>
+								<li>Embedded script witness element is evaluated against the on-stack embedded script hash value.</li>
+							</ul>
+							<hr style = "height:2px; visibility:hidden;">
+
+							<li style = "font-weight: bold;">3) Embedded script run</li>
+							<ul style = "list-style-type: circle;">
+                <li>If the embedded script hashes correctly, the stack is cleared.</li>
+								<li>Unlocking script elements are pushed onto stack.</li>
+								<li>Embedded script is run.</li>
+							</ul>
+							<hr style = "height:2px; visibility:hidden;">
+
+							<li style = "font-weight: bold;">4) Final stack evaluation</li>
+							<hr style = "height:2px; visibility:hidden;">
+
+							<li>Note: Evaluating the embedded script in the witness against its hash digest in the p2sh script is not explicitly expressed in the p2wsh script, but rather, is implied by the pay-to-witness script pattern.</li>
+
+						</ul>
+					</div>
+
+				</div><!-- End of 2 column container -->
+
+			</section>
+			<!-- *********** BEGIN: P2WSH Run*********** -->
+
+			<!-- *********** BEGIN: P2SH_P2WPKH  *********** -->
+			<section class = "box">
+				<div class = "title">
+					<span class = "title weight">P2SH(P2WSH)</span> Transaction
+				</div>
+
+			<!-- 45% div for formula and curve--><!-- 45% text & bulletpoint -->
+				<div class = "multi_text_box_container" style = "padding: 40px 0 0 0; width: 1270px;">
+					<!-- 60% div for formula and curve-->
+					<div class = "" style = "width: 58%; font-size: 22px;">
+						<img src="images/transaction_witness/p2sh_p2wpkh0.svg" class = "image" style = "z-index: -3;">
+						<img src="images/transaction_witness/p2sh_p2wpkh1.svg" class = "fragment image" style = "z-index: -3;">
+
+					</div>
+					<!-- 45% text & bulletpoint -->
+						<div class = "text_box"
+							 style = "width: 45%; font-size: 20px; margin: 0px 0 0 0">
+						<ul style = "margin: 0; padding: 0px; list-style-type: none;">
+
+							<li style = "font-weight: bold;">Pay-to-Witness outputs can be wrapped in a P2SH output script</li>
+							<ul style = "list-style-type: circle;">
+								<li>Non witness-enabled wallets can send to P2SH(P2WPKH) addresses.</li>
+							</ul>
+							<hr style = "height:2px; visibility:hidden;">
+
+							<li style = "font-weight: bold;">Output is spendable by P2WPKH script and witness</li>
+							<ul style = "list-style-type: circle;">
+								<li>Input script must include P2WPKH(public key) script.</li>
+								<li>Witness must include endorsement and public key for P2WPKH script runs.</li>
+							</ul>
+							<hr style = "height:2px; visibility:hidden;">
+
+						</ul>
+					</div>
+
+				</div><!-- End of 2 column container -->
+
+			</section>
+			<!-- *********** END: P2SH_P2WPKH  *********** -->
+
+			<!-- *********** BEGIN: P2SH_P2WPKH Run*********** -->
+			<section class = "box">
+				<div class = "title">
+					<span class = "title weight">P2SH(P2WPKH)</span> Script Run
+				</div>
+
+			<!-- 45% div for formula and curve--><!-- 45% text & bulletpoint -->
+				<div class = "multi_text_box_container" style = "padding: 40px 0 0 0; width: 99.5%;">
+					<!-- 60% div for formula and curve-->
+					<div class = "" style = "width: 58%; font-size: 22px;">
+						<img src="images/transaction_witness/p2sh_p2wpkh_run.svg" class = "image" style = "z-index: -3;">
+					</div>
+
+					<!-- 45% text & bulletpoint -->
+						<div class = "text_box"
+							 style = "width: 45%; font-size: 20px; margin: 0px 0 0 0">
+						<ul style = "margin: 0; padding: 0px; list-style-type: none;">
+
+							<li style = "font-weight: bold;">1) Input & Output Scripts are run</li>
+							<ul style = "list-style-type: circle;">
+                <li>Embedded P2WPKH in input script must hash correctly to hash digest in P2SH.</li>
+							</ul>
+							<hr style = "height:2px; visibility:hidden;">
+
+							<li style = "font-weight: bold;">2) P2SH pattern is recognised on stack</li>
+							<ul style = "list-style-type: circle;">
+                <li>Embedded P2WPKH script is loaded.</li>
+							</ul>
+							<hr style = "height:2px; visibility:hidden;">
+
+							<li style = "font-weight: bold;">3) P2WPKH & P2PKH script runs</li>
+							<ul style = "list-style-type: circle;">
+                <li>After a successful P2WPKH run, the witness elements are pushed onto the stack.</li>
+								<li>Then, the P2PKH script is run.</li>
+							</ul>
+							<hr style = "height:2px; visibility:hidden;">
+
+							<li style = "font-weight: bold;">4) Final stack evaluation</li>
+							<hr style = "height:2px; visibility:hidden;">
+
+							<li>Note: See previous P2WPKH section for details on indivdiual P2WPKH and P2PKH script runs.</li>
+
+						</ul>
+					</div>
+
+				</div><!-- End of 2 column container -->
+
+			</section>
+			<!-- *********** END: P2SH_P2WPKH Run*********** -->
+
+			<!-- *********** BEGIN: P2SH_P2WSH  *********** -->
+			<section class = "box">
+				<div class = "title">
+					<span class = "title weight">P2SH(P2WSH)</span> Transaction
+				</div>
+
+			<!-- 45% div for formula and curve--><!-- 45% text & bulletpoint -->
+				<div class = "multi_text_box_container" style = "padding: 40px 0 0 0; width: 98%;">
+					<!-- 60% div for formula and curve-->
+					<div class = "" style = "width: 58%; font-size: 22px;">
+						<img src="images/transaction_witness/p2sh_p2wsh0.svg" class = "image" style = "z-index: -3;">
+						<img src="images/transaction_witness/p2sh_p2wsh1.svg" class = "fragment image" style = "z-index: -3;">
+
+					</div>
+					<!-- 45% text & bulletpoint -->
+						<div class = "text_box"
+							 style = "width: 42%; font-size: 20px; margin: 0px 0 0 0">
+						<ul style = "margin: 0; padding: 0px; list-style-type: none;">
+
+							<li style = "font-weight: bold;">Pay-to-Witness outputs can be wrapped in a P2SH output script</li>
+							<ul style = "list-style-type: circle;">
+								<li>Non witness-enabled wallets can send to P2SH(P2WSH) addresses.</li>
+							</ul>
+							<hr style = "height:2px; visibility:hidden;">
+
+							<li style = "font-weight: bold;">Output is spendable by P2WSH script and witness</li>
+							<ul style = "list-style-type: circle;">
+								<li>Input script must include P2WSH(Embedded Script).</li>
+								<li>Witness must include *unlocking script operators of the embedded script as individual witness elements, as well the embedded script as a single witness element.</li>
+							</ul>
+							<hr style = "height:2px; visibility:hidden;">
+
+						</ul>
+					</div>
+
+				</div><!-- End of 2 column container -->
+
+			</section>
+			<!-- *********** END: P2SH_P2WSH  *********** -->
+
+			<!-- *********** BEGIN: P2SH_P2WSH run *********** -->
+			<section class = "box">
+				<div class = "title">
+					<span class = "title weight">P2SH(P2WSH)</span> Script Run
+				</div>
+
+			<!-- 45% div for formula and curve--><!-- 45% text & bulletpoint -->
+				<div class = "multi_text_box_container" style = "padding: 40px 0 0 0; width: 99.5%;">
+					<!-- 60% div for formula and curve-->
+					<div class = "" style = "width: 58%; font-size: 22px;">
+						<img src="images/transaction_witness/p2sh_p2wsh_run.svg" class = "image" style = "z-index: -3;">
+					</div>
+
+					<!-- 45% text & bulletpoint -->
+						<div class = "text_box"
+							 style = "width: 45%; font-size: 20px; margin: 0px 0 0 0">
+						<ul style = "margin: 0; padding: 0px; list-style-type: none;">
+
+							<li style = "font-weight: bold;">1) Input & Output Scripts are run</li>
+							<ul style = "list-style-type: circle;">
+								<li>Embedded P2WPKH in input script must hash correctly to hash digest in P2SH.</li>
+							</ul>
+							<hr style = "height:2px; visibility:hidden;">
+
+							<li style = "font-weight: bold;">2) P2SH pattern is recognised on stack</li>
+							<ul style = "list-style-type: circle;">
+								<li>Embedded P2WSH script is loaded.</li>
+							</ul>
+							<hr style = "height:2px; visibility:hidden;">
+
+							<li style = "font-weight: bold;">3) P2WPKH & P2PKH script runs</li>
+							<ul style = "list-style-type: circle;">
+								<li>After the successful P2WSH run, the unlocking script operations in the witness are pushed onto the stack.</li>
+								<li>Finally, the P2WSH embedded script is run.</li>
+							</ul>
+							<hr style = "height:2px; visibility:hidden;">
+
+							<li style = "font-weight: bold;">4) Final stack evaluation</li>
+							<hr style = "height:2px; visibility:hidden;">
+
+							<li>Note: See previous P2WSH section for details on indivdiual P2WSH and P2WSH embedded script runs.</li>
+
+						</ul>
+					</div>
+
+				</div><!-- End of 2 column container -->
+
+			</section>
+			<!-- *********** END: P2SH_P2WSH run *********** -->
+
+
+      </div><!-- END: Slides Div -->
+		</div><!-- END: Reveal Div -->
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/math/math.js', async: true }
+				],
+
+				math: {
+					mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+					config: 'TeX-AMS_HTML-full'  // See http://docs.mathjax.org/en/latest/config-files.html
+				},
+
+				previewLinks: true,
+
+				// Push each slide change to the browser history
+				history: true,
+
+				// Enable keyboard shortcuts for navigation
+				keyboard: true,
+
+				// Enables touch navigation on devices with touch input
+				overview: false,
+				touch: false,
+
+				// The "normal" size of the presentation, aspect ratio will be preserved
+				// when the presentation is scaled to fit different resolutions. Can be
+				// specified using percentage units.
+				width: 1366,
+			  height: 768,
+				// Factor of the display size that should remain empty around the content
+				margin: 0.05,
+
+				// Bounds for smallest/largest possible scale to apply to content
+				minScale: 0.2,
+				maxScale: 1.5
+			});
+			Reveal.configure({ slideNumber: true });
+		</script>
+	</body>
+</html>

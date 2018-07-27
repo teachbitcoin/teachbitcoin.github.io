@@ -40,7 +40,7 @@ int main() {
   bc::chain::output_point previous_output_point1(previous_tx_hash1,
     previous_index1);
 
-  // Build transaction, output 1 omitted.
+  // Build transaction, output 0 omitted.
   // ---------------------------------------------------------------------------
 
   // Version.
@@ -70,7 +70,7 @@ int main() {
   bc::chain::output my_output1(my_output_amount1, my_output_script1);
   tx.outputs().push_back(my_output1);
 
-  // Signing of inputs (sighash none).
+  // Signing of inputs (sighash single & none).
   // ---------------------------------------------------------------------------
 
   auto previous_output_script0_literal = bc::base16_literal(
@@ -88,7 +88,7 @@ int main() {
   bc::chain::script::create_endorsement(my_signature0, my_secret0,
     previous_output_script0, tx, 0,
     bc::machine::sighash_algorithm::none);
-    // index 0, sighash single
+    // index 0, sighash none
 
   //Signing of tx (input1, output1).
   bc::endorsement my_signature1;
@@ -116,7 +116,7 @@ int main() {
   tx.inputs()[0].set_script(my_input_script0);
   tx.inputs()[1].set_script(my_input_script1);
 
-  // Modify outputs and finalise transaction.
+  // Add output 0 and finalise transaction.
   // ---------------------------------------------------------------------------
 
   tx.outputs().clear();

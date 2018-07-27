@@ -1,0 +1,402 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Building a Transaction</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/simple.css">
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/xcode.css">
+		<!-- Theme override for teachbitcoin -->
+		<link rel="stylesheet" href="css/teachbitcoin.css">
+		<!-- Google Font Roboto -->
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+			<!-- *********** BEGIN: Transaction Overview *********** -->
+			<section class = "box">
+				<div class = "title">
+					<span class = "title weight">Bitcoin Transaction</span> Overview
+				</div>
+
+			<!-- 45% div for formula and curve--><!-- 45% text & bulletpoint -->
+				<div class = "multi_text_box_container" style = "padding: 40px 0 0 0; width: 1270px;">
+					<!-- 60% div for formula and curve-->
+					<div class = "" style = "width: 58%; font-size: 22px;">
+						<img src="images/transaction_build/tx_overview0.svg" class = "image" style = "z-index: -3;">
+						<img src="images/transaction_build/tx_overview1.svg" class = "fragment image" style = "z-index: -3;">
+            <img src="images/transaction_build/tx_overview2.svg" class = "fragment image" style = "z-index: -3;">
+
+					</div>
+					<!-- 45% text & bulletpoint -->
+						<div class = "text_box"
+							 style = "width: 55%; font-size: 18px; margin: 0px 0 0 0">
+						<ul style = "margin: 0; padding: 0px; list-style-type: none;">
+
+							<!-- <hr style = "height:5px; visibility:hidden;"> -->
+
+							<li style = "font-weight: bold;">Basic Bitcoin Transaction Structure:</li>
+							<ul style = "list-style-type: circle;">
+								<li>[version] [inputs] [outputs] [locktime]</li>
+
+							</ul>
+							<hr style = "height:2px; visibility:hidden;">
+							<li style = "font-weight: bold;">1) Version Field</li>
+							<ul style = "list-style-type: circle;">
+                <li>Mostly unused, any value can be applied</li>
+								<li>Historically, default value of 1</li>
+								<li>For relative timelocks, must be set to >= 2</li>
+							</ul>
+							<hr style = "height:2px; visibility:hidden;">
+
+              <li style = "font-weight: bold;">2) Inputs</li>
+							<ul style = "list-style-type: circle;">
+                <li>Each input uniquely references an unspent output</li>
+								<li>Each valid input script unlocks the referenced output</li>
+							</ul>
+							<hr style = "height:2px; visibility:hidden;">
+
+              <li style = "font-weight: bold;">3) Outputs</li>
+							<ul style = "list-style-type: circle;">
+                <li>Output amount describes the amount spendable by output</li>
+                <li>Output script defines conditions for spending</li>
+                <li>Transaction fee is the difference between output and referenced input amounts. Fee must be positive amount.</li>
+							</ul>
+							<hr style = "height:2px; visibility:hidden;">
+
+              <li style = "font-weight: bold;">4) Locktime</li>
+							<ul style = "list-style-type: circle;">
+                <li>Absolute time from which on the transaction can be broadcast</li>
+                <li>See absolute transaction timelocks</li>
+							</ul>
+
+						</ul>
+					</div>
+
+				</div><!-- End of 2 column container -->
+
+			</section>
+			<!-- *********** END: Transaction Overview *********** -->
+
+      <!-- *********** BEGIN: Transaction Verification *********** -->
+			<section class = "box">
+				<div class = "title">
+				 Transaction <span class = "title weight">Verification</span>
+				</div>
+
+			<!-- 45% div for formula and curve--><!-- 45% text & bulletpoint -->
+				<div class = "multi_text_box_container" style = "padding: 40px 0 0 0; width: 1270px;">
+					<!-- 60% div for formula and curve-->
+					<div class = "" style = "width: 58%; font-size: 22px;">
+						<img src="images/transaction_build/tx_verification0.svg" class = "image" style = "z-index: -3;">
+						<img src="images/transaction_build/tx_verification1.svg" class = "fragment image" style = "z-index: -3;">
+            <img src="images/transaction_build/tx_verification2.svg" class = "fragment image" style = "z-index: -3;">
+
+					</div>
+					<!-- 45% text & bulletpoint -->
+						<div class = "text_box"
+							 style = "width: 55%; font-size: 22px; margin: 0px 0 0 0">
+						<ul style = "margin: 0; padding: 0px; list-style-type: none;">
+
+              <li>In general, spending a Bitcoin output means providing valid unlocking arguments in the input script of the spending transaction.</li>
+              <hr style = "height:2px; visibility:hidden;">
+
+              <li style = "font-weight: bold;">Bitcoin Script Code</li>
+							<ul style = "list-style-type: circle;">
+								<li>Stack-based scripting operations.</li>
+                <li>Input & Output scripts are both evaluated sequentially by the Bitcoin Script Machine.</li>
+							</ul>
+							<hr style = "height:2px; visibility:hidden;">
+
+              <li style = "font-weight: bold;">Output Script (Locking Script)</li>
+							<ul style = "list-style-type: circle;">
+                <li>Generally, output script can describe anything.</li>
+								<li>Usually, the output script checks for valid endorsement/signatures in the input scripts.</li>
+							</ul>
+							<hr style = "height:2px; visibility:hidden;">
+
+							<li style = "font-weight: bold;">Input Script (Unlocking Script)</li>
+							<ul style = "list-style-type: circle;">
+								<li>Usually provides endorsement/signature of spending of output referenced in input.</li>
+							</ul>
+							<hr style = "height:2px; visibility:hidden;">
+
+						</ul>
+					</div>
+
+				</div><!-- End of 2 column container -->
+
+			</section>
+			<!-- *********** END: Transaction Verification *********** -->
+
+      <!-- *********** BEGIN: P2PKH Script Introduction *********** -->
+      <section class = "box">
+				<div class = "title">
+				 <span class = "title weight">P2PKH</span> Output Scripts
+				</div>
+
+			<!-- 45% div for formula and curve--><!-- 45% text & bulletpoint -->
+				<div class = "multi_text_box_container" style = "padding: 40px 0 0 0; width: 1270px;">
+					<!-- 60% div for formula and curve-->
+					<div class = "" style = "width: 58%; font-size: 22px;">
+						<img src="images/transaction_build/p2pkh_script0.svg" class = "image" style = "z-index: -3;">
+						<img src="images/transaction_build/p2pkh_script1.svg" class = "fragment image" style = "z-index: -3;">
+					</div>
+					<!-- 45% text & bulletpoint -->
+						<div class = "text_box"
+							 style = "width: 45%; font-size: 22px; margin: 0px 0 0 0">
+						<ul style = "margin: 0; padding: 0px; list-style-type: none;">
+
+              <li>A basic wallet will send to a P2PKH(destination public key hash) output when it sends funds to a regular Bitcoin address.</li>
+              <hr style = "height:2px; visibility:hidden;">
+
+              <li style = "font-weight: bold;">Output Script (Locking Script)</li>
+							<ul style = "list-style-type: circle;">
+                <li>Input script must provide valid public key preimage.</li>
+								<li>Input script must provide valid endorsement.</li>
+							</ul>
+							<hr style = "height:2px; visibility:hidden;">
+
+              <li style = "font-weight: bold;">Next: P2PKH Script Verification</li>
+							<ul style = "list-style-type: circle;">
+                  <li>Bitcoin script machine must run both input & previous output scripts and verify outcome.</li>
+                  <li>Top script machine stack element must be non-zero to be valid.</li>
+                  <li>If script runs are successful for all inputs, and the referenced output is unspent, the transaction is valid and can be broadcast.</li>
+							</ul>
+							<hr style = "height:2px; visibility:hidden;">
+
+						</ul>
+					</div>
+
+				</div><!-- End of 2 column container -->
+
+			</section>
+      <!-- *********** END: P2PKH Script Introduction *********** -->
+
+      <!-- *********** BEGIN: P2PKH Script Run *********** -->
+			<section class = "box">
+				<div class = "title">
+				 P2PKH <span class = "title weight">Script Evaluation</span>
+				</div>
+
+			<!-- 45% div for formula and curve--><!-- 45% text & bulletpoint -->
+				<div class = "multi_text_box_container" style = "padding: 40px 0 0 0; width: 1270px;">
+					<!-- 60% div for formula and curve-->
+					<div class = "" style = "width: 58%; font-size: 22px;">
+						<img src="images/transaction_build/tx_script_run0.svg" class = "image" style = "z-index: -3;">
+						<img src="images/transaction_build/tx_script_run1.svg" class = "fragment image" style = "z-index: -3;">
+            <img src="images/transaction_build/tx_script_run2.svg" class = "fragment image" style = "z-index: -3;">
+            <img src="images/transaction_build/tx_script_run3.svg" class = "fragment image" style = "z-index: -3;">
+            <img src="images/transaction_build/tx_script_run4.svg" class = "fragment image" style = "z-index: -3;">
+            <img src="images/transaction_build/tx_script_run5.svg" class = "fragment image" style = "z-index: -3;">
+            <img src="images/transaction_build/tx_script_run6.svg" class = "fragment image" style = "z-index: -3;">
+            <img src="images/transaction_build/tx_script_run7.svg" class = "fragment image" style = "z-index: -3;">
+            <img src="images/transaction_build/tx_script_run8.svg" class = "fragment image" style = "z-index: -3;">
+
+					</div>
+					<!-- 45% text & bulletpoint -->
+						<div class = "text_box"
+							 style = "width: 50%; font-size: 22px; margin: 0px 0 0 0">
+						<ul style = "margin: 0; padding: 0px; list-style-type: none;">
+
+              <li style = "font-weight: bold;">[Data] push operator</li>
+							<ul style = "list-style-type: circle;">
+								<li>Represents data bytes to be pushed onto stack</li>
+							</ul>
+							<hr style = "height:2px; visibility:hidden;">
+
+              <li style = "font-weight: bold;">OP_DUP</li>
+							<ul style = "list-style-type: circle;">
+                <li>Duplicate top member of stack</li>
+							</ul>
+							<hr style = "height:2px; visibility:hidden;">
+
+              <li style = "font-weight: bold;">OP_HASH160</li>
+							<ul style = "list-style-type: circle;">
+                <li>Duplicate top member of stack</li>
+							</ul>
+							<hr style = "height:2px; visibility:hidden;">
+
+              <li style = "font-weight: bold;">OP_EQUALVERIFY</li>
+							<ul style = "list-style-type: circle;">
+                <li>Verifies if top 2 stack elements are equal.</li>
+                <ul>
+                  <li>If positive, nothing is output to stack and script run continues.</li>
+                  <li>If negative, script run fails.</li>
+                </ul>
+							</ul>
+							<hr style = "height:2px; visibility:hidden;">
+
+              <li style = "font-weight: bold;">OP_CHECKSIG</li>
+							<ul style = "list-style-type: circle;">
+                <li>Checks whether signature & public key are valid, returns 1 or 0 to stack.</li>
+							</ul>
+							<hr style = "height:2px; visibility:hidden;">
+
+
+						</ul>
+					</div>
+
+				</div><!-- End of 2 column container -->
+
+			</section>
+			<!-- *********** END: P2PKH Script Runs *********** -->
+
+      <!-- *********** BEGIN: Endorsement Check Operations *********** -->
+      <!-- *********** BEGIN: Creating an Endorsement *********** -->
+      <section class = "box">
+        <div class = "title">
+          <span class = "title weight">Endorsement Check</span> Operations
+        </div>
+
+      <!-- 45% div for formula and curve--><!-- 45% text & bulletpoint -->
+        <div class = "multi_text_box_container" style = "padding: 40px 0 0 0; width: 99%;">
+          <!-- 60% div for formula and curve-->
+          <div class = "" style = "width: 58%; font-size: 22px;">
+            <img src="images/transaction_build/checksig_opcodes0.svg" class = "image" style = "z-index: -3;">
+            <img src="images/transaction_build/checksig_opcodes1.svg" class = "fragment image" style = "z-index: -3;">
+            <img src="images/transaction_build/checksig_opcodes2.svg" class = "fragment image" style = "z-index: -3;">
+            <img src="images/transaction_build/checksig_opcodes3.svg" class = "fragment image" style = "z-index: -3;">
+          </div>
+          <!-- 45% text & bulletpoint -->
+            <div class = "text_box"
+               style = "width: 40%; font-size: 22px; margin: 0px 0 0 0">
+            <ul style = "margin: 0; padding: 0px; list-style-type: none;">
+
+              <li>Checksig opcodes validate that the transaction is signed by the private key corresponding to the public key on the stack.</li>
+              <hr style = "height:2px; visibility:hidden;">
+
+              <li style = "font-weight: bold;">CheckSig/CheckVerify Operations</li>
+              <ul style = "list-style-type: circle;">
+                <li>Usually part of an ouput script.</li>
+                <li>Checks endorsement(s) against public key(s).</li>
+                <li>Checks that endorsement signs correct transaction data.</li>
+              </ul>
+              <hr style = "height:2px; visibility:hidden;">
+
+              <li style = "font-weight: bold;">Next: Transaction Endorsements</li>
+              <ul style = "list-style-type: circle;">
+                <li>An endorsement signs off on all or parts of a transaction.</li>
+                <li>An endorsement is specific to each transaction input.</li>
+                <li>Each input spends its referenced output individually, with a separate endorsement.</li>
+              </ul>
+
+            </ul>
+          </div>
+
+        </div><!-- End of 2 column container -->
+
+      </section>
+      <!-- *********** END: Endorsement Check Operations *********** -->
+
+
+      <!-- *********** BEGIN: Creating an Endorsement *********** -->
+      <section class = "box">
+        <div class = "title">
+          Building an <span class = "title weight">Endorsement</span>
+        </div>
+
+      <!-- 45% div for formula and curve--><!-- 45% text & bulletpoint -->
+        <div class = "multi_text_box_container" style = "padding: 40px 0 0 0; width: 1270px;">
+          <!-- 60% div for formula and curve-->
+          <div class = "" style = "width: 58%; font-size: 22px;">
+            <img src="images/transaction_build/endorsement_build0.svg" class = "image" style = "z-index: -3;">
+            <img src="images/transaction_build/endorsement_build1.svg" class = "fragment image" style = "z-index: -3;">
+            <img src="images/transaction_build/endorsement_build2.svg" class = "fragment image" style = "z-index: -3;">
+          </div>
+          <!-- 45% text & bulletpoint -->
+            <div class = "text_box"
+               style = "width: 45%; font-size: 22px; margin: 0px 0 0 0">
+            <ul style = "margin: 0; padding: 0px; list-style-type: none;">
+
+              <li style = "font-weight: bold;">1) Build TX w/o input script</li>
+              <ul style = "list-style-type: circle;">
+                <li>The transaction is populated with all elements which are signed by the endorsement.</li>
+                <li>For Sighash ALL, this includes all the TX elements except for the input script, which is left empty.</li>
+              </ul>
+              <hr style = "height:2px; visibility:hidden;">
+
+              <li style = "font-weight: bold;">2) Sign Signature Hash</li>
+              <ul style = "list-style-type: circle;">
+                <li>The serialized transaction is appended with the sighash marker, and hashed.</li>
+                <li>The endorsement is a DER encoded signature thereof.</li>
+              </ul>
+              <hr style = "height:2px; visibility:hidden;">
+
+              <li style = "font-weight: bold;">3) Complete Input Script & Broadcast</li>
+              <ul style = "list-style-type: circle;">
+                <li>With a endorsement constructed, the transaction can now be completed with the valid input script and broadcast on the network.</li>
+              </ul>
+              <hr style = "height:2px; visibility:hidden;">
+
+            </ul>
+          </div>
+
+        </div><!-- End of 2 column container -->
+
+      </section>
+      <!-- *********** END: Creating an Endorsement *********** -->
+
+
+
+
+      </div><!-- END: Slides Div -->
+		</div><!-- END: Reveal Div -->
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/math/math.js', async: true }
+				],
+
+				math: {
+					mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+					config: 'TeX-AMS_HTML-full'  // See http://docs.mathjax.org/en/latest/config-files.html
+				},
+
+				previewLinks: true,
+
+				// Push each slide change to the browser history
+				history: true,
+
+				// Enable keyboard shortcuts for navigation
+				keyboard: true,
+
+				// Enables touch navigation on devices with touch input
+				overview: false,
+				touch: false,
+
+				// The "normal" size of the presentation, aspect ratio will be preserved
+				// when the presentation is scaled to fit different resolutions. Can be
+				// specified using percentage units.
+				width: 1366,
+			  height: 768,
+				// Factor of the display size that should remain empty around the content
+				margin: 0.05,
+
+				// Bounds for smallest/largest possible scale to apply to content
+				minScale: 0.2,
+				maxScale: 1.5
+			});
+			Reveal.configure({ slideNumber: true });
+		</script>
+	</body>
+</html>

@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>Wallets</title>
+		<title>Teach Bitcoin Overview</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/simple.css">
@@ -15,7 +15,6 @@
 		<!-- Google Font Roboto -->
 		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
-
 
 	</head>
 	<body>
@@ -28,22 +27,13 @@
 						<span class = "title weight">TeachBitcoin</span>.github.io
 					</div>
 
-					<div class = "multi_text_box_container" style = "padding: 30px 0 0 0; font-size:30px">
+					<div class = "multi_text_box_container" style = "padding: 5px 0 0 0; font-size:20px">
 						<ul style = "width: 100%;">
 							<li><span class ="weight">Elliptic Curve Math</span>
 								<span style = "float: right;font-weight:300;">
 									<a href="ec_math.html" target="_blank" class ="index">Slides</a>
 									/
 									<a href="ec_math_libbitcoin.html" target="_blank" class ="index">Libbitcoin Examples</a>
-									/
-								Video
-								</span>
-							</li>
-							<li><span class ="weight">Addresses & Wallets</span>
-								<span style = "float: right; font-weight:300;">
-									<a href="wallets.html" target="_blank" class ="index">Slides</a>
-									/
-									<a href="wallets_libbitcoin.html" target="_blank" class ="index">Libbitcoin Examples</a>
 									/
 								Video
 								</span>
@@ -57,39 +47,44 @@
 								Video
 								</span>
 							</li>
-							<!-- Transactions Part -->
-							<li><span class ="weight">Intro to Transactions</span>
-								<span style = "float: right; font-weight:300;">
-									Slides
-									/
-									Libbitcoin Examples
-									/
-									Video
-								</span>
+
+							<!-- Wallet Keys, Addresses and Wallet Import Format -->
+							<!-- Mnemonics & HD Wallet Seed -->
+							<!-- HD Child Derivation -->
+							<!-- Multifork Wallet -->
+							<li><span class ="weight">Bitcoin Wallets</span>
 							</li>
-							<!-- TX Subtopics -->
 							<ul>
-								<li type="circle"><span class ="">sighash: ALL|NONE|SINGLE</span>
+								<li type="circle"><span class ="">Basic Wallet Functionality</span>
 									<span style = "float: right; font-weight:300;">
-										Slides
+										<a href="wallets.html#/" target="_blank" class ="index">Slides</a>
 										/
-										Libbitcoin Examples
+										<a href="wallets_libbitcoin.html#/" target="_blank" class ="index">Libbitcoin Examples</a>
 										/
 										Video
 									</span>
 								</li>
-								<li type="circle"><span class ="">Transaction Witness</span>
+								<li type="circle"><span class ="">Mnemonics & HD Master Key Derivation</span>
 									<span style = "float: right; font-weight:300;">
-										Slides
+										<a href="wallets.html#/3" target="_blank" class ="index">Slides</a>
 										/
-										Libbitcoin Examples
+										<a href="wallets_libbitcoin.html#/5" target="_blank" class ="index">Libbitcoin Examples</a>
 										/
 										Video
 									</span>
 								</li>
-								<li type="circle"><span class ="">Script Machine</span>
+								<li type="circle"><span class ="">HD Extended Child Key Derivation</span>
 									<span style = "float: right; font-weight:300;">
-										Slides
+										<a href="wallets.html#/6" target="_blank" class ="index">Slides</a>
+										/
+										<a href="wallets_libbitcoin.html#/8" target="_blank" class ="index">Libbitcoin Examples</a>
+										/
+										Video
+									</span>
+								</li>
+								<li type="circle"><span class ="">Hardfork HD Wallet</span>
+									<span style = "float: right; font-weight:300;">
+										<a href="wallets_hardfork.html" target="_blank" class ="index">Slides</a>
 										/
 										Libbitcoin Examples
 										/
@@ -97,29 +92,104 @@
 									</span>
 								</li>
 							</ul>
-							<!-- Transaction Analysis Part -->
-							<li><span class ="weight">Transaction Entropy</span>
-								<span style = "float: right; font-weight:300;">
-									Slides
-									/
-									Libbitcoin Examples
-									/
-									Video
+							<!-- Transactions Part -->
+							<li><span class ="weight">Bitcoin Transactions</span>
+								<span style = "float: right;font-weight:300;">
 								</span>
 							</li>
-							<!-- Transaction Analysis Part -->
-							<li><span class ="weight">Parsing Blocks</span>
-								<span style = "float: right; font-weight:300;">
-									Slides
-									/
-									Libbitcoin Examples
-									/
-									Video
-								</span>
+							<!-- TX Subtopics -->
+							<ul>
+								<li type="circle"><span class ="">Constructing a TX & Input Endorsement</span>
+									<span style = "float: right; font-weight:300;">
+										<a href="transaction_build.html#/" target="_blank" class ="index">Slides</a>
+										/
+										Libbitcoin Examples
+										/
+										Video
+									</span>
+								</li>
+								<li type="circle"><span class ="">Signature Commitment Types</span>
+									<span style = "float: right; font-weight:300;">
+										<a href="transaction_sighash.html#/" target="_blank" class ="index">Slides</a>
+										/
+										<a href="transaction_sighash_libbitcoin.html#/" target="_blank" class ="index">Libbitcoin Examples</a>
+										/
+										Video
+									</span>
+								</li>
+								<li type="circle"><span class ="">Absolute Transaction Locktime</span>
+									<span style = "float: right; font-weight:300;">
+										<a href="transaction_timelocks.html#/" target="_blank" class ="index">Slides</a>
+										/
+										<a href="transaction_timelocks_libbitcoin.html#/" target="_blank" class ="index">Libbitcoin Examples</a>
+										/
+										Video
+									</span>
+								</li>
+								<li type="circle"><span class ="">Relative Transaction Locktime</span>
+									<span style = "float: right; font-weight:300;">
+										<a href="transaction_timelocks.html#/3" target="_blank" class ="index">Slides</a>
+										/
+										<a href="transaction_timelocks_libbitcoin.html#/3" target="_blank" class ="index">Libbitcoin Examples</a>
+										/
+										Video
+									</span>
+								</li>
+								<li type="circle"><span class ="">Pay-to-Script-Hash</span>
+									<span style = "float: right; font-weight:300;">
+										<a href="transaction_p2sh.html#/" target="_blank" class ="index">Slides</a>
+										/
+										Libbitcoin Examples
+										/
+										Video
+									</span>
+								</li>
+
+							</ul>
+							<!-- Witness Transactions Part -->
+							<li><span class ="weight">Witness Transactions</span>
 							</li>
+							<ul>
+								<li type="circle"><span class ="">Pay-to-Witness Transactions</span>
+									<span style = "float: right; font-weight:300;">
+										<a href="transaction_witness.html#/" target="_blank" class ="index">Slides</a>
+										/
+										Libbitcoin Examples
+										/
+										Video
+									</span>
+								</li>
+								<li type="circle"><span class ="">P2SH(Pay-to-Witness) Transactions</span>
+									<span style = "float: right; font-weight:300;">
+										<a href="transaction_witness.html#/5" target="_blank" class ="index">Slides</a>
+										/
+										Libbitcoin Examples
+										/
+										Video
+									</span>
+								</li>
+							</ul>
+							<!-- Payment Channels -->
+							<li><span class ="weight">Lightning Payment Channels</span>
+							</li>
+							<ul>
+								<li type="circle"><span class ="">Basic Channel /w Revocable Sequence Maturity Contracts</span>
+									<span style = "float: right; font-weight:300;">
+										<a href="payment_channels.html" target="_blank" class ="index">Slides</a>
+										/
+										Video
+									</span>
+								</li>
+								<li type="circle"><span class ="">Channel routing /w Hash Locktime Contracts</span>
+									<span style = "float: right; font-weight:300;">
+										Slides
+										/
+										Video
+									</span>
+								</li>
+							</ul>
 
-						</ul>
-
+						</ul> <!-- End of content list -->
 					</div>
 
 				</section>

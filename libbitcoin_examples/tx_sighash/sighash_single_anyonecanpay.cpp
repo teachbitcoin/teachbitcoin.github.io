@@ -143,7 +143,7 @@ int main() {
   // Verify TX with block explorer.
   // ---------------------------------------------------------------------------
 
-  // $ ./sighash_single
+  // $ ./sighash_single_anyonecanpay
   // $ bx validate-tx [serialised tx]
   // The transaction is valid.
 

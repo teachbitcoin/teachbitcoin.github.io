@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Wallets</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/simple.css">
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/xcode.css">
+		<!-- Theme override for teachbitcoin -->
+		<link rel="stylesheet" href="css/teachbitcoin.css">
+		<!-- Google Font Roboto -->
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+
+
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+
+<!-- *********** BEGIN: Chapter Subtopics 2 *********** -->
+<section class ="box">
+
+  <div class = "title">
+    <span class = "title weight">Bitcoin Wallet </span>Subtopics
+  </div>
+
+  <!-- <img src="images/ec_math/chapter_subtopics_arrows.svg" class = "image" style = "z-index: -1;"> -->
+
+  <div class = "multi_text_box_container" style = "padding: 100px 0 0 0;">
+
+    <!-- TODO: Split this into two divs. -->
+    <div class = "text_box" style = "width: 550px; font-size: 23px;">
+      <ul style = "margin: 0px; padding: 0px; list-style-type: none;">
+        <li style = "font-size: 25px; font-weight: 600;">Simple Bitcoin Wallet</li>
+        <hr style = "height:0px; visibility:hidden;">
+        <li>P2PKH Address Derivation<span style="float: right">1</span></li>
+        <li>Wallet Import Format<span style="float: right">2</span></li>
+      </ul>
+    </div>
+
+    <div class = "text_box orange_border" style = "width: 550px; font-size: 23px;">
+      <ul style = "margin: 0px; padding: 0px; list-style-type: none;">
+        <li style = "font-size: 25px; font-weight: 600;">Hierarchical Determinstic Wallets</li>
+        <hr style = "height:0px; visibility:hidden;">
+        <li>Mnemnonics & HD Wallet Seeds<span style="float: right">1</span></li>
+        <li>HD Child Key Derivation<span style="float: right">1</span></li>
+        <li>HD Child Key Exposure<span style="float: right">1</span></li>
+        <li>HD Hardened Children Keys<span style="float: right">1</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class = "fragment fade-in text_box_horizontal" style = "position: absolute; top: 600px; left: 65px;">
+    <ul style = "margin: 0px; padding: 0px; list-style-type: none;">
+      <li>Next, we will consider hierarchical determinstic wallets, which allow
+        for flexible creation and management of an indefinite number of addresses
+        from a single wallet.
+      </li>
+      <li>
+      </li>
+    </ul>
+  </div>
+
+</section>
+<!-- *********** END: Chapter Subtopics 2 *********** -->
+
+</div><!-- END: Slides Div -->
+</div><!-- END: Reveal Div -->
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.js"></script>
+
+<script>
+// More info about config & dependencies:
+// - https://github.com/hakimel/reveal.js#configuration
+// - https://github.com/hakimel/reveal.js#dependencies
+Reveal.initialize({
+  dependencies: [
+    { src: 'plugin/markdown/marked.js' },
+    { src: 'plugin/markdown/markdown.js' },
+    { src: 'plugin/notes/notes.js', async: true },
+    { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+    { src: 'plugin/math/math.js', async: true }
+  ],
+
+  math: {
+    mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+    config: 'TeX-AMS_HTML-full'  // See http://docs.mathjax.org/en/latest/config-files.html
+  },
+
+  previewLinks: true,
+
+  // Push each slide change to the browser history
+  history: true,
+
+  // Enable keyboard shortcuts for navigation
+  keyboard: true,
+
+  // Enables touch navigation on devices with touch input
+  overview: false,
+  touch: false,
+
+  // The "normal" size of the presentation, aspect ratio will be preserved
+  // when the presentation is scaled to fit different resolutions. Can be
+  // specified using percentage units.
+  width: 1366,
+  height: 768,
+  // Factor of the display size that should remain empty around the content
+  margin: 0.05,
+
+  // Bounds for smallest/largest possible scale to apply to content
+  minScale: 0.2,
+  maxScale: 1.5
+});
+Reveal.configure({ slideNumber: true });
+</script>
+</body>
+</html>

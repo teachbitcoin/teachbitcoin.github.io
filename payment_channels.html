@@ -1,0 +1,283 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>RSMC Payment Channels</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/simple.css">
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/xcode.css">
+		<!-- Theme override for teachbitcoin -->
+		<link rel="stylesheet" href="css/teachbitcoin.css">
+		<!-- Google Font Roboto -->
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<!-- *********** BEGIN: Naive Channel *********** -->
+				<section class = "box">
+					<div class = "title">
+						 <span class = "title weight">Payment Channel:</span> Naive Implementation
+					</div>
+
+				<!-- 45% div for formula and curve--><!-- 45% text & bulletpoint -->
+					<div class = "multi_text_box_container" style = "padding: 40px 0 0 0; width: 1270px;">
+						<!-- 60% div for formula and curve-->
+						<div class = "" style = "width: 58%; font-size: 22px;">
+							<img src="images/beijing_meetup_july2018/naive_channel0.svg" class = "image" style = "z-index: -3;">
+							<img src="images/beijing_meetup_july2018/naive_channel1.svg" class = "fragment image" style = "z-index: -3;">
+							<img src="images/beijing_meetup_july2018/naive_channel2.svg" class = "fragment image" style = "z-index: -3;">
+							<img src="images/beijing_meetup_july2018/naive_channel3.svg" class = "fragment image" style = "z-index: -3;">
+							<img src="images/beijing_meetup_july2018/naive_channel4.svg" class = "fragment image" style = "z-index: -3;">
+							<img src="images/beijing_meetup_july2018/naive_channel5.svg" class = "fragment image" style = "z-index: -3;">
+							<img src="images/beijing_meetup_july2018/naive_channel6.svg" class = "fragment image" style = "z-index: -3;">
+
+					</div>
+						<!-- 45% text & bulletpoint -->
+						<div class = "text_box"
+								 style = "width: 45%; font-size: 24px; margin: 0px 0 0 0">
+							<ul style = "margin: 0; padding: 0px; list-style-type: none;">
+
+								<!-- <hr style = "height:5px; visibility:hidden;"> -->
+
+								<li style = "font-weight: bold;">Funding TX and Commitment TX 1</li>
+								<ul style = "list-style-type: circle;">
+									<li>Funding TX signed by A</li>
+									<li>Commitment TX 1 signed by both parties</li>
+
+								</ul>
+								<hr style = "height:5px; visibility:hidden;">
+
+								<li style = "font-weight: bold;">Valid Channel Close</li>
+								<ul style = "list-style-type: circle;">
+									<li>Latest commitment TX is broadcast by either party</li>
+								</ul>
+								<hr style = "height:5px; visibility:hidden;">
+
+								<li style = "font-weight: bold;">Problem: Invalid Channel Close</li>
+								<ul style = "list-style-type: circle;">
+									<li>Nothing prevents either party from broadcasting old state</li>
+								</ul>
+								<hr style = "height:5px; visibility:hidden;">
+
+							</ul>
+						</div>
+
+					</div><!-- End of 2 column container -->
+
+				</section>
+				<!-- *********** END: Naive Channel *********** -->
+
+				<!-- *********** BEGIN: RSMC *********** -->
+				<section class = "box">
+					<div class = "title">
+						 <span class = "title weight">RSMC</span> Outputs
+					</div>
+
+				<!-- 45% div for formula and curve--><!-- 45% text & bulletpoint -->
+					<div class = "multi_text_box_container" style = "padding: 40px 0 0 0; width: 1270px;">
+						<!-- 60% div for formula and curve-->
+						<div class = "" style = "width: 58%; font-size: 22px;">
+							<img src="images/beijing_meetup_july2018/RSMC_output0.svg" class = "image" style = "z-index: -3;">
+							<img src="images/beijing_meetup_july2018/RSMC_output1.svg" class = "fragment image" style = "z-index: -3;">
+							<img src="images/beijing_meetup_july2018/RSMC_output2.svg" class = "fragment image" style = "z-index: -3;">
+							<img src="images/beijing_meetup_july2018/RSMC_output3.svg" class = "fragment image" style = "z-index: -3;">
+					</div>
+						<!-- 45% text & bulletpoint -->
+						<div class = "text_box"
+								 style = "width: 40%; font-size: 24px; margin: 0px 0 0 0">
+							<ul style = "margin: 0; padding: 0px; list-style-type: none;">
+
+								<!-- <hr style = "height:5px; visibility:hidden;"> -->
+
+								<li style = "font-weight: bold;">Revocable Sequence Maturity Contract</li>
+								<ul style = "list-style-type: circle;">
+									<li>Can be unlocked under two conditions</li>
+								</ul>
+								<hr style = "height:5px; visibility:hidden;">
+
+								<li style = "font-weight: bold;">Spendable after time-out</li>
+								<ul style = "list-style-type: circle;">
+									<li>RSMC A is spendable by A after a delay</li>
+								</ul>
+								<hr style = "height:5px; visibility:hidden;">
+
+								<li style = "font-weight: bold;">Spendable by secret R</li>
+								<ul style = "list-style-type: circle;">
+									<li>Public key R is generated by both parties</li>
+									<li>Public key R is generated without knowledge of secret R</li>
+									<li>If R is revealed, the output is no longer exclusively spendable by A</li>
+
+
+								</ul>
+								<hr style = "height:5px; visibility:hidden;">
+
+							</ul>
+						</div>
+
+					</div><!-- End of 2 column container -->
+
+				</section>
+				<!-- *********** END: RSMC *********** -->
+
+				<!-- *********** BEGIN: RSMC Channel *********** -->
+				<section class = "box">
+					<div class = "title">
+						 <span class = "title weight">Payment Channel</span> with RSMC's
+					</div>
+
+				<!-- 45% div for formula and curve--><!-- 45% text & bulletpoint -->
+					<div class = "multi_text_box_container" style = "padding: 40px 0 0 0; width: 1270px;">
+						<!-- 60% div for formula and curve-->
+						<div class = "" style = "width: 58%; font-size: 22px;">
+							<img src="images/beijing_meetup_july2018/RSMC_channel0.svg" class = "image" style = "z-index: -3;">
+							<img src="images/beijing_meetup_july2018/RSMC_channel1.svg" class = "fragment image" style = "z-index: -3;">
+							<img src="images/beijing_meetup_july2018/RSMC_channel2.svg" class = "fragment image" style = "z-index: -3;">
+							<img src="images/beijing_meetup_july2018/RSMC_channel3b.svg" class = "fragment image" style = "z-index: -3;">
+							<img src="images/beijing_meetup_july2018/RSMC_channel4.svg" class = "fragment image" style = "z-index: -3;">
+
+					</div>
+						<!-- 45% text & bulletpoint -->
+						<div class = "text_box"
+								 style = "width: 40%; font-size: 24px; margin: 0px 0 0 0">
+							<ul style = "margin: 0; padding: 0px; list-style-type: none;">
+
+								<!-- <hr style = "height:5px; visibility:hidden;"> -->
+
+								<li style = "font-weight: bold;">Old states are revoked</li>
+								<ul style = "list-style-type: circle;">
+									<li>RSMC can be spent by counterparty</li>
+								</ul>
+								<hr style = "height:5px; visibility:hidden;">
+
+								<li style = "font-weight: bold;">Old broadcast states are swept</li>
+								<ul style = "list-style-type: circle;">
+									<li>Penalty TX by counterparty broadcast</li>
+								</ul>
+								<hr style = "height:5px; visibility:hidden;">
+
+								<li style = "font-weight: bold;">Chain needs to be watched</li>
+								<ul style = "list-style-type: circle;">
+									<li>Both parties must monitor chain for invalid commitment transactions</li>
+								</ul>
+								<hr style = "height:5px; visibility:hidden;">
+
+								<li style = "font-weight: bold;">Watchtower</li>
+								<ul style = "list-style-type: circle;">
+									<li>Channel participant outsources the monitoring of commitment transactions</li>
+								</ul>
+								<hr style = "height:5px; visibility:hidden;">
+
+							</ul>
+						</div>
+
+					</div><!-- End of 2 column container -->
+
+				</section>
+				<!-- *********** END: RSMC Channel *********** -->
+
+				<!-- *********** BEGIN: Watchtower *********** -->
+				<section class = "box">
+					<div class = "title">
+						 <span class = "title weight">Watchtower</span>
+					</div>
+
+				<!-- 45% div for formula and curve--><!-- 45% text & bulletpoint -->
+					<div class = "multi_text_box_container" style = "padding: 40px 0 0 0; width: 1270px;">
+						<!-- 60% div for formula and curve-->
+						<div class = "" style = "width: 58%; font-size: 22px;">
+							<img src="images/beijing_meetup_july2018/watchtower0.svg" class = "image" style = "z-index: -3;">
+							<img src="images/beijing_meetup_july2018/watchtower1.svg" class = "fragment image" style = "z-index: -3;">
+							<img src="images/beijing_meetup_july2018/watchtower2.svg" class = "fragment image" style = "z-index: -3;">
+					</div>
+						<!-- 45% text & bulletpoint -->
+						<div class = "text_box"
+								 style = "width: 40%; font-size: 24px; margin: 0px 0 0 0">
+							<ul style = "margin: 0; padding: 0px; list-style-type: none;">
+
+								<!-- <hr style = "height:5px; visibility:hidden;"> -->
+
+								<li style = "font-weight: bold;">Watchtower watches for broadcast commitment TXID</li>
+								<ul style = "list-style-type: circle;">
+									<li>Watches chain for first half of commitment TXID</li>
+									<li>Stores encrypted penalty TX</li>
+
+								</ul>
+								<hr style = "height:5px; visibility:hidden;">
+
+								<li style = "font-weight: bold;">Revoked commitment TX is broadcast</li>
+								<ul style = "list-style-type: circle;">
+									<li>Watchtower observes TXID of revoked commitment</li>
+									<li>Watchtower decrypts and broadcasts penalty TX</li>
+								</ul>
+								<hr style = "height:5px; visibility:hidden;">
+
+
+							</ul>
+						</div>
+
+					</div><!-- End of 2 column container -->
+
+				</section>
+				<!-- *********** END: Watchtower *********** -->
+
+
+
+      </div><!-- END: Slides Div -->
+		</div><!-- END: Reveal Div -->
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/math/math.js', async: true }
+				],
+
+				math: {
+					mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+					config: 'TeX-AMS_HTML-full'  // See http://docs.mathjax.org/en/latest/config-files.html
+				},
+
+				previewLinks: true,
+
+				// Push each slide change to the browser history
+				history: true,
+
+				// Enable keyboard shortcuts for navigation
+				keyboard: true,
+
+				// Enables touch navigation on devices with touch input
+				overview: false,
+				touch: false,
+
+				// The "normal" size of the presentation, aspect ratio will be preserved
+				// when the presentation is scaled to fit different resolutions. Can be
+				// specified using percentage units.
+				width: 1366,
+			  height: 768,
+				// Factor of the display size that should remain empty around the content
+				margin: 0.05,
+
+				// Bounds for smallest/largest possible scale to apply to content
+				minScale: 0.2,
+				maxScale: 1.5
+			});
+			Reveal.configure({ slideNumber: true });
+		</script>
+	</body>
+</html>

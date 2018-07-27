@@ -1,0 +1,334 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Buildling a Transaction</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/simple.css">
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/xcode.css">
+		<!-- Theme override for teachbitcoin -->
+		<link rel="stylesheet" href="css/teachbitcoin.css">
+		<!-- Google Font Roboto -->
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+			<!-- *********** BEGIN: Absolute Locktime Overview *********** -->
+			<section class = "box">
+				<div class = "title">
+					<span class = "title weight">Absolute</span> Transaction Timelocks
+				</div>
+
+			<!-- 45% div for formula and curve--><!-- 45% text & bulletpoint -->
+				<div class = "multi_text_box_container" style = "padding: 40px 0 0 0; width: 1270px;">
+					<!-- 60% div for formula and curve-->
+					<div class = "" style = "width: 58%; font-size: 22px;">
+						<img src="images/transaction_absolute_locktime/locktime_overview.svg" class = "image" style = "z-index: -3;">
+					</div>
+					<!-- 45% text & bulletpoint -->
+						<div class = "text_box"
+							 style = "width: 50%; font-size: 22px; margin: 0px 0 0 0">
+						<ul style = "margin: 0; padding: 0px; list-style-type: none;">
+
+							<li>An absolute transaction timelock determines from which time on a transaction can be broadcast and mined on the Bitcoin network.</li>
+							<hr style = "height:2px; visibility:hidden;">
+
+							<li>This type of timelock can either be created by the transaction signer(s), or the signers of the previous outputs:</li>
+							<hr style = "height:2px; visibility:hidden;">
+
+							<li style = "font-weight: bold;">TX Locktime Field</li>
+							<ul style = "list-style-type: circle;">
+                <li>Describes the absolute time in unix time or blockheight, from when on the transaction is valid.</li>
+							</ul>
+							<hr style = "height:2px; visibility:hidden;">
+
+							<li style = "font-weight: bold;">OP_CHECKLOCKTIMEVERIFY</li>
+							<ul style = "list-style-type: circle;">
+                <li>An output script operator, which describes what locktime the spending transaction must have.</li>
+							</ul>
+							<hr style = "height:2px; visibility:hidden;">
+
+						</ul>
+					</div>
+
+				</div><!-- End of 2 column container -->
+
+			</section>
+			<!-- *********** END: Absolute Locktime Overview *********** -->
+
+			<!-- *********** BEGIN: Transaction Locktime Field *********** -->
+			<section class = "box">
+				<div class = "title">
+					Transaction <span class = "title weight">Locktime Field</span>
+				</div>
+
+			<!-- 45% div for formula and curve--><!-- 45% text & bulletpoint -->
+				<div class = "multi_text_box_container" style = "padding: 40px 0 0 0; width: 1270px;">
+					<!-- 60% div for formula and curve-->
+					<div class = "" style = "width: 58%; font-size: 22px;">
+						<img src="images/transaction_absolute_locktime/locktime_field.svg" class = "image" style = "z-index: -3;">
+					</div>
+					<!-- 45% text & bulletpoint -->
+						<div class = "text_box"
+							 style = "width: 50%; font-size: 22px; margin: 0px 0 0 0">
+						<ul style = "margin: 0; padding: 0px; list-style-type: none;">
+
+
+							<li>The locktime field is set and signed by the signer(s) of the transaction.</li>
+							<hr style = "height:2px; visibility:hidden;">
+
+							<li style = "font-weight: bold;">TX Locktime Field</li>
+							<ul style = "list-style-type: circle;">
+                <li>If locktime is set < 500million:</li>
+								<ul>
+									<li>Locktime value is interpreted as blockheight.</li>
+								</ul>
+								<li>If locktime is set >= 500million:</li>
+								<ul>
+									<li>Locktime value is interpreted as unix time.</li>
+								</ul>
+								<li>Encoded as 4Byte, little endian value</li>
+							</ul>
+							<hr style = "height:2px; visibility:hidden;">
+
+						</ul>
+					</div>
+
+				</div><!-- End of 2 column container -->
+
+			</section>
+			<!-- *********** END: Transaction Locktime Field *********** -->
+
+			<!-- *********** BEGIN: CLTV *********** -->
+			<section class = "box">
+				<div class = "title">
+					<span class = "title weight">Check Locktime Verify</span>
+				</div>
+
+			<!-- 45% div for formula and curve--><!-- 45% text & bulletpoint -->
+				<div class = "multi_text_box_container" style = "padding: 40px 0 0 0; width: 1270px;">
+					<!-- 60% div for formula and curve-->
+					<div class = "" style = "width: 58%; font-size: 22px;">
+						<img src="images/transaction_absolute_locktime/locktime_cltv.svg" class = "image" style = "z-index: -3;">
+					</div>
+					<!-- 45% text & bulletpoint -->
+						<div class = "text_box"
+							 style = "width: 50%; font-size: 22px; margin: 0px 0 0 0">
+						<ul style = "margin: 0; padding: 0px; list-style-type: none;">
+
+
+							<li>Checklocktimeverify is a script operator which prevents a confirmed UXTO from being spent until locktime is expired.</li>
+							<hr style = "height:2px; visibility:hidden;">
+
+							<li style = "font-weight: bold;">OP_CHECKLOCKTIMEVERIFY</li>
+							<ul style = "list-style-type: circle;">
+                <li>Validates:</li>
+								<ul>
+									<li>Spending TX Locktime >= top stack element</li>
+								</ul>
+								<li>Success: Continues without modifying stack</li>
+								<li>Failure: Script verification fails</li>
+
+							</ul>
+							<hr style = "height:2px; visibility:hidden;">
+
+						</ul>
+					</div>
+
+				</div><!-- End of 2 column container -->
+
+			</section>
+			<!-- *********** END: CLTV *********** -->
+
+			<!-- *********** BEGIN: Relative Locktime Overview *********** -->
+			<section class = "box">
+				<div class = "title">
+					<span class = "title weight">Relative</span> Transaction Timelocks
+				</div>
+
+			<!-- 45% div for formula and curve--><!-- 45% text & bulletpoint -->
+				<div class = "multi_text_box_container" style = "padding: 40px 0 0 0; width: 1270px;">
+					<!-- 60% div for formula and curve-->
+					<div class = "" style = "width: 58%; font-size: 22px;">
+						<img src="images/transaction_absolute_locktime/relative_timelock_overview.svg" class = "image" style = "z-index: -3;">
+					</div>
+					<!-- 45% text & bulletpoint -->
+						<div class = "text_box"
+							 style = "width: 50%; font-size: 22px; margin: 0px 0 0 0">
+						<ul style = "margin: 0; padding: 0px; list-style-type: none;">
+
+							<li>A relative transaction timelock determines the delay between confirmation of a UXTO and its spending.</li>
+							<hr style = "height:2px; visibility:hidden;">
+
+							<li>This type of timelock can be created by the transaction input signer(s), or the signers of the previous output(s):</li>
+							<hr style = "height:2px; visibility:hidden;">
+
+							<li style = "font-weight: bold;">TX Input Sequence Field</li>
+							<ul style = "list-style-type: circle;">
+                <li>Describes the relative delay time in unix time or blocks, from which on a timelocked transaction is valid.</li>
+							</ul>
+							<hr style = "height:2px; visibility:hidden;">
+
+							<li style = "font-weight: bold;">OP_CHECKSEQUENCEVERIFY</li>
+							<ul style = "list-style-type: circle;">
+                <li>An output script operator, which describes what relative locktime the spending transaction input must have.</li>
+							</ul>
+							<hr style = "height:2px; visibility:hidden;">
+
+						</ul>
+					</div>
+
+				</div><!-- End of 2 column container -->
+
+			</section>
+			<!-- *********** END: Relative Locktime Overview *********** -->
+
+			<!-- *********** BEGIN: Input Sequence Field *********** -->
+			<section class = "box">
+				<div class = "title">
+					Transaction Input <span class = "title weight">Sequence Field</span>
+				</div>
+
+			<!-- 45% div for formula and curve--><!-- 45% text & bulletpoint -->
+				<div class = "multi_text_box_container" style = "padding: 40px 0 0 0; width: 1270px;">
+					<!-- 60% div for formula and curve-->
+					<div class = "" style = "width: 58%; font-size: 22px;">
+						<img src="images/transaction_absolute_locktime/sequence_field.svg" class = "image" style = "z-index: -3;">
+					</div>
+					<!-- 45% text & bulletpoint -->
+						<div class = "text_box"
+							 style = "width: 50%; font-size: 22px; margin: 0px 0 0 0">
+						<ul style = "margin: 0; padding: 0px; list-style-type: none;">
+
+
+							<li>The input sequence field is set and endorsed by the signer(s) of the transaction input.</li>
+							<hr style = "height:2px; visibility:hidden;">
+
+							<li style = "font-weight: bold;">TX Input Sequence Field</li>
+							<ul style = "list-style-type: circle;">
+							<li>For sequence field to be interpreted as relative timelock:</li>
+								<ul>
+									<li>TX version must be >= 2</li>
+								</ul>
+							<li>Timelock encoded in 16 least signficant bits of sequence field.</li>
+								<ul>
+									<li>For delay in multiples of 512 seconds, typeflag bit (1 << 22) in sequence field must be activated.</li>
+									<li>Otherwise, delay interpreted as blocks (e.g. 0x00000014 = 20 block delay)</li>
+
+								</ul>
+
+							</ul>
+							<hr style = "height:2px; visibility:hidden;">
+
+						</ul>
+					</div>
+
+				</div><!-- End of 2 column container -->
+
+			</section>
+			<!-- *********** END: Input Sequence Field *********** -->
+
+			<!-- *********** BEGIN: CSV *********** -->
+			<section class = "box">
+				<div class = "title">
+					<span class = "title weight">Check Sequence Verify</span>
+				</div>
+
+			<!-- 45% div for formula and curve--><!-- 45% text & bulletpoint -->
+				<div class = "multi_text_box_container" style = "padding: 40px 0 0 0; width: 1270px;">
+					<!-- 60% div for formula and curve-->
+					<div class = "" style = "width: 58%; font-size: 22px;">
+						<img src="images/transaction_absolute_locktime/sequence_csv.svg" class = "image" style = "z-index: -3;">
+					</div>
+					<!-- 45% text & bulletpoint -->
+						<div class = "text_box"
+							 style = "width: 50%; font-size: 22px; margin: 0px 0 0 0">
+						<ul style = "margin: 0; padding: 0px; list-style-type: none;">
+
+
+							<li>Checksequenceverify is a script operator which prevents a confirmed UXTO from being spent until the delay since its confirmation has passed.</li>
+							<hr style = "height:2px; visibility:hidden;">
+
+							<li style = "font-weight: bold;">OP_CHECKSEQUENCEVERIFY</li>
+							<ul style = "list-style-type: circle;">
+                <li>Validates:</li>
+								<ul>
+									<li>Spending TX Input Sequence Delay >= top stack element</li>
+								</ul>
+								<li>Script [Delay] Encoding:</li>
+								<ul>
+									<li>3 Bytes Little Endian (not 4 Bytes)</li>
+									<li>Same typeflag bit (1 << 22) function as in sequence field.</li>
+									<li>Relative timelock encoded in 16 least signficant bits.</li>
+								</ul>
+							</ul>
+
+						</ul>
+					</div>
+
+				</div><!-- End of 2 column container -->
+
+			</section>
+			<!-- *********** END: CSV *********** -->
+
+
+      </div><!-- END: Slides Div -->
+		</div><!-- END: Reveal Div -->
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/math/math.js', async: true }
+				],
+
+				math: {
+					mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+					config: 'TeX-AMS_HTML-full'  // See http://docs.mathjax.org/en/latest/config-files.html
+				},
+
+				previewLinks: true,
+
+				// Push each slide change to the browser history
+				history: true,
+
+				// Enable keyboard shortcuts for navigation
+				keyboard: true,
+
+				// Enables touch navigation on devices with touch input
+				overview: false,
+				touch: false,
+
+				// The "normal" size of the presentation, aspect ratio will be preserved
+				// when the presentation is scaled to fit different resolutions. Can be
+				// specified using percentage units.
+				width: 1366,
+			  height: 768,
+				// Factor of the display size that should remain empty around the content
+				margin: 0.05,
+
+				// Bounds for smallest/largest possible scale to apply to content
+				minScale: 0.2,
+				maxScale: 1.5
+			});
+			Reveal.configure({ slideNumber: true });
+		</script>
+	</body>
+</html>

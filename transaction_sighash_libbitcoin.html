@@ -1,0 +1,852 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Transaction Signature Hash Types</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/simple.css">
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/default.css">
+		<!-- Theme override for teachbitcoin -->
+		<link rel="stylesheet" href="css/teachbitcoin.css">
+		<!-- Google Font Roboto -->
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+				<!-- *********** BEGIN: Sighash ALL *********** -->
+				<section class = "box">
+
+					<!-- No Title Bar ... -->
+
+					<div class = "multi_code_box_container" style = "padding: 0;">
+
+						<div class = "text_box code_text_box" style = "width: 28%;">
+							<div class ="text_box_title" >
+									Example:<br><span class = "weight">Signing with sighash ALL<br>in Libbitcoin</span>
+							</div>
+								<div style = "padding:5px;">
+									<ul style = "margin: 0px; padding: 0px; list-style-type: none; font-size: 18px;">
+										<li>All transaction inputs are endorsed with sighash all.</li>
+										<hr style = "height:2px; visibility:hidden;">
+										<li>Once all transaction inputs are signed, we can observe that modifying the outputs will invalidate the transaction.</li>
+										<hr style = "height:2px; visibility:hidden;">
+										<li>Note: We use Libbitcoin BX to validate the transaction.
+											<ul>
+												<li><span class= "inline_code">bx validate-tx [serialised tx]</span></li>
+											</ul>
+										</li>
+									</ul>
+									<br>
+						  </div>
+						</div>
+
+						<!-- <div id="" style="overflow:scroll; height:400px;"> -->
+						<!-- overflow-y: scroll; -->
+						<!-- <div style = "overflow-y: scroll; height: 500px; width: 70%; text-align: left;"> -->
+						<div style = "width:70%">
+							<pre style = "font-size: 18px; margin: 5px; padding: 0px;"
+							><code class = "c++"
+										 style = "font-family: Roboto Mono; margin: 0px; padding: 10px; max-height:660px ; width:97%"
+
+>#include &lt;bitcoin/bitcoin.hpp&gt
+#include &lt;iostream&gt
+
+int main() {
+
+  // Setup UXTOs for transaction inputs.
+  // ---------------------------------------------------------------------------
+
+  // Send funds to addresses spendable by secret 0 and secret 1.
+  // Testnet Addresses:
+  // $ bx ec-to-public [secret] | bx sha256 | bx ripemd160 | bx address-encode
+
+  auto my_secret0 = bc::base16_literal(
+    "f3c8f9a6198cca98f481edde13bcc031b1470a81e367b838fe9e0a9db0f5993d");
+  auto my_secret1 = bc::base16_literal(
+    "86faa240ae2b0f28b125a42961bd3adf9d5f5dc6a1deaa5feda04e7be8c872f6");
+
+  bc::wallet::ec_private my_private0(my_secret0, bc::wallet::ec_private::testnet,
+     true);
+  bc::wallet::ec_private my_private1(my_secret1, bc::wallet::ec_private::testnet,
+     true);
+
+  // Define output 0 point with coins spendable by secret 0.
+  auto previous_tx_literal0 =
+    "91ae295629dcb4ab9bafdc51b571b06595a2236cc23a5ab414749f2a88f8c9a4";
+  bc::hash_digest previous_tx_hash0;
+  bc::decode_hash(previous_tx_hash0,previous_tx_literal0); //bitcoin hash digest.
+  uint32_t previous_index0(1);
+  uint64_t previous_amount0(130000000);
+  bc::chain::output_point previous_output_point0(previous_tx_hash0,
+    previous_index0);
+
+  // Define output 1 point with coins spendable by secret 1.
+  auto previous_tx_literal1 =
+    "fcf4d04ac0448e2af401e245f905db159a84c4c2f32b924e8e971b3c50fd2175";
+  bc::hash_digest previous_tx_hash1;
+  bc::decode_hash(previous_tx_hash1,previous_tx_literal1); //bitcoin hash digest.
+  uint32_t previous_index1(0);
+  uint64_t previous_amount1(65000000);
+  bc::chain::output_point previous_output_point1(previous_tx_hash1,
+    previous_index1);
+
+  // Create Transaction for Signing.
+  // ---------------------------------------------------------------------------
+
+  // Version.
+  uint32_t version = 1u;
+  bc::chain::transaction tx;
+  tx.set_version(version);
+
+  // Build & Add inputs to transaction.
+  bc::chain::input my_input0;
+  my_input0.set_previous_output(previous_output_point0);
+  my_input0.set_sequence(0xffffffff);
+  tx.inputs().push_back(my_input0);
+
+  bc::chain::input my_input1;
+  my_input1.set_previous_output(previous_output_point1);
+  my_input1.set_sequence(0xffffffff);
+  tx.inputs().push_back(my_input1);
+
+  // Build & Add outputs to transaction.
+  uint64_t my_output_amount0(previous_amount0-800); //fee
+  bc::wallet::payment_address receiving_address0(
+    "mg9cHv7hWMQtzL11nhVr2cyAfDHJB2xnFW");
+  bc::machine::operation::list my_output_script0 =
+    bc::chain::script::to_pay_key_hash_pattern(receiving_address0.hash());
+  bc::chain::output my_output0(my_output_amount0, my_output_script0);
+  tx.outputs().push_back(my_output0);
+
+  uint64_t my_output_amount1(previous_amount1-800); //fee
+  bc::wallet::payment_address receiving_address1(
+    "mg9cHv7hWMQtzL11nhVr2cyAfDHJB2xnFW");
+  bc::machine::operation::list my_output_script1 =
+    bc::chain::script::to_pay_key_hash_pattern(receiving_address1.hash());
+  bc::chain::output my_output1(my_output_amount1, my_output_script1);
+  tx.outputs().push_back(my_output1);
+
+
+  // Build transaction inputs 0 and 1 with sighash ALL endorsements.
+  // ---------------------------------------------------------------------------
+
+  // Fetch previous output scripts.
+  // $ bx fetch-tx [previous txid]
+  // $ bx script-encode "dup hash160 ... equalverify checksig"
+
+  auto previous_output_script0_literal = bc::base16_literal(
+    "76a9141d71dc526556c6ae19fc10b2622fe7e4396b912a88ac");
+  bc::chain::script previous_output_script0(
+    bc::to_chunk(previous_output_script0_literal),false);
+
+  auto previous_output_script1_literal = bc::base16_literal(
+    "76a91442b9b7745ec8b14788f0ca7ac28150782351d44788ac");
+  bc::chain::script previous_output_script1(
+    bc::to_chunk(previous_output_script1_literal),false);
+
+  bc::endorsement my_signature0;
+  bc::chain::script::create_endorsement(my_signature0, my_secret0,
+    previous_output_script0, tx, 0, bc::machine::sighash_algorithm::all);
+    // index 0, sighash ALL
+
+  bc::endorsement my_signature1;
+  bc::chain::script::create_endorsement(my_signature1, my_secret1,
+    previous_output_script1, tx, 1, bc::machine::sighash_algorithm::all);
+    // index 1, sighash ALL
+
+  // Create endorsements.
+  bc::machine::operation::list my_input_script_operations0;
+  my_input_script_operations0.push_back(bc::machine::operation(my_signature0));
+  my_input_script_operations0.push_back(bc::machine::operation(
+    bc::to_chunk(my_private0.to_public().point())));
+  bc::chain::script my_input_script0(my_input_script_operations0);
+
+  bc::machine::operation::list my_input_script_operations1;
+  my_input_script_operations1.push_back(bc::machine::operation(my_signature1));
+  my_input_script_operations1.push_back(bc::machine::operation(
+    bc::to_chunk(my_private1.to_public().point())));
+  bc::chain::script my_input_script1(my_input_script_operations1);
+
+  // Set endorsement script in transaction.
+  tx.inputs()[0].set_script(my_input_script0);
+  tx.inputs()[1].set_script(my_input_script1);
+
+  // Print out serialised tx.
+  std::cout << bc::encode_base16(tx.to_data()) << std::endl;
+
+  // Verify TX with block explorer.
+  // ---------------------------------------------------------------------------
+
+  // $ ./sighash_all
+  // $ bx validate-tx [serialised tx]
+  // The transaction is valid.
+
+  // Modify TX outputs & demonstrate that TX no longer valid.
+  // ---------------------------------------------------------------------------
+
+  // Empty all outputs.
+  tx.outputs().clear();
+
+  // Create single output with same amount as deleted outputs.
+  uint64_t my_output_amount2(previous_amount0+previous_amount1-1600); //fee
+  bc::wallet::payment_address receiving_address2(
+    "mg9cHv7hWMQtzL11nhVr2cyAfDHJB2xnFW");
+  bc::machine::operation::list my_output_script2 =
+    bc::chain::script::to_pay_key_hash_pattern(receiving_address2.hash());
+  bc::chain::output my_output2(my_output_amount2, my_output_script2);
+  tx.outputs().push_back(my_output2);
+
+  std::cout << "TX modified after signing (sighash ALL): " << std::endl;
+  std::cout << bc::encode_base16(tx.to_data()) << std::endl;
+
+  // $ ./sighash_all
+  // $ bx validate-tx [serialised modified tx]
+  // stack false
+
+}</code></pre>
+							<pre style = "font-size: 16px; margin: 20px 5px 5px 5px; padding: 0px;"
+							><code class = "shell"
+										 style = "font-family: Roboto Mono; margin: 0px; padding: 10px; max-height:120px; width: 97%"
+>$ g++ -std=c++11 sighash_all.cpp -o sighash_all  $(pkg-config --cflags libbitcoin --libs libbitcoin)
+$ ./sighash_all
+</code></pre>
+						</div><!-- End of 70% container -->
+					</div><!-- End of multi box container -->
+
+				</section>
+				<!-- *********** END: BEGIN: Sighash ALL *********** -->
+
+				<!-- *********** BEGIN: Sighash NONE *********** -->
+				<section class = "box">
+
+					<!-- No Title Bar ... -->
+
+					<div class = "multi_code_box_container" style = "padding: 0;">
+
+						<div class = "text_box code_text_box" style = "width: 28%;">
+							<div class ="text_box_title" >
+									Example:<br><span class = "weight">Signing with sighash NONE<br>in Libbitcoin</span>
+							</div>
+								<div style = "padding:5px;">
+									<ul style = "margin: 0px; padding: 0px; list-style-type: none; font-size: 18px;">
+										<li>The transaction is built without outputs and endorsed with sighash NONE by all inputs.</li>
+										<hr style = "height:2px; visibility:hidden;">
+										<li>Once all transaction inputs are signed, we can observe that we can add transaction outputs without invalidating the transaction.</li>
+										<hr style = "height:2px; visibility:hidden;">
+										<li>Note: We use Libbitcoin BX to validate the transaction.
+											<ul>
+												<li><span class= "inline_code">bx validate-tx [serialised tx]</span></li>
+											</ul>
+										</li>
+									</ul>
+									<br>
+						  </div>
+						</div>
+
+						<!-- <div id="" style="overflow:scroll; height:400px;"> -->
+						<!-- overflow-y: scroll; -->
+						<!-- <div style = "overflow-y: scroll; height: 500px; width: 70%; text-align: left;"> -->
+						<div style = "width:70%">
+							<pre style = "font-size: 18px; margin: 5px; padding: 0px;"
+							><code class = "c++"
+										 style = "font-family: Roboto Mono; margin: 0px; padding: 10px; max-height:660px ; width:97%"
+
+>#include &lt;bitcoin/bitcoin.hpp&gt
+#include &lt;iostream&gt
+
+int main() {
+
+  // Setup UXTOs for transaction inputs.
+  // ---------------------------------------------------------------------------
+
+  // Send funds to addresses spendable by secret 0 and secret 1.
+  // Testnet Addresses:
+  // $ bx ec-to-public [secret] | bx sha256 | bx ripemd160 | bx address-encode
+
+  auto my_secret0 = bc::base16_literal(
+    "f3c8f9a6198cca98f481edde13bcc031b1470a81e367b838fe9e0a9db0f5993d");
+  auto my_secret1 = bc::base16_literal(
+    "86faa240ae2b0f28b125a42961bd3adf9d5f5dc6a1deaa5feda04e7be8c872f6");
+
+  bc::wallet::ec_private my_private0(my_secret0, bc::wallet::ec_private::testnet,
+     true);
+  bc::wallet::ec_private my_private1(my_secret1, bc::wallet::ec_private::testnet,
+     true);
+
+  // Define output 0 point with coins spendable by secret 0.
+  auto previous_tx_literal0 =
+    "d538929fc4ced551f09e86c82dbbb2bc4dea3d35887762521968424f89be2248";
+  bc::hash_digest previous_tx_hash0;
+  bc::decode_hash(previous_tx_hash0,previous_tx_literal0); //bitcoin hash digest.
+  uint32_t previous_index0(0);
+  uint64_t previous_amount0(130000000);
+  bc::chain::output_point previous_output_point0(previous_tx_hash0,
+    previous_index0);
+
+  // Define output 1 point with coins spendable by secret 1.
+  auto previous_tx_literal1 =
+    "de177389081a218728066aae0672f21d0a622b0f9d7420d0e4636660456b2227";
+  bc::hash_digest previous_tx_hash1;
+  bc::decode_hash(previous_tx_hash1,previous_tx_literal1); //bitcoin hash digest.
+  uint32_t previous_index1(0);
+  uint64_t previous_amount1(65000000);
+  bc::chain::output_point previous_output_point1(previous_tx_hash1,
+    previous_index1);
+
+  // Build transaction, outputs omitted.
+  // ---------------------------------------------------------------------------
+
+  // Version.
+  bc::chain::transaction tx;
+  tx.set_version(1);
+
+  // Build & Add inputs to transaction.
+  bc::chain::output empty_output; // placeholder input, modified after signing
+
+  bc::chain::input my_input0;
+  my_input0.set_previous_output(previous_output_point0);
+  my_input0.set_sequence(0xffffffff);
+  tx.inputs().push_back(my_input0);
+
+  bc::chain::input my_input1;
+  my_input1.set_previous_output(previous_output_point1);
+  my_input1.set_sequence(0xffffffff);
+  tx.inputs().push_back(my_input1);
+
+
+  // Signing of inputs (sighash none).
+  // ---------------------------------------------------------------------------
+
+  auto previous_output_script0_literal = bc::base16_literal(
+    "76a9141d71dc526556c6ae19fc10b2622fe7e4396b912a88ac");
+  bc::chain::script previous_output_script0(
+    bc::to_chunk(previous_output_script0_literal),false);
+
+  auto previous_output_script1_literal = bc::base16_literal(
+    "76a91442b9b7745ec8b14788f0ca7ac28150782351d44788ac");
+  bc::chain::script previous_output_script1(
+    bc::to_chunk(previous_output_script1_literal),false);
+
+  //Signing of tx (input0, output0).
+  bc::endorsement my_signature0;
+  bc::chain::script::create_endorsement(my_signature0, my_secret0,
+    previous_output_script0, tx, 0,
+    bc::machine::sighash_algorithm::none);
+    // index 0, sighash single
+
+  //Signing of tx (input1, output1).
+  bc::endorsement my_signature1;
+  bc::chain::script::create_endorsement(my_signature1, my_secret1,
+    previous_output_script1, tx, 1,
+    bc::machine::sighash_algorithm::none);
+    // index 1, sighash single
+
+  // Create endorsements.
+  bc::machine::operation::list my_input_script_operations0;
+  my_input_script_operations0.push_back(bc::machine::operation(my_signature0));
+  my_input_script_operations0.push_back(bc::machine::operation(
+    bc::to_chunk(my_private0.to_public().point())));
+  bc::chain::script my_input_script0(my_input_script_operations0);
+
+  bc::machine::operation::list my_input_script_operations1;
+  my_input_script_operations1.push_back(bc::machine::operation(my_signature1));
+  my_input_script_operations1.push_back(bc::machine::operation(
+    bc::to_chunk(my_private1.to_public().point())));
+  bc::chain::script my_input_script1(my_input_script_operations1);
+
+  tx.inputs()[0].set_script(my_input_script0);
+  tx.inputs()[1].set_script(my_input_script1);
+
+  // Modify outputs and finalise transaction.
+  // ---------------------------------------------------------------------------
+
+  uint64_t my_output_amount0(previous_amount0-800); //fee
+  bc::wallet::payment_address receiving_address0(
+    "mg9cHv7hWMQtzL11nhVr2cyAfDHJB2xnFW");
+  bc::machine::operation::list my_output_script0 =
+    bc::chain::script::to_pay_key_hash_pattern(receiving_address0.hash());
+  bc::chain::output my_output0(my_output_amount0, my_output_script0);
+  tx.outputs().push_back(my_output0);
+
+  uint64_t my_output_amount1(previous_amount1-800); //fee
+  bc::wallet::payment_address receiving_address1(
+    "mg9cHv7hWMQtzL11nhVr2cyAfDHJB2xnFW");
+  bc::machine::operation::list my_output_script1 =
+    bc::chain::script::to_pay_key_hash_pattern(receiving_address1.hash());
+  bc::chain::output my_output1(my_output_amount1, my_output_script1);
+  tx.outputs().push_back(my_output1);
+
+  // Print out serialised tx.
+  std::cout << bc::encode_base16(tx.to_data()) << std::endl;
+
+  // Verify TX with block explorer.
+  // ---------------------------------------------------------------------------
+
+  // $ ./sighash_single
+  // $ bx validate-tx [serialised tx]
+  // The transaction is valid.
+
+}</code></pre>
+							<pre style = "font-size: 16px; margin: 20px 5px 5px 5px; padding: 0px;"
+							><code class = "shell"
+										 style = "font-family: Roboto Mono; margin: 0px; padding: 10px; max-height:120px; width: 97%"
+>$ g++ -std=c++11 sighash_none.cpp -o sighash_none  $(pkg-config --cflags libbitcoin --libs libbitcoin)
+$ ./sighash_none
+</code></pre>
+						</div><!-- End of 70% container -->
+					</div><!-- End of multi box container -->
+
+				</section>
+				<!-- *********** END: Sighash NONE *********** -->
+
+				<!-- *********** BEGIN: Sighash SINGLE *********** -->
+				<section class = "box">
+
+					<!-- No Title Bar ... -->
+
+					<div class = "multi_code_box_container" style = "padding: 0;">
+
+						<div class = "text_box code_text_box" style = "width: 28%;">
+							<div class ="text_box_title" >
+									Example:<br><span class = "weight">Signing with sighash SINGLE<br>in Libbitcoin</span>
+							</div>
+								<div style = "padding:5px;">
+									<ul style = "margin: 0px; padding: 0px; list-style-type: none; font-size: 18px;">
+										<li>One transaction input is signed with sighash SINGLE, which commits to an output of the same index.</li>
+										<hr style = "height:2px; visibility:hidden;">
+										<li>Since other outputs may be modified, they may not be known during signing with SINGLE.
+										In this case, we can add empty outputs, to ensure we maintain the correct index that SINGLE is committing to.</li>
+										<hr style = "height:2px; visibility:hidden;">
+										<li>Note: We use Libbitcoin BX to validate the transaction.
+											<ul>
+												<li><span class= "inline_code">bx validate-tx [serialised tx]</span></li>
+											</ul>
+										</li>
+									</ul>
+									<br>
+						  </div>
+						</div>
+
+						<!-- <div id="" style="overflow:scroll; height:400px;"> -->
+						<!-- overflow-y: scroll; -->
+						<!-- <div style = "overflow-y: scroll; height: 500px; width: 70%; text-align: left;"> -->
+						<div style = "width:70%">
+							<pre style = "font-size: 18px; margin: 5px; padding: 0px;"
+							><code class = "c++"
+										 style = "font-family: Roboto Mono; margin: 0px; padding: 10px; max-height:660px ; width:97%"
+
+>#include &lt;bitcoin/bitcoin.hpp&gt
+#include &lt;iostream&gt
+
+int main() {
+
+  // Setup UXTOs for transaction inputs.
+  // ---------------------------------------------------------------------------
+
+  // Send funds to addresses spendable by secret 0 and secret 1.
+  // Testnet Addresses:
+  // $ bx ec-to-public [secret] | bx sha256 | bx ripemd160 | bx address-encode
+
+  auto my_secret0 = bc::base16_literal(
+    "f3c8f9a6198cca98f481edde13bcc031b1470a81e367b838fe9e0a9db0f5993d");
+  auto my_secret1 = bc::base16_literal(
+    "86faa240ae2b0f28b125a42961bd3adf9d5f5dc6a1deaa5feda04e7be8c872f6");
+
+  bc::wallet::ec_private my_private0(my_secret0, bc::wallet::ec_private::testnet,
+     true);
+  bc::wallet::ec_private my_private1(my_secret1, bc::wallet::ec_private::testnet,
+     true);
+
+  // Define output 0 point with coins spendable by secret 0.
+  auto previous_tx_literal0 =
+    "d538929fc4ced551f09e86c82dbbb2bc4dea3d35887762521968424f89be2248";
+  bc::hash_digest previous_tx_hash0;
+  bc::decode_hash(previous_tx_hash0,previous_tx_literal0); //bitcoin hash digest.
+  uint32_t previous_index0(0);
+  uint64_t previous_amount0(130000000);
+  bc::chain::output_point previous_output_point0(previous_tx_hash0,
+    previous_index0);
+
+  // Define output 1 point with coins spendable by secret 1.
+  auto previous_tx_literal1 =
+    "de177389081a218728066aae0672f21d0a622b0f9d7420d0e4636660456b2227";
+  bc::hash_digest previous_tx_hash1;
+  bc::decode_hash(previous_tx_hash1,previous_tx_literal1); //bitcoin hash digest.
+  uint32_t previous_index1(0);
+  uint64_t previous_amount1(65000000);
+  bc::chain::output_point previous_output_point1(previous_tx_hash1,
+    previous_index1);
+
+  // Build transaction, output 0 omitted.
+  // ---------------------------------------------------------------------------
+
+  // Version.
+  bc::chain::transaction tx;
+  tx.set_version(1);
+
+  // Build transaction for signing.
+
+  bc::chain::input my_input0;
+  my_input0.set_previous_output(previous_output_point0);
+  my_input0.set_sequence(0xffffffff);
+  tx.inputs().push_back(my_input0);
+
+  bc::chain::input my_input1;
+  my_input1.set_previous_output(previous_output_point1);
+  my_input1.set_sequence(0xffffffff);
+  tx.inputs().push_back(my_input1);
+
+  // placeholder output, modified after signing
+  bc::chain::output empty_output;
+  tx.outputs().push_back(empty_output);
+
+  uint64_t my_output_amount1(previous_amount1-800); //fee
+  bc::wallet::payment_address receiving_address1(
+    "mg9cHv7hWMQtzL11nhVr2cyAfDHJB2xnFW");
+  bc::machine::operation::list my_output_script1 =
+    bc::chain::script::to_pay_key_hash_pattern(receiving_address1.hash());
+  bc::chain::output my_output1(my_output_amount1, my_output_script1);
+  tx.outputs().push_back(my_output1);
+
+  // Signing of inputs (sighash none & single).
+  // ---------------------------------------------------------------------------
+
+  auto previous_output_script0_literal = bc::base16_literal(
+    "76a9141d71dc526556c6ae19fc10b2622fe7e4396b912a88ac");
+  bc::chain::script previous_output_script0(
+    bc::to_chunk(previous_output_script0_literal),false);
+
+  auto previous_output_script1_literal = bc::base16_literal(
+    "76a91442b9b7745ec8b14788f0ca7ac28150782351d44788ac");
+  bc::chain::script previous_output_script1(
+    bc::to_chunk(previous_output_script1_literal),false);
+
+  //Signing of tx (input0, output0).
+  bc::endorsement my_signature0;
+  bc::chain::script::create_endorsement(my_signature0, my_secret0,
+    previous_output_script0, tx, 0,
+    bc::machine::sighash_algorithm::none);
+    // index 0, sighash none
+
+  //Signing of tx (input1, output1).
+  bc::endorsement my_signature1;
+  bc::chain::script::create_endorsement(my_signature1, my_secret1,
+    previous_output_script1, tx, 1,
+    bc::machine::sighash_algorithm::single);
+    // index 1, sighash single
+
+  std::cout << bc::encode_base16(bc::to_chunk(tx.to_data(true, false))) << std::endl;
+
+
+  // Create endorsements.
+  bc::machine::operation::list my_input_script_operations0;
+  my_input_script_operations0.push_back(bc::machine::operation(my_signature0));
+  my_input_script_operations0.push_back(bc::machine::operation(
+    bc::to_chunk(my_private0.to_public().point())));
+  bc::chain::script my_input_script0(my_input_script_operations0);
+
+  bc::machine::operation::list my_input_script_operations1;
+  my_input_script_operations1.push_back(bc::machine::operation(my_signature1));
+  my_input_script_operations1.push_back(bc::machine::operation(
+    bc::to_chunk(my_private1.to_public().point())));
+  bc::chain::script my_input_script1(my_input_script_operations1);
+
+  tx.inputs()[0].set_script(my_input_script0);
+  tx.inputs()[1].set_script(my_input_script1);
+
+  // Add output 0 and finalise transaction.
+  // ---------------------------------------------------------------------------
+
+  tx.outputs().clear();
+
+  uint64_t my_output_amount0(previous_amount0-800); //fee
+  bc::wallet::payment_address receiving_address0(
+    "mg9cHv7hWMQtzL11nhVr2cyAfDHJB2xnFW");
+  bc::machine::operation::list my_output_script0 =
+    bc::chain::script::to_pay_key_hash_pattern(receiving_address0.hash());
+  bc::chain::output my_output0(my_output_amount0, my_output_script0);
+
+  tx.outputs().push_back(my_output0);
+  tx.outputs().push_back(my_output1);
+
+  // Print out serialised tx.
+  std::cout << bc::encode_base16(tx.to_data()) << std::endl;
+
+  // Verify TX with block explorer.
+  // ---------------------------------------------------------------------------
+
+  // $ ./sighash_single
+  // $ bx validate-tx [serialised tx]
+  // The transaction is valid.
+
+}</code></pre>
+							<pre style = "font-size: 16px; margin: 20px 5px 5px 5px; padding: 0px;"
+							><code class = "shell"
+										 style = "font-family: Roboto Mono; margin: 0px; padding: 10px; max-height:120px; width: 97%"
+>$ g++ -std=c++11 sighash_single.cpp -o sighash_single  $(pkg-config --cflags libbitcoin --libs libbitcoin)
+$ ./sighash_single
+</code></pre>
+						</div><!-- End of 70% container -->
+					</div><!-- End of multi box container -->
+
+				</section>
+				<!-- *********** END: Sighash SINGLE *********** -->
+
+				<!-- *********** BEGIN: Sighash SINGLE|ANYONECAYPAY *********** -->
+				<section class = "box">
+
+					<!-- No Title Bar ... -->
+
+					<div class = "multi_code_box_container" style = "padding: 0;">
+
+						<div class = "text_box code_text_box" style = "width: 28%;">
+							<div class ="text_box_title" >
+									Example:<br><span class = "weight">Signing with sighash SINGLE|ANYONECANPAY<br>in Libbitcoin</span>
+							</div>
+								<div style = "padding:5px;">
+									<ul style = "margin: 0px; padding: 0px; list-style-type: none; font-size: 18px;">
+										<li>In this transaction, each input endorsement only commits to an input and output of the same index.</li>
+										<hr style = "height:2px; visibility:hidden;">
+										<li>We build two separate tranaction objects for creating each endorsement, setting empty input and output objects to maintain the final input/output index each endorsement is committing to.</li>
+										<hr style = "height:2px; visibility:hidden;">
+										<li>Note: We use Libbitcoin BX to validate the transaction.
+											<ul>
+												<li><span class= "inline_code">bx validate-tx [serialised tx]</span></li>
+											</ul>
+										</li>
+									</ul>
+									<br>
+						  </div>
+						</div>
+
+						<!-- <div id="" style="overflow:scroll; height:400px;"> -->
+						<!-- overflow-y: scroll; -->
+						<!-- <div style = "overflow-y: scroll; height: 500px; width: 70%; text-align: left;"> -->
+						<div style = "width:70%">
+							<pre style = "font-size: 18px; margin: 5px; padding: 0px;"
+							><code class = "c++"
+										 style = "font-family: Roboto Mono; margin: 0px; padding: 10px; max-height:660px ; width:97%"
+
+>#include &lt;bitcoin/bitcoin.hpp&gt
+#include &lt;iostream&gt
+
+int main() {
+
+  // Setup UXTOs for transaction inputs.
+  // ---------------------------------------------------------------------------
+
+  // Send funds to addresses spendable by secret 0 and secret 1.
+  // Testnet Addresses:
+  // $ bx ec-to-public [secret] | bx sha256 | bx ripemd160 | bx address-encode
+
+  auto my_secret0 = bc::base16_literal(
+    "f3c8f9a6198cca98f481edde13bcc031b1470a81e367b838fe9e0a9db0f5993d");
+  auto my_secret1 = bc::base16_literal(
+    "86faa240ae2b0f28b125a42961bd3adf9d5f5dc6a1deaa5feda04e7be8c872f6");
+
+  bc::wallet::ec_private my_private0(my_secret0, bc::wallet::ec_private::testnet,
+     true);
+  bc::wallet::ec_private my_private1(my_secret1, bc::wallet::ec_private::testnet,
+     true);
+
+  // Define output 0 point with coins spendable by secret 0.
+  auto previous_tx_literal0 =
+    "d538929fc4ced551f09e86c82dbbb2bc4dea3d35887762521968424f89be2248";
+  bc::hash_digest previous_tx_hash0;
+  bc::decode_hash(previous_tx_hash0,previous_tx_literal0); //bitcoin hash digest.
+  uint32_t previous_index0(0);
+  uint64_t previous_amount0(130000000);
+  bc::chain::output_point previous_output_point0(previous_tx_hash0,
+    previous_index0);
+
+  // Define output 1 point with coins spendable by secret 1.
+  auto previous_tx_literal1 =
+    "de177389081a218728066aae0672f21d0a622b0f9d7420d0e4636660456b2227";
+  bc::hash_digest previous_tx_hash1;
+  bc::decode_hash(previous_tx_hash1,previous_tx_literal1); //bitcoin hash digest.
+  uint32_t previous_index1(0);
+  uint64_t previous_amount1(65000000);
+  bc::chain::output_point previous_output_point1(previous_tx_hash1,
+    previous_index1);
+
+  // Build transaciton 0 (input0/output0) and transaction 1 (input1/output1).
+  // ---------------------------------------------------------------------------
+
+  // Version.
+  bc::chain::transaction tx0;
+  bc::chain::transaction tx1;
+  tx0.set_version(1);
+  tx1.set_version(1);
+
+  // Build & Add inputs to transaction.
+  bc::chain::input empty_input; // placeholder input, modified after signing
+  bc::chain::output empty_output; // placeholder input, modified after signing
+
+  bc::chain::input my_input0;
+  my_input0.set_previous_output(previous_output_point0);
+  my_input0.set_sequence(0xffffffff);
+  tx0.inputs().push_back(my_input0);
+  tx0.inputs().push_back(empty_input);
+
+  bc::chain::input my_input1;
+  my_input1.set_previous_output(previous_output_point1);
+  my_input1.set_sequence(0xffffffff);
+  tx1.inputs().push_back(empty_input);
+  tx1.inputs().push_back(my_input1);
+
+  // Build & Add outputs to transaction.
+  uint64_t my_output_amount0(previous_amount0-800); //fee
+  bc::wallet::payment_address receiving_address0(
+    "mg9cHv7hWMQtzL11nhVr2cyAfDHJB2xnFW");
+  bc::machine::operation::list my_output_script0 =
+    bc::chain::script::to_pay_key_hash_pattern(receiving_address0.hash());
+  bc::chain::output my_output0(my_output_amount0, my_output_script0);
+  tx0.outputs().push_back(my_output0);
+  tx0.outputs().push_back(empty_output);
+
+  uint64_t my_output_amount1(previous_amount1-800); //fee
+  bc::wallet::payment_address receiving_address1(
+    "mg9cHv7hWMQtzL11nhVr2cyAfDHJB2xnFW");
+  bc::machine::operation::list my_output_script1 =
+    bc::chain::script::to_pay_key_hash_pattern(receiving_address1.hash());
+  bc::chain::output my_output1(my_output_amount1, my_output_script1);
+  tx1.outputs().push_back(empty_output);
+  tx1.outputs().push_back(my_output1);
+
+  // Separate signing of input0/output0 and input1/output1.
+  // ---------------------------------------------------------------------------
+
+  auto previous_output_script0_literal = bc::base16_literal(
+    "76a9141d71dc526556c6ae19fc10b2622fe7e4396b912a88ac");
+  bc::chain::script previous_output_script0(
+    bc::to_chunk(previous_output_script0_literal),false);
+
+  auto previous_output_script1_literal = bc::base16_literal(
+    "76a91442b9b7745ec8b14788f0ca7ac28150782351d44788ac");
+  bc::chain::script previous_output_script1(
+    bc::to_chunk(previous_output_script1_literal),false);
+
+  //Signing of tx0 (input0, output0).
+  bc::endorsement my_signature0;
+  bc::chain::script::create_endorsement(my_signature0, my_secret0,
+    previous_output_script0, tx0, 0,
+    bc::machine::sighash_algorithm::single_anyone_can_pay);
+    // index 0, sighash single
+
+  //Signing of tx1 (input1, output1).
+  bc::endorsement my_signature1;
+  bc::chain::script::create_endorsement(my_signature1, my_secret1,
+    previous_output_script1, tx1, 1,
+    bc::machine::sighash_algorithm::single_anyone_can_pay);
+    // index 1, sighash single
+
+  // Create endorsements.
+  bc::machine::operation::list my_input_script_operations0;
+  my_input_script_operations0.push_back(bc::machine::operation(my_signature0));
+  my_input_script_operations0.push_back(bc::machine::operation(
+    bc::to_chunk(my_private0.to_public().point())));
+  bc::chain::script my_input_script0(my_input_script_operations0);
+
+  bc::machine::operation::list my_input_script_operations1;
+  my_input_script_operations1.push_back(bc::machine::operation(my_signature1));
+  my_input_script_operations1.push_back(bc::machine::operation(
+    bc::to_chunk(my_private1.to_public().point())));
+  bc::chain::script my_input_script1(my_input_script_operations1);
+
+  // Create final transaction with all inputs and outputs.
+  // ---------------------------------------------------------------------------
+
+  bc::chain::transaction tx_final(tx0);
+  tx_final.inputs().clear();
+  tx_final.outputs().clear();
+  tx_final.inputs().push_back(my_input0);
+  tx_final.inputs().push_back(my_input1);
+  tx_final.outputs().push_back(my_output0);
+  tx_final.outputs().push_back(my_output1);
+  tx_final.inputs()[0].set_script(my_input_script0);
+  tx_final.inputs()[1].set_script(my_input_script1);
+
+  // Print out serialised tx.
+  std::cout << bc::encode_base16(tx_final.to_data()) << std::endl;
+
+  // Verify TX with block explorer.
+  // ---------------------------------------------------------------------------
+
+  // $ ./sighash_single_anyonecanpay
+  // $ bx validate-tx [serialised tx]
+  // The transaction is valid.
+
+}</code></pre>
+							<pre style = "font-size: 16px; margin: 20px 5px 5px 5px; padding: 0px;"
+							><code class = "shell"
+										 style = "font-family: Roboto Mono; margin: 0px; padding: 10px; max-height:120px; width: 97%"
+>$ g++ -std=c++11 sighash_single_anyonecanpay.cpp -o sighash_single_anyonecanpay  $(pkg-config --cflags libbitcoin --libs libbitcoin)
+$ ./sighash_single_anyonecanpay
+</code></pre>
+						</div><!-- End of 70% container -->
+					</div><!-- End of multi box container -->
+
+				</section>
+				<!-- *********** END: Sighash SINGLE *********** -->
+
+
+      </div><!-- END: Slides Div -->
+		</div><!-- END: Reveal Div -->
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/math/math.js', async: true }
+				],
+
+				math: {
+					mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+					config: 'TeX-AMS_HTML-full'  // See http://docs.mathjax.org/en/latest/config-files.html
+				},
+
+				// previewLinks: true,
+
+				// Push each slide change to the browser history
+				history: true,
+
+				// Enable keyboard shortcuts for navigation
+				keyboard: true,
+
+				// Enables touch navigation on devices with touch input
+				overview: false,
+				touch: false,
+
+				// The "normal" size of the presentation, aspect ratio will be preserved
+				// when the presentation is scaled to fit different resolutions. Can be
+				// specified using percentage units.
+				width: 1366,
+			  height: 768,
+				// Factor of the display size that should remain empty around the content
+				margin: 0.05,
+
+				// Bounds for smallest/largest possible scale to apply to content
+				minScale: 0.2,
+				maxScale: 1.5
+			});
+			Reveal.configure({ slideNumber: true });
+		</script>
+	</body>
+</html>

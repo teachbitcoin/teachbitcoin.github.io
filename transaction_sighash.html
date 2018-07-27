@@ -1,0 +1,231 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Signature Hash Types</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/simple.css">
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/xcode.css">
+		<!-- Theme override for teachbitcoin -->
+		<link rel="stylesheet" href="css/teachbitcoin.css">
+		<!-- Google Font Roboto -->
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+
+
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+			<!-- *********** BEGIN: Signature Hash ALL *********** -->
+			<section class = "box">
+				<div class = "title">
+					Signature Hash <span class = "title weight">ALL</span>
+				</div>
+
+			<!-- 45% div for formula and curve--><!-- 45% text & bulletpoint -->
+				<div class = "multi_text_box_container" style = "padding: 40px 0 0 0; width: 1270px;">
+					<!-- 60% div for formula and curve-->
+					<div class = "" style = "width: 58%; font-size: 22px;">
+						<img src="images/transaction_sighash/sighash_all0.svg" class = "image" style = "z-index: -3;">
+						<img src="images/transaction_sighash/sighash_all1.svg" class = "fragment image" style = "z-index: -3;">
+
+					</div>
+					<!-- 45% text & bulletpoint -->
+						<div class = "text_box"
+							 style = "width: 55%; font-size: 22px; margin: 0px 0 0 0">
+						<ul style = "margin: 0; padding: 0px; list-style-type: none;">
+
+							<li>The signature hash marker determines which inputs and outputs of the transaction are endorsed.</li>
+							<hr style = "height:2px; visibility:hidden;">
+							<li>The inputs & outputs of the transaction which are not endorsed can be modified after the endorsement is built.</li>
+
+							<hr style = "height:2px; visibility:hidden;">
+							<li style = "font-weight: bold;">Sighash ALL (0x01)</li>
+							<ul style = "list-style-type: circle;">
+                <li>Endorses/Signs all inputs and outputs of transaction</li>
+								<li>Endorsement becomes invalid if these are modifed.</li>
+								<li>The serialised transaction sets other input scripts and sequences to 0.</li>
+							</ul>
+							<hr style = "height:2px; visibility:hidden;">
+
+						</ul>
+					</div>
+
+				</div><!-- End of 2 column container -->
+
+			</section>
+			<!-- *********** END: Signature Hash ALL *********** -->
+
+			<!-- *********** BEGIN: Signature Hash NONE *********** -->
+			<section class = "box">
+				<div class = "title">
+					Signature Hash <span class = "title weight">NONE</span>
+				</div>
+
+			<!-- 45% div for formula and curve--><!-- 45% text & bulletpoint -->
+				<div class = "multi_text_box_container" style = "padding: 40px 0 0 0; width: 1270px;">
+					<!-- 60% div for formula and curve-->
+					<div class = "" style = "width: 58%; font-size: 22px;">
+						<img src="images/transaction_sighash/sighash_none0.svg" class = "image" style = "z-index: -3;">
+						<img src="images/transaction_sighash/sighash_none1.svg" class = "fragment image" style = "z-index: -3;">
+
+					</div>
+					<!-- 45% text & bulletpoint -->
+						<div class = "text_box"
+							 style = "width: 55%; font-size: 22px; margin: 0px 0 0 0">
+						<ul style = "margin: 0; padding: 0px; list-style-type: none;">
+
+							<li style = "font-weight: bold;">Sighash NONE (0x02)</li>
+							<ul style = "list-style-type: circle;">
+                <li>Endorses none of the outputs.</li>
+								<li>Outputs can be modified anytime after the endorsement is built.</li>
+								<li>The serialised transaction sets other input scripts and sequences to 0.</li>
+								<li>The serialised transaction sets outputs to 0.</li>
+							</ul>
+							<hr style = "height:2px; visibility:hidden;">
+
+						</ul>
+					</div>
+
+				</div><!-- End of 2 column container -->
+
+			</section>
+			<!-- *********** END: Signature Hash NONE *********** -->
+
+			<!-- *********** BEGIN: Signature Hash SINGLE *********** -->
+			<section class = "box">
+				<div class = "title">
+					Signature Hash <span class = "title weight">SINGLE</span>
+				</div>
+
+			<!-- 45% div for formula and curve--><!-- 45% text & bulletpoint -->
+				<div class = "multi_text_box_container" style = "padding: 40px 0 0 0; width: 1270px;">
+					<!-- 60% div for formula and curve-->
+					<div class = "" style = "width: 58%; font-size: 22px;">
+						<img src="images/transaction_sighash/sighash_single0.svg" class = "image" style = "z-index: -3;">
+						<img src="images/transaction_sighash/sighash_single1.svg" class = "fragment image" style = "z-index: -3;">
+
+					</div>
+					<!-- 45% text & bulletpoint -->
+						<div class = "text_box"
+							 style = "width: 55%; font-size: 22px; margin: 0px 0 0 0">
+						<ul style = "margin: 0; padding: 0px; list-style-type: none;">
+
+							<li style = "font-weight: bold;">Sighash SINGLE (0x03)</li>
+							<ul style = "list-style-type: circle;">
+                <li>Endorses all inputs and single output of the same index.</li>
+								<li>Non-endorsed outputs can be modified anytime after the endorsement is built.</li>
+								<li>The serialised transaction sets other input scripts and sequences to 0.</li>
+								<li>The serialised transaction sets non-endorsed output fields to 0.</li>
+							</ul>
+							<hr style = "height:2px; visibility:hidden;">
+
+						</ul>
+					</div>
+
+				</div><!-- End of 2 column container -->
+
+			</section>
+			<!-- *********** END: Signature Hash SINGLE *********** -->
+
+			<!-- *********** BEGIN: Signature Hash ALL|ANYONECANPAY *********** -->
+			<section class = "box">
+				<div class = "title">
+					Signature Hash <span class = "title weight">ANYONECANPAY</span>
+				</div>
+
+			<!-- 45% div for formula and curve--><!-- 45% text & bulletpoint -->
+				<div class = "multi_text_box_container" style = "padding: 40px 0 0 0; width: 1270px;">
+					<!-- 60% div for formula and curve-->
+					<div class = "" style = "width: 58%; font-size: 22px;">
+						<img src="images/transaction_sighash/sighash_all_anyonecanpay0.svg" class = "image" style = "z-index: -3;">
+						<img src="images/transaction_sighash/sighash_all_anyonecanpay1.svg" class = "fragment image" style = "z-index: -3;">
+
+					</div>
+					<!-- 45% text & bulletpoint -->
+						<div class = "text_box"
+							 style = "width: 55%; font-size: 22px; margin: 0px 0 0 0">
+						<ul style = "margin: 0; padding: 0px; list-style-type: none;">
+
+							<li>ANYONECANPAY is a sighash modifier, which is set to modify any of sighash types ALL|NONE|SINGLE.</li>
+							<hr style = "height:2px; visibility:hidden;">
+							<li>It allows all other inputs to be modified.</li>
+							<hr style = "height:2px; visibility:hidden;">
+							<li>It is applied to the marker: Sighash Byte|0x80</li>
+
+							<hr style = "height:2px; visibility:hidden;">
+							<li>For example:</li>
+							<li style = "font-weight: bold;">Sighash ALL|ANYONECANPAY (0x81)</li>
+							<ul style = "list-style-type: circle;">
+                <li>Endorses/Signs single input and all outputs of transaction</li>
+								<li>The serialised transaction only includes single input, but all outputs.</li>
+							</ul>
+							<hr style = "height:2px; visibility:hidden;">
+
+						</ul>
+					</div>
+
+				</div><!-- End of 2 column container -->
+
+			</section>
+			<!-- *********** END: Signature Hash ALL *********** -->
+
+
+      </div><!-- END: Slides Div -->
+		</div><!-- END: Reveal Div -->
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/math/math.js', async: true }
+				],
+
+				math: {
+					mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+					config: 'TeX-AMS_HTML-full'  // See http://docs.mathjax.org/en/latest/config-files.html
+				},
+
+				previewLinks: true,
+
+				// Push each slide change to the browser history
+				history: true,
+
+				// Enable keyboard shortcuts for navigation
+				keyboard: true,
+
+				// Enables touch navigation on devices with touch input
+				overview: false,
+				touch: false,
+
+				// The "normal" size of the presentation, aspect ratio will be preserved
+				// when the presentation is scaled to fit different resolutions. Can be
+				// specified using percentage units.
+				width: 1366,
+			  height: 768,
+				// Factor of the display size that should remain empty around the content
+				margin: 0.05,
+
+				// Bounds for smallest/largest possible scale to apply to content
+				minScale: 0.2,
+				maxScale: 1.5
+			});
+			Reveal.configure({ slideNumber: true });
+		</script>
+	</body>
+</html>
