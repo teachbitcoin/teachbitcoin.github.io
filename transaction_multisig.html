@@ -1,0 +1,177 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Building a Transaction</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/simple.css">
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/xcode.css">
+		<!-- Theme override for teachbitcoin -->
+		<link rel="stylesheet" href="css/teachbitcoin.css">
+		<!-- Google Font Roboto -->
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+			<!-- *********** BEGIN: Multsig Script Introduction *********** -->
+			<section class = "box">
+				<div class = "title">
+					Bitcoin <span class = "title weight">Multisig Script</span>
+				</div>
+
+			<!-- 45% div for formula and curve--><!-- 45% text & bulletpoint -->
+				<div class = "multi_text_box_container" style = "padding: 40px 0 0 0; width: 1270px;">
+					<!-- 60% div for formula and curve-->
+					<div class = "" style = "width: 58%; font-size: 22px;">
+						<img src="images/transaction_multisig/multisig_script0.svg" class = "image" style = "z-index: -3;">
+						<img src="images/transaction_multisig/multisig_script1.svg" class = "fragment image" style = "z-index: -3;">
+            <img src="images/transaction_multisig/multisig_script2.svg" class = "fragment image" style = "z-index: -3;">
+            <img src="images/transaction_multisig/multisig_script3.svg" class = "fragment image" style = "z-index: -3;">
+            <img src="images/transaction_multisig/multisig_script4.svg" class = "fragment image" style = "z-index: -3;">
+					</div>
+
+          <!-- 45% text & bulletpoint -->
+					<div class = "text_box"
+							 style = "width: 45%; font-size: 24px; margin: 0px 0 0 0">
+						<ul style = "margin: 0; padding: 0px; list-style-type: none;">
+
+							<!-- <hr style = "height:5px; visibility:hidden;"> -->
+
+							<li style = "font-weight: bold;">N-of-M multisig output script</li>
+							<ul style = "list-style-type: circle;">
+								<li>Requires n endorsements from <br> m possible signers.</li>
+							</ul>
+							<hr style = "height:8px; visibility:hidden;">
+
+							<li style = "font-weight: bold;">Multisig requires extra op-code</li>
+							<ul style = "list-style-type: circle;">
+								<li>Multisig consumes one extra op_code.</li>
+                <li>This op_code has no functionality.</li>
+                <li>Requires hardfork to fix this bug.</li>
+							</ul>
+
+              <hr style = "height:8px; visibility:hidden;">
+              <li style = "font-weight: bold;">Multisig usually wrapped in P2SH/P2WSH</li>
+              <ul style = "list-style-type: circle;">
+                <li>See sections on P2SH and witness transactions.</li>
+              </ul>
+						</ul>
+					</div>
+				</div><!-- End of 2 column container -->
+
+			</section>
+			<!-- *********** END: Multsig Script Introduction *********** -->
+
+      <!-- *********** BEGIN: Multsig Script Signing *********** -->
+			<section class = "box">
+				<div class = "title">
+					Example: <span class = "title weight">Multisig Script Signing</span>
+				</div>
+
+			<!-- 45% div for formula and curve--><!-- 45% text & bulletpoint -->
+				<div class = "multi_text_box_container" style = "padding: 40px 0 0 0; width: 1350px;">
+					<!-- 60% div for formula and curve-->
+					<div class = "" style = "width: 58%; font-size: 22px;">
+						<img src="images/transaction_multisig/multisig_signing0.svg" class = "image" style = "z-index: -3;">
+						<img src="images/transaction_multisig/multisig_signing1.svg" class = "fragment image" style = "z-index: -3;">
+            <img src="images/transaction_multisig/multisig_signing2.svg" class = "fragment image" style = "z-index: -3;">
+					</div>
+
+          <!-- 45% text & bulletpoint -->
+					<div class = "text_box"
+							 style = "width: 40%; font-size: 24px; margin: 0px 0 0 0">
+						<ul style = "margin: 0; padding: 0px; list-style-type: none;">
+
+							<!-- <hr style = "height:5px; visibility:hidden;"> -->
+              Two parties spend a 2/3 multisig output <br>to their respective outputs.
+              <hr style = "height:5px; visibility:hidden;">
+
+							<li style = "font-weight: bold;">1) Alice builds & signs transaction.</li>
+              <ul style = "list-style-type: circle;">
+                <li>Transaction only includes her an output spendable by herself.</li>
+              </ul>
+							<hr style = "height:5px; visibility:hidden;">
+
+              <li style = "font-weight: bold;">2) Bob gets endorsement & Alice's pubkey.</li>
+              <ul style = "list-style-type: circle;">
+                <li>Public key allows bob to reconstruct transaction which Alice signed.</li>
+              </ul>
+							<hr style = "height:5px; visibility:hidden;">
+
+              <li style = "font-weight: bold;">3) Bob adds his output and signs.</li>
+							<hr style = "height:5px; visibility:hidden;">
+
+              <li style = "font-weight: bold;">4) Bob adds endorsements to transaction.</li>
+              <ul style = "list-style-type: circle;">
+                <li>Completed transaction spending the multsig output can now be broadcast.</li>
+              </ul>
+							<hr style = "height:5px; visibility:hidden;">
+
+						</ul>
+					</div>
+				</div><!-- End of 2 column container -->
+
+			</section>
+			<!-- *********** END: Multsig Script Signing *********** -->
+
+
+      </div><!-- END: Slides Div -->
+		</div><!-- END: Reveal Div -->
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/math/math.js', async: true }
+				],
+
+				math: {
+					mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+					config: 'TeX-AMS_HTML-full'  // See http://docs.mathjax.org/en/latest/config-files.html
+				},
+
+				previewLinks: true,
+
+				// Push each slide change to the browser history
+				history: true,
+
+				// Enable keyboard shortcuts for navigation
+				keyboard: true,
+
+				// Enables touch navigation on devices with touch input
+				overview: false,
+				touch: false,
+
+				// The "normal" size of the presentation, aspect ratio will be preserved
+				// when the presentation is scaled to fit different resolutions. Can be
+				// specified using percentage units.
+				width: 1366,
+			  height: 768,
+				// Factor of the display size that should remain empty around the content
+				margin: 0.05,
+
+				// Bounds for smallest/largest possible scale to apply to content
+				minScale: 0.2,
+				maxScale: 1.5
+			});
+			Reveal.configure({ slideNumber: true });
+		</script>
+	</body>
+</html>

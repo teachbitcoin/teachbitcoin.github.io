@@ -211,7 +211,8 @@ a:focus {
   font-family: 'Roboto Mono', monospace;
   background-color: rgba(0,0,0,.1);
   opacity: 0.8;
-  font-size:90%;
+  font-size:95%;
+  border-radius: 2px;
 }
 
 /* Override style of revealjs */
