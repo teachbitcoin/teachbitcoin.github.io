@@ -4,57 +4,108 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>北京比特幣聚會 Beijing Meetup July 2018</title>
+		<title>Teach Bitcoin Overview</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/simple.css">
-		<!-- Theme used for syntax highlighting of code -->
-		<link rel="stylesheet" href="lib/css/xcode.css">
 		<!-- Theme override for teachbitcoin -->
 		<link rel="stylesheet" href="css/teachbitcoin.css">
-		<!-- Google Font Roboto -->
-		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600" rel="stylesheet">
-		<link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
-
+		<!-- Google Fonts -->
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300,400,400,600i,700" rel="stylesheet">
 
 	</head>
 	<body>
 		<div class="reveal">
 			<div class="slides">
 
-			<!-- *********** BEGIN: Title Slide *********** -->
-			<section class = "box">
-						<img src="images/beijing_meetup_july2018/libbitcoin_title_graphic.jpg" class = "image" style = "z-index: -3;">
-						<div class = "multi_text_box_container" style = "padding: 330px 0 0 0;">
-							<ul style = "margin: 0px; padding: 0px; list-style-type: none;">
-								<li style = "font-weight:600; font-size:55px">Libbitcoin,<br>Bitcoin's Swiss Army Knife</li>
-								<li style = "font-weight:300; font-size:43px">(Two app ideas built with Libbitcoin)</li>
-								<hr style = "visibility:hidden;">
-								<hr style = "visibility:hidden;">
-								<li style = "font-weight:300; font-size:33px">28/07/18 Beijing Bitcoin Meetup</li>
-							</ul>
+				<section class ="box">
+					<img src="images/lightning_hackday_3/lightning_basics_coverpage.svg" class = "image" style = "z-index: -1;">
+					<!-- <div style = "margin-left:50px">
+						<div style = "width: 100%; overflow: hidden; font-size:70px; font-weight:700;
+													margin-top:410px;">
+							<span style = "float:left;">TeachBitcoin</span>
+							<span style = "float:left; font-weight:300;">.github.io</span>
 						</div>
-			</section>
-			<!-- *********** END: Title Slide *********** -->
 
-			<!-- *********** BEGIN: Title Slide *********** -->
-			<section class = "box">
-						<img src="images/beijing_meetup_july2018/libbitcoin_title_graphic.jpg" class = "image" style = "z-index: -3;">
-						<div class = "multi_text_box_container" style = "padding: 300px 0 0 0;">
-							<ul style = "margin: 0px; padding: 0px; list-style-type: none;">
-								<li style = "font-weight:600; font-size:35px">James Chiang</li>
-								<li style = "font-weight:600; font-size:35px">Blockchain Tech Consultant</li>
-								<li style = "font-weight:300; font-size:35px">james.chiang@protonmail.com</li>
-							</ul>
+						<div style = "width:100%; overflow: hidden;font-size: 47px; font-weight:300;
+													margin-top: 15px">
+							<span style ="float:left;">Spread the Knowledge of Bitcoin</span>
+							<br>
+							<span style ="float:left;">with the Versatility of Libbitcoin</span>
 						</div>
-			</section>
-			<!-- *********** END: Title Slide *********** -->
 
-	
+						<div style = "width: 100%; overflow: hidden;font-size:30px;font-weight:600;
+													font-style:italic; margin-top: 40px">
+							<a href="index.html#/1" class = "index" style="float:left;"
+								>See Next Page for the Curriculum Overview</a>
+						</div>
+					</div> -->
+				</section>
+
+
+				<section class ="box">
+					<img src="images/lightning_hackday_3/lightning_basics_indexpage.svg" class = "image" style = "z-index: -1;">
+
+					<div class = "title">
+						<span class = "title weight">Session Overview</span>
+					</div>
+
+					<div class = "multi_text_box_container" style = "padding: 20px 0 0 0; font-size:25px">
+						<ul style = "width: 100%; list-style-type: none;">
+							<!-- Beginning of content list -->
+
+							<li><span class ="weight" style="font-size:100%">Anatomy of a Bitcoin Transaction</span>
+							</li>
+							<ul>
+								<li type="circle"><a href="transaction_build.html#/" target="_blank" class ="index">Construction</a>
+								</li>
+								<li type="circle"><a href="transaction_build.html#/1" target="_blank" class ="index">Scripts</a>
+								<li type="circle"><a href="transaction_build.html#/5" target="_blank" class ="index">Endorsements</a>
+								</li>
+								<li type="circle"><a href="transaction_sighash.html" target="_blank" class ="index">Sighash</a>
+								</li>
+							</ul>
+
+							<hr style = "height:1px; visibility:hidden;">
+
+							<li><span class ="weight">Multi Signature Transactions</span>
+							</li>
+							<ul>
+								<li type="circle"><a href="transaction_multisig.html" target="_blank" class ="index">Construction & Signing</a>
+								</li>
+							</ul>
+							<hr style = "height:1px; visibility:hidden;">
+
+							<li><span class ="weight">Transaction Timelocks</span>
+							</li>
+							<ul>
+								<li type="circle"><a href="transaction_timelocks.html" target="_blank" class ="index">Absolute Timelocks</a> (w/ BX demo)
+								</li>
+								<li type="circle"><a href="relative_timelocks.html#/3" target="_blank" class ="index">Relative Timelocks</a> (w/ BX demo)
+								</li>
+							</ul>
+							<hr style = "height:1px; visibility:hidden;">
+
+							<li><span class ="weight">Lightning payment channels</span>
+							</li>
+							<ul>
+								<li type="circle"><a href="payment_channels.html" target="_blank" class ="index">Simple channel</a> (with BX demo)
+								</li>
+								<li type="circle"><a href="payment_channels.html#/4" target="_blank" class ="index">Payment routing</a>
+								</li>
+							</ul>
+							<hr style = "height:1px; visibility:hidden;">
 
 
 
-      </div><!-- END: Slides Div -->
+						</ul> <!-- End of content list -->
+					</div>
+
+				</section>
+
+
+
+      </div><!-- END: Lecture Materials Div -->
 		</div><!-- END: Reveal Div -->
 
 		<script src="lib/js/head.min.js"></script>
@@ -69,16 +120,16 @@
 					{ src: 'plugin/markdown/marked.js' },
 					{ src: 'plugin/markdown/markdown.js' },
 					{ src: 'plugin/notes/notes.js', async: true },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: 'plugin/math/math.js', async: true }
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+					// { src: 'plugin/math/math.js', async: true }
 				],
 
-				math: {
-					mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
-					config: 'TeX-AMS_HTML-full'  // See http://docs.mathjax.org/en/latest/config-files.html
-				},
+				// math: {
+				// 	mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+				// 	config: 'TeX-AMS_HTML-full'  // See http://docs.mathjax.org/en/latest/config-files.html
+				// },
 
-				previewLinks: true,
+				previewLinks: false,
 
 				// Push each slide change to the browser history
 				history: true,
@@ -102,7 +153,7 @@
 				minScale: 0.2,
 				maxScale: 1.5
 			});
-			Reveal.configure({ slideNumber: true });
+			Reveal.configure({ slideNumber: false });
 		</script>
 	</body>
 </html>
