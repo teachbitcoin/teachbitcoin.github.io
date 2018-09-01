@@ -83,7 +83,6 @@
 							<img src="images/beijing_meetup_july2018/naive_channel4.svg" class = "fragment image" style = "z-index: -3;">
 							<img src="images/beijing_meetup_july2018/naive_channel5.svg" class = "fragment image" style = "z-index: -3;">
 							<img src="images/beijing_meetup_july2018/naive_channel6.svg" class = "fragment image" style = "z-index: -3;">
-
 					</div>
 						<!-- 45% text & bulletpoint -->
 						<div class = "text_box"
@@ -253,13 +252,13 @@
 								<li style = "font-weight: bold;">1) Alice wants to send a payment to Dave.</li>
 								<ul style = "list-style-type: circle;">
 									<li>Dave creates a unique <span class="inline_code">payment_preimage</span>.</li>
-									<li>Dave sends <span class="inline_code">RIPEMD160(payment_preimage)</span><br>to Alice.</li>
+									<li>Dave sends <span class="inline_code">HASH160(payment_preimage)</span><br>to Alice.</li>
 								</ul>
 								<hr style = "height:8px; visibility:hidden;">
 
 								<li style = "font-weight: bold;">2) Alice constructs a route to Dave.</li>
 								<ul style = "list-style-type: circle;">
-									<li>Onion routes <span class="inline_code">RIPEMD160(payment_preimage)</span> along route.</li>
+									<li>Onion routes <span class="inline_code">HASH160(payment_preimage)</span> along route.</li>
 								</ul>
 								<hr style = "height:8px; visibility:hidden;">
 
