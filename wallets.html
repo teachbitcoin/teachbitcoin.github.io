@@ -237,7 +237,10 @@
         </div>
 
         <!-- Derivation Graphic -->
-        <img src="images/wallets/hd_mnemonics.svg" class = "image" style = "z-index: -1;">
+        <img src="images/wallets/mnemonics0.svg" class = "image" style = "z-index: -1;">
+				<img src="images/wallets/mnemonics1.svg" class = "fragment image" style = "z-index: -1;">
+				<img src="images/wallets/mnemonics2.svg" class = "fragment image" style = "z-index: -1;">
+				<img src="images/wallets/mnemonics3.svg" class = "fragment image" style = "z-index: -1;">
 
         <!-- 2 column container -->
         <!-- 45% div for formula and curve--><!-- 45% text & bulletpoint -->
@@ -255,24 +258,24 @@
               <li>Mnemonics are a user-friendly way to encode a secret root seed for a wallet.</li>
               <hr style = "height:5px; visibility:hidden;">
 
-              <li style = "font-weight: bold;"><span class = "circled_number">&#10122</span> SHA256 Checksum</li>
-              <li>Secret (128, 132, 134, ... or 256 bits)</li>
-              <li>Checksum: First 4 bytes of 32 byte digest</li>
-              <hr style = "height: 5px; visibility: hidden;">
+              <li style = "font-weight: bold;">Generate SHA256 checksum</li>
+							<ul>
+							  <li>Secret lengths: 128, 160, 192, 224, 256 bits</li>
+	              <li>Checksum lengths: 4, 5, 6, 7, 8 bits</li>
+								<li>Checksum length = secret length / 32
+							</ul>
+	            <hr style = "height: 5px; visibility: hidden;">
 
-              <li style = "font-weight: bold;"><span class = "circled_number">&#10123</span> Concatenate & split into 11-bit chunks</li>
+              <li style = "font-weight: bold;">Split into 11-bit chunks</li>
               <li></li>
               <li>Sequence of 11-bit chunks needs to be maintained.</li>
               <hr style = "height: 5px; visibility: hidden;">
 
-              <li style = "font-weight: bold;"><span class = "circled_number">&#10124</span> 11-bit to word mapping</li>
+              <li style = "font-weight: bold;">11-bit to word mapping</li>
               <li></li>
               <li>There are multiple languages mappings available to translate
                 11-bit chunks into words (BIP39).</li>
 							<br>
-							<li><a href="wallets_libbitcoin.html#/5" target="_blank">
-								<span class = "weight">Example:</span> Mnemonic wordlist with Libbitcoin</a>
-							<li>
             </ul>
           </div>
 
@@ -427,8 +430,11 @@
           <span class = "title weight">Extended Key</span> Format
         </div>
 
-			<img src="images/wallets/hd_extended_keys.svg" class = "image" style = "z-index: -1;">
-			<img src="images/wallets/hd_extended_keys_step1.svg" class = "fragment image" style = "z-index: -1;">
+			<img src="images/wallets/hd_extended_keys0.svg" class = "image" style = "z-index: -1;">
+			<img src="images/wallets/hd_extended_keys1.svg" class = "fragment image" style = "z-index: -1;">
+			<img src="images/wallets/hd_extended_keys2.svg" class = "fragment image" style = "z-index: -1;">
+			<img src="images/wallets/hd_extended_keys3.svg" class = "fragment image" style = "z-index: -1;">
+
 			<a href="wallets_libbitcoin.html#/9" target="_blank" style = "font-size:20px; position: absolute; bottom: 40px; right:100px;">
 				<span class = "weight">Example:</span> XPRV/XPUB key format with Libbitcoin</a>
       </section>
