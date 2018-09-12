@@ -5,41 +5,40 @@
 
 int main() {
 
-  bc::data_chunk my_entropy_128(16);
-  bc::pseudo_random_fill(my_entropy_128);
-  bc::wallet::hd_private m(my_entropy_128, bc::wallet::hd_private::mainnet);
+    bc::data_chunk my_entropy_128(16);
+    bc::pseudo_random_fill(my_entropy_128);
 
-  // Parent M public key & chaincode are exposed.
-  bc::wallet::hd_public M = m.to_public();
+    bc::wallet::hd_private m(my_entropy_128, bc::wallet::hd_private::mainnet);
+    uint32_t child_index(0);
 
-  // Child m_0 secret is exposed.
-  auto m_0_secret = m.derive_private(0).secret();
+    std::cout << "Parent Private Key: "
+              << bc::encode_base16(bc::to_chunk(m.secret())) << std::endl;
 
-  // 1) Derive L256 from hmac_sha512_hash(parent public key||index, chaincode).
-  // ---------------------------------------------------------------------------
-  uint32_t index = 0;
-  auto data = bc::splice(M.point(), bc::to_big_endian(index));
-  auto intermediate = bc::split(bc::hmac_sha512_hash(data, M.chain_code()));
-auto left_256 = intermediate.left;
+    // 1) Parent M and child private key are exposed.
+    // ---------------------------------------------------------------------------
+    auto M = m.to_public();
+    auto m_0_secret = m.derive_private(child_index).secret();
 
-  // 2) Parent Private(m) = child private(m_0) - L256.
-  // ---------------------------------------------------------------------------
+    // 2) Derive L256 from hmac_sha512_hash(parent public key||index, chaincode).
+    // ---------------------------------------------------------------------------
+    auto data = bc::splice(M.point(), bc::to_big_endian(child_index));
+    auto my_byte_array_parts = bc::split(bc::hmac_sha512_hash(data, M.chain_code()));
+    auto left_256 = my_byte_array_parts.left;
 
-  const auto context = bc::verification.context();
-  if (secp256k1_ec_privkey_negate(context,left_256.data()) != 1)
-  {
-    return 1;
-  }
-  bc::ec_add(left_256, m_0_secret);
+    // 3) Parent Private(m) = child private(m_0) - L256.
+    // ---------------------------------------------------------------------------
 
-  // 3) Verify parent private key derivation is correct.
-  // ---------------------------------------------------------------------------
-  std::cout << "Derived Parent Private Key is correct: "
-            << (left_256 == m.secret()) << std::endl;
-  std::cout << "Parent Private Key: "
-            << bc::encode_base16(bc::to_chunk(m.secret())) << std::endl;
+    const auto context = bc::verification.context();
+    if (secp256k1_ec_privkey_negate(context,left_256.data()) != 1)
+        return 1;
+    bc::ec_add(left_256, m_0_secret);
 
-  return 0;
+    // Verify parent private key derivation is correct.
+    // ---------------------------------------------------------------------------
+    std::cout << "Computed Private Parent Key: "
+            << bc::encode_base16(bc::to_chunk(left_256)) << std::endl;
+    return 0;
+
 }
 
 // Compile.
