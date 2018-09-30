@@ -1,0 +1,8 @@
+# ignore mac folder metadata.
+.DS_Store
+
+# ignore draft files.
+*draft*
+
+# ignore gcc config files.
+.gcc-flags.json

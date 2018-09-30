@@ -37,46 +37,42 @@
 						<span class = "title weight">Elliptic Curve Math </span>Subtopics
 					</div>
 
-					<img src="images/ec_math/chapter_subtopics_arrows.svg" class = "image" style = "z-index: -1;">
+					<!-- <img src="images/ec_math/chapter_subtopics_arrows.svg" class = "image" style = "z-index: -1;"> -->
 
 					<div class = "multi_text_box_container" style = "padding: 70px 0 0 0;">
 						<div class = "text_box orange_border" style = "width: 320px; font-size: 23px;">
 							<ul style = "margin: 0px; padding: 0px; list-style-type: none;">
-								<li style = "font-weight: 600;">Finite Fields \(\mathbb{F}_{p}\)</li>
-								<li>Scalars over Finite Field \(\mathbb{F}_{p}\)</li>
-								<li>Finite Field Add/Sub</li>
-								<li>Finite Field Multiplication</li>
-								<li>Finite Field Exponentiation</li>
-								<li>Prime Field Division</li>
+								<li style = "font-weight: 600;">Prime Fields \(\mathbb{F}_{p}\)</li>
+								<li><span class="inline_code">a + b</span> over \(\mathbb{F}_{p}\)</li>
+								<li><span class="inline_code">a - b</span> over \(\mathbb{F}_{p}\)</li>
+								<li><span class="inline_code">a &#8901; b</span> over \(\mathbb{F}_{p}\)</li>
+								<li><span class="inline_code">(a+b)&#8901;c = a&#8901;c + b&#8901;c</span></li>
+								<li><span class="inline_code">a^b</span> over \(\mathbb{F}_{p}\)</li>
+								<li><span class="inline_code">a/b</span> over \(\mathbb{F}_{p}\)</li>
 							</ul>
 						</div>
 						<div class = "text_box" style = "width: 320px; font-size: 23px;">
 							<ul style = "margin: 0px; padding: 0px; list-style-type: none;">
 								<li style = "font-weight: 600;">Elliptic Curves (EC) over \(\mathbb{R}\)</li>
-								<li>EC-Points over \(\mathbb{R}\)</li>
-								<li>EC-Point Addition</li>
-								<li>Scalar * EC-Point</li>
+								<li><span class="inline_code">EC-Point P</span> over \(\mathbb{R}\)</li>
+								<li><span class="inline_code">A + B</span> over \(\mathbb{R}\)</li>
+								<li><span class="inline_code">a &#8901; B</span> over \(\mathbb{R}\)</li>
+								<li><span class="inline_code">(a+b)&#8901;C = a&#8901;C + b&#8901;C</span></li>
+
 							</ul>
 						</div>
 						<div class = "text_box" style = "width: 320px; font-size: 23px;">
 							<ul style = "margin: 0px; padding: 0px; list-style-type: none;">
-								<li style = "font-weight: 600;">EC over Prime Fields</li>
-								<li>EC-Points over prime \(\mathbb{F}_{p}\)</li>
-								<li>Prime \(\mathbb{F}_{p}\) EC-Point Addition</li>
-								<li>Prime \(\mathbb{F}_{p}\) Point Groups</li>
-								<li>Bitcoin Private/Public Keys</li>
+								<li style = "font-weight: 600;">EC over Prime Fields \(\mathbb{F}_{p}\)</li>
+								<li><span class="inline_code">EC-Point P</span> over \(\mathbb{F}_{p}\)</li>
+								<li><span class="inline_code">A + B</span> over \(\mathbb{F}_{p}\)</li>
+								<li><span class="inline_code">a &#8901; B</span> over \(\mathbb{F}_{p}\) </li>
+								<li><span class="inline_code">(a+b)&#8901;C = a&#8901;C + b&#8901;C</span></li>
+								<hr style = "height:3px; visibility:hidden;">
+								<li style = "font-weight: 600;">Bitcoin Keys:</li>
+								<li><span class="inline_code">s &#8901; G</span> over <span class="inline_code">secp256k1</span></li>
 							</ul>
 						</div>
-					</div>
-
-					<div class = "text_box_horizontal" style = "position: absolute; top: 600px; left: 65px;">
-						<ul style = "margin: 0px; padding: 0px; list-style-type: none;">
-							<li>Finite field \(\mathbb{F}_{p}\) basics and Elliptic Curves over real numbers
-								are prerequisite topics that build up to understanding Bitcoin private & public keys.
-							</li>
-							<li>
-							</li>
-						</ul>
 					</div>
 
 				</section>
@@ -107,11 +103,6 @@
 					<div class = "text_box_horizontal" style = "position: absolute; top: 530px; left: 65px;">
 						<ul style = "margin: 0px; padding: 0px; list-style-type: none;">
 							<li>Finite field \(\mathbb{F}_{p}\) is simply a set of integers from \(0\) to \(p-1\).</li>
-							<li><span>Next, we can define arithmetic operations over finite fields.
-								<br>
-		   					<span style = "opacity:0.5;">(addition/substraction, exponentiation, multiplication, division)</span>
-							</span>
-						</li>
 						</ul>
 					</div>
 
@@ -188,6 +179,43 @@
 				</section>
 				<!-- *********** END: Field Multiplication *********** -->
 
+				<!-- *********** BEGIN: Field Distributivity *********** -->
+				<section class = "box">
+					<div class = "title">
+						<span class = "title weight">Distributivity</span> of Finite Field Operations
+					</div>
+
+					<!-- Derivation Graphic -->
+					<img src="images/ec_math/ff_distributivity.svg" class = "image" style = "z-index: -1;">
+
+					<!-- 2 column container -->
+					<!-- 45% div for formula and curve--><!-- 45% text & bulletpoint -->
+					<div class = "multi_text_box_container" style = "padding: 0px 0 0 0; width: 1270px;">
+						<!-- 45% div for formula and curve-->
+						<div class = "" style = "width: 45%; font-size: 27px;">
+						</div>
+						<!-- 45% text & bulletpoint -->
+						<div class = "text_box"
+								 style = "width: 36%; font-size: 22px; margin: 80px 0 0 0">
+							<ul style = "margin: 0; padding: 0px; list-style-type: none;">
+								<li style = "font-weight: bold;">Distributivity over add/multiply:</li>
+								<div class="">
+									<ul>
+										<li><span class="inline_code">(a + b)&#8901;c = a&#8901;c + b&#8901;c</span></li>
+										<li>This is illustrated by example (left).</li>
+										<li>Modulus can be performed anytime.</li>
+									</ul>
+									<hr style = "height:3px; visibility:hidden;">
+								</div>
+							</ul>
+						</div>
+
+					</div><!-- End of 2 column container -->
+
+				</section>
+				<!-- *********** END: Field Distributivity *********** -->
+
+
 				<!-- *********** BEGIN: Field Exponentiation *********** -->
 				<section class ="box">
 					<div class = "title"
@@ -225,13 +253,13 @@
 					</div>
 
 					<div class = "multi_text_box_container" style = "padding: 5px 0 0 0;">
-						<div class = "text_box orange_border" style = "width: 500px; text-align: center;">
+						<div class = "text_box " style = "width: 500px; text-align: center;">
 							<ul style = "margin: 0px; padding: 0px; list-style-type: none; text-align:center;">
 								<li>\(2/4=2\:\left(\bmod 6\:\right)\)</li>
 								<li>\(3/5=4\:\left(\bmod 17\:\right)\)</li>
 							</ul>
 						</div>
-						<div class = "text_box" style = "width: 500px; text-align: center;">
+						<div class = "text_box orange_border" style = "width: 500px; text-align: center;">
 							<ul style = "margin: 0px; padding: 0px; list-style-type: none; text-align:center;">
 								<li>\(2=4 \cdot 2\:\left(\bmod 6\:\right)\)</li>
 								<li>\(3=5 \cdot 4\:\left(\bmod 17\:\right)\)</li>
@@ -240,18 +268,17 @@
 					</div>
 
 					<div style ="padding: 30px 0 0 0;text-align:center; font-size: 22px; font-style:italic;">
-						Generally, division over \(\mathbb{F}_{p}\) can only be solved by maintaining
+						Division over \(\mathbb{F}_{p}\) can only be performed by maintaining
 						<br>
-						a multiplication table for all element pairs of \(\mathbb{F}_{p}\).
+						a multiplication table for all pairs of \(\mathbb{F}_{p}\).
 					</div>
 
 					<img src="images/ec_math/ff_division_mult_table_arrow.svg" class = "image" style = "z-index: -1;">
 
 					<div class = "text_box_horizontal" style = "position: absolute; top: 530px; left: 65px;">
 						<ul style = "margin: 0px; padding: 0px; list-style-type: none;">
-							<li>Division can simply be defined as the inverse of multiplication.</li>
-							<li>However, computing modular division this way requires the lookup of smultiplication tables.</li>
-							<li>Yet, for prime field \(\mathbb{F}_{p}\), where P is prime, there is a direct way to compute finite field division ...</li>
+							<li>Division can simply be defined as the inverse of multiplication (multiplication tables).</li>
+							<li>However, for prime field \(\mathbb{F}_{p}\), where P is prime, there is a direct way to compute division ...</li>
 						</li>
 						</ul>
 					</div>
@@ -319,43 +346,42 @@
 						<span class = "title weight">Elliptic Curve Math </span>Subtopics
 					</div>
 
-					<img src="images/ec_math/chapter_subtopics_arrows.svg" class = "image" style = "z-index: -1;">
+					<!-- <img src="images/ec_math/chapter_subtopics_arrows.svg" class = "image" style = "z-index: -1;"> -->
 
 					<div class = "multi_text_box_container" style = "padding: 70px 0 0 0;">
 						<div class = "text_box" style = "width: 320px; font-size: 23px;">
 							<ul style = "margin: 0px; padding: 0px; list-style-type: none;">
-								<li style = "font-weight: 600;">Finite Fields \(\mathbb{F}_{p}\)</li>
-								<li>Scalars over Finite Field \(\mathbb{F}_{p}\)</li>
-								<li>\(a\pm b \> \left(\bmod p\:\right)\)</li>
-								<li>\(a \cdot b \> \left(\bmod p\:\right)\)</li>
-								<li>\(a^{b}  \> \left(\bmod p\:\right)\)</li>
-								<li>\(\frac{a}{b} \> \left(\bmod p\:\right)\)</li>
+								<li style = "font-weight: 600;">Prime Fields \(\mathbb{F}_{p}\)</li>
+								<li><span class="inline_code">a + b</span> over \(\mathbb{F}_{p}\)</li>
+								<li><span class="inline_code">a - b</span> over \(\mathbb{F}_{p}\)</li>
+								<li><span class="inline_code">a &#8901; b</span> over \(\mathbb{F}_{p}\)</li>
+								<li><span class="inline_code">(a+b)&#8901;c = a&#8901;c + b&#8901;c</span></li>
+								<li><span class="inline_code">a^b</span> over \(\mathbb{F}_{p}\)</li>
+								<li><span class="inline_code">a/b</span> over \(\mathbb{F}_{p}\)</li>
 							</ul>
 						</div>
 						<div class = "text_box orange_border" style = "width: 320px; font-size: 23px;">
 							<ul style = "margin: 0px; padding: 0px; list-style-type: none;">
 								<li style = "font-weight: 600;">Elliptic Curves (EC) over \(\mathbb{R}\)</li>
-								<li>EC-Points over \(\mathbb{R}\)</li>
-								<li>EC-Point Addition</li>
-								<li>Scalar * EC-Point</li>
+								<li><span class="inline_code">EC-Point P</span> over \(\mathbb{R}\)</li>
+								<li><span class="inline_code">A + B</span> over \(\mathbb{R}\)</li>
+								<li><span class="inline_code">a &#8901; B</span> over \(\mathbb{R}\)</li>
+								<li><span class="inline_code">(a+b)&#8901;C = a&#8901;C + b&#8901;C</span></li>
+
 							</ul>
 						</div>
 						<div class = "text_box" style = "width: 320px; font-size: 23px;">
 							<ul style = "margin: 0px; padding: 0px; list-style-type: none;">
-								<li style = "font-weight: 600;">EC over Prime Fields</li>
-								<li>EC-Points over prime \(\mathbb{F}_{p}\)</li>
-								<li>Prime \(\mathbb{F}_{p}\) EC-Point Addition</li>
-								<li>Prime \(\mathbb{F}_{p}\) Point Groups</li>
-								<li>Bitcoin Private/Public Keys</li>
+								<li style = "font-weight: 600;">EC over Prime Fields \(\mathbb{F}_{p}\)</li>
+								<li><span class="inline_code">EC-Point P</span> over \(\mathbb{F}_{p}\)</li>
+								<li><span class="inline_code">A + B</span> over \(\mathbb{F}_{p}\)</li>
+								<li><span class="inline_code">a &#8901; B</span> over \(\mathbb{F}_{p}\) </li>
+								<li><span class="inline_code">(a+b)&#8901;C = a&#8901;C + b&#8901;C</span></li>
+								<hr style = "height:3px; visibility:hidden;">
+								<li style = "font-weight: 600;">Bitcoin Keys:</li>
+								<li><span class="inline_code">s &#8901; G</span> over <span class="inline_code">secp256k1</span></li>
 							</ul>
 						</div>
-					</div>
-
-					<div class = "text_box_horizontal" style = "position: absolute; top: 600px; left: 65px;">
-						<ul style = "margin: 0px; padding: 0px; list-style-type: none;">
-							<li>Next we look at a seemlingly separate topic of elliptic curve math over real numbers.
-							</li>
-						</ul>
 					</div>
 
 				</section>
@@ -389,11 +415,9 @@
 								<li style = "font-weight: 600;">The secp256k1 curve form:</li>
 								<li>\(y^{2}=x^{3}+7\)</li>
 								<br>
-								<li>Consider all points on the elliptic
-									curve (EC) as EC-points (x,y).</li>
+								<li style = "font-weight: 600;">Elliptic curve points:</li>
+								<li><span class="inline_code">EC-Point P(x,y)</span>on the elliptic curve fulfills the its curve equation.</li>
 								<br>
-								<li class ="substep">Due to the shape of elliptic curves,
-									we can next define EC point arithmetic...</li>
 							</ul>
 						</div>
 					</div><!-- End of 2 column container -->
@@ -424,16 +448,7 @@
 									<li>3) Reflect intersection point across X-axis for P3</li>
 								</ul>
 							</div>
-							<!-- Right text div -->
-							<div class = "substep"style = "width: 45%; font-size: 20px">
-								<ul style = "margin: 0px; padding: 0px; list-style-type: none;">
-									<li style = "font-weight:600;">Properties of EC addition:</li>
-									<li>Commutative*: P1 + P2 = P2 + P1</li>
-									<li>Associative* : (P1 + P2) + P3 = P1 + (P2 + P3)</li>
-									<li style = "font-style: italic; opacity: 0.5;"
-											>*Commutativity, Associativity proofs not provided here.</li>
-								</ul>
-							</div>
+
 						</div>
 					</div><!-- End of Horizontal Text Box -->
 				</section>
@@ -442,7 +457,7 @@
 				<!-- *********** BEGIN: EC over reals: Computation of Addition *********** -->
 				<section class = "box">
 					<div class = "title">
-						<span class = "title weight">EC-Point Addition</span> over Reals
+						<span class = "title weight">EC-Point Addition</span> (Computation)
 					</div>
 
 					<!-- Container for equation list -->
@@ -474,70 +489,18 @@
 					<!-- Container for bottom horizontal text bar -->
 					<div class = "text_box_horizontal" style = "position: absolute; top: 530px; left: 65px;">
 						<ul style = "margin: 0px; padding: 0px; list-style-type: none;">
-							<li>The equations shown above which describe EC-point addition can be derived from the
-								general elliptic curve \(y^{2}=ax^{3}+bx+c\) form.
-							</li>
-							<li class = "fragment fade-in">However these are only valid for P1 + P2 where \(x_{1} \neq x_{2}\).
-							</li>
+							<li>The equations shown describe EC-point addition where \(x_{1} \neq x_{2}\).</li>
+
 						</ul>
 					</div>
 				</section>
 				<!-- *********** END: EC over reals: Computation of Addition *********** -->
 
-				<!-- *********** BEGIN: EC over reals: Addition where P1=P2*********** -->
-				<section class = "box">
-
-					<div class = "title">
-						EC-Point Addition<span class = "title weight"> where P1=P2</span>
-					</div>
-
-					<!-- Graph -->
-					<img src="images/ec_math/ec_multiplication.svg" class = "image" style = "z-index: -1;">
-
-					<!-- 2 column container -->
-					<!-- 45% div for formula and curve--><!-- 45% text & bulletpoint -->
-					<div class = "multi_text_box_container" style = "padding: 30px 0 0 0;">
-						<!-- 45% div for formula and curve-->
-						<div class = "" style = "width: 50%; font-size: 28px;">
-							<div style ="text-align: center;">
-								\(P_{3} = P_{1} +  P_{1} = 2 \cdot P_{1}\)
-							</div>
-						</div>
-						<!-- 45% text & bulletpoint -->
-						<div class = "text_box"
-								 style = "width: 50%; font-size: 22px; margin: 0px 0 0 0">
-							<ul style = "margin: 0; padding: 0px; list-style-type: none;">
-								<li style = "font-weight: 600;">Adding a point to itself:</li>
-								<li>Consider Line L&#39;(P1,P2) as we move P1 & P2 closer: Line L
-									eventually becomes the tangent of P1 (L&#39;&#39;&#39;), as P1 gets closer to
-									P2.
-								</li>
-								<li>Therefore, we can add a point P1 to itself, by taking the tangent
-								at point P1 to intersect with the EC Curve.</li>
-								<br>
-								<li>\(P_{3}(x_{3},y_{3}) = 2 \cdot P_{1}(x_{1},y_{1})\)</li>
-								<li>\(s =\frac{(3x_{1}^{2}+a)}{2y_{1}}\)</li>
-								<li>\(x_{3} =s^{2}-2x_{1}\)</li>
-								<li>\(y_{3} =s(x_{1}-x_{3})-y_{1}\)</li>
-								<br>
-								<div class = "fragment fade-in">
-									<li style = "font-weight: 600;">Scalar s & EC-Point P Multiplication:</li>
-									<li>\(S \cdot P\) can simply be determined by iteratively adding ec-point \(P\)
-										to itself n times. For example: \(4 \cdot P = ((P+ P)+P) + P\)
-									</li>
-								</div>
-							</ul>
-						</div>
-					</div><!-- End of 2 column container -->
-
-				</section>
-				<!-- *********** END: EC over reals: Addition where P1=P2*********** -->
-
 				<!-- *********** BEGIN: EC over reals: Addition with INF *********** -->
 				<section class = "box">
 
 					<div class = "title">
-						EC Addition with <span class = "title weight">Infinity</span>
+						EC Point Addition with <span class = "title weight">Infinity</span>
 					</div>
 
 					<!-- Graph -->
@@ -570,6 +533,108 @@
 				</section>
 				<!-- *********** END: EC over reals: Addition with INF *********** -->
 
+				<!-- *********** BEGIN: EC over reals: Scalar x EC Point *********** -->
+				<section class = "box">
+
+					<div class = "title">
+						<span class = "title weight">Scalar</span> x <span class = "title weight">EC Point</span>
+					</div>
+
+					<!-- Graph -->
+					<img src="images/ec_math/ec_multiplication.svg" class = "image" style = "z-index: -1;">
+
+					<!-- 2 column container -->
+					<!-- 45% div for formula and curve--><!-- 45% text & bulletpoint -->
+					<div class = "multi_text_box_container" style = "padding: 20px 0 0 0;">
+						<!-- 45% div for formula and curve-->
+						<div class = "" style = "width: 50%; font-size: 28px;">
+							<div style ="text-align: center;">
+								\(P_{3} = P_{1} +  P_{1} = 2 \cdot P_{1}\)
+							</div>
+						</div>
+						<!-- 45% text & bulletpoint -->
+						<div class = "text_box"
+								 style = "width: 50%; font-size: 21px; margin: 0px 0 0 0">
+							<ul style = "margin: 0; padding: 0px; list-style-type: none;">
+								<li style = "font-weight: 600;">Scalar multiplication of an EC point P</li>
+								<ul>
+									<li><span class="inline_code">s &#8901; P</span> equals adding <span class="inline_code">P</span> to itself <span class="inline_code">s</span> times.</li>
+								</ul>
+								<hr style = "height: 1px; visibility: hidden;">
+
+								<li style = "font-weight: 600;">Point(x,y) + Point(x,y)</li>
+								<ul>
+									<li>Consider Line L&#39;(P1,P2).</li>
+									<li>Converges to tangent of P1, as P1 = P2.</li>
+									<li>Computation of P3 = P1 + P1:</li>
+									<ul style="font-size: 16px">
+										<li>\(P_{3}(x_{3},y_{3}) = 2 \cdot P_{1}(x_{1},y_{1})\)</li>
+										<li>\(s =\frac{(3x_{1}^{2}+a)}{2y_{1}}\)</li>
+										<li>\(x_{3} =s^{2}-2x_{1}\)</li>
+										<li>\(y_{3} =s(x_{1}-x_{3})-y_{1}\)</li>
+									</ul>
+								</ul>
+								<hr style = "height: 1px; visibility: hidden;">
+
+								<li style = "font-weight: 600;">Distributivity:</li>
+								<ul>
+									<li><span class="inline_code">(a + b)&#8901;C = a&#8901;C + b&#8901;C</span></li>
+									<li>Related to associativity of EC point addition.</li>
+								</ul>
+							</ul>
+						</div>
+					</div><!-- End of 2 column container -->
+
+				</section>
+				<!-- *********** BEGIN: EC over reals: Scalar x EC Point *********** -->
+
+				<!-- *********** Begin: EC over reals: Associativity of Addition *********** -->
+				<section class = "box">
+
+					<div class = "title">
+						<span class = "title weight">Associativity</span> of EC Point Addition
+					</div>
+
+					<!-- Graph -->
+					<img src="images/ec_math/ec_add_associativity0.svg" class = "image" style = "z-index: -1;">
+					<img src="images/ec_math/ec_add_associativity1.svg" class = "fragment image" style = "z-index: -1;">
+					<img src="images/ec_math/ec_add_associativity2.svg" class = "fragment image" style = "z-index: -1;">
+					<img src="images/ec_math/ec_add_associativity3.svg" class = "fragment image" style = "z-index: -1;">
+					<img src="images/ec_math/ec_add_associativity4.svg" class = "fragment image" style = "z-index: -1;">
+
+					<!-- 2 column container -->
+					<!-- 45% div for formula and curve--><!-- 45% text & bulletpoint -->
+					<div class = "multi_text_box_container" style = "padding: 24px 0 0 0;">
+						<!-- 45% div for formula and curve-->
+						<div class = "" style = "width: 50%; font-size: 24px;">
+							<div style ="text-align: center;">
+								<br>
+								<span class ="weight">(P1 + P2) + P3 = P1 + (P2 + P3)</span>
+							</div>
+						</div>
+						<!-- 45% text & bulletpoint -->
+						<div class = "text_box"
+								 style = "width: 50%; font-size: 24px; margin: 40px 0 0 0">
+							<ul style = "margin: 0; padding: 0px; list-style-type: none;">
+								<li style = "font-weight: 600;">Illustration of EC point addition associativity</li>
+								<ul>
+									<li>Order of addition doesn't change result.</li>
+									<li>Associativity proof is rather <a class="orange_link" href="https://www.maths.tcd.ie/pub/Maths/Courseware/EllipticCurves/2016/Associativity.pdf" target="_blank">involved</a>.</li>
+									<li>Back to distributivity of point operations:</li>
+									<ul>
+										<li><span class="inline_code">(P+P+P)+P=(P+P)+(P+P)=((P+P)+P)+P</span></li>
+										<li><span class="inline_code">3&#8901;P + P = 2&#8901;P + 2&#8901;P = 4&#8901;P</span></li>
+										<li><span class="inline_code">(a+b)&#8901;C = a&#8901;C + b&#8901;C</span></li>
+									</ul>
+								</ul>
+
+							</ul>
+						</div>
+					</div><!-- End of 2 column container -->
+
+				</section>
+				<!-- *********** END: EC over reals: Associativity of Addition *********** -->
+
 				<!-- *********** BEGIN: Chapter Subtopics 3 *********** -->
 				<section class ="box">
 
@@ -577,84 +642,95 @@
 						<span class = "title weight">Elliptic Curve Math </span>Subtopics
 					</div>
 
-					<img src="images/ec_math/chapter_subtopics_arrows.svg" class = "image" style = "z-index: -1;">
+					<!-- <img src="images/ec_math/chapter_subtopics_arrows.svg" class = "image" style = "z-index: -1;"> -->
 
 					<div class = "multi_text_box_container" style = "padding: 70px 0 0 0;">
 						<div class = "text_box" style = "width: 320px; font-size: 23px;">
 							<ul style = "margin: 0px; padding: 0px; list-style-type: none;">
-								<li style = "font-weight: 600;">Finite Fields \(\mathbb{F}_{p}\)</li>
-								<li>Scalars over Finite Field \(\mathbb{F}_{p}\)</li>
-								<li>\(a\pm b \> \left(\bmod p\:\right)\)</li>
-								<li>\(a \cdot b \> \left(\bmod p\:\right)\)</li>
-								<li>\(a^{b}  \> \left(\bmod p\:\right)\)</li>
-								<li>\(\frac{a}{b} \> \left(\bmod p\:\right)\)</li>
+								<li style = "font-weight: 600;">Prime Fields \(\mathbb{F}_{p}\)</li>
+								<li><span class="inline_code">a + b</span> over \(\mathbb{F}_{p}\)</li>
+								<li><span class="inline_code">a - b</span> over \(\mathbb{F}_{p}\)</li>
+								<li><span class="inline_code">a &#8901; b</span> over \(\mathbb{F}_{p}\)</li>
+								<li><span class="inline_code">(a+b)&#8901;c = a&#8901;c + b&#8901;c</span></li>
+								<li><span class="inline_code">a^b</span> over \(\mathbb{F}_{p}\)</li>
+								<li><span class="inline_code">a/b</span> over \(\mathbb{F}_{p}\)</li>
 							</ul>
 						</div>
 						<div class = "text_box" style = "width: 320px; font-size: 23px;">
 							<ul style = "margin: 0px; padding: 0px; list-style-type: none;">
-								<li style = "font-weight: 600;">Elliptic Curves (EC)</li>
-								<li>EC-Points over \(\mathbb{R}\)</li>
-								<li>\(P_{1}+P_{2}\)</li>
-								<li>\(s \cdot P\)</li>
+								<li style = "font-weight: 600;">Elliptic Curves (EC) over \(\mathbb{R}\)</li>
+								<li><span class="inline_code">EC-Point P</span> over \(\mathbb{R}\)</li>
+								<li><span class="inline_code">A + B</span> over \(\mathbb{R}\)</li>
+								<li><span class="inline_code">a &#8901; B</span> over \(\mathbb{R}\)</li>
+								<li><span class="inline_code">(a+b)&#8901;C = a&#8901;C + b&#8901;C</span></li>
+
 							</ul>
 						</div>
 						<div class = "text_box orange_border" style = "width: 320px; font-size: 23px;">
 							<ul style = "margin: 0px; padding: 0px; list-style-type: none;">
-								<li style = "font-weight: 600;">EC over Prime Fields</li>
-								<li>EC-Points over prime \(\mathbb{F}_{p}\)</li>
-								<li>Prime \(\mathbb{F}_{p}\) EC-Point Addition</li>
-								<li>Prime \(\mathbb{F}_{p}\) Point Groups</li>
-								<li>Bitcoin Private/Public Keys</li>
+								<li style = "font-weight: 600;">EC over Prime Fields \(\mathbb{F}_{p}\)</li>
+								<li><span class="inline_code">EC-Point P</span> over \(\mathbb{F}_{p}\)</li>
+								<li><span class="inline_code">A + B</span> over \(\mathbb{F}_{p}\)</li>
+								<li><span class="inline_code">a &#8901; B</span> over \(\mathbb{F}_{p}\) </li>
+								<li><span class="inline_code">(a+b)&#8901;C = a&#8901;C + b&#8901;C</span></li>
+								<hr style = "height:3px; visibility:hidden;">
+								<li style = "font-weight: 600;">Bitcoin Keys:</li>
+								<li><span class="inline_code">s &#8901; G</span> over <span class="inline_code">secp256k1</span></li>
 							</ul>
 						</div>
-					</div>
-
-					<div class = "text_box_horizontal" style = "position: absolute; top: 600px; left: 65px;">
-						<ul style = "margin: 0px; padding: 0px; list-style-type: none;">
-							<li>We can now apply finite field arithmetic to elliptic curves in this following section to arrive at Bitcoin private & public keys.
-							</li>
-						</ul>
 					</div>
 
 				</section>
 				<!-- *********** END: Chapter Subtopics 3 *********** -->
 
-				<!-- *********** BEGIN: EC over finite fields *********** -->
+				<!-- *********** Begin: EC over finite fields *********** -->
 				<section class = "box">
 
 					<div class = "title">
 						<span class = "title weight">Elliptic Curves</span> over \( \mathbb{F}_{p} \)
 					</div>
 
-					<!-- Multi text Box -->
-					<div class = "multi_text_box_container" style = "padding: 60px 0 0 0;">
-						<!-- Left (w image) -->
-						<div class = "" style = "width: 45%; font-size: 25px; padding:25px 50px 0 50px;">
-							\( y^{2}=x^{3}+7\) over \( \mathbb{F}_{29} \)
-							<br><br>
-							<!-- TODO: exchange image for finite field with P1, P2 -->
-							<img src="images/ec_math/ec_ff_cropped.svg" class = "image_cropped">
+					<!-- Graph -->
+					<img src="images/ec_math/ec_ff_point.svg" class = "image" style = "z-index: -2;">
+
+					<!-- 2 column container -->
+					<!-- 45% div for formula and curve--><!-- 45% text & bulletpoint -->
+					<div class = "multi_text_box_container" style = "padding: 24px 0 0 0;">
+						<!-- 45% div for formula and curve-->
+						<div class = "" style = "width: 50%; font-size: 24px;">
+							<div style ="text-align: center;">
+								<br>
+								<span>\( y^{2}=x^{3}+7\) over \( \mathbb{F}_{29} \)</span>
+							</div>
 						</div>
-						<!-- Right (UL)-->
-						<div class = "text_box" style = "margin: 0 0 0 55px; width: 50%; font-size:21px">
+						<!-- 45% text & bulletpoint -->
+						<div class = "text_box"
+								 style = "width: 50%; font-size: 24px; margin: 40px 0 0 0">
 							<ul style = "margin: 0; padding: 0px; list-style-type: none;">
-								<li>We define an elliptic curve over a finite field \( \mathbb{F}_{p} \) with point coordinates \(x,y\)
-									which are members of prime field \( \mathbb{F}_{p} \) and fulfill the elliptic curve equation.
-									<br><br>We simply apply finite field arithmetic to the elliptic curve equation
-									\( y^{2}=x^{3}+7\) over \( \mathbb{F}_{29} \) to determine
-									whether \(P_{1}\) and \(P_{2}\) are members of the elliptic curve.
-									<br><br>
-								<li class="weight">For \( P_{1}\left(3,18\right) \): </li>
-								<li>\(18^{2} = 3^{3}+7\:(mod\:29) =5 \>\> \) &#10003</li>
-								<br>
-								<li class="weight">For \( P_{2}\left(23,20\right) \): </li>
-								<li>\(20^{2} = 23^{3}+7\:(mod\:29) =23 \>\> \) &#10003</li>
-								<br>
-								<li>Note: Elliptic curve plots are a set of non-continuous points
-								since finite fields themselves are non-continuous.</li>
-							</ul>
+								<li style = "font-weight: 600;">Point on elliptic curve over \( \mathbb{F}_{p} \)</li>
+								<ul>
+									<li>Point coordinates fulfill following equation:
+									<li>\( y^{2}=ax^{3}+bx^{2}+c\:(mod\:P)\)</li>
+								</ul>
+								<hr style = "height:5px; visibility:hidden;">
+
+								<li style = "font-weight: 600;">Example EC points:</li>
+								<ul>
+									<li>\( y^{2}=x^{3}+7\) over \( \mathbb{F}_{29} \)</li>
+									<li>\( P_{1}\left(3,18\right) \): </li>
+									<ul>
+										<li>\(18^{2} = 3^{3}+7\:(mod\:29) =5 \>\> \) &#10003</li>
+									</ul>
+									<li>\( P_{2}\left(23,20\right) \): </li>
+									<ul>
+										<li>\(20^{2} = 23^{3}+7\:(mod\:29) =23 \>\> \) &#10003</li>
+									</ul>
+									<li>Note: Elliptic curve plots are a set of non-continuous points
+									since finite fields themselves are non-continuous.</li>
+								</ul>
 						</div>
-					</div>
+					</div><!-- End of 2 column container -->
+
 				</section>
 				<!-- *********** END: EC over finite fields *********** -->
 
@@ -700,8 +776,8 @@
 										<li style = "font-weight: 600;">EC-Point Addition over Prime \( \mathbb{F}_{p} \) :
 										</li>
 										<li style = "font-size:20px;"
-											>&#8592 All previously defined EC-point addition equations over \( \mathbb{R} \)
-											still apply to EC point addition over prime field \( \mathbb{F}_{p} \).
+											>&#8592 EC-point addition equations over \( \mathbb{R} \)
+											apply to EC point addition over prime \( \mathbb{F}_{p} \).
 										</li>
 										<br>
 										<div style = "font-size:20px;">
@@ -750,33 +826,29 @@
 						</div>
 						<!-- Right (UL)-->
 						<div class = "text_box" style = "width: 55%; font-size:22px">
+
 							<ul style = "margin: 0; padding: 0px; list-style-type: none;">
-								<li>We can generate a point group using EC curve point addition and a chosen generator point on the EC curve, G.
+								<li style ="font-weight: 600;">EC point group with <span class ="inline_code">generator G</span> and <span class ="inline_code">group order n</span></li>
+								<ul>
+									<li>G</li>
+									<li>2G = G + G</li>
+									<li>3G = G + 2G = G + G + G</li>
+									<li>...</li>
+									<li>nG = (Inf/Inf)</li>
+								</ul>
+								<hr style = "height:3px; visibility:hidden;">
+
+								<li style ="font-weight: 600;"><span class ="inline_code">P = s&#8901;G</span> is discrete log problem</li>
 									<ul>
-										<li>G</li>
-										<li>2G = G + G</li>
-										<li>3G = G + 2G = G + G + G</li>
-										<li>...</li>
-										<li>nG = (Inf/Inf)</li>
+										<li>No efficient way of computing s from P.</li>
+										<li>s can be used as secret.</li>
+										<li>P is unique to s.</li>
+										<li>Elliptic Curve over prime field more efficient than RSA.</li>
+										<li>Commitments/Pubkey Cryptography.</li>
 									</ul>
-								</li>
-								<br>
-								<li><span style ="font-weight: 600;">Group Order</span>: We eventually arrive at the infinitiy point at the <span style ="font-weight: 600;">n</span>'th member of the group.
-									The points themselves form a finite point group of the order <span style ="font-weight: 600;">n</span>:
-									<ul>
-										<li>{ G, 2G, 3G, ..., nG }</li>
-									</ul>
-								</li>
-								<br>
-								<li>For Example, we may choose (6,7) as our generator point:
-									<ul>
-										<li>{ G(6,7), 2G(12,13), 3G(12,16}, 4G{6, 22}, 5G(inf,inf) }</li>
-									</ul>
-								</li>
 							</ul>
 						</div>
 					</div>
-
 				</section>
 				<!-- *********** END: EC-point Groups *********** -->
 
@@ -833,18 +905,12 @@
 								 style = "width: 36%; font-size: 20px; margin: 40px 0 0 0">
 							<ul style = "margin: 0; padding: 0px; list-style-type: none;">
 								<li style = "font-weight: bold; font-size:22px">&#10122 Uncompressed Public Key Point</li>
-								<li>The public key point directly represents both x and y coordinates of the public key
-									generated from the private key secret, which lies on the secp256k1 curve. Uncompressed
-									public keys begin with a 0x04 prefix.
-								</li>
+								<li>The uncompressed public key point directly represents both x and y-coordinates.</li>
 								<br>
 								<li style = "font-weight: bold; font-size:22px">&#10123 Compressed Public Key Point</li>
-								<li>Since the public key point lies on the secp256k1 curve, it can be implied from just
-								the x-coordinate. However, for each valid x coordinate, two potential y coordinates are
-								implied (one is even, one is odd).
+								<li>The compressed public key point implies its y-coordinate from its x coordinate.
 								<br><br>
-								A compressed public key therefore begins with either a 0x02 or 0x03 to imply an even,
-								or odd y coordinate respectively.
+								A compressed public key begins with 0x02/0x03 to imply an even/odd y-coordinate.
 								</li>
 							</ul>
 						</div>
@@ -853,56 +919,54 @@
 				</section>
 				<!-- *********** END: Public Key Serialisation *********** -->
 
-				<!-- *********** BEGIN: Chapter Subtopics 4 *********** -->
+				<!-- *********** BEGIN: Chapter Subtopics Summary *********** -->
 				<section class ="box">
 
 					<div class = "title">
 						<span class = "title weight">Elliptic Curve Math </span>Subtopics
 					</div>
 
-					<img src="images/ec_math/chapter_subtopics_arrows.svg" class = "image" style = "z-index: -1;">
+					<!-- <img src="images/ec_math/chapter_subtopics_arrows.svg" class = "image" style = "z-index: -1;"> -->
 
 					<div class = "multi_text_box_container" style = "padding: 70px 0 0 0;">
 						<div class = "text_box" style = "width: 320px; font-size: 23px;">
 							<ul style = "margin: 0px; padding: 0px; list-style-type: none;">
-								<li style = "font-weight: 600;">Finite Fields \(\mathbb{F}_{p}\)</li>
-								<li>Scalars over Finite Field \(\mathbb{F}_{p}\)</li>
-								<li>\(a\pm b \> \left(\bmod p\:\right)\)</li>
-								<li>\(a \cdot b \> \left(\bmod p\:\right)\)</li>
-								<li>\(a^{b}  \> \left(\bmod p\:\right)\)</li>
-								<li>\(\frac{a}{b} \> \left(\bmod p\:\right)\)</li>
+								<li style = "font-weight: 600;">Prime Fields \(\mathbb{F}_{p}\)</li>
+								<li><span class="inline_code">a + b</span> over \(\mathbb{F}_{p}\)</li>
+								<li><span class="inline_code">a - b</span> over \(\mathbb{F}_{p}\)</li>
+								<li><span class="inline_code">a &#8901; b</span> over \(\mathbb{F}_{p}\)</li>
+								<li><span class="inline_code">(a+b)&#8901;c = a&#8901;c + b&#8901;c</span></li>
+								<li><span class="inline_code">a^b</span> over \(\mathbb{F}_{p}\)</li>
+								<li><span class="inline_code">a/b</span> over \(\mathbb{F}_{p}\)</li>
 							</ul>
 						</div>
 						<div class = "text_box" style = "width: 320px; font-size: 23px;">
 							<ul style = "margin: 0px; padding: 0px; list-style-type: none;">
-								<li style = "font-weight: 600;">Elliptic Curves (EC)</li>
-								<li>EC-Points over \(\mathbb{R}\)</li>
-								<li>\(P_{1} + P_{2}\)</li>
-								<li>\(s \cdot P\)</li>
-							</ul>
-						</div>
-						<div class = "text_box" style = "width: 320px; font-size: 23px;">
-							<ul style = "margin: 0px; padding: 0px; list-style-type: none;">
-								<li style = "font-weight: 600;">EC over Prime Fields</li>
-								<li>EC-Points over prime \(\mathbb{F}_{p}\)</li>
-								<li>\(P_{1} + P_{2} \> over \>\mathbb{F}_{p}\)</li>
-								<li>\(\left\{G,\>2G, \>3G,\>...\>,nG\right\}\)</li>
-								<li style = "font-weight: 600;">\(P=s\cdot G \>\)<span style = "font-weight: 300;">\(over\>\)</span><span style="font-style: italic;">secp256k1</span></li>
-							</ul>
-						</div>
-					</div>
+								<li style = "font-weight: 600;">Elliptic Curves (EC) over \(\mathbb{R}\)</li>
+								<li><span class="inline_code">EC-Point P</span> over \(\mathbb{R}\)</li>
+								<li><span class="inline_code">A + B</span> over \(\mathbb{R}\)</li>
+								<li><span class="inline_code">a &#8901; B</span> over \(\mathbb{R}\)</li>
+								<li><span class="inline_code">(a+b)&#8901;C = a&#8901;C + b&#8901;C</span></li>
 
-					<div class = "text_box_horizontal" style = "position: absolute; top: 600px; left: 65px;">
-						<ul style = "margin: 0px; padding: 0px; list-style-type: none;">
-							<li>Next: <a href="ec_math_libbitcoin.html" target="_blank">Private & Public Keys with Libbitcoin.</a>
-							</li>
-							<li>
-							</li>
-						</ul>
+							</ul>
+						</div>
+						<div class = "text_box" style = "width: 320px; font-size: 23px;">
+							<ul style = "margin: 0px; padding: 0px; list-style-type: none;">
+								<li style = "font-weight: 600;">EC over Prime Fields \(\mathbb{F}_{p}\)</li>
+								<li><span class="inline_code">EC-Point P</span> over \(\mathbb{F}_{p}\)</li>
+								<li><span class="inline_code">A + B</span> over \(\mathbb{F}_{p}\)</li>
+								<li><span class="inline_code">a &#8901; B</span> over \(\mathbb{F}_{p}\) </li>
+								<li><span class="inline_code">(a+b)&#8901;C = a&#8901;C + b&#8901;C</span></li>
+								<hr style = "height:3px; visibility:hidden;">
+								<li style = "font-weight: 600;">Bitcoin Keys:</li>
+								<li><span class="inline_code">s &#8901; G</span> over <span class="inline_code">secp256k1</span></li>
+							</ul>
+						</div>
 					</div>
 
 				</section>
-				<!-- *********** END: Chapter Subtopics 4 *********** -->
+				<!-- *********** END: Chapter Subtopics Summary *********** -->
+
 
 
 			</div><!-- END: Slides Div -->
@@ -929,6 +993,9 @@
 					config: 'TeX-AMS_HTML-full'  // See http://docs.mathjax.org/en/latest/config-files.html
 				},
 				previewLinks: true,
+
+				// Push each slide change to the browser history
+				history: true,
 
 				overview: false,
 				touch: false,

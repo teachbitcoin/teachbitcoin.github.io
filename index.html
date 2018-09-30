@@ -11,13 +11,14 @@
 		<!-- Theme override for teachbitcoin -->
 		<link rel="stylesheet" href="css/teachbitcoin.css">
 		<!-- Google Fonts -->
-		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300,400,400,600i,700" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:250,250,400,400,700i,700" rel="stylesheet">
 
 	</head>
 	<body>
 		<div class="reveal">
 			<div class="slides">
 
+				<!-- Title Page -->
 				<section class ="box">
 					<img src="images/index/background_image.jpg" class = "image" style = "z-index: -1;">
 					<div style = "margin-left:50px">
@@ -36,197 +37,342 @@
 
 						<div style = "width: 100%; overflow: hidden;font-size:30px;font-weight:600;
 													font-style:italic; margin-top: 40px">
-							<a href="index.html#/1" class = "index" style="float:left;"
-								>See Next Page for the Curriculum Overview</a>
+							<a href="index.html#/1" class = "orange_link" style="float:left;"
+								>See training chapters on following pages</a>
 						</div>
 					</div>
 				</section>
+				<!-- End of Title Page -->
 
 
+
+        <!-- Overview Page 1 -->
 				<section class ="box">
 
-					<div class = "title">
-						<span class = "title weight">TeachBitcoin</span>.github.io
-					</div>
+          <!-- EC Math Section -->
+          <div style= "width:100%; margin: auto; display: flex; justify-content: space-between;">
 
-					<div class = "multi_text_box_container" style = "padding: 5px 0 0 0; font-size:18px">
-						<ul style = "width: 100%;">
-							<li><span class ="weight" style="font-size:100%">Elliptic Curve Math</span>
-								<span style = "float: right;font-weight:300;">
-									<a  href="ec_math.html" target="_blank" class ="index">Lecture Materials</a>
-									/
-									<a href="ec_math_libbitcoin.html" target="_blank" class ="index">Libbitcoin Examples</a>
-									/
-								Video
-								</span>
-							</li>
-							<li><span class ="weight">Signatures: ECSDA & DER</span>
-								<span style = "float: right; font-weight:300;">
-									Lecture Materials
-									/
-									Libbitcoin Examples
-									/
-								Video
-								</span>
-							</li>
+            <div style = "width: 65%; font-size: 20px; text-align: left;">
+              <span style = "font-size: 25px; font-weight:700">Elliptic Curve Math</span>
+              <div style="width: 80%; margin: 5px 0 0 0;">
+                This chapter covers prime fields, elliptic curves operations over real numbers and prime fields.
+                These are the basic mathematical concepts that ECDSA signing is based on.
+              </div>
+            </div>
 
-							<!-- Wallet Keys, Addresses and Wallet Import Format -->
-							<!-- Mnemonics & HD Wallet Seed -->
-							<!-- HD Child Derivation -->
-							<!-- Multifork Wallet -->
-							<li><span class ="weight">Bitcoin Wallets</span>
-							</li>
-							<ul>
-								<li type="circle"><span class ="">Basic Wallet Functionality</span>
-									<span style = "float: right; font-weight:300;">
-										<a href="wallets.html#/" target="_blank" class ="index">Lecture Materials</a>
-										/
-										<a href="wallets_libbitcoin.html#/" target="_blank" class ="index">Libbitcoin Examples</a>
-										/
-										Video
-									</span>
-								</li>
-								<li type="circle"><span class ="">Mnemonics & HD Master Key Derivation</span>
-									<span style = "float: right; font-weight:300;">
-										<a href="wallets.html#/3" target="_blank" class ="index">Lecture Materials</a>
-										/
-										<a href="wallets_libbitcoin.html#/5" target="_blank" class ="index">Libbitcoin Examples</a>
-										/
-										Video
-									</span>
-								</li>
-								<li type="circle"><span class ="">HD Extended Child Key Derivation</span>
-									<span style = "float: right; font-weight:300;">
-										<a href="wallets.html#/6" target="_blank" class ="index">Lecture Materials</a>
-										/
-										<a href="wallets_libbitcoin.html#/8" target="_blank" class ="index">Libbitcoin Examples</a>
-										/
-										Video
-									</span>
-								</li>
-								<li type="circle"><span class ="">Hardfork HD Wallet</span>
-									<span style = "float: right; font-weight:300;">
-										<a href="wallets_hardfork.html" target="_blank" class ="index">Lecture Materials</a>
-										/
-										Libbitcoin Examples
-										/
-										Video
-									</span>
-								</li>
-							</ul>
-							<!-- Transactions Part -->
-							<li><span class ="weight">Bitcoin Transactions</span>
-								<span style = "float: right;font-weight:300;">
-								</span>
-							</li>
-							<!-- TX Subtopics -->
-							<ul>
-								<li type="circle"><span class ="">Transaction Construction & Endorsement</span>
-									<span style = "float: right; font-weight:300;">
-										<a href="transaction_build.html#/" target="_blank" class ="index">Lecture Materials</a>
-										/
-										Libbitcoin Examples
-										/
-										Video
-									</span>
-								</li>
-								<li type="circle"><span class ="">Signature Commitment Types</span>
-									<span style = "float: right; font-weight:300;">
-										<a href="transaction_sighash.html#/" target="_blank" class ="index">Lecture Materials</a>
-										/
-										<a href="transaction_sighash_libbitcoin.html#/" target="_blank" class ="index">Libbitcoin Examples</a>
-										/
-										Video
-									</span>
-								</li>
-								<!-- Multisig -->
-								<li type="circle"><span class ="">Multi Signature Transactions</span>
-									<span style = "float: right; font-weight:300;">
-										<a href="transaction_multisig.html#/" target="_blank" class ="index">Lecture Materials</a>
-										/
-										Libbitcoin Examples
-										/
-										Video
-									</span>
-								</li>
-								<!-- P2SH -->
-								<li type="circle"><span class ="">Pay-to-Script-Hash Transactions</span>
-									<span style = "float: right; font-weight:300;">
-										<a href="transaction_p2sh.html#/" target="_blank" class ="index">Lecture Materials</a>
-										/
-										Libbitcoin Examples
-										/
-										Video
-									</span>
-								</li>
-								<li type="circle"><span class ="">Absolute Transaction Locktime</span>
-									<span style = "float: right; font-weight:300;">
-										<a href="transaction_timelocks.html#/" target="_blank" class ="index">Lecture Materials</a>
-										/
-										<a href="transaction_timelocks_libbitcoin.html#/" target="_blank" class ="index">Libbitcoin Examples</a>
-										/
-										Video
-									</span>
-								</li>
-								<li type="circle"><span class ="">Relative Transaction Locktime</span>
-									<span style = "float: right; font-weight:300;">
-										<a href="transaction_timelocks.html#/3" target="_blank" class ="index">Lecture Materials</a>
-										/
-										<a href="transaction_timelocks_libbitcoin.html#/3" target="_blank" class ="index">Libbitcoin Examples</a>
-										/
-										Video
-									</span>
-								</li>
-							</ul>
-							<!-- Witness Transactions Part -->
-							<li><span class ="weight">Witness Transactions</span>
-							</li>
-							<ul>
-								<li type="circle"><span class ="">Pay-to-Witness Transactions</span>
-									<span style = "float: right; font-weight:300;">
-										<a href="transaction_witness.html#/" target="_blank" class ="index">Lecture Materials</a>
-										/
-										Libbitcoin Examples
-										/
-										Video
-									</span>
-								</li>
-								<li type="circle"><span class ="">P2SH(Pay-to-Witness) Transactions</span>
-									<span style = "float: right; font-weight:300;">
-										<a href="transaction_witness.html#/5" target="_blank" class ="index">Lecture Materials</a>
-										/
-										Libbitcoin Examples
-										/
-										Video
-									</span>
-								</li>
-							</ul>
-							<!-- Payment Channels -->
-							<li><span class ="weight">Lightning Payment Channels</span>
-							</li>
-							<ul>
-								<li type="circle"><span class ="">Basic payment channel: Revocable Sequence Maturity Contracts</span>
-									<span style = "float: right; font-weight:300;">
-										<a href="payment_channels.html" target="_blank" class ="index">Lecture Materials</a>
-										/
-										Video
-									</span>
-								</li>
-								<li type="circle"><span class ="">Payment routing: Hashed Timelock Contracts</span>
-									<span style = "float: right; font-weight:300;">
-										<a href="payment_channels.html#/4" target="_blank" class ="index">Lecture Materials</a>
-										/
-										Video
-									</span>
-								</li>
-							</ul>
+            <div style = "width: 35%; font-size: 20px; text-align: left;">
+              <a style = "font-weight: 700;" href="ec_math.hmtl" target="_blank" class ="orange_link">Chapter Slides</a>
+              <br><a style = "font-weight: 700;" href="https://github.com/teachbitcoin/code-demos/tree/master/00_ec_math" target="_blank" class ="orange_link">Chapter Code Repository</a>
+              <br><a href="https://github.com/libbitcoin/libbitcoin-explorer/wiki/Math-Commands" target="_blank" class ="orange_link">&nbsp; Libbitcoin BX Documentation</a>
+              <br><a href="https://github.com/libbitcoin/libbitcoin/wiki/Elliptic-Curve-Operations" target="_blank" class ="orange_link">&nbsp; Libbitcoin C++ Documentation</a>
 
-						</ul> <!-- End of content list -->
-					</div>
+            </div>
 
-				</section>
+          </div>
+          <!-- End of EC Math Section -->
+
+          <hr style = "height:3px; border: 0; height: 0px; border-top: 2px solid rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3); margin: 12px 0 12px 0; padding:0px">
+
+          <!-- DER Signatures Section -->
+          <div style= "width:100%; margin: auto; display: flex; justify-content: space-between;">
+
+            <div style = "width: 65%; font-size: 20px; text-align: left;">
+              <span style = "font-size: 25px; font-weight:700">ECDSA Signatures</span>
+              <div style="width: 80%; margin: 5px 0 0 0;">
+                  <span>Bitcoin signatures use the Elliptic Curve Digital Signing Algorithm to secure unspent outputs and are encoded in the DER serialisation format.</span>
+              </div>
+            </div>
+
+            <div style = "width: 35%; font-size: 20px; text-align: left;">
+              <span style="font-weight:700; opacity:0.2;">Chapter Slides</span>
+              <br><span style="font-weight:700; opacity:0.2;">Chapter Code Repository</span>
+              <br><a href="https://github.com/libbitcoin/libbitcoin/wiki/ECDSA-and-DER-Signatures" target="_blank" class ="orange_link">&nbsp; Libbitcoin C++ Documentation</a>
+            </div>
+
+          </div>
+          <!-- End of DER Signatures Section -->
+
+          <hr style = "height:3px; border: 0; height: 0px; border-top: 2px solid rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3); margin: 12px 0 12px 0; padding:0px">
+
+          <!-- Addresses & HD Wallets -->
+          <div style= "width:100%; margin: auto; display: flex; justify-content: space-between;">
+
+            <div style = "width: 65%; font-size: 20px; text-align: left;">
+              <span style = "font-size: 25px; font-weight:700">Addresses and HD Wallets</span>
+              <div style="width: 80%; margin: 5px 0 0 0;">
+                Bitcoin addresses encode the information required for a wallet to spend to the correct key.
+                Hierarchical Deterministic wallets use a child-key derivation algorithm to safely derive new addresses from the same root.
+              </div>
+            </div>
+
+            <div style = "width: 35%; font-size: 20px; text-align: left;">
+              <a style = "font-weight: 700;" href="wallets.html" target="_blank" class ="orange_link">Chapter Slides</a>
+              <br><a style = "font-weight: 700;" href="https://github.com/teachbitcoin/code-demos/tree/master/02_addresses_hd_wallets" target="_blank" class ="orange_link">Chapter Code Repository</a>
+              <br><a href="https://github.com/libbitcoin/libbitcoin-explorer/wiki/Wallet-Commands" target="_blank" class ="orange_link">&nbsp; Libbitcoin BX Documentation</a>
+              <br><a href="https://github.com/libbitcoin/libbitcoin/wiki/Addresses-and-HD-Wallets" target="_blank" class ="orange_link">&nbsp; Libbitcoin C++ Documentation</a>
+
+            </div>
+
+          </div>
+          <!-- End of Addresses & HD Wallets -->
+
+          <hr style = "height:3px; border: 0; height: 0px; border-top: 2px solid rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3); margin: 12px 0 12px 0; padding:0px">
+
+          <!-- Introduction to Transactions -->
+          <div style= "width:100%; margin: auto; display: flex; justify-content: space-between;">
+
+            <div style = "width: 65%; font-size: 20px; text-align: left;">
+              <span style = "font-size: 25px; font-weight:700">Introduction to Transactions </span>
+              <div style="width: 80%; margin: 5px 0 0 0;">
+                An introduction to building and signing your first transaction which spends to Pay-to-Public-Key-Hash outputs.
+              </div>
+            </div>
+
+            <div style = "width: 35%; font-size: 20px; text-align: left;">
+              <a style = "font-weight: 700;" href="transaction_build.html" target="_blank" class ="orange_link">Chapter Slides</a>
+              <br><a style = "font-weight: 700;" href="https://github.com/teachbitcoin/code-demos/tree/master/03_transactions_introduction" target="_blank" class ="orange_link">Chapter Code Repository</a>
+              <br><a href="https://github.com/libbitcoin/libbitcoin-explorer/wiki/Transaction-Commands" target="_blank" class ="orange_link">&nbsp; Libbitcoin BX Documentation</a>
+              <br><a href="https://github.com/libbitcoin/libbitcoin/wiki/Building-Transactions" target="_blank" class ="orange_link">&nbsp; Libbitcoin C++ Documentation</a>
+            </div>
+
+          </div>
+          <!-- End of Introduction to Transactions -->
+
+          <hr style = "height:3px; border: 0; height: 0px; border-top: 2px solid rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3); margin: 12px 0 12px 0; padding:0px">
+
+            <!-- Sighash Modifiers -->
+            <div style= "width:100%; margin: auto; display: flex; justify-content: space-between;">
+
+              <div style = "width: 65%; font-size: 20px; text-align: left;">
+                <span style = "font-size: 25px; font-weight:700">Signature Hash Modifiers</span>
+                <div style="width: 80%; margin: 5px 0 0 0;">
+                  Signatures can commit to specific input and outputs, allowing other parts of the transaction to be modified by other parties.
+                </div>
+              </div>
+
+              <div style = "width: 35%; font-size: 20px; text-align: left;">
+                <a style = "font-weight: 700;" href="transaction_sighash.html" target="_blank" class ="orange_link">Chapter Slides</a>
+                <br><a style = "font-weight: 700;" href="https://github.com/teachbitcoin/code-demos/tree/master/04_transactions_sighash_modifiers" target="_blank" class ="orange_link">Chapter Code Repository</a>
+                <br><a href="https://github.com/libbitcoin/libbitcoin/wiki/Sighash-and-TX-Signing" target="_blank" class ="orange_link">&nbsp; Libbitcoin C++ Documentation</a>
+              </div>
+
+            </div>
+            <!-- End of Sighash Modifiers -->
+
+            <hr style = "height:3px; border: 0; height: 0px; border-top: 2px solid rgba(0, 0, 0, 0.1);
+              border-bottom: 1px solid rgba(255, 255, 255, 0.3); margin: 12px 0 12px 0; padding:0px">
+
+            <!-- Link to next page -->
+          <div style= "width:100%; margin: auto; display: flex; justify-content: space-between;">
+              <span style="font-size:22px; font-weight:700;"><a href="index.html#/2" class ="orange_link">Next Chapters ➡</a></span>
+          </div>
 
 
+        </section>
+        <!-- End of Overview Page 1 -->
+
+        <!-- Overview Page 2 -->
+				<section class ="box">
+
+          <!-- Transaction Timelocks -->
+          <div style= "width:100%; margin: auto; display: flex; justify-content: space-between;">
+
+            <div style = "width: 65%; font-size: 20px; text-align: left;">
+              <span style = "font-size: 25px; font-weight:700">Transaction Timelocks</span>
+              <div style="width: 80%; margin: 5px 0 0 0;">
+                  Absolute and relative timelocks prevent transactions from being broadcast before a certain time or blockheight.
+                  A timelock may be commited to by the transaction signature, or can be enforced by the previous output script.
+              </div>
+            </div>
+
+            <div style = "width: 35%; font-size: 20px; text-align: left;">
+              <a style = "font-weight: 700;" href="transaction_timelocks.html" target="_blank" class ="orange_link">Chapter Slides</a>
+              <br><a style = "font-weight: 700;" href="https://github.com/teachbitcoin/code-demos/tree/master/05_transactions_timelocks" target="_blank" class ="orange_link">Chapter Code Repository</a>
+            </div>
+
+          </div>
+          <!-- Transaction Timelocks -->
+
+          <hr style = "height:3px; border: 0; height: 0px; border-top: 2px solid rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3); margin: 12px 0 12px 0; padding:0px">
+
+          <!-- Multisig Section -->
+          <div style= "width:100%; margin: auto; display: flex; justify-content: space-between;">
+
+            <div style = "width: 65%; font-size: 20px; text-align: left;">
+              <span style = "font-size: 25px; font-weight:700">Multisignature Scripts</span>
+              <div style="width: 80%; margin: 5px 0 0 0;">
+                An output script which can be spent by n-of-m signatures.
+              </div>
+            </div>
+
+            <div style = "width: 35%; font-size: 20px; text-align: left;">
+              <a style = "font-weight: 700;" href="transaction_multisig.html" target="_blank" class ="orange_link">Chapter Slides</a>
+              <br><span style="font-weight:700; opacity:0.2;">Chapter Code Repository</span>
+            </div>
+
+          </div>
+          <!-- End of Multisig Section -->
+
+          <hr style = "height:3px; border: 0; height: 0px; border-top: 2px solid rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3); margin: 12px 0 12px 0; padding:0px">
+
+          <!-- P2SH Section -->
+          <div style= "width:100%; margin: auto; display: flex; justify-content: space-between;">
+
+            <div style = "width: 65%; font-size: 20px; text-align: left;">
+              <span style = "font-size: 25px; font-weight:700">Pay-to-Script-Hash Scripts</span>
+              <div style="width: 80%; margin: 5px 0 0 0;">
+              P2SH output scripts commit to a hashed locking script.
+              The locking script preimage must be provided together with the unlocking script for such a P2SH output to be spent.
+              </div>
+            </div>
+
+            <div style = "width: 35%; font-size: 20px; text-align: left;">
+              <a style = "font-weight: 700;" href="transaction_p2sh.html" target="_blank" class ="orange_link">Chapter Slides</a>
+              <br><span style="font-weight:700; opacity:0.2;">Chapter Code Repository</span>
+            </div>
+
+          </div>
+          <!-- End of P2SH Section -->
+
+          <hr style = "height:3px; border: 0; height: 0px; border-top: 2px solid rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3); margin: 12px 0 12px 0; padding:0px">
+
+          <!-- Witness Transactions -->
+          <div style= "width:100%; margin: auto; display: flex; justify-content: space-between;">
+
+            <div style = "width: 65%; font-size: 20px; text-align: left;">
+              <span style = "font-size: 25px; font-weight:700">Witness Transactions </span>
+              <div style="width: 80%; margin: 5px 0 0 0;">
+                Pay-to-witness output scripts are be spent with transactions with valid witnesses.
+                Wallets which do not support native P2W transactions may send to outputs which wrap P2W scripts in P2SH outputs.
+              </div>
+            </div>
+
+            <div style = "width: 35%; font-size: 20px; text-align: left;">
+              <a style = "font-weight: 700;" href="transaction_witness.html" target="_blank" class ="orange_link">Chapter Slides</a>
+              <br><span style="font-weight:700; opacity:0.2;">Chapter Code Repository</span>
+              <br><a href="https://github.com/libbitcoin/libbitcoin/wiki/P2WPKH-Transactions" target="_blank" class ="orange_link">&nbsp; Libbitcoin C++ Documentation: P2WPKH</a>
+							<br><a href="https://github.com/libbitcoin/libbitcoin/wiki/P2WSH-Transactions" target="_blank" class ="orange_link">&nbsp; Libbitcoin C++ Documentation: P2WSH</a>
+							<br><a href="https://github.com/libbitcoin/libbitcoin/wiki/P2SH(P2WPKH)-Transactions" target="_blank" class ="orange_link">&nbsp; Libbitcoin C++ Documentation: P2SH(P2WPKH)</a>
+							<br><a href="https://github.com/libbitcoin/libbitcoin/wiki/P2SH(P2WSH)-Transactions" target="_blank" class ="orange_link">&nbsp; Libbitcoin C++ Documentation: P2SH(P2WSH)</a>
+
+            </div>
+
+          </div>
+          <!-- End of Witness Transactions -->
+
+          <hr style = "height:3px; border: 0; height: 0px; border-top: 2px solid rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3); margin: 12px 0 12px 0; padding:0px">
+
+            <!-- Block Parsing  -->
+            <div style= "width:100%; margin: auto; display: flex; justify-content: space-between;">
+
+              <div style = "width: 65%; font-size: 20px; text-align: left;">
+                <span style = "font-size: 25px; font-weight:700">Block Parsing</span>
+                <div style="width: 80%; margin: 5px 0 0 0;">
+                    A closer lock at blocks and block headers, and their validation by nodes.
+                </div>
+              </div>
+
+              <div style = "width: 35%; font-size: 20px; text-align: left;">
+                <span style="font-weight:700; opacity:0.2;">Chapter Slides</span>
+                <br><a style = "font-weight: 700;" href="https://github.com/teachbitcoin/code-demos/tree/master/09_block_parsing" target="_blank" class ="orange_link">Chapter Code Repository</a>
+                <br><a href="https://github.com/libbitcoin/libbitcoin-server/wiki/Block-Service" target="_blank" class ="orange_link">&nbsp; Libbitcoin C++ Documentation</a>
+              </div>
+
+            </div>
+            <!-- End of Block Parsing -->
+
+            <hr style = "height:3px; border: 0; height: 0px; border-top: 2px solid rgba(0, 0, 0, 0.1);
+              border-bottom: 1px solid rgba(255, 255, 255, 0.3); margin: 12px 0 12px 0; padding:0px">
+
+            <!-- Link to next page -->
+          <div style= "width:100%; margin: auto; display: flex; justify-content: space-between;">
+              <span style="font-size:22px; font-weight:700;"><a href="index.html#/3" class ="orange_link">Next Chapters ➡</a></span>
+          </div>
+
+        </section>
+        <!-- End of Overview Page 2 -->
+
+        <!-- Overview Page 3 -->
+				<section class ="box">
+
+          <!-- P2P Network -->
+          <div style= "width:100%; margin: auto; display: flex; justify-content: space-between;">
+
+            <div style = "width: 65%; font-size: 20px; text-align: left;">
+              <span style = "font-size: 25px; font-weight:700">P2P Network</span>
+              <div style="width: 80%; margin: 5px 0 0 0;">
+                  An introduction to the P2P messaging protocol between Bitcoin nodes on the network.
+              </div>
+            </div>
+
+            <div style = "width: 35%; font-size: 20px; text-align: left;">
+              <span style="font-weight:700; opacity:0.2;">Chapter Slides</span>
+              <br><span style="font-weight:700; opacity:0.2;">Chapter Code Repository</span>
+            </div>
+
+          </div>
+          <!-- End of P2P Network -->
+
+          <hr style = "height:3px; border: 0; height: 0px; border-top: 2px solid rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3); margin: 12px 0 12px 0; padding:0px">
+
+          <!-- SPV Section -->
+          <div style= "width:100%; margin: auto; display: flex; justify-content: space-between;">
+
+            <div style = "width: 65%; font-size: 20px; text-align: left;">
+              <span style = "font-size: 25px; font-weight:700">Simplified Payment Verification</span>
+              <div style="width: 80%; margin: 5px 0 0 0;">
+                SPV clients follow the longest header chain with the most proof-of-work.
+                They rely on specific transaction updates from full Bitcoin nodes,
+                and perform merkle proofs to validate confirmation of these transactions.
+              </div>
+            </div>
+
+            <div style = "width: 35%; font-size: 20px; text-align: left;">
+              <a style = "font-weight: 700;" href="spv.html" target="_blank" class ="orange_link">Chapter Slides</a>
+              <br><a style = "font-weight: 700;" href="https://github.com/teachbitcoin/code-demos/tree/master/11_simplified_payment_verification" target="_blank" class ="orange_link">Chapter Code Repository</a>
+            </div>
+
+          </div>
+          <!-- End of SPV Section -->
+
+          <hr style = "height:3px; border: 0; height: 0px; border-top: 2px solid rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3); margin: 12px 0 12px 0; padding:0px">
+
+          <!-- Lightning -->
+          <div style= "width:100%; margin: auto; display: flex; justify-content: space-between;">
+
+            <div style = "width: 65%; font-size: 20px; text-align: left;">
+              <span style = "font-size: 25px; font-weight:700">Payment Channels and Lightning Network</span>
+              <div style="width: 80%; margin: 5px 0 0 0;">
+               We demonstrate a basic payment channel between two nodes which is enabled by revocable output scripts (RSMC's).
+               Payment routing across multiple payment channels is made possible by hashed time-locked contracts (HTLC's).
+              </div>
+            </div>
+
+            <div style = "width: 35%; font-size: 20px; text-align: left;">
+              <a style = "font-weight: 700;" href="payment_channels.html" target="_blank" class ="orange_link">Chapter Slides</a>
+              <br><a style = "font-weight: 700;" href="https://github.com/teachbitcoin/code-demos/tree/master/12_payment_channels" target="_blank" class ="orange_link">Chapter Code Repository</a>
+            </div>
+
+          </div>
+          <!-- End of Lightning -->
+
+          <hr style = "height:3px; border: 0; height: 0px; border-top: 2px solid rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3); margin: 12px 0 12px 0; padding:0px">
+
+
+
+        </section>
+        <!-- End of Overview Page 3 -->
 
       </div><!-- END: Lecture Materials Div -->
 		</div><!-- END: Reveal Div -->

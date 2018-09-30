@@ -1,0 +1,149 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Security Model</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/simple.css">
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/xcode.css">
+		<!-- Theme override for teachbitcoin -->
+		<link rel="stylesheet" href="css/teachbitcoin.css">
+		<!-- Google Font Roboto -->
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+
+
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+
+			<!-- TODO: Subtopic Overview -->
+			<!-- TODO: P2PKH Address Derivation Paths. -->
+			<!-- TODO: Wallet Import Format. -->
+
+			<!-- *********** BEGIN: TX Confirmation Overview *********** -->
+
+      <section class = "box">
+        <div class = "title">
+          <span class = "title weight">Transaction Confirmation </span>Overview
+        </div>
+
+        <img src="images/security_model/tx_confirmation0.svg" class = "image" style = "z-index: -1;">
+        <img src="images/security_model/tx_confirmation1.svg" class = "fragment image" style = "z-index: -1;">
+        <img src="images/security_model/tx_confirmation2.svg" class = "fragment image" style = "z-index: -1;">
+        <img src="images/security_model/tx_confirmation3.svg" class = "fragment image" style = "z-index: -1;">
+        <img src="images/security_model/tx_confirmation4.svg" class = "fragment image" style = "z-index: -1;">
+        <img src="images/security_model/tx_confirmation5.svg" class = "fragment image" style = "z-index: -1;">
+        <img src="images/security_model/tx_confirmation6.svg" class = "fragment image" style = "z-index: -1;">
+        <img src="images/security_model/tx_confirmation7.svg" class = "fragment image" style = "z-index: -1;">
+        <img src="images/security_model/tx_confirmation8.svg" class = "fragment image" style = "z-index: -1;">
+        <img src="images/security_model/tx_confirmation9.svg" class = "fragment image" style = "z-index: -1;">
+
+      </section>
+      <!-- *********** END: TX Confirmation Overview *********** -->
+
+      <!-- *********** BEGIN: Nodes *********** -->
+
+      <section class = "box">
+        <div class = "title">
+          <span class = "title weight">Nodes: </span>Validation
+        </div>
+
+        <img src="images/security_model/nodes_validation0.svg" class = "image" style = "z-index: -1;">
+        <img src="images/security_model/nodes_validation1.svg" class = "fragment image" style = "z-index: -1;">
+        <img src="images/security_model/nodes_validation2.svg" class = "fragment image" style = "z-index: -1;">
+        <img src="images/security_model/nodes_consensus0.svg" class = "fragment image" style = "z-index: -1;">
+        <img src="images/security_model/nodes_consensus1.svg" class = "fragment image" style = "z-index: -1;">
+
+      </section>
+      <!-- *********** END: Nodes *********** -->
+
+      <!-- *********** BEGIN: Miners *********** -->
+
+      <section class = "box">
+        <div class = "title">
+          <span class = "title weight">Miners:</span> Transaction Ordering
+        </div>
+
+        <img src="images/security_model/miner_tx_ordering0.svg" class = "image" style = "z-index: -1;">
+        <img src="images/security_model/miner_tx_ordering1.svg" class = "fragment image" style = "z-index: -1;">
+        <img src="images/security_model/miner_tx_ordering2.svg" class = "fragment image" style = "z-index: -1;">
+        <img src="images/security_model/miner_tx_ordering3.svg" class = "fragment image" style = "z-index: -1;">
+        <img src="images/security_model/miner_tx_censorship0.svg" class = "fragment image" style = "z-index: -1;">
+        <img src="images/security_model/miner_tx_censorship1.svg" class = "fragment image" style = "z-index: -1;">
+
+      </section>
+      <!-- *********** END: Miners *********** -->
+
+      <!-- *********** BEGIN: Conclusion *********** -->
+
+      <section class = "box">
+        <div class = "title">
+          <span class = "title weight">Security Model</span> Summary
+        </div>
+
+        <img src="images/security_model/security_model_summary0.svg" class = "image" style = "z-index: -1;">
+        <img src="images/security_model/security_model_summary1.svg" class = "fragment image" style = "z-index: -1;">
+
+
+      </section>
+      <!-- *********** END: Conclusion *********** -->
+
+      </div><!-- END: Slides Div -->
+		</div><!-- END: Reveal Div -->
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/math/math.js', async: true }
+				],
+
+				math: {
+					mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+					config: 'TeX-AMS_HTML-full'  // See http://docs.mathjax.org/en/latest/config-files.html
+				},
+
+				previewLinks: true,
+
+				// Push each slide change to the browser history
+				history: true,
+
+				// Enable keyboard shortcuts for navigation
+				keyboard: true,
+
+				// Enables touch navigation on devices with touch input
+				overview: false,
+				touch: false,
+
+				// The "normal" size of the presentation, aspect ratio will be preserved
+				// when the presentation is scaled to fit different resolutions. Can be
+				// specified using percentage units.
+				width: 1366,
+			  height: 768,
+				// Factor of the display size that should remain empty around the content
+				margin: 0.05,
+
+				// Bounds for smallest/largest possible scale to apply to content
+				minScale: 0.2,
+				maxScale: 1.5
+			});
+			Reveal.configure({ slideNumber: true });
+		</script>
+	</body>
+</html>

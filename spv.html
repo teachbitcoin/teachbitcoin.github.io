@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Libbitcoin Introduction</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/simple.css">
+		<!-- Theme override for teachbitcoin -->
+		<link rel="stylesheet" href="css/teachbitcoin.css">
+		<!-- Google Fonts -->
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300,400,400,600i,700" rel="stylesheet">
+
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+        <!-- *********** BEGIN: SPV header chain *********** -->
+        <section class ="box">
+          <div class = "title">
+            <span class = "weight">SPV Header Chain Validation</span>
+          </div>
+
+          <img src="images/bitcoinedge_tokyo/spv_header_chain0.svg" class = "image" style = "z-index: -3;">
+          <img src="images/bitcoinedge_tokyo/spv_header_chain1.svg" class = "fragment image" style = "z-index: -3;">
+          <img src="images/bitcoinedge_tokyo/spv_header_chain2.svg" class = "fragment image" style = "z-index: -3;">
+          <img src="images/bitcoinedge_tokyo/spv_header_chain3.svg" class = "fragment image" style = "z-index: -3;">
+          <img src="images/bitcoinedge_tokyo/spv_header_chain4.svg" class = "fragment image" style = "z-index: -3;">
+
+        </section>
+        <!-- *********** END: SPV header chain *********** -->
+
+        <!-- *********** BEGIN: SPV header chain *********** -->
+        <section class ="box">
+          <div class = "title">
+            <span class = "weight">SPV Address Subscription</span>
+          </div>
+
+          <img src="images/bitcoinedge_tokyo/spv_address_subscription.svg" class = "image" style = "z-index: -3;">
+
+        </section>
+        <!-- *********** END: SPV header chain *********** -->
+
+        <!-- *********** BEGIN: SPV merkle proof *********** -->
+        <section class ="box">
+          <div class = "title">
+            <span class = "weight">Merkle Proof:</span> Validating TX Confirmation
+          </div>
+
+          <img src="images/bitcoinedge_tokyo/spv_merkle_proof.svg" class = "image" style = "z-index: -3;">
+
+        </section>
+        <!-- *********** END: SPV merkle proof *********** -->
+
+
+      </div><!-- END: Lecture Materials Div -->
+		</div><!-- END: Reveal Div -->
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+					// { src: 'plugin/math/math.js', async: true }
+				],
+
+				// math: {
+				// 	mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+				// 	config: 'TeX-AMS_HTML-full'  // See http://docs.mathjax.org/en/latest/config-files.html
+				// },
+
+				previewLinks: false,
+
+				// Push each slide change to the browser history
+				history: true,
+
+				// Enable keyboard shortcuts for navigation
+				keyboard: true,
+
+				// Enables touch navigation on devices with touch input
+				overview: false,
+				touch: false,
+
+				// The "normal" size of the presentation, aspect ratio will be preserved
+				// when the presentation is scaled to fit different resolutions. Can be
+				// specified using percentage units.
+				width: 1366,
+			  height: 768,
+				// Factor of the display size that should remain empty around the content
+				margin: 0.05,
+
+				// Bounds for smallest/largest possible scale to apply to content
+				minScale: 0.2,
+				maxScale: 1.5
+			});
+			Reveal.configure({ slideNumber: true });
+		</script>
+	</body>
+</html>

@@ -101,7 +101,7 @@
                 <li style = "font-weight: bold;">Bitcoin Hash Checksum</li>
                 <ul>
 									<li><span class="inline_code">double SHA256(input)<span></li>
-									<li>Last 4 bytes of digest.</li>
+									<li>First 4 bytes of digest.</li>
                   <li>Version prefix (Mainnet/Testnet)</li>
                   <ul>
                     <li>0x00/0x6F</li>
@@ -153,12 +153,11 @@
               <li style = "font-weight: bold;">Bitcoin Hash Checksum</li>
                 <ul>
 									<li><span class="inline_code">double SHA256(input)<span></li>
-									<li>Last 4 bytes of digest.</li>
-                  <li>Checksum: last 4 bytes of 32 byte digest</li>
+									<li>First 4 bytes of digest.</li>
                   <li>Version byte:
                     <ul>
                       <li>Mainnet: 0x80</li>
-                      <li>Testnet: 0x6F</li>
+                      <li>Testnet: 0xEF</li>
                     </ul>
                   </li>
                   <li>Compression Marker (0x01) ommited if associated public key is uncompressed</li>
