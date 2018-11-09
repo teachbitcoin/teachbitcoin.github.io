@@ -1,0 +1,244 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>ECDSA</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/simple.css">
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/xcode.css">
+		<!-- Theme override for teachbitcoin -->
+		<link rel="stylesheet" href="css/teachbitcoin.css">
+		<!-- Google Font Roboto -->
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+
+
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+        <!-- *********** Begin: Pedersenn Commitment *********** -->
+        <section class = "box">
+          <div class = "title">
+              <span class = "title weight">Pedersen Commitment</span>
+          </div>
+
+          <!-- Derivation Graphic -->
+          <img src="images/ecdsa/commitment0.svg" class = "image" style = "z-index: -1;">
+          <img src="images/ecdsa/commitment1.svg" class = "fragment image" style = "z-index: -1;">
+          <img src="images/ecdsa/commitment2.svg" class = "fragment image" style = "z-index: -1;">
+
+          <!-- 2 column container -->
+          <!-- 45% div for formula and curve--><!-- 45% text & bulletpoint -->
+          <div class = "multi_text_box_container" style = "padding: 0px 0 0 0; width: 1350px;">
+            <!-- 45% div for formula and curve-->
+            <div class = "" style = "width: 40%; font-size: 22px;">
+              <div style ="text-align: center;">
+              </div>
+            </div>
+
+            <!-- 45% text & bulletpoint -->
+            <div class = "text_box"
+                 style = "width: 50%; font-size: 22px; margin: 60px 0 0 0">
+              <ul style = "margin: 0; padding: 0px; list-style-type: none;">
+
+                <li style = "font-weight: bold;">Only one possible value results in commitment: <br>It is “binding”</li>
+                <ul>
+                  <li>Once <span class="inline_code">u</span> is revealed, commitment <span class="inline_code">C</span> can be verfied.</li>
+                  <li>Binding: <span class="inline_code">C</span> can’t be changed for a given secret <span class="inline_code">u</span>.</li>
+                  <li>Information leak: Two equal values equal identical commitments.</li>
+                </ul>
+                <hr style = "height: 5px; visibility: hidden;">
+
+                <li style = "font-weight: bold;">Random factor makes commitment “hiding”.</li>
+                <ul>
+                  <li>Different commitment regardless of value <span class="inline_code">u</span>.</li>
+                  <li>Assumes generator of point <span class="inline_code">H</span> is unknown.</li>
+                </ul>
+                <hr style = "height: 5px; visibility: hidden;">
+
+                <li style = "font-weight: bold;">Broken commitment scheme:</li>
+                <ul>
+                  <li>Generator <span class="inline_code">e</span> of point <span class="inline_code">H</span> is known.</li>
+                  <li>Value <span class="inline_code">u</span> can be modified, commitment remains identical.</li>
+                </ul>
+
+            </div>
+
+          </div><!-- End of 2 column container -->
+
+        </section>
+        <!-- *********** END: Pedersen Commitment *********** -->
+
+        <!-- *********** Begin: ecdsa *********** -->
+        <section class = "box">
+          <div class = "title">
+              <span class = "title weight">ECDSA</span>
+          </div>
+
+          <!-- Derivation Graphic -->
+          <img src="images/ecdsa/ecdsa0.svg" class = "image" style = "z-index: -1;">
+          <img src="images/ecdsa/ecdsa1.svg" class = "fragment image" style = "z-index: -1;">
+
+          <!-- 2 column container -->
+          <!-- 45% div for formula and curve--><!-- 45% text & bulletpoint -->
+          <div class = "multi_text_box_container" style = "padding: 0px 0 0 0; width: 1350px;">
+            <!-- 45% div for formula and curve-->
+            <div class = "" style = "width: 40%; font-size: 22px;">
+              <div style ="text-align: center;">
+              </div>
+            </div>
+
+            <!-- 45% text & bulletpoint -->
+            <div class = "text_box"
+                 style = "width: 50%; font-size: 22px; margin: 60px 0 0 0">
+              <ul style = "margin: 0; padding: 0px; list-style-type: none;">
+
+                <li style = "font-weight: bold;">ECDSA can be likened to a commitment scheme which can only be “broken” by owner of secret `e`.</li>
+                <hr style = "height: 5px; visibility: hidden;">
+
+                <li style = "font-weight: bold;">R point:</li>
+                <ul>
+                  <li>Random point (blinding).</li>
+                  <li><span class="inline_code">R</span> point x-coordinate represented on left & right of equation.</li>
+                  <li>Equation can only be balanced with secret <span class="inline_code">e</span>.</li>
+                </ul>
+                <hr style = "height: 5px; visibility: hidden;">
+
+                <li style = "font-weight: bold;">Signed message z:</li>
+                <ul>
+                  <li>For a given random point <span class="inline_code">R</span>, <span class="inline_code">z</span> is committed to on left side of equation.</li>
+                </ul>
+                <hr style = "height: 5px; visibility: hidden;">
+
+                <li style = "font-weight: bold;">ECDSA Validation:</li>
+                <ul>
+                  <li><span class="inline_code">z</span>, <span class="inline_code">r_x</span>, <span class="inline_code">s</span> and public key <span class="inline_code">P</span> required to validate signature.</li>
+                </ul>
+
+            </div>
+
+          </div><!-- End of 2 column container -->
+
+        </section>
+        <!-- *********** END: ecdsa *********** -->
+
+        <!-- *********** Begin: DER encoding *********** -->
+        <section class = "box">
+          <div class = "title">
+              <span class = "title weight">DER Encoding</span>
+          </div>
+
+          <!-- Derivation Graphic -->
+          <img src="images/ecdsa/der_encoding.svg" class = "image" style = "z-index: -1;">
+
+          <!-- 2 column container -->
+          <!-- 45% div for formula and curve--><!-- 45% text & bulletpoint -->
+          <div class = "multi_text_box_container" style = "padding: 0px 0 0 0; width: 1350px;">
+            <!-- 45% div for formula and curve-->
+            <div class = "" style = "width: 40%; font-size: 22px;">
+              <div style ="text-align: center;">
+              </div>
+            </div>
+
+            <!-- 45% text & bulletpoint -->
+            <div class = "text_box"
+                 style = "width: 50%; font-size: 22px; margin: 60px 0 0 0">
+              <ul style = "margin: 0; padding: 0px; list-style-type: none;">
+
+                <li style = "font-weight: bold;">libsecp256k1 replaced OpenSSL</li>
+                <ul>
+                  <li>OpenSSL suffers from encoding ambiguity across systems.</li>
+                  <li>libsecp256k1 removes this dependency from project.<span class="inline_code">e</span>.</li>
+                </ul>
+                <hr style = "height: 5px; visibility: hidden;">
+
+                <li style = "font-weight: bold;">Strict encoding (BIP66)</li>
+                <ul>
+                  <li>Removes encoding malleability: Consensus enforced encoding standard.</li>
+                  <li>Removes ECDSA malleability: low s values enforced.</li>
+                </ul>
+                <hr style = "height: 5px; visibility: hidden;">
+
+                <li style = "font-weight: bold;">DER signature is 70-72 Bytes long.</li>
+                <ul>
+                  <li>r_x length: 32/33 Bytes</li>
+                  <ul>
+                    <li>256bit signed value, no leading nulls</li>
+                  </ul>
+                  <li>s length: 31/32 Bytes</li>
+                  <ul>
+                    <li>Low s values enforced, no leading nulls</li>
+                  </ul>
+                </ul>
+
+            </div>
+
+          </div><!-- End of 2 column container -->
+
+        </section>
+        <!-- *********** END: ecdsa *********** -->
+
+
+
+
+
+
+
+      </div><!-- END: Lecture Materials Div -->
+		</div><!-- END: Reveal Div -->
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+					// { src: 'plugin/math/math.js', async: true }
+				],
+
+				// math: {
+				// 	mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+				// 	config: 'TeX-AMS_HTML-full'  // See http://docs.mathjax.org/en/latest/config-files.html
+				// },
+
+				previewLinks: false,
+
+				// Push each slide change to the browser history
+				history: true,
+
+				// Enable keyboard shortcuts for navigation
+				keyboard: true,
+
+				// Enables touch navigation on devices with touch input
+				overview: false,
+				touch: false,
+
+				// The "normal" size of the presentation, aspect ratio will be preserved
+				// when the presentation is scaled to fit different resolutions. Can be
+				// specified using percentage units.
+				width: 1366,
+			  height: 768,
+				// Factor of the display size that should remain empty around the content
+				margin: 0.05,
+
+				// Bounds for smallest/largest possible scale to apply to content
+				minScale: 0.2,
+				maxScale: 1.5
+			});
+			Reveal.configure({ slideNumber: false });
+		</script>
+	</body>
+</html>

@@ -1,0 +1,680 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>P2P</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/simple.css">
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/xcode.css">
+		<!-- Theme override for teachbitcoin -->
+		<link rel="stylesheet" href="css/teachbitcoin.css">
+		<!-- Google Font Roboto -->
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+
+
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+	      <!-- *********** Begin: P2P connections *********** -->
+	      <section class = "box">
+	        <div class = "title">
+	          <span class = "title weight">P2P Connections</span>
+	        </div>
+
+	        <!-- Derivation Graphic -->
+	        <img src="images/p2p/p2p_connections.svg" class = "image" style = "z-index: -1;">
+					<!-- <img src="images/wallets/mnemonics1.svg" class = "fragment image" style = "z-index: -1;">
+					<img src="images/wallets/mnemonics2.svg" class = "fragment image" style = "z-index: -1;">
+					<img src="images/wallets/mnemonics3.svg" class = "fragment image" style = "z-index: -1;"> -->
+
+	        <!-- 2 column container -->
+	        <!-- 45% div for formula and curve--><!-- 45% text & bulletpoint -->
+	        <div class = "multi_text_box_container" style = "padding: 40px 0 0 0; width: 1270px;">
+	          <!-- 45% div for formula and curve-->
+	          <div class = "" style = "width: 60%; font-size: 22px;">
+	            <div style ="text-align: center;">
+	            </div>
+	          </div>
+	          <!-- 45% text & bulletpoint -->
+	          <div class = "text_box"
+	               style = "width: 50%; font-size: 20px; margin: 0px 0 0 0">
+	            <ul style = "margin: 0; padding: 0px; list-style-type: none;">
+
+	              <li style = "font-weight: bold;">Outbound Peer</li>
+								<ul>
+                  <li>Attempts to maintain maximum # of outbound connections.</li>
+								  <li>Local acquires remote addresses through gossiping</li>
+								</ul>
+		            <hr style = "height: 5px; visibility: hidden;">
+
+	              <li style = "font-weight: bold;">Inbound Peer</li>
+                <ul>
+                  <li>Node accepts up to maximum set # inbound connections.</li>
+                  <li>Inbound peers obtains local address through gossiping.</li>
+                </ul>
+	              <hr style = "height: 5px; visibility: hidden;">
+
+	              <li style = "font-weight: bold;">Manual Peer</li>
+                <ul>
+  	              <li>Node can set permanent peers in settings.</li>
+                  <li>Will always attempt to maintain connection to these.</li>
+                </ul>
+
+                <hr style = "height:5px; visibility:hidden;">
+                <li>All peer connection types follow the same Bitcoin messaging protocol once established.</li>
+
+								<br>
+	            </ul>
+	          </div>
+
+	        </div><!-- End of 2 column container -->
+
+	      </section>
+	      <!-- *********** END: P2P connections *********** -->
+
+        <!-- *********** Begin: Channel handshake *********** -->
+	      <section class = "box">
+	        <div class = "title">
+	          <span class = "title weight">Version Protocol</span>
+	        </div>
+
+	        <!-- Derivation Graphic -->
+	        <img src="images/p2p/version_protocol0.svg" class = "image" style = "z-index: -1;">
+          <img src="images/p2p/version_protocol1.svg" class = "fragment image" style = "z-index: -1;">
+          <img src="images/p2p/version_protocol2.svg" class = "fragment image" style = "z-index: -1;">
+          <img src="images/p2p/version_protocol3.svg" class = "fragment image" style = "z-index: -1;">
+          <img src="images/p2p/version_protocol4.svg" class = "fragment image" style = "z-index: -1;">
+          <img src="images/p2p/version_protocol5.svg" class = "fragment image" style = "z-index: -1;">
+
+	        <!-- 2 column container -->
+	        <!-- 45% div for formula and curve--><!-- 45% text & bulletpoint -->
+	        <div class = "multi_text_box_container" style = "padding: 40px 0 0 0; width: 1270px;">
+	          <!-- 45% div for formula and curve-->
+	          <div class = "" style = "width: 60%; font-size: 22px;">
+	            <div style ="text-align: center;">
+	            </div>
+	          </div>
+	          <!-- 45% text & bulletpoint -->
+	          <div class = "text_box"
+	               style = "width: 50%; font-size: 20px; margin: 0px 0 0 0">
+	            <ul style = "margin: 0; padding: 0px; list-style-type: none;">
+
+                <li style = "font-weight: bold;">P2P Messaging is Asynchronous</li>
+                <ul>
+                  <li>Different to Client-Server calls.</li>
+                  <li>Each peer may handle messages at any time.</li>
+                  <li>Received message notifications invoke handlers.</li>
+                </ul>
+                <hr style = "height: 5px; visibility: hidden;">
+
+	              <li style = "font-weight: bold;">Peers negotiate highest common channel version</li>
+		            <hr style = "height: 5px; visibility: hidden;">
+
+	              <li style = "font-weight: bold;">VERSION</li>
+                <ul>
+                  <li>Peer sends its P2P messaging version.</li>
+                  <li>And additional information (available services ...)</li>
+                </ul>
+	              <hr style = "height: 5px; visibility: hidden;">
+
+	              <li style = "font-weight: bold;">VERACK</li>
+                <ul>
+  	              <li>Peer acknowledges version from peer.</li>
+                </ul>
+                <hr style = "height: 5px; visibility: hidden;">
+
+								<br>
+	            </ul>
+	          </div>
+
+	        </div><!-- End of 2 column container -->
+
+	      </section>
+	      <!-- *********** END: Channel Handshake *********** -->
+
+        <!-- *********** Begin: Ping Protocol *********** -->
+	      <section class = "box">
+	        <div class = "title">
+	          <span class = "title weight">Ping Protocol</span>
+	        </div>
+
+	        <!-- Derivation Graphic -->
+	        <img src="images/p2p/ping_protocol.svg" class = "image" style = "z-index: -1;">
+
+	        <!-- 2 column container -->
+	        <!-- 45% div for formula and curve--><!-- 45% text & bulletpoint -->
+	        <div class = "multi_text_box_container" style = "padding: 40px 0 0 0; width: 1270px;">
+	          <!-- 45% div for formula and curve-->
+	          <div class = "" style = "width: 60%; font-size: 22px;">
+	            <div style ="text-align: center;">
+	            </div>
+	          </div>
+	          <!-- 45% text & bulletpoint -->
+	          <div class = "text_box"
+	               style = "width: 55%; font-size: 20px; margin: 0px 0 0 0">
+	            <ul style = "margin: 0; padding: 0px; list-style-type: none;">
+
+                <li style = "font-weight: bold;">Ping protocol determines whether underlying TCP connection still active.</li>
+                <hr style = "height: 5px; visibility: hidden;">
+
+	              <li style = "font-weight: bold;">Received/Sent: PING</li>
+                <ul>
+                  <li>Peer attempts ping transmission.</li>
+                  <li>Successful socket transmission indicates live connection.</li>
+                  <li>Otherwise node will close peer connection.</li>
+                  <li>Heartbeat intervals are in node settings.</li>
+                </ul>
+	              <hr style = "height: 5px; visibility: hidden;">
+
+	              <li style = "font-weight: bold;">Received: PONG</li>
+                <ul>
+  	              <li>Version 60001 and above.</li>
+                  <li>Peer responds to PING with PONG.</li>
+                  <li>Includes same nonce as in PING.</li>
+                  <li>Indicates responsive service/Roundtrip latency.</li>
+                </ul>
+                <hr style = "height: 5px; visibility: hidden;">
+
+                <li style = "font-weight: bold;">Received: PONG</li>
+                <ul>
+                  <li>Resubscriptions to messages are renewed after each received message.</li>
+                </ul>
+
+								<br>
+	            </ul>
+	          </div>
+
+	        </div><!-- End of 2 column container -->
+
+	      </section>
+	      <!-- *********** END: Channel Handshake *********** -->
+
+        <!-- *********** Begin: Addr Protocol *********** -->
+	      <section class = "box">
+	        <div class = "title">
+	          <span class = "title weight">Address Protocol</span>
+	        </div>
+
+	        <!-- Derivation Graphic -->
+	        <img src="images/p2p/address_protocol.svg" class = "image" style = "z-index: -1;">
+
+	        <!-- 2 column container -->
+	        <!-- 45% div for formula and curve--><!-- 45% text & bulletpoint -->
+	        <div class = "multi_text_box_container" style = "padding: 40px 0 0 0; width: 1270px;">
+	          <!-- 45% div for formula and curve-->
+	          <div class = "" style = "width: 60%; font-size: 22px;">
+	            <div style ="text-align: center;">
+	            </div>
+	          </div>
+	          <!-- 45% text & bulletpoint -->
+	          <div class = "text_box"
+	               style = "width: 55%; font-size: 20px; margin: 0px 0 0 0">
+	            <ul style = "margin: 0; padding: 0px; list-style-type: none;">
+
+                <li style = "font-weight: bold;">Peer discovery through address protocol.</li>
+                <hr style = "height: 5px; visibility: hidden;">
+
+	              <li style = "font-weight: bold;">Received: GETADDR</li>
+                <ul>
+                  <li>Requests known addresses from peer.</li>
+                  <li>One response to GETADDR only allowed per connection.</li>
+                </ul>
+	              <hr style = "height: 5px; visibility: hidden;">
+
+	              <li style = "font-weight: bold;">Received: ADDR</li>
+                <ul>
+  	              <li>Can be sent proactively.</li>
+                  <li>Seeding Peer: Sends own address.</li>
+                  <li>Response to GETADDR: Up to 1000 addresses.</li>
+                </ul>
+                <hr style = "height: 5px; visibility: hidden;">
+
+                <li style = "font-weight: bold;">Sent: GETADDR</li>
+                <ul>
+                  <li>Requests host address from peer.</li>
+                </ul>
+
+								<br>
+	            </ul>
+	          </div>
+
+	        </div><!-- End of 2 column container -->
+
+	      </section>
+	      <!-- *********** END: Addr Protocol *********** -->
+
+        <!-- *********** Begin: Channel Lifetime *********** -->
+	      <section class = "box">
+	        <div class = "title">
+	          <span class = "title weight">Channel Lifetime</span>
+	        </div>
+
+	        <!-- Derivation Graphic -->
+	        <img src="images/p2p/channel_lifetime.svg" class = "image" style = "z-index: -1;">
+
+	        <!-- 2 column container -->
+	        <!-- 45% div for formula and curve--><!-- 45% text & bulletpoint -->
+	        <div class = "multi_text_box_container" style = "padding: 40px 0 0 0; width: 1270px;">
+	          <!-- 45% div for formula and curve-->
+	          <div class = "" style = "width: 60%; font-size: 22px;">
+	            <div style ="text-align: center;">
+	            </div>
+	          </div>
+	          <!-- 45% text & bulletpoint -->
+	          <div class = "text_box"
+	               style = "width: 55%; font-size: 20px; margin: 60px 0 0 0">
+	            <ul style = "margin: 0; padding: 0px; list-style-type: none;">
+
+                <li style = "font-weight: bold;">Handshake Protocol.</li>
+                <ul>
+                  <li>Negotiate channel version.</li>
+                </ul>
+                <hr style = "height: 5px; visibility: hidden;">
+
+	              <li style = "font-weight: bold;">Subsequently: Ping/Pong/Address</li>
+                <ul>
+                  <li>Channel heartbeat.</li>
+                  <li>Exchange of known peers.</li>
+                  <li>Maintain channel is closed.</li>
+                </ul>
+	              <hr style = "height: 5px; visibility: hidden;">
+
+	              <li style = "font-weight: bold;">Other messaging protocols provide:</li>
+                <ul>
+  	              <li>(Initial) blockchain sync.</li>
+                  <li>Propagation of mempool transactions.</li>
+                  <li>Exchange of chain-extending blocks.</li>
+                  <li>Other protocol types for different sessions.</li>
+                </ul>
+                <hr style = "height: 5px; visibility: hidden;">
+
+              </ul>
+	          </div>
+
+	        </div><!-- End of 2 column container -->
+
+	      </section>
+	      <!-- *********** END: Channel Lifetime *********** -->
+
+        <!-- *********** Begin: P2P Peer Lifetime *********** -->
+	      <section class = "box">
+	        <div class = "title">
+	          <span class = "title weight">Peer Lifetime</span>
+	        </div>
+
+	        <!-- Derivation Graphic -->
+	        <img src="images/p2p/peer_lifetime.svg" class = "image" style = "z-index: -1;">
+
+	        <!-- 2 column container -->
+	        <!-- 45% div for formula and curve--><!-- 45% text & bulletpoint -->
+	        <div class = "multi_text_box_container" style = "padding: 35px 0 0 0; width: 1270px;">
+	          <!-- 45% div for formula and curve-->
+	          <div class = "" style = "width: 60%; font-size: 22px;">
+	            <div style ="text-align: center;">
+	            </div>
+	          </div>
+
+	          <!-- 45% text & bulletpoint -->
+	          <div class = "text_box"
+	               style = "width: 55%; font-size: 16px; margin: 0px 0 0 0">
+	            <ul style = "margin: 0; padding: 0px; list-style-type: none;">
+
+                <li style = "font-weight: bold;">Seed Sessions.</li>
+                <ul>
+                  <li>Contact seed peers to seed peer addresses.</li>
+                  <li>Node Settings:</li>
+                  <ul>
+                    <li>Seeding peer addresses.</li>
+                    <li>Min # addresses to be acquired.</li>
+                  </ul>
+                <li>All seed channels disconnect after seeding.</li>
+                </ul>
+                <hr style = "height: 5px; visibility: hidden;">
+
+	              <li style = "font-weight: bold;">Manual/Outbound/Inbound Session</li>
+                <ul>
+                  <li>Contact seed peers to seed peer addresses.</li>
+                  <li>Node Settings:</li>
+                  <ul>
+                    <li>Max In/Outbound channels.</li>
+                    <li>Manual channel peers.</li>
+                  </ul>
+                <li>Same protocols attached to each channel.</li>
+                </ul>
+	              <hr style = "height: 5px; visibility: hidden;">
+
+	              <li style = "font-weight: bold;">Channel Protocols.</li>
+                <ul>
+  	              <li>Seed/Address: Exchange known peer addresses.</li>
+                  <li>Transaction in/out:</li>
+                  <ul>
+                    <li>Propagate new mempool TX’s</li>
+                  </ul>
+                  <li>Block in/out:</li>
+                  <ul>
+                    <li>Propagate new blocks</li>
+                    <li>Exchange of chain-extending blocks.</li>
+                  </ul>
+                </ul>
+
+              </ul>
+	          </div>
+
+	        </div><!-- End of 2 column container -->
+
+	      </section>
+	      <!-- *********** END: Peer Lifetime *********** -->
+
+        <!-- *********** Begin: TX In *********** -->
+	      <section class = "box">
+	        <div class = "title">
+	          <span class = "title weight">Transaction-In </span>Protocol
+	        </div>
+
+	        <!-- Derivation Graphic -->
+	        <img src="images/p2p/tx_in_protocol.svg" class = "image" style = "z-index: -1;">
+
+	        <!-- 2 column container -->
+	        <!-- 45% div for formula and curve--><!-- 45% text & bulletpoint -->
+	        <div class = "multi_text_box_container" style = "padding: 40px 0 0 0; width: 1270px;">
+	          <!-- 45% div for formula and curve-->
+	          <div class = "" style = "width: 60%; font-size: 22px;">
+	            <div style ="text-align: center;">
+	            </div>
+	          </div>
+
+	          <!-- 45% text & bulletpoint -->
+	          <div class = "text_box"
+	               style = "width: 55%; font-size: 20px; margin: 40px 0 0 0">
+	            <ul style = "margin: 0; padding: 0px; list-style-type: none;">
+
+	              <li style = "font-weight: bold;">Received: TRANSACTION(TX)</li>
+                <ul>
+                  <li>Can be received anytime.</li>
+                  <li>OOrganised into mempool.</li>
+                </ul>
+	              <hr style = "height: 5px; visibility: hidden;">
+
+	              <li style = "font-weight: bold;">Received: INV(TX)</li>
+                <ul>
+  	              <li>Inventory message includes up to 50’000 TXIDs.</li>
+                  <li>GETDATA(INV) to request transaction data.</li>
+                </ul>
+                <hr style = "height: 5px; visibility: hidden;">
+
+                <li style = "font-weight: bold;">Sent: FEEFILTER</li>
+                <ul>
+                  <li>minimum feerate sat/kb for tx relay</li>
+                </ul>
+
+                <li style = "font-weight: bold;">Sent: MEMPOOL</li>
+                <ul>
+                  <li>Request mempool, peer responds with single/multiple INVs.</li>
+                </ul>
+
+								<br>
+	            </ul>
+	          </div>
+
+	        </div><!-- End of 2 column container -->
+
+	      </section>
+	      <!-- *********** END: TX In *********** -->
+
+        <!-- *********** Begin: TX Out *********** -->
+        <section class = "box">
+          <div class = "title">
+            <span class = "title weight">Transaction-Out </span>Protocol
+          </div>
+
+          <!-- Derivation Graphic -->
+          <img src="images/p2p/tx_out_protocol.svg" class = "image" style = "z-index: -1;">
+
+          <!-- 2 column container -->
+          <!-- 45% div for formula and curve--><!-- 45% text & bulletpoint -->
+          <div class = "multi_text_box_container" style = "padding: 40px 0 0 0; width: 1270px;">
+            <!-- 45% div for formula and curve-->
+            <div class = "" style = "width: 60%; font-size: 22px;">
+              <div style ="text-align: center;">
+              </div>
+            </div>
+
+            <!-- 45% text & bulletpoint -->
+            <div class = "text_box"
+                 style = "width: 55%; font-size: 20px; margin: 40px 0 0 0">
+              <ul style = "margin: 0; padding: 0px; list-style-type: none;">
+
+                <li style = "font-weight: bold;">Received: FEEFILTER</li>
+                <ul>
+                  <li>Can be adjusted anytime.</li>
+                </ul>
+                <hr style = "height: 5px; visibility: hidden;">
+
+                <li style = "font-weight: bold;">Received: MEMPOOL</li>
+                <ul>
+                  <li>Inventory message includes up to 50’000 TXIDs.</li>
+                </ul>
+                <hr style = "height: 5px; visibility: hidden;">
+
+                <li style = "font-weight: bold;">Received: GETDATA</li>
+                <ul>
+                  <li>Payload identical to INV message</li>
+                  <li>Respond with serialised transaction</li>
+                </ul>
+                <hr style = "height: 5px; visibility: hidden;">
+
+                <li style = "font-weight: bold;">Node mempool event:</li>
+                <ul>
+                  <li>For new transaction organised into mempool, announce to peer.</li>
+                </ul>
+
+                <br>
+              </ul>
+            </div>
+
+          </div><!-- End of 2 column container -->
+
+        </section>
+        <!-- *********** END: TX Out *********** -->
+
+        <!-- *********** Begin: Block In *********** -->
+        <section class = "box">
+          <div class = "title">
+            <span class = "title weight">Block-In </span>Protocol
+          </div>
+
+          <!-- Derivation Graphic -->
+          <img src="images/p2p/block_in_protocol0.svg" class = "image" style = "z-index: -1;">
+          <img src="images/p2p/block_in_protocol1.svg" class = "fragment image" style = "z-index: -1;">
+          <img src="images/p2p/block_in_protocol2.svg" class = "fragment image" style = "z-index: -1;">
+          <img src="images/p2p/block_in_protocol3.svg" class = "fragment image" style = "z-index: -1;">
+
+          <!-- 2 column container -->
+          <!-- 45% div for formula and curve--><!-- 45% text & bulletpoint -->
+          <div class = "multi_text_box_container" style = "padding: 20px 0 0 0; width: 1350px;">
+            <!-- 45% div for formula and curve-->
+            <div class = "" style = "width: 60%; font-size: 22px;">
+              <div style ="text-align: center;">
+              </div>
+            </div>
+
+            <!-- 45% text & bulletpoint -->
+            <div class = "text_box"
+                 style = "width: 55%; font-size: 18px; margin: 10px 0 0 0">
+              <ul style = "margin: 0; padding: 0px; list-style-type: none;">
+
+                <li style = "font-weight: bold;">Received: HEADERS</li>
+                <ul>
+                  <li>Headers are organised into header chain.</li>
+                  <li>Blocks from strong header chain requested with get_data</li>
+                </ul>
+                <hr style = "height: 5px; visibility: hidden;">
+
+                <li style = "font-weight: bold;">Received: INV</li>
+                <ul>
+                  <li>Request headers if unknown.</li>
+                </ul>
+                <hr style = "height: 5px; visibility: hidden;">
+
+                <li style = "font-weight: bold;">Received: BLOCKS</li>
+                <ul>
+                  <li>Response to get_data(INV(Blocks))</li>
+                </ul>
+                <hr style = "height: 5px; visibility: hidden;">
+
+                <li style = "font-weight: bold;">Sent: SEND_HEADERS</li>
+                <ul>
+                  <li>Sendheaders >=70012 (BIP130).</li>
+                  <li>Ask peer to announce headers rather than INV</li>
+                </ul>
+
+                <li style = "font-weight: bold;">Sent: GET_HEADERS</li>
+                <ul>
+                  <li>Includes hashes, height.</li>
+                  <li>Header hashes begin with 10 highest known.</li>
+                  <li>Hash heights increase exponentially until genesis hash.</li>
+                  <li>Hash Stop: request headers up to this header.</li>
+                  <ul>
+                    <li>0x00..00 no limit</li>
+                    <li>Hash of received orphan.</li>
+                  </ul>
+                </ul>
+
+              </ul>
+            </div>
+
+          </div><!-- End of 2 column container -->
+
+        </section>
+        <!-- *********** END: Block In*********** -->
+
+        <!-- *********** Begin: Block Out *********** -->
+        <section class = "box">
+          <div class = "title">
+            <span class = "title weight">Block-Out </span>Protocol
+          </div>
+
+          <!-- Derivation Graphic -->
+          <img src="images/p2p/block_out_protocol.svg" class = "image" style = "z-index: -1;">
+
+          <!-- 2 column container -->
+          <!-- 45% div for formula and curve--><!-- 45% text & bulletpoint -->
+          <div class = "multi_text_box_container" style = "padding: 0px 0 0 0; width: 1350px;">
+            <!-- 45% div for formula and curve-->
+            <div class = "" style = "width: 60%; font-size: 22px;">
+              <div style ="text-align: center;">
+              </div>
+            </div>
+
+            <!-- 45% text & bulletpoint -->
+            <div class = "text_box"
+                 style = "width: 55%; font-size: 17px; margin: 20px 0 0 0">
+              <ul style = "margin: 0; padding: 0px; list-style-type: none;">
+
+                <li style = "font-weight: bold;">Received: GET_HEADERS</li>
+                <ul>
+                  <li>Lookup included header hashes.</li>
+                  <li>Send beginning with highest common strong chain hash.</li>
+                </ul>
+                <hr style = "height: 5px; visibility: hidden;">
+
+                <li style = "font-weight: bold;">Received: GET_BLOCKS</li>
+                <ul>
+                  <li>Lookup included header hashes.</li>
+                  <li>Send INV beginning with highest common strong chain hash.</li>
+                </ul>
+                <hr style = "height: 5px; visibility: hidden;">
+
+                <li style = "font-weight: bold;">Received: GET_DATA</li>
+                <ul>
+                  <li>Send type of block requested:</li>
+                  <ul>
+                    <li><span class="inline_code">witness_block</span>/<span class="inline_code">block</span></li>
+                    <li><span class="inline_code">compact_block</span></li>
+                    <li><span class="inline_code">filtered_block</span></li>
+                  </ul>
+                </ul>
+                <hr style = "height: 5px; visibility: hidden;">
+
+                <li style = "font-weight: bold;">Sent: SEND_COMPACT</li>
+                <ul>
+                  <li>Send compact blocks (BIP152)</li>
+                  <li>Compact block: Header+Short IDs.</li>
+                  <li>Only unknown TXs data is requested.</li>
+                </ul>
+                <hr style = "height: 5px; visibility: hidden;">
+
+                <li style = "font-weight: bold;">Broadcast of new blocks</li>
+                <ul>
+                  <li>INV/Header/Compactblocks depending on peer.</li>
+                </ul>
+
+              </ul>
+            </div>
+
+          </div><!-- End of 2 column container -->
+
+        </section>
+        <!-- *********** END: Block In*********** -->
+
+
+
+      </div><!-- END: Lecture Materials Div -->
+		</div><!-- END: Reveal Div -->
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+					// { src: 'plugin/math/math.js', async: true }
+				],
+
+				// math: {
+				// 	mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+				// 	config: 'TeX-AMS_HTML-full'  // See http://docs.mathjax.org/en/latest/config-files.html
+				// },
+
+				previewLinks: false,
+
+				// Push each slide change to the browser history
+				history: true,
+
+				// Enable keyboard shortcuts for navigation
+				keyboard: true,
+
+				// Enables touch navigation on devices with touch input
+				overview: false,
+				touch: false,
+
+				// The "normal" size of the presentation, aspect ratio will be preserved
+				// when the presentation is scaled to fit different resolutions. Can be
+				// specified using percentage units.
+				width: 1366,
+			  height: 768,
+				// Factor of the display size that should remain empty around the content
+				margin: 0.05,
+
+				// Bounds for smallest/largest possible scale to apply to content
+				minScale: 0.2,
+				maxScale: 1.5
+			});
+			Reveal.configure({ slideNumber: false });
+		</script>
+	</body>
+</html>

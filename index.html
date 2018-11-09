@@ -78,15 +78,14 @@
           <div style= "width:100%; margin: auto; display: flex; justify-content: space-between;">
 
             <div style = "width: 65%; font-size: 20px; text-align: left;">
-              <span style = "font-size: 25px; font-weight:700">ECDSA Signatures</span>
+							<span style = "font-size: 25px; font-weight:700">ECDSA</span>
               <div style="width: 80%; margin: 5px 0 0 0;">
                   <span>Bitcoin signatures use the Elliptic Curve Digital Signing Algorithm to secure unspent outputs and are encoded in the DER serialisation format.</span>
               </div>
             </div>
 
             <div style = "width: 35%; font-size: 20px; text-align: left;">
-              <span style="font-weight:700; opacity:0.2;">Chapter Slides</span>
-              <br><span style="font-weight:700; opacity:0.2;">Chapter Code Repository</span>
+							<a style = "font-weight: 700;" href="ecdsa.html" target="_blank" class ="orange_link">Chapter Slides</a>
               <br><a href="https://github.com/libbitcoin/libbitcoin/wiki/ECDSA-and-DER-Signatures" target="_blank" class ="orange_link">&nbsp; Libbitcoin C++ Documentation</a>
             </div>
 
@@ -178,28 +177,6 @@
         <!-- Overview Page 2 -->
 				<section class ="box">
 
-          <!-- Transaction Timelocks -->
-          <div style= "width:100%; margin: auto; display: flex; justify-content: space-between;">
-
-            <div style = "width: 65%; font-size: 20px; text-align: left;">
-              <span style = "font-size: 25px; font-weight:700">Transaction Timelocks</span>
-              <div style="width: 80%; margin: 5px 0 0 0;">
-                  Absolute and relative timelocks prevent transactions from being broadcast before a certain time or blockheight.
-                  A timelock may be commited to by the transaction signature, or can be enforced by the previous output script.
-              </div>
-            </div>
-
-            <div style = "width: 35%; font-size: 20px; text-align: left;">
-              <a style = "font-weight: 700;" href="transaction_timelocks.html" target="_blank" class ="orange_link">Chapter Slides</a>
-              <br><a style = "font-weight: 700;" href="https://github.com/teachbitcoin/code-demos/tree/master/05_transactions_timelocks" target="_blank" class ="orange_link">Chapter Code Repository</a>
-            </div>
-
-          </div>
-          <!-- Transaction Timelocks -->
-
-          <hr style = "height:3px; border: 0; height: 0px; border-top: 2px solid rgba(0, 0, 0, 0.1);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.3); margin: 12px 0 12px 0; padding:0px">
-
           <!-- Multisig Section -->
           <div style= "width:100%; margin: auto; display: flex; justify-content: space-between;">
 
@@ -212,7 +189,7 @@
 
             <div style = "width: 35%; font-size: 20px; text-align: left;">
               <a style = "font-weight: 700;" href="transaction_multisig.html" target="_blank" class ="orange_link">Chapter Slides</a>
-              <br><span style="font-weight:700; opacity:0.2;">Chapter Code Repository</span>
+							<br><a style = "font-weight: 700;" href="https://github.com/teachbitcoin/code-demos/tree/master/05_transactions_p2sh_multisig" target="_blank" class ="orange_link">Chapter Code Repository</a>
             </div>
 
           </div>
@@ -234,7 +211,7 @@
 
             <div style = "width: 35%; font-size: 20px; text-align: left;">
               <a style = "font-weight: 700;" href="transaction_p2sh.html" target="_blank" class ="orange_link">Chapter Slides</a>
-              <br><span style="font-weight:700; opacity:0.2;">Chapter Code Repository</span>
+							<br><a style = "font-weight: 700;" href="https://github.com/teachbitcoin/code-demos/tree/master/05_transactions_p2sh_multisig" target="_blank" class ="orange_link">Chapter Code Repository</a>
             </div>
 
           </div>
@@ -242,6 +219,28 @@
 
           <hr style = "height:3px; border: 0; height: 0px; border-top: 2px solid rgba(0, 0, 0, 0.1);
             border-bottom: 1px solid rgba(255, 255, 255, 0.3); margin: 12px 0 12px 0; padding:0px">
+
+						<!-- Transaction Timelocks -->
+	          <div style= "width:100%; margin: auto; display: flex; justify-content: space-between;">
+
+	            <div style = "width: 65%; font-size: 20px; text-align: left;">
+	              <span style = "font-size: 25px; font-weight:700">Transaction Timelocks</span>
+	              <div style="width: 80%; margin: 5px 0 0 0;">
+	                  Absolute and relative timelocks prevent transactions from being broadcast before a certain time or blockheight.
+	                  A timelock may be commited to by the transaction signature, or can be enforced by the previous output script.
+	              </div>
+	            </div>
+
+	            <div style = "width: 35%; font-size: 20px; text-align: left;">
+	              <a style = "font-weight: 700;" href="transaction_timelocks.html" target="_blank" class ="orange_link">Chapter Slides</a>
+	              <br><a style = "font-weight: 700;" href="https://github.com/teachbitcoin/code-demos/tree/master/05_transactions_timelocks" target="_blank" class ="orange_link">Chapter Code Repository</a>
+	            </div>
+
+	          </div>
+	          <!-- Transaction Timelocks -->
+
+	          <hr style = "height:3px; border: 0; height: 0px; border-top: 2px solid rgba(0, 0, 0, 0.1);
+	            border-bottom: 1px solid rgba(255, 255, 255, 0.3); margin: 12px 0 12px 0; padding:0px">
 
           <!-- Witness Transactions -->
           <div style= "width:100%; margin: auto; display: flex; justify-content: space-between;">
@@ -256,11 +255,7 @@
 
             <div style = "width: 35%; font-size: 20px; text-align: left;">
               <a style = "font-weight: 700;" href="transaction_witness.html" target="_blank" class ="orange_link">Chapter Slides</a>
-              <br><span style="font-weight:700; opacity:0.2;">Chapter Code Repository</span>
-              <br><a href="https://github.com/libbitcoin/libbitcoin/wiki/P2WPKH-Transactions" target="_blank" class ="orange_link">&nbsp; Libbitcoin C++ Documentation: P2WPKH</a>
-							<br><a href="https://github.com/libbitcoin/libbitcoin/wiki/P2WSH-Transactions" target="_blank" class ="orange_link">&nbsp; Libbitcoin C++ Documentation: P2WSH</a>
-							<br><a href="https://github.com/libbitcoin/libbitcoin/wiki/P2SH(P2WPKH)-Transactions" target="_blank" class ="orange_link">&nbsp; Libbitcoin C++ Documentation: P2SH(P2WPKH)</a>
-							<br><a href="https://github.com/libbitcoin/libbitcoin/wiki/P2SH(P2WSH)-Transactions" target="_blank" class ="orange_link">&nbsp; Libbitcoin C++ Documentation: P2SH(P2WSH)</a>
+							<br><a style = "font-weight: 700;" href="https://github.com/teachbitcoin/code-demos/tree/master/08_transactions_witness" target="_blank" class ="orange_link">Chapter Code Repository</a>
 
             </div>
 
@@ -274,16 +269,15 @@
             <div style= "width:100%; margin: auto; display: flex; justify-content: space-between;">
 
               <div style = "width: 65%; font-size: 20px; text-align: left;">
-                <span style = "font-size: 25px; font-weight:700">Block Parsing</span>
+                <span style = "font-size: 25px; font-weight:700">Block Chain</span>
                 <div style="width: 80%; margin: 5px 0 0 0;">
                     A closer lock at blocks and block headers, and their validation by nodes.
                 </div>
               </div>
 
               <div style = "width: 35%; font-size: 20px; text-align: left;">
-                <span style="font-weight:700; opacity:0.2;">Chapter Slides</span>
+								<a style = "font-weight: 700;" href="blockchain.html" target="_blank" class ="orange_link">Chapter Slides</a>
                 <br><a style = "font-weight: 700;" href="https://github.com/teachbitcoin/code-demos/tree/master/09_block_parsing" target="_blank" class ="orange_link">Chapter Code Repository</a>
-                <br><a href="https://github.com/libbitcoin/libbitcoin-server/wiki/Block-Service" target="_blank" class ="orange_link">&nbsp; Libbitcoin C++ Documentation</a>
               </div>
 
             </div>
@@ -314,8 +308,8 @@
             </div>
 
             <div style = "width: 35%; font-size: 20px; text-align: left;">
-              <span style="font-weight:700; opacity:0.2;">Chapter Slides</span>
-              <br><span style="font-weight:700; opacity:0.2;">Chapter Code Repository</span>
+							<a style = "font-weight: 700;" href="p2p.html" target="_blank" class ="orange_link">Chapter Slides</a>
+							<br><a style = "font-weight: 700;" href="https://github.com/teachbitcoin/code-demos/tree/master/10_p2p" target="_blank" class ="orange_link">Chapter Code Repository</a>
             </div>
 
           </div>

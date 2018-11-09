@@ -1,0 +1,584 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Block Chain</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/simple.css">
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/xcode.css">
+		<!-- Theme override for teachbitcoin -->
+		<link rel="stylesheet" href="css/teachbitcoin.css">
+		<!-- Google Font Roboto -->
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+
+
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+        <!-- *********** Begin: headers *********** -->
+        <section class = "box">
+          <div class = "title">
+            Bitcoin Block <span class = "title weight">Headers</span>
+          </div>
+
+          <!-- Derivation Graphic -->
+          <img src="images/blockchain/headers.svg" class = "image" style = "z-index: -1;">
+
+          <!-- 2 column container -->
+          <!-- 45% div for formula and curve--><!-- 45% text & bulletpoint -->
+          <div class = "multi_text_box_container" style = "padding: 0px 0 0 0; width: 1350px;">
+            <!-- 45% div for formula and curve-->
+            <div class = "" style = "width: 60%; font-size: 22px;">
+              <div style ="text-align: center;">
+              </div>
+            </div>
+
+            <!-- 45% text & bulletpoint -->
+            <div class = "text_box"
+                 style = "width: 47%; font-size: 20px; margin: 30px 0 0 0">
+              <ul style = "margin: 0; padding: 0px; list-style-type: none;">
+
+                <li style = "font-weight: bold;">Version:</li>
+                <ul>
+                  <li>Version 2: Height in Coinbase Input Script (BIP34)</li>
+                  <li>Version 3: Strict DER (BIP66)</li>
+                  <li>Version 4: CLTV support (BIP65)</li>
+                </ul>
+
+                <li style = "font-weight: bold;">Merkle Root:</li>
+                <ul>
+                  <li>Commits all transactions and their order.</li>
+                </ul>
+
+                <li style = "font-weight: bold;">Timestamp:</li>
+                <ul>
+                  <li>POSIX time:</li>
+                  <li>Must be higher than median of previous 11 blocks</li>
+                  <li>Cannot more than 2hrs higher than local peer clock</li>
+                </ul>
+
+                <li style = "font-weight: bold;">Difficulty Bits:</li>
+                <ul>
+                  <li>Defines target for POW</li>
+                  <li>Block hash must be below target</li>
+                </ul>
+
+                <li style = "font-weight: bold;">Nonce:</li>
+                <ul>
+                  <li>Iterated for POW</li>
+                </ul>
+
+                <li style = "font-weight: bold;">Block Hash:</li>
+                <ul>
+                  <li>Double sha256 of serialised 80B header</li>
+                </ul>
+
+              </ul>
+            </div>
+
+          </div><!-- End of 2 column container -->
+
+        </section>
+        <!-- *********** END: headers *********** -->
+
+        <!-- *********** Begin: Genesis *********** -->
+        <section class = "box">
+          <div class = "title">
+            <span class = "title weight">Genesis</span> Block
+          </div>
+
+          <!-- Derivation Graphic -->
+          <img src="images/blockchain/genesis0.svg" class = "image" style = "z-index: -1;">
+          <img src="images/blockchain/genesis1.svg" class = "fragment image" style = "z-index: -1;">
+
+          <!-- 2 column container -->
+          <!-- 45% div for formula and curve--><!-- 45% text & bulletpoint -->
+          <div class = "multi_text_box_container" style = "padding: 0px 0 0 0; width: 1350px;">
+            <!-- 45% div for formula and curve-->
+            <div class = "" style = "width: 60%; font-size: 22px;">
+              <div style ="text-align: center;">
+              </div>
+            </div>
+
+            <!-- 45% text & bulletpoint -->
+            <div class = "text_box"
+                 style = "width: 47%; font-size: 20px; margin: 20px 0 0 0">
+              <ul style = "margin: 0; padding: 0px; list-style-type: none;">
+
+                <li style = "font-weight: bold;">Block header:</li>
+                <ul>
+                  <li>No previous block hash.</li>
+                  <li>Timestamp:</li>
+                  <ul>
+                    <li>6:15:05 PM, Jan 3rd, 2009</li>
+                  </ul>
+                  <li>Difficulty bits:</li>
+                  <ul>
+                    <li>Lowest accepted difficulty bits.</li>
+                  </ul>
+                </ul>
+                <hr style = "height: 5px; visibility: hidden;">
+
+                <li style = "font-weight: bold;">Transactions:</li>
+                <ul>
+                  <li>First TX is always coinbase.</li>
+                  <li>Coinbase input script:</li>
+                  <ul>
+                    <li>Version 1: Arbitrary data</li>
+                    <li>Genesis block:</li>
+                    <ul>
+                      <li>Difficulty bits.</li>
+                      <li>Times heading proves block originated afterwards.</li>
+                    </ul>
+                  </ul>
+                  <li>Difficulty Bits:</li>
+                  <ul>
+                    <li>Lowest accepted difficulty bits.</li>
+                  </ul>
+                </ul>
+                <hr style = "height: 5px; visibility: hidden;">
+              </ul>
+            </div>
+
+          </div><!-- End of 2 column container -->
+
+        </section>
+        <!-- *********** END: Genesis *********** -->
+
+        <!-- *********** Begin: Difficulty *********** -->
+        <section class = "box">
+          <div class = "title">
+            <span class = "title weight">Difficulty & Target</span>
+          </div>
+
+          <!-- Derivation Graphic -->
+          <img src="images/blockchain/difficulty0.svg" class = "image" style = "z-index: -1;">
+          <img src="images/blockchain/difficulty1.svg" class = "fragment image" style = "z-index: -1;">
+
+          <!-- 2 column container -->
+          <!-- 45% div for formula and curve--><!-- 45% text & bulletpoint -->
+          <div class = "multi_text_box_container" style = "padding: 0px 0 0 0; width: 1270px;">
+            <!-- 45% div for formula and curve-->
+            <div class = "" style = "width: 60%; font-size: 22px;">
+              <div style ="text-align: center;">
+              </div>
+            </div>
+
+            <!-- 45% text & bulletpoint -->
+            <div class = "text_box"
+                 style = "width: 47%; font-size: 22px; margin: 40px 0 0 0">
+              <ul style = "margin: 0; padding: 0px; list-style-type: none;">
+
+                <li style = "font-weight: bold;">Valid Header Hash must be <= target</li>
+                <hr style = "height: 5px; visibility: hidden;">
+
+                <li style = "font-weight: bold;">Miner can iterate following data in block:</li>
+                <ul>
+                  <li>Nonce.</li>
+                  <li>Unused version bits.</li>
+                  <li>Timestamp.</li>
+                  <li>Coinbase (Merkle Root).</li>
+                  <ul>
+                    <li>Version bits.</li>
+                    <li>Input script.</li>
+                  </ul>
+                  <li>Merkle root(TX set/order)</li>
+                </ul>
+                <hr style = "height: 5px; visibility: hidden;">
+
+                <li style = "font-weight: bold;">Hashes required to achieve target:</li>
+                <ul>
+                  <li>Example: <span class="inline_code">0x0800...00:</span> Every 2nd Hash...</li>
+                  <li>Example: <span class="inline_code">0x0400...00:</span> Every 4th Hash...</li>
+                </ul>
+                <hr style = "height: 5px; visibility: hidden;">
+              </ul>
+            </div>
+
+          </div><!-- End of 2 column container -->
+
+        </section>
+        <!-- *********** END: Difficulty *********** -->
+
+        <!-- *********** Begin: Retargeting *********** -->
+        <section class = "box">
+          <div class = "title">
+            Difficulty <span class = "title weight">Retargeting</span>
+          </div>
+
+          <!-- Derivation Graphic -->
+          <img src="images/blockchain/retargeting.svg" class = "image" style = "z-index: -1;">
+
+          <!-- 2 column container -->
+          <!-- 45% div for formula and curve--><!-- 45% text & bulletpoint -->
+          <div class = "multi_text_box_container" style = "padding: 0px 0 0 0; width: 1270px;">
+            <!-- 45% div for formula and curve-->
+            <div class = "" style = "width: 60%; font-size: 22px;">
+              <div style ="text-align: center;">
+              </div>
+            </div>
+
+            <!-- 45% text & bulletpoint -->
+            <div class = "text_box"
+                 style = "width: 47%; font-size: 22px; margin: 80px 0 0 0">
+              <ul style = "margin: 0; padding: 0px; list-style-type: none;">
+
+                <li style = "font-weight: bold;">Difficulty Adjustment:</li>
+                <ul>
+                  <li>Every 2016 blocks.</li>
+                  <li>Adjusted to maintain 10min block interval.</li>
+                  <li>Adjustment maximum bound: 4x.</li>
+                </ul>
+                <hr style = "height: 5px; visibility: hidden;">
+
+                <li style = "font-weight: bold;">Inflation Bug:</li>
+                <ul>
+                  <li>Considers interval between 2015 blocks.</li>
+                  <li>Slightly faster block/inflation schedule.</li>
+                  <li>Requires hardfork to fix.</li>
+                </ul>
+            </div>
+
+          </div><!-- End of 2 column container -->
+
+        </section>
+        <!-- *********** END: Retargeting *********** -->
+
+        <!-- *********** Begin: Coinbase *********** -->
+        <section class = "box">
+          <div class = "title">
+            <span class = "title weight">Coinbase</span> Transaction
+          </div>
+
+          <!-- Derivation Graphic -->
+          <img src="images/blockchain/coinbase.svg" class = "image" style = "z-index: -1;">
+
+          <!-- 2 column container -->
+          <!-- 45% div for formula and curve--><!-- 45% text & bulletpoint -->
+          <div class = "multi_text_box_container" style = "padding: 0px 0 0 0; width: 1270px;">
+            <!-- 45% div for formula and curve-->
+            <div class = "" style = "width: 60%; font-size: 22px;">
+              <div style ="text-align: center;">
+              </div>
+            </div>
+
+            <!-- 45% text & bulletpoint -->
+            <div class = "text_box"
+                 style = "width: 47%; font-size: 20px; margin: 80px 0 0 0">
+              <ul style = "margin: 0; padding: 0px; list-style-type: none;">
+
+                <li style = "font-weight: bold;">Single input script:</li>
+                <ul>
+                  <li>V1: Arbitrary data.</li>
+                  <li>Beginning V2: Commits to blockheight (BIP30).</li>
+                  <ul>
+                    <li>Coinbase overwriting (identical txid).</li>
+                  </ul>
+                  <li>Up to 100B total.</li>
+                </ul>
+                <hr style = "height: 5px; visibility: hidden;">
+
+                <li style = "font-weight: bold;">Output script:</li>
+                <ul>
+                  <li>Witness block:</li>
+                  <ul>
+                    <li>Witness root and coinbase witness commitment.</li>
+                    <li>For witness root: coinbase wtxid = <span class="inline_code">0x00..00<span></li>
+                  </ul>
+                  <li>Non-witness block:</li>
+                  <ul>
+                    <li>No output commiting to witness root required.</li>
+                  </ul>
+                </ul>
+                <hr style = "height: 5px; visibility: hidden;">
+
+                <li style = "font-weight: bold;">Multiple outputs possible:</li>
+                <ul>
+                  <li>Fees from transactions.</li>
+                  <li>Block subsidy.</li>
+                </ul>
+
+            </div>
+
+          </div><!-- End of 2 column container -->
+
+        </section>
+        <!-- *********** END: Coinbase *********** -->
+
+        <!-- *********** Begin: block weight *********** -->
+        <section class = "box">
+          <div class = "title">
+            Block<span class = "title weight"> Size & Weight</span>
+          </div>
+
+          <!-- Derivation Graphic -->
+          <img src="images/blockchain/block_weight.svg" class = "image" style = "z-index: -1;">
+
+          <!-- 2 column container -->
+          <!-- 45% div for formula and curve--><!-- 45% text & bulletpoint -->
+          <div class = "multi_text_box_container" style = "padding: 0px 0 0 0; width: 1270px;">
+            <!-- 45% div for formula and curve-->
+            <div class = "" style = "width: 60%; font-size: 22px;">
+              <div style ="text-align: center;">
+              </div>
+            </div>
+
+            <!-- 45% text & bulletpoint -->
+            <div class = "text_box"
+                 style = "width: 55%; font-size: 19px; margin: 40px 0 0 0">
+              <ul style = "margin: 0; padding: 0px; list-style-type: none;">
+
+                <li style = "font-weight: bold;">Transaction Weight (BIP141):</li>
+                <ul>
+                  <li>Weight equals byte size sum of:</li>
+                  <ul>
+                    <li>1 x TX serialised (BIP144, with witness).</li>
+                    <li>3 x TX serialised (Pre-BIP144, no witness).</li>
+                  </ul>
+                </ul>
+                <hr style = "height: 5px; visibility: hidden;">
+
+                <li style = "font-weight: bold;">Witness Blocks:</li>
+                <ul>
+                  <li>Maximum weight of 4 Million.</li>
+                  <li>Actual data size depends on witness data ratio in block</li>
+                </ul>
+                <hr style = "height: 5px; visibility: hidden;">
+
+                <li style = "font-weight: bold;">Examples:</li>
+                <ul>
+                  <li>TX Data 1000B / Witness Data 0B:</li>
+                  <ul>
+                    <li>TX Weight: 1000 + 3000 = 4000</li>
+                  </ul>
+
+                  <li>TX Data 1000B / Witness Data 500B:</li>
+                  <ul>
+                    <li>TX Weight: 1000 + 1500 = 2500</li>
+                  </ul>
+
+                  <li>TX Data 1000B / Witness Data 900B:</li>
+                  <ul>
+                    <li>TX Weight: 1000 + 300 = 1300</li>
+                  </ul>
+                </ul>
+                <hr style = "height: 5px; visibility: hidden;">
+                <li style = "font-weight: bold;">As Witness data size approaches total tx size, <br>effective block size approaches 4MB.</li>
+
+            </div>
+
+          </div><!-- End of 2 column container -->
+
+        </section>
+        <!-- *********** END: Block weight *********** -->
+
+        <!-- *********** Begin: Merkle *********** -->
+        <section class = "box">
+          <div class = "title">
+            <span class = "title weight"> Merkle Root</span>
+          </div>
+
+          <!-- Derivation Graphic -->
+          <img src="images/blockchain/merkle.svg" class = "image" style = "z-index: -1;">
+
+          <!-- 2 column container -->
+          <!-- 45% div for formula and curve--><!-- 45% text & bulletpoint -->
+          <div class = "multi_text_box_container" style = "padding: 0px 0 0 0; width: 1350px;">
+            <!-- 45% div for formula and curve-->
+            <div class = "" style = "width: 40%; font-size: 22px;">
+              <div style ="text-align: center;">
+              </div>
+            </div>
+
+            <!-- 45% text & bulletpoint -->
+            <div class = "text_box"
+                 style = "width: 38%; font-size: 22px; margin: 80px 0 0 0">
+              <ul style = "margin: 0; padding: 0px; list-style-type: none;">
+
+                <li style = "font-weight: bold;">Merkle Root:</li>
+                <ul>
+                  <li>Bitcoin256: dsha256 -> LE Encoding.</li>
+                  <li>At each level, duplicate last leaf if uneven.</li>
+                </ul>
+                <hr style = "height: 5px; visibility: hidden;">
+
+                <li style = "font-weight: bold;">Merkle/Witness Root.</li>
+                <ul>
+                  <li>TXID leaves -> merkle root (in block header).</li>
+                  <li>WTXID leaves -> witness root (in coinbase output)</li>
+                </ul>
+
+            </div>
+
+          </div><!-- End of 2 column container -->
+
+        </section>
+        <!-- *********** END: Merkle *********** -->
+
+        <!-- *********** Begin: Subsidy *********** -->
+        <section class = "box">
+          <div class = "title">
+            Block <span class = "title weight">Subsidy</span>
+          </div>
+
+          <!-- Derivation Graphic -->
+          <img src="images/blockchain/subsidy.svg" class = "image" style = "z-index: -1;">
+
+          <!-- 2 column container -->
+          <!-- 45% div for formula and curve--><!-- 45% text & bulletpoint -->
+          <div class = "multi_text_box_container" style = "padding: 0px 0 0 0; width: 1270px;">
+            <!-- 45% div for formula and curve-->
+            <div class = "" style = "width: 40%; font-size: 22px;">
+              <div style ="text-align: center;">
+              </div>
+            </div>
+
+            <!-- 45% text & bulletpoint -->
+            <div class = "text_box"
+                 style = "width: 45%; font-size: 22px; margin: 80px 0 0 0">
+              <ul style = "margin: 0; padding: 0px; list-style-type: none;">
+
+                <li style = "font-weight: bold;">Genesis Block:</li>
+                <ul>
+                  <li>50 BTC Block Reward</li>
+                </ul>
+                <hr style = "height: 5px; visibility: hidden;">
+
+                <li style = "font-weight: bold;">Block reward adjustment:</li>
+                <ul>
+                  <li>Halves every 210,000 blocks/~ 4 years.</li>
+                  <li>After 33 halvings, block reward is removed.</li>
+                </ul>
+                <hr style = "height: 5px; visibility: hidden;">
+
+                <li style = "font-weight: bold;">Block subsidy vs fees</li>
+                <ul>
+                  <li>As block rewards decrease, and usage increases, fee market emerges for block inclusion.</li>
+                </ul>
+
+            </div>
+
+          </div><!-- End of 2 column container -->
+
+        </section>
+        <!-- *********** END: Subsidy *********** -->
+
+        <!-- *********** Begin: Chain Organisation *********** -->
+        <section class = "box">
+          <div class = "title">
+              Chain <span class = "title weight">Organisation</span>
+          </div>
+
+          <!-- Derivation Graphic -->
+          <img src="images/blockchain/chain_organisation0.svg" class = "image" style = "z-index: -1;">
+          <img src="images/blockchain/chain_organisation1.svg" class = "fragment image" style = "z-index: -1;">
+
+          <!-- 2 column container -->
+          <!-- 45% div for formula and curve--><!-- 45% text & bulletpoint -->
+          <div class = "multi_text_box_container" style = "padding: 0px 0 0 0; width: 1270px;">
+            <!-- 45% div for formula and curve-->
+            <div class = "" style = "width: 40%; font-size: 22px;">
+              <div style ="text-align: center;">
+              </div>
+            </div>
+
+            <!-- 45% text & bulletpoint -->
+            <div class = "text_box"
+                 style = "width: 50%; font-size: 22px; margin: 40px 0 0 0">
+              <ul style = "margin: 0; padding: 0px; list-style-type: none;">
+
+                <li style = "font-weight: bold;">Forks:</li>
+                <ul>
+                  <li>Different valid blocks of equal height.</li>
+                  <li>All valid blocks are organised by node.</li>
+                  <li>Node follows chain with most POW.</li>
+                </ul>
+                <hr style = "height: 5px; visibility: hidden;">
+
+                <li style = "font-weight: bold;">Orphan Blocks:</li>
+                <ul>
+                  <li>Node will request headers/blocks <br>from peers to link to main chain.</li>
+                </ul>
+                <hr style = "height: 5px; visibility: hidden;">
+
+                <li style = "font-weight: bold;">Checkpoints:</li>
+                <ul>
+                  <li>Forks below checkpoint not organised into chain.</li>
+                  <li>Does not contribute to security model.</li>
+                  <li>Legacy: Prevent low-difficulty DOS blocks.</li>
+                  <ul>
+                    <li>Resource exhaustion.</li>
+                  </ul>
+                  <li>Currently 13 hardcoded checkpoints.</li>
+                  <ul>
+                    <li>Latest at height 295000.</li>
+                    <li>Forks are costly.</li>
+                  </ul>
+                </ul>
+
+            </div>
+
+          </div><!-- End of 2 column container -->
+
+        </section>
+        <!-- *********** END: Chain Organisation *********** -->
+
+      </div><!-- END: Lecture Materials Div -->
+		</div><!-- END: Reveal Div -->
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+					// { src: 'plugin/math/math.js', async: true }
+				],
+
+				// math: {
+				// 	mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+				// 	config: 'TeX-AMS_HTML-full'  // See http://docs.mathjax.org/en/latest/config-files.html
+				// },
+
+				previewLinks: false,
+
+				// Push each slide change to the browser history
+				history: true,
+
+				// Enable keyboard shortcuts for navigation
+				keyboard: true,
+
+				// Enables touch navigation on devices with touch input
+				overview: false,
+				touch: false,
+
+				// The "normal" size of the presentation, aspect ratio will be preserved
+				// when the presentation is scaled to fit different resolutions. Can be
+				// specified using percentage units.
+				width: 1366,
+			  height: 768,
+				// Factor of the display size that should remain empty around the content
+				margin: 0.05,
+
+				// Bounds for smallest/largest possible scale to apply to content
+				minScale: 0.2,
+				maxScale: 1.5
+			});
+			Reveal.configure({ slideNumber: false });
+		</script>
+	</body>
+</html>
