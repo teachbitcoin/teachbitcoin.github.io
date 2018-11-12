@@ -141,6 +141,8 @@
 							<li style = "font-weight: bold;">BIP143	Signature Hash Algorithm for Pay-to-Witness Transactions</li>
 							<ul style = "list-style-type: circle;">
                 <li>Modified signature hash preimage compared to non-witness txid serialisation.</li>
+								<li>O(n) computation time, n = length of transaction.</li>
+								<li>For offline signers: Previous output(s) is now included.</li>
 							</ul>
 							<hr style = "height:2px; visibility:hidden;">
 
@@ -150,7 +152,7 @@
 							</ul>
 							<hr style = "height:2px; visibility:hidden;">
 
-							<li style = "font-weight: bold;">Commitment to Inputs and Outputs determined by Sighash Marker</li>
+							<li style = "font-weight: bold;">Commitment to Inputs and Outputs signaled by Sighash Marker</li>
 							<ul style = "list-style-type: circle;">
                 <li>Non-committed input, sequence and output fields are initialised to 0.</li>
 							</ul>
