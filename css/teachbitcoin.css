@@ -81,7 +81,7 @@ a:focus {
   /* reveal override */
   border:none;
   box-shadow:none;
-
+  background-attachment:scroll;
 }
 
 .reveal img.image_cropped{

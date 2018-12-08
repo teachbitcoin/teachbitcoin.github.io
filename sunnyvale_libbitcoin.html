@@ -1,0 +1,147 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Sunnyvale: Libbitcoin</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/simple.css">
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/xcode.css">
+		<!-- Theme override for teachbitcoin -->
+		<link rel="stylesheet" href="css/teachbitcoin.css">
+		<!-- Google Font Roboto -->
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+
+
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+
+	      <!-- *********** BEGIN: DB design objectives *********** -->
+	      <section class = "box">
+	        <div class = "title">
+	          <span class = "title weight">A Bitcoin Database Design</span>
+	        </div>
+
+	        <img src="images/libbitcoin_database/db_design_criteria0.svg" class = "image" style = "z-index: -1;">
+					<img src="images/libbitcoin_database/db_design_criteria1.svg" class = "fragment image" style = "z-index: -1;">
+					<img src="images/libbitcoin_database/db_design_criteria2.svg" class = "fragment image" style = "z-index: -1;">
+					<img src="images/libbitcoin_database/db_design_criteria3.svg" class = "fragment image" style = "z-index: -1;">
+
+	      </section>
+	      <!-- *********** END: DB design objectives *********** -->
+
+        <!-- *********** BEGIN: DB general vs specialized *********** -->
+	      <section class = "box">
+	        <div class = "title">
+	          <span class = "title weight">No Journaling</span>
+	        </div>
+
+	        <img src="images/libbitcoin_database/db_generalized_specialized0.svg" class = "image" style = "z-index: -1;">
+					<img src="images/libbitcoin_database/db_generalized_specialized1.svg" class = "fragment image" style = "z-index: -1;">
+					<img src="images/libbitcoin_database/db_generalized_specialized2.svg" class = "fragment image" style = "z-index: -1;">
+					<img src="images/libbitcoin_database/db_generalized_specialized3.svg" class = "fragment image" style = "z-index: -1;">
+
+	      </section>
+	      <!-- *********** END: DB general vs specialized *********** -->
+
+        <!-- *********** BEGIN: DB general vs specialized *********** -->
+	      <section class = "box">
+	        <div class = "title">
+	          <span class = "title weight">Append-only TX Database</span>
+	        </div>
+
+	        <img src="images/libbitcoin_database/db_tx0_0.svg" class = "image" style = "z-index: -1;">
+					<img src="images/libbitcoin_database/db_tx0_1.svg" class = "fragment image" style = "z-index: -1;">
+					<img src="images/libbitcoin_database/db_tx0_2.svg" class = "fragment image" style = "z-index: -1;">
+					<img src="images/libbitcoin_database/db_tx1_0.svg" class = "fragment image" style = "z-index: -1;">
+          <img src="images/libbitcoin_database/db_tx1_1.svg" class = "fragment image" style = "z-index: -1;">
+          <img src="images/libbitcoin_database/db_tx2_0.svg" class = "fragment image" style = "z-index: -1;">
+          <img src="images/libbitcoin_database/db_tx2_1.svg" class = "fragment image" style = "z-index: -1;">
+          <img src="images/libbitcoin_database/db_tx3_0.svg" class = "fragment image" style = "z-index: -1;">
+          <img src="images/libbitcoin_database/db_tx4_0.svg" class = "fragment image" style = "z-index: -1;">
+          <img src="images/libbitcoin_database/db_tx5_0.svg" class = "fragment image" style = "z-index: -1;">
+          <img src="images/libbitcoin_database/db_tx6_0.svg" class = "fragment image" style = "z-index: -1;">
+          <img src="images/libbitcoin_database/db_tx7_0.svg" class = "fragment image" style = "z-index: -1;">
+
+	      </section>
+	      <!-- *********** END: DB general vs specialized *********** -->
+
+        <!-- *********** BEGIN: Libbitcoin Store Types *********** -->
+	      <section class = "box">
+	        <div class = "title">
+	          <span class = "title weight">Libbitcoin Store Types</span>
+	        </div>
+
+	        <img src="images/libbitcoin_database/db_types0.svg" class = "image" style = "z-index: -1;">
+					<img src="images/libbitcoin_database/db_types1.svg" class = "fragment image" style = "z-index: -1;">
+					<img src="images/libbitcoin_database/db_types2.svg" class = "fragment image" style = "z-index: -1;">
+					<img src="images/libbitcoin_database/db_types3.svg" class = "fragment image" style = "z-index: -1;">
+
+	      </section>
+	      <!-- *********** END: Libbitcoin Store Types *********** -->
+
+
+
+
+
+
+
+      </div><!-- END: Slides Div -->
+		</div><!-- END: Reveal Div -->
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/math/math.js', async: true }
+				],
+
+				math: {
+					mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+					config: 'TeX-AMS_HTML-full'  // See http://docs.mathjax.org/en/latest/config-files.html
+				},
+
+				previewLinks: true,
+
+				// Push each slide change to the browser history
+				history: true,
+
+				// Enable keyboard shortcuts for navigation
+				keyboard: true,
+
+				// Enables touch navigation on devices with touch input
+				overview: false,
+				touch: false,
+
+				// The "normal" size of the presentation, aspect ratio will be preserved
+				// when the presentation is scaled to fit different resolutions. Can be
+				// specified using percentage units.
+				width: 1366,
+			  height: 768,
+				// Factor of the display size that should remain empty around the content
+				margin: 0.05,
+
+				// Bounds for smallest/largest possible scale to apply to content
+				minScale: 0.2,
+				maxScale: 1.5
+			});
+			Reveal.configure({ slideNumber: true });
+		</script>
+	</body>
+</html>
