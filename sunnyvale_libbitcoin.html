@@ -23,75 +23,97 @@
 			<div class="slides">
 
 
-	      <!-- *********** BEGIN: DB design objectives *********** -->
-	      <section class = "box">
-	        <div class = "title">
-	          <span class = "title weight">A Bitcoin Database Design</span>
-	        </div>
-
-	        <img src="images/libbitcoin_database/db_design_criteria0.svg" class = "image" style = "z-index: -1;">
-					<img src="images/libbitcoin_database/db_design_criteria1.svg" class = "fragment image" style = "z-index: -1;">
-					<img src="images/libbitcoin_database/db_design_criteria2.svg" class = "fragment image" style = "z-index: -1;">
-					<img src="images/libbitcoin_database/db_design_criteria3.svg" class = "fragment image" style = "z-index: -1;">
-
-	      </section>
-	      <!-- *********** END: DB design objectives *********** -->
-
-        <!-- *********** BEGIN: DB general vs specialized *********** -->
+        <!-- *********** BEGIN: No Journaling *********** -->
 	      <section class = "box">
 	        <div class = "title">
 	          <span class = "title weight">No Journaling</span>
 	        </div>
 
-	        <img src="images/libbitcoin_database/db_generalized_specialized0.svg" class = "image" style = "z-index: -1;">
-					<img src="images/libbitcoin_database/db_generalized_specialized1.svg" class = "fragment image" style = "z-index: -1;">
-					<img src="images/libbitcoin_database/db_generalized_specialized2.svg" class = "fragment image" style = "z-index: -1;">
-					<img src="images/libbitcoin_database/db_generalized_specialized3.svg" class = "fragment image" style = "z-index: -1;">
+	        <img src="images/libbitcoin_database/no_journaling0.svg" class = "image" style = "z-index: -1;">
+					<img src="images/libbitcoin_database/no_journaling1.svg" class = "fragment image" style = "z-index: -1;">
+					<img src="images/libbitcoin_database/no_journaling2.svg" class = "fragment image" style = "z-index: -1;">
+					<img src="images/libbitcoin_database/no_journaling3.svg" class = "fragment image" style = "z-index: -1;">
 
 	      </section>
-	      <!-- *********** END: DB general vs specialized *********** -->
+	      <!-- *********** END: No Journaling *********** -->
 
-        <!-- *********** BEGIN: DB general vs specialized *********** -->
+        <!-- *********** BEGIN: Append-only Lists *********** -->
 	      <section class = "box">
 	        <div class = "title">
-	          <span class = "title weight">Append-only TX Database</span>
+	          Append-only <span class = "title weight">Lists</span>
 	        </div>
 
-	        <img src="images/libbitcoin_database/db_tx0_0.svg" class = "image" style = "z-index: -1;">
-					<img src="images/libbitcoin_database/db_tx0_1.svg" class = "fragment image" style = "z-index: -1;">
-					<img src="images/libbitcoin_database/db_tx0_2.svg" class = "fragment image" style = "z-index: -1;">
-					<img src="images/libbitcoin_database/db_tx1_0.svg" class = "fragment image" style = "z-index: -1;">
-          <img src="images/libbitcoin_database/db_tx1_1.svg" class = "fragment image" style = "z-index: -1;">
-          <img src="images/libbitcoin_database/db_tx2_0.svg" class = "fragment image" style = "z-index: -1;">
-          <img src="images/libbitcoin_database/db_tx2_1.svg" class = "fragment image" style = "z-index: -1;">
-          <img src="images/libbitcoin_database/db_tx3_0.svg" class = "fragment image" style = "z-index: -1;">
-          <img src="images/libbitcoin_database/db_tx4_0.svg" class = "fragment image" style = "z-index: -1;">
-          <img src="images/libbitcoin_database/db_tx5_0.svg" class = "fragment image" style = "z-index: -1;">
-          <img src="images/libbitcoin_database/db_tx6_0.svg" class = "fragment image" style = "z-index: -1;">
-          <img src="images/libbitcoin_database/db_tx7_0.svg" class = "fragment image" style = "z-index: -1;">
+	        <img src="images/libbitcoin_database/linked_list0.svg" class = "image" style = "z-index: -1;">
+					<img src="images/libbitcoin_database/linked_list1.svg" class = "fragment image" style = "z-index: -1;">
+					<img src="images/libbitcoin_database/linked_list2.svg" class = "fragment image" style = "z-index: -1;">
+					<img src="images/libbitcoin_database/linked_list3.svg" class = "fragment image" style = "z-index: -1;">
+          <img src="images/libbitcoin_database/linked_list4.svg" class = "fragment image" style = "z-index: -1;">
+          <img src="images/libbitcoin_database/linked_list5.svg" class = "fragment image" style = "z-index: -1;">
+          <img src="images/libbitcoin_database/linked_list6.svg" class = "fragment image" style = "z-index: -1;">
 
 	      </section>
-	      <!-- *********** END: DB general vs specialized *********** -->
+	      <!-- *********** END: Append-only Lists *********** -->
 
-        <!-- *********** BEGIN: Libbitcoin Store Types *********** -->
+        <!-- *********** BEGIN: Hash Table *********** -->
 	      <section class = "box">
 	        <div class = "title">
-	          <span class = "title weight">Libbitcoin Store Types</span>
+	          Libbitcoin <span class = "title weight">Hash Table</span>
 	        </div>
 
-	        <img src="images/libbitcoin_database/db_types0.svg" class = "image" style = "z-index: -1;">
-					<img src="images/libbitcoin_database/db_types1.svg" class = "fragment image" style = "z-index: -1;">
-					<img src="images/libbitcoin_database/db_types2.svg" class = "fragment image" style = "z-index: -1;">
-					<img src="images/libbitcoin_database/db_types3.svg" class = "fragment image" style = "z-index: -1;">
+	        <img src="images/libbitcoin_database/hash_table0.svg" class = "image" style = "z-index: -1;">
+					<img src="images/libbitcoin_database/hash_table1.svg" class = "fragment image" style = "z-index: -1;">
+					<img src="images/libbitcoin_database/hash_table2.svg" class = "fragment image" style = "z-index: -1;">
+					<img src="images/libbitcoin_database/hash_table3.svg" class = "fragment image" style = "z-index: -1;">
 
 	      </section>
-	      <!-- *********** END: Libbitcoin Store Types *********** -->
+	      <!-- *********** END: Hash Table *********** -->
 
+				<!-- *********** BEGIN: TX database *********** -->
+	      <section class = "box">
+	        <div class = "title">
+	          <span class = "title weight">Transaction Database</span>
+	        </div>
 
+	        <img src="images/libbitcoin_database/tx_db0.svg" class = "image" style = "z-index: -1;">
+					<img src="images/libbitcoin_database/tx_db1.svg" class = "fragment image" style = "z-index: -1;">
 
+	      </section>
+	      <!-- *********** END: TX database *********** -->
 
+				<!-- *********** BEGIN: Block database *********** -->
+	      <section class = "box">
+	        <div class = "title">
+	          <span class = "title weight">Block Database</span>
+	        </div>
 
+	        <img src="images/libbitcoin_database/block_db0.svg" class = "image" style = "z-index: -1;">
+					<img src="images/libbitcoin_database/block_db1.svg" class = "fragment image" style = "z-index: -1;">
 
+	      </section>
+	      <!-- *********** END: Block database *********** -->
+
+				<!-- *********** BEGIN: address database *********** -->
+	      <section class = "box">
+	        <div class = "title">
+	          <span class = "title weight">Address Database</span>
+	        </div>
+
+	        <img src="images/libbitcoin_database/address_db0.svg" class = "image" style = "z-index: -1;">
+					<img src="images/libbitcoin_database/address_db1.svg" class = "fragment image" style = "z-index: -1;">
+
+	      </section>
+	      <!-- *********** END: address database *********** -->
+
+				<!-- *********** BEGIN: address database *********** -->
+	      <section class = "box">
+	        <div class = "title">
+	          <span class = "title weight">Query-Optimized</span> Database
+	        </div>
+
+	        <img src="images/libbitcoin_database/query_optimized_db.svg" class = "image" style = "z-index: -1;">
+
+	      </section>
+	      <!-- *********** END: address database *********** -->
 
       </div><!-- END: Slides Div -->
 		</div><!-- END: Reveal Div -->
