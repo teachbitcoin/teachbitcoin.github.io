@@ -30,7 +30,7 @@
 			<div class="slides">
 
 
-				<!-- *********** BEGIN: Chapter Subtopics 1 *********** -->
+				<!-- *********** REVISED - BEGIN: Chapter Subtopics 1 *********** -->
 				<section class ="box">
 
 					<div class = "title">
@@ -40,43 +40,172 @@
 					<!-- <img src="images/ec_math/chapter_subtopics_arrows.svg" class = "image" style = "z-index: -1;"> -->
 
 					<div class = "multi_text_box_container" style = "padding: 70px 0 0 0;">
+
 						<div class = "text_box orange_border" style = "width: 320px; font-size: 23px;">
 							<ul style = "margin: 0px; padding: 0px; list-style-type: none;">
-								<li style = "font-weight: 600;">Prime Fields \(\mathbb{F}_{p}\)</li>
-								<li><span class="inline_code">a + b</span> over \(\mathbb{F}_{p}\)</li>
-								<li><span class="inline_code">a - b</span> over \(\mathbb{F}_{p}\)</li>
-								<li><span class="inline_code">a &#8901; b</span> over \(\mathbb{F}_{p}\)</li>
-								<li><span class="inline_code">(a+b)&#8901;c = a&#8901;c + b&#8901;c</span></li>
-								<li><span class="inline_code">a^b</span> over \(\mathbb{F}_{p}\)</li>
-								<li><span class="inline_code">a/b</span> over \(\mathbb{F}_{p}\)</li>
+								<li style = "font-weight: 600;">Generalised Discrete Log</li>
+								<li>Generalised Cyclic Groups</li>
+								<li>Generalised DL Problem</li>
+								<li>Generalised DL security</li>
 							</ul>
 						</div>
-						<div class = "text_box" style = "width: 320px; font-size: 23px;">
-							<ul style = "margin: 0px; padding: 0px; list-style-type: none;">
-								<li style = "font-weight: 600;">Elliptic Curves (EC) over \(\mathbb{R}\)</li>
-								<li><span class="inline_code">EC-Point P</span> over \(\mathbb{R}\)</li>
-								<li><span class="inline_code">A + B</span> over \(\mathbb{R}\)</li>
-								<li><span class="inline_code">a &#8901; B</span> over \(\mathbb{R}\)</li>
-								<li><span class="inline_code">(a+b)&#8901;C = a&#8901;C + b&#8901;C</span></li>
 
+						<div class = "text_box " style = "width: 320px; font-size: 23px;">
+							<ul style = "margin: 0px; padding: 0px; list-style-type: none;">
+								<li style = "font-weight: 600;">Prime Fields \(\mathbb{F}_{p}\)</li>
+								<li>Operations over \(\mathbb{F}_{p}\)</li>
+								<li>Cyclic Groups over \(\mathbb{F}_{p}\)</li>
+								<li>Discrete Log over \(\mathbb{Z}_p^*\)</li>
+								<li>Discrete Log security</li>
 							</ul>
 						</div>
+
 						<div class = "text_box" style = "width: 320px; font-size: 23px;">
 							<ul style = "margin: 0px; padding: 0px; list-style-type: none;">
-								<li style = "font-weight: 600;">EC over Prime Fields \(\mathbb{F}_{p}\)</li>
-								<li><span class="inline_code">EC-Point P</span> over \(\mathbb{F}_{p}\)</li>
-								<li><span class="inline_code">A + B</span> over \(\mathbb{F}_{p}\)</li>
-								<li><span class="inline_code">a &#8901; B</span> over \(\mathbb{F}_{p}\) </li>
-								<li><span class="inline_code">(a+b)&#8901;C = a&#8901;C + b&#8901;C</span></li>
+								<li style = "font-weight: 600;">Elliptic Curve Discrete Log</li>
+								<li>EC operations over \(\mathbb{R}\)</li>
+								<li>EC operations over \(\mathbb{F}_{p}\)</li>
+								<li>Cyclic Point Groups</li>
+								<li>Elliptic Curve DL problem</li>
+								<li>Elliptic Curve DL security</li>
 								<hr style = "height:3px; visibility:hidden;">
-								<li style = "font-weight: 600;">Bitcoin Keys:</li>
-								<li><span class="inline_code">s &#8901; G</span> over <span class="inline_code">secp256k1</span></li>
 							</ul>
 						</div>
 					</div>
 
 				</section>
 				<!-- *********** END: Chapter Subtopics 1 *********** -->
+
+				<!-- *********** BEGIN: Cyclic Groups *********** -->
+				<section class = "box">
+
+					<div class = "title"
+						><span class = "title weight">Cyclic Groups</span>
+					</div>
+
+					<div style = "position: absolute; top: 110px; left: 120px;">
+						<ul style = "list-style-type: none; margin: 0;">
+							<div>
+								<ul class = "math_normal", style="margin: 0px; padding: 0px; list-style-type: none;">
+									<hr style = "height:1px; visibility:hidden;">
+									<li style="font-weight:600;">1) Closed group operation ( \(\circ\) )</li>
+									<ul>
+										<li>\( a \circ b = c \:,\:\: (a,b,c \in \mathbb{G}) \)</li>
+										<li>Group operation is Associative & Commutative</li>
+										<ul>
+											<li>\( (a \circ b)\circ c=a\circ (b\circ c) \)</li>
+											<li>\(a\circ b=b\circ a\)</li>
+
+										</ul>
+									</ul>
+									<hr style = "height:1px; visibility:hidden;">
+									<li style="font-weight:600;">2) Generator group element (\(\alpha\))</li>
+									<ul>
+										<li><span class="inline_code">\(a\circ\alpha\circ\alpha...\alpha\circ\alpha\circ\alpha = \alpha^{k} = b \in \mathbb{G}\)</span></li>
+										<li>Finite \( \lvert \mathbb{G} \rvert \) number of elements in group \(\mathbb{G}\)
+									</ul>
+									<hr style = "height:1px; visibility:hidden;">
+									<li style="font-weight:600;">3) Neutral group element (\(n\))</li>
+									<ul>
+										<li>\(a\circ n=a\)</li>
+									</ul>
+									<hr style = "height:1px; visibility:hidden;">
+									<li style="font-weight:600;">4) Each group element has an inverse</li>
+									<ul>
+										<li>\(a\circ a^{-1}=1, \: b\circ b^{-1}=1, \: c\circ c^{-1}=1\)</li>
+										<li>\(a^{-1}, \: b^{-1}, \: c^{-1}, ... \in \mathbb{G}\)</li>
+									</ul>
+								</ul>
+							</div>
+						</ul>
+					</div>
+				</section>
+				<!-- *********** END: Cyclic Groups *********** -->
+
+				<!-- *********** BEGIN: Generalised Discrete log *********** -->
+				<section class = "box">
+
+					<div class = "title"
+						><span class = "title weight">Generalised</span> Discrete Log Problem
+					</div>
+
+					<div style = "position: absolute; top: 150px; left: 120px;">
+						<ul style = "list-style-type: none; margin: 0;">
+							<li class = "math_large" style="font-weight:600;">Discrete Log Problem for Cyclic Groups:</li>
+							<div>
+								<ul class = "math_normal", style="margin: 0px; padding: 0px; list-style-type: none;">
+									<hr style = "height:1px; visibility:hidden;">
+									<li><span class="inline_code" style="font-weight:600;">\(\beta=\alpha\circ\alpha\circ\alpha...\alpha\circ\alpha\circ\alpha = \alpha^{k} \)</span></li>
+									<ul>
+										<li>Given <span class="inline_code">\(\beta\)</span>, solve for  <span class="inline_code">\(k\)</span></li>
+										<li>Problem must be hard for large \( \lvert\mathbb{G}\rvert \)</li>
+										<hr style = "height:1px; visibility:hidden;">
+									</ul>
+
+										<div class = "fragment">
+											<li style="font-weight:600;">General discrete log solutions apply:</li>
+											<ul>
+												<li ><span style="font-weight:600;">Pollard Rho,</span> \(O(\sqrt{ \lvert\mathbb{G}\rvert })\)</li>
+												<ul>
+													<li>160bit (group order) / 80bit (security)</li>
+													<li>256bit (group order) / 128bit (security)</li>
+
+												</ul>
+											</ul>
+										<div>
+
+								</ul>
+							</div>
+						</ul>
+					</div>
+				</section>
+				<!-- *********** END: Generalised DL *********** -->
+
+				<!-- *********** REVISED - BEGIN: Chapter Subtopics 2 *********** -->
+				<section class ="box">
+
+					<div class = "title">
+						<span class = "title weight">Elliptic Curve Math </span>Subtopics
+					</div>
+
+					<!-- <img src="images/ec_math/chapter_subtopics_arrows.svg" class = "image" style = "z-index: -1;"> -->
+
+					<div class = "multi_text_box_container" style = "padding: 70px 0 0 0;">
+
+						<div class = "text_box " style = "width: 320px; font-size: 23px;">
+							<ul style = "margin: 0px; padding: 0px; list-style-type: none;">
+								<li style = "font-weight: 600;">Generalised Discrete Log</li>
+								<li>Generalised Cyclic Groups</li>
+								<li>Generalised DL Problem</li>
+								<li>Generalised DL security</li>
+							</ul>
+						</div>
+
+						<div class = "text_box orange_border" style = "width: 320px; font-size: 23px;">
+							<ul style = "margin: 0px; padding: 0px; list-style-type: none;">
+								<li style = "font-weight: 600;">Prime Fields \(\mathbb{F}_{p}\)</li>
+								<li>Operations over \(\mathbb{F}_{p}\)</li>
+								<li>Cyclic Groups over \(\mathbb{F}_{p}\)</li>
+								<li>Discrete Log over \(\mathbb{Z}_p^*\)</li>
+								<li>Discrete Log security</li>
+							</ul>
+						</div>
+
+						<div class = "text_box" style = "width: 320px; font-size: 23px;">
+							<ul style = "margin: 0px; padding: 0px; list-style-type: none;">
+								<li style = "font-weight: 600;">Elliptic Curve Discrete Log</li>
+								<li>EC operations over \(\mathbb{R}\)</li>
+								<li>EC operations over \(\mathbb{F}_{p}\)</li>
+								<li>Cyclic Point Groups</li>
+								<li>Elliptic Curve DL problem</li>
+								<li>Elliptic Curve DL security</li>
+								<hr style = "height:3px; visibility:hidden;">
+							</ul>
+						</div>
+					</div>
+
+				</section>
+				<!-- *********** END: Chapter Subtopics 2 *********** -->
 
 				<!-- *********** BEGIN: Finite Fields *********** -->
 				<section class = "box">
@@ -127,6 +256,8 @@
 							<li>Imagine all numbers of finite field \(\mathbb{F}_{12}\) wrapped around a circle, like a clock.</li>
 							<li>For every addition operation, move the needle n steps clockwise.</li>
 							<li>This is equivalent to taking the remainder if the division: (5 + 8)/12 = 13/12 = 1 Remainder 1</li>
+							<li>Commutivity (\(a + b = b + a\)) and Associativity ( \((a+b)+c = (a+b)+c\) )</li>
+
 						</li>
 						</ul>
 					</div>
@@ -173,6 +304,10 @@
 						<ul style = "margin: 0px; padding: 0px; list-style-type: none;">
 							<li>\(4 \cdot 5 = +20\), so we simply move the needle by +20 ticks clockwise and arrive at 3.
 							</li>
+							<li>Commutivity (\(a \times b = b \times a\)) and Associativity ( \((a \times b)\times c = a\times (b\times c) \) )</li>
+							<ul style="list-style-type: circle;">
+								<li>(<a class="orange_link" href="https://math.stackexchange.com/questions/27336/associativity-commutativity-and-distributivity-of-modulo-arithmetic " target="_blank">Proof</a> is non-trivial)</li>
+							</ul>
 						</ul>
 						</div>
 
@@ -215,7 +350,6 @@
 				</section>
 				<!-- *********** END: Field Distributivity *********** -->
 
-
 				<!-- *********** BEGIN: Field Exponentiation *********** -->
 				<section class ="box">
 					<div class = "title"
@@ -229,8 +363,8 @@
 
 					<div class = "text_box_horizontal" style = "position: absolute; top: 530px; left: 65px;">
 						<ul style = "margin: 0px; padding: 0px; list-style-type: none;">
-							<li>\(2^{5}=32\), so we move the needle by +32 ticks clockwise and arrive at 15.
-							</li>
+							<li>\(2^{5}=32\), so we move the needle by +32 ticks clockwise and arrive at 15.</li>
+							<li>Associativity: \( (a^{b})^{c} = (a^{c})^{b}\), no proof provided.</li>
 						</ul>
 					</div>
 
@@ -340,8 +474,276 @@
 				</section>
 				<!-- *********** END: Field Division for Prime Fields *********** -->
 
+				<!-- *********** BEGIN: Additive Fields over Prime Fields*********** -->
+				<section class = "box">
 
-				<!-- *********** BEGIN: Chapter Subtopics 2 *********** -->
+					<div class = "title"
+						><span class = "title weight">Additive Groups</span> over Prime Fields
+					</div>
+
+					<div style = "position: absolute; top: 150px; left: 120px;">
+						<ul style = "list-style-type: none; margin: 0;">
+							<div>
+								<ul class = "math_normal", style="margin: 0px; padding: 0px; list-style-type: none;">
+									<hr style = "height:1px; visibility:hidden;">
+									<li style="font-weight:600;">1) Closed group operation (\(+\) over \(\mathbb{F}_{p}\))</li>
+									<ul>
+										<li>Addition over \(\mathbb{F}_{p}\)</li>
+										<li>Group operation is Associative & Distributive</li>
+									</ul>
+									<hr style = "height:1px; visibility:hidden;">
+									<li style="font-weight:600;">2) Generator group element (\(\alpha\))</li>
+									<ul>
+										<li><span class="inline_code">\(\alpha+\alpha+\alpha...\alpha+\alpha+\alpha = k*\alpha = \beta \in \mathbb{G}\)</span></li>
+										<li>Finite elements in cyclical \(\mathbb{G}\)
+									</ul>
+									<hr style = "height:1px; visibility:hidden;">
+									<li style="font-weight:600;">3) Neutral group element (0)</li>
+									<ul>
+										<li>\(\alpha+0 = \alpha\)</li>
+									</ul>
+									<hr style = "height:1px; visibility:hidden;">
+									<li style="font-weight:600;">4) Group element inverse (\(-\beta)\)</li>
+									<ul>
+										<li>\(\beta+(-\beta) = 0\)</li>
+									</ul>
+								</ul>
+							</div>
+						</ul>
+					</div>
+				</section>
+				<!-- *********** END: Additive Fields over Prime Fields *********** -->
+
+				<!-- *********** BEGIN: Additive Field Z11*********** -->
+				<section class = "box">
+
+					<div class = "title"
+						><span class = "title weight">Additive Group</span> over \(\mathbb{F}_{11}\)
+					</div>
+
+					<div style = "position: absolute; top: 150px; left: 120px;">
+						<ul style = "list-style-type: none; margin: 0;">
+							<div>
+								<ul class = "math_normal", style="margin: 0px; padding: 0px; list-style-type: none;">
+									<hr style = "height:1px; visibility:hidden;">
+									<li style="font-weight:600;">1) Closed group operation (\(+\) over \(\mathbb{F}_{11}\))</li>
+									<ul>
+										<li>Addition over \(\mathbb{F}_{11}\)</li>
+										<li>Group operation is Associative & Distributive</li>
+									</ul>
+									<hr style = "height:1px; visibility:hidden;">
+									<li style="font-weight:600;">2) Generator group element (2)</li>
+									<ul>
+										<li><span class="inline_code">\(2+2+2...2+2+2 = k*2 = \beta \in \mathbb{G}\)</span></li>
+										<li>Group order \(\lvert\mathbb{G}\rvert\)= 11</li>
+										<li> \(\mathbb{G}=\left\{2, 4, 6, 8, 10, 1, 3, 5, 7, 9, 0\right\}\)
+									</ul>
+									<hr style = "height:1px; visibility:hidden;">
+									<li style="font-weight:600;">3) Neutral group element (0)</li>
+									<ul>
+										<li>\(0\in\mathbb{G}\)</li>
+									</ul>
+									<hr style = "height:1px; visibility:hidden;">
+									<li style="font-weight:600;">4) Group element inverse (\(-\beta)\)</li>
+									<ul>
+										<li>(+2/-2), (+4/-4), (+6/-6)...</li>
+										<li>(+2/+9), (+4/+7), (+6/+5)...</li>
+									</ul>
+								</ul>
+							</div>
+						</ul>
+					</div>
+				</section>
+				<!-- *********** END: Additive Field Z11 *********** -->
+
+				<!-- *********** BEGIN: DL over additive Fields*********** -->
+				<section class = "box">
+
+					<div class = "title"
+						><span class = "title weight">Disrete Log</span> over Additive Prime Groups
+					</div>
+
+					<div style = "position: absolute; top: 150px; left: 120px;">
+						<ul style = "list-style-type: none; margin: 0;">
+							<li class = "math_large" style="font-weight:600;">Discrete Log Problem:</li>
+							<div>
+								<ul class = "math_normal", style="margin: 0px; padding: 0px; list-style-type: none;">
+									<hr style = "height:1px; visibility:hidden;">
+									<li><span class="inline_code" style="font-weight:600;">\(\beta=\alpha+\alpha+\alpha...\alpha+\alpha+\alpha = k*\alpha\)</span></li>
+									<ul>
+										<li>Given <span class="inline_code">\(\beta\)</span>, solve for  <span class="inline_code">\(k\)</span></li>
+										<li>However, for addititive prime groups, the solution is trivial.</li>
+										<ul>
+											<li>\(k=\frac{\beta}{\alpha} \:(mod\:p)\)</li>
+											<li>\(k=\beta\cdot\alpha^{p-2} \:(mod\:p) \)</li>
+										</ul>
+									</ul>
+								</ul>
+							</div>
+						</ul>
+					</div>
+				</section>
+				<!-- *********** END: DL over additive Fields *********** -->
+
+				<!-- *********** BEGIN: Multiplicative Groups over Prime Fields*********** -->
+				<section class = "box">
+
+					<div class = "title"
+						><span class = "title weight">Multiplicative Groups</span> over Prime Fields \( \mathbb{Z}_p^* \)
+					</div>
+
+					<div style = "position: absolute; top: 150px; left: 120px;">
+						<ul style = "list-style-type: none; margin: 0;">
+							<div>
+								<ul class = "math_normal", style="margin: 0px; padding: 0px; list-style-type: none;">
+									<hr style = "height:1px; visibility:hidden;">
+									<li style="font-weight:600;">1) Closed group operation (\(\times\) over \(\mathbb{F}_{p}\))</li>
+									<ul>
+										<li>Multiplication over \(\mathbb{F}_{p}\)</li>
+										<li>Multiplication is Associative & Commutative</li>
+									</ul>
+									<hr style = "height:1px; visibility:hidden;">
+									<li style="font-weight:600;">2) Generator group element (\(\alpha\))</li>
+									<ul>
+										<li><span class="inline_code">\(\alpha\times\alpha\times\alpha...\alpha\times\alpha\times\alpha = \alpha^{k} = \beta \in \mathbb{Z}_p^* \)</span></li>
+										<li>Finite elements in cyclical \( \mathbb{Z}_p^* \)
+									</ul>
+									<hr style = "height:1px; visibility:hidden;">
+									<li style="font-weight:600;">3) Neutral group element (1)</li>
+									<ul>
+										<li>\(\beta\times1=\beta\)</li>
+									</ul>
+									<hr style = "height:1px; visibility:hidden;">
+									<li style="font-weight:600;">4) Group element inverse \(\beta^{-1}\)</li>
+									<ul>
+										<li>\(\beta\times\beta^{-1}=1\)</li>
+									</ul>
+								</ul>
+							</div>
+						</ul>
+					</div>
+				</section>
+				<!-- *********** END: Multiplicative Groups over Prime Fields *********** -->
+
+				<!-- *********** BEGIN: Multiplicative Groups over F11*********** -->
+				<section class = "box">
+
+					<div class = "title"
+						><span class = "title weight">Multiplicative Group</span> \( \mathbb{Z}_{11}^* \)
+					</div>
+
+					<div style = "position: absolute; top: 150px; left: 120px;">
+						<ul style = "list-style-type: none; margin: 0;">
+							<div>
+								<ul class = "math_normal", style="margin: 0px; padding: 0px; list-style-type: none;">
+									<hr style = "height:1px; visibility:hidden;">
+									<li style="font-weight:600;">1) Closed group operation (\(\times\) over \(\ \mathbb{Z}_{11}^* \))</li>
+									<ul>
+										<li>Multiplication over \(\mathbb{F}_{p}\)</li>
+										<li>Multiplication is Associative & Commutative</li>
+									</ul>
+									<hr style = "height:1px; visibility:hidden;">
+									<li style="font-weight:600;">2) Generator group element (2)</li>
+									<ul>
+										<li><span class="inline_code">\(2\times2\times2...2\times2\times2 = 2^{k} = \beta \in \mathbb{Z}_11^* \)</span></li>
+										<li>Group order \(\lvert\mathbb{Z}_{11}^*\rvert\)= 10</li>
+										<li> \(\mathbb{Z}_{11}^*=\left\{2, 4, 8, 5, 10, 9, 7, 3, 6, 1\right\}\)
+									</ul>
+									<hr style = "height:1px; visibility:hidden;">
+									<li style="font-weight:600;">3) Neutral group element (1)</li>
+									<ul>
+										<li>\(1\in\mathbb{Z}_{11}^*\)</li>
+									</ul>
+									<hr style = "height:1px; visibility:hidden;">
+									<li style="font-weight:600;">4) Group element inverse \(\beta^{-1}\)</li>
+									<ul>
+										<li>\((2, 2^{9}), (4, 2^8), (8, 2^7)...\)</li>
+									</ul>
+								</ul>
+							</div>
+						</ul>
+					</div>
+				</section>
+				<!-- *********** END: Multiplicative Groups over Prime Fields *********** -->
+
+				<!-- *********** BEGIN: DL over multiplicative Fields*********** -->
+				<section class = "box">
+
+					<div class = "title"
+						><span class = "title weight">Disrete Log</span> over \(\mathbb{Z}_{p}^*\)
+					</div>
+
+					<div style = "position: absolute; top: 150px; left: 120px;">
+						<ul style = "list-style-type: none; margin: 0;">
+							<li class = "math_large" style="font-weight:600;">Discrete Log Problem:</li>
+							<div>
+								<ul class = "math_normal", style="margin: 0px; padding: 0px; list-style-type: none;">
+									<hr style = "height:1px; visibility:hidden;">
+									<li><span class="inline_code" style="font-weight:600;">\(\beta=\alpha\times\alpha\times\alpha...\alpha\times\alpha\times\alpha = \alpha^{k} \)</span></li>
+									<ul>
+										<li>Given <span class="inline_code">\(\beta\)</span>, solve for  <span class="inline_code">\(k\)</span></li>
+										<li><span class="inline_code">\(k=\log_{\alpha}\beta \:(mod\:p) \)</span></li>
+										<hr style = "height:1px; visibility:hidden;">
+
+										<li>Hard for large \( \lvert\mathbb{Z}_{p}^*\rvert \)</li>
+										<li>General discrete log solutions apply \(O(\sqrt{ \lvert\mathbb{Z}_{11}^*\rvert })\)</li>
+										<hr style = "height:1px; visibility:hidden;">
+									</ul>
+										<div class = "fragment">
+											<li style="font-weight:600;">However, faster solutions are known for multiplicative groups \(\mathbb{Z}_{p}^*\):</li>
+											<ul>
+												<li style="font-weight:600;">Index-Calculus method </li>
+												<ul>
+													<li>1040bit (group order) / 80bit (security)</li>
+												</ul>
+												<li style="font-weight:600;">Comparison: General discrete log method </li>
+												<ul>
+													<li>160bit (group order) / 80bit (security)</li>
+												</ul>
+											</ul>
+										<div>
+
+								</ul>
+							</div>
+						</ul>
+					</div>
+				</section>
+				<!-- *********** END: DL over multiplicative Fields *********** -->
+
+				<!-- *********** BEGIN: square and multipy *********** -->
+				<section class = "box">
+
+					<div class = "title"
+						><span class = "title weight">Square and Multiply</span>
+					</div>
+
+					<div style = "position: absolute; top: 150px; left: 120px;">
+						<ul style = "list-style-type: none; margin: 0;">
+							<li class = "math_large"><span style="font-weight:600;">Computing</span> \( \beta=\alpha^{k}\) <span style="font-weight:600;">from known </span>\( k \) <span style="font-weight:600;">must be efficient</span></li>
+							<div>
+								<ul class = "math_normal", style="margin: 0px; padding: 0px; list-style-type: none;">
+									<hr style = "height:1px; visibility:hidden;">
+									<li><span class="inline_code" style="font-weight:600;">\( \alpha^{26}=\alpha^{11010} \)</span></li>
+									<ul>
+										<li>Bitscan from left to right.</li>
+										<li>Value of Bit0 is 1:  \( \alpha \)</li>
+										<li>Value of Bit1 is 1:  \( \alpha^{2} \times \alpha = \alpha^{3} \)</li>
+										<li>Value of Bit2 is 0:  \( (\alpha^{3})^{2}  = \alpha^{6} \)</li>
+										<li>Value of Bit3 is 1:  \( (\alpha^{6})^{2} \times \alpha = \alpha^{13} \)</li>
+										<li>Value of Bit4 is 0:  \( (\alpha^{13})^{2} = \alpha^{26} \)</li>
+										<hr style = "height:1px; visibility:hidden;">
+								</ul>
+								<div class="fragment">
+								<li style = "font-weight:600;">25 Group operations reduced to 6</li>
+								<li>\(O(\log n)\) Complexity</li>
+							</div>
+							</div>
+						</ul>
+					</div>
+				</section>
+				<!-- *********** END: square and multipy *********** -->
+
+				<!-- *********** Begin: Chapter Subtopics 3 *********** -->
 				<section class ="box">
 
 					<div class = "title">
@@ -351,43 +753,41 @@
 					<!-- <img src="images/ec_math/chapter_subtopics_arrows.svg" class = "image" style = "z-index: -1;"> -->
 
 					<div class = "multi_text_box_container" style = "padding: 70px 0 0 0;">
+
+						<div class = "text_box " style = "width: 320px; font-size: 23px;">
+							<ul style = "margin: 0px; padding: 0px; list-style-type: none;">
+								<li style = "font-weight: 600;">Generalised Discrete Log</li>
+								<li>Generalised Cyclic Groups</li>
+								<li>Generalised DL Problem</li>
+								<li>Generalised DL security</li>
+							</ul>
+						</div>
+
 						<div class = "text_box" style = "width: 320px; font-size: 23px;">
 							<ul style = "margin: 0px; padding: 0px; list-style-type: none;">
 								<li style = "font-weight: 600;">Prime Fields \(\mathbb{F}_{p}\)</li>
-								<li><span class="inline_code">a + b</span> over \(\mathbb{F}_{p}\)</li>
-								<li><span class="inline_code">a - b</span> over \(\mathbb{F}_{p}\)</li>
-								<li><span class="inline_code">a &#8901; b</span> over \(\mathbb{F}_{p}\)</li>
-								<li><span class="inline_code">(a+b)&#8901;c = a&#8901;c + b&#8901;c</span></li>
-								<li><span class="inline_code">a^b</span> over \(\mathbb{F}_{p}\)</li>
-								<li><span class="inline_code">a/b</span> over \(\mathbb{F}_{p}\)</li>
+								<li>Operations over \(\mathbb{F}_{p}\)</li>
+								<li>Cyclic Groups over \(\mathbb{F}_{p}\)</li>
+								<li>Discrete Log over \(\mathbb{Z}_p^*\)</li>
+								<li>Discrete Log security</li>
 							</ul>
 						</div>
+
 						<div class = "text_box orange_border" style = "width: 320px; font-size: 23px;">
 							<ul style = "margin: 0px; padding: 0px; list-style-type: none;">
-								<li style = "font-weight: 600;">Elliptic Curves (EC) over \(\mathbb{R}\)</li>
-								<li><span class="inline_code">EC-Point P</span> over \(\mathbb{R}\)</li>
-								<li><span class="inline_code">A + B</span> over \(\mathbb{R}\)</li>
-								<li><span class="inline_code">a &#8901; B</span> over \(\mathbb{R}\)</li>
-								<li><span class="inline_code">(a+b)&#8901;C = a&#8901;C + b&#8901;C</span></li>
-
-							</ul>
-						</div>
-						<div class = "text_box" style = "width: 320px; font-size: 23px;">
-							<ul style = "margin: 0px; padding: 0px; list-style-type: none;">
-								<li style = "font-weight: 600;">EC over Prime Fields \(\mathbb{F}_{p}\)</li>
-								<li><span class="inline_code">EC-Point P</span> over \(\mathbb{F}_{p}\)</li>
-								<li><span class="inline_code">A + B</span> over \(\mathbb{F}_{p}\)</li>
-								<li><span class="inline_code">a &#8901; B</span> over \(\mathbb{F}_{p}\) </li>
-								<li><span class="inline_code">(a+b)&#8901;C = a&#8901;C + b&#8901;C</span></li>
+								<li style = "font-weight: 600;">Elliptic Curve Discrete Log</li>
+								<li>EC operations over \(\mathbb{R}\)</li>
+								<li>EC operations over \(\mathbb{F}_{p}\)</li>
+								<li>Cyclic Point Groups</li>
+								<li>Elliptic Curve DL problem</li>
+								<li>Elliptic Curve DL security</li>
 								<hr style = "height:3px; visibility:hidden;">
-								<li style = "font-weight: 600;">Bitcoin Keys:</li>
-								<li><span class="inline_code">s &#8901; G</span> over <span class="inline_code">secp256k1</span></li>
 							</ul>
 						</div>
 					</div>
 
 				</section>
-				<!-- *********** END: Chapter Subtopics 2 *********** -->
+				<!-- *********** END: Chapter Subtopics 3 *********** -->
 
 				<!-- *********** BEGIN: EC over real numbers *********** -->
 				<section class = "box">
@@ -581,7 +981,7 @@
 								<li style = "font-weight: 600;">Distributivity:</li>
 								<ul>
 									<li><span class="inline_code">(a + b)&#8901;C = a&#8901;C + b&#8901;C</span></li>
-									<li>Related to associativity of EC point addition.</li>
+									<li>(Can be proved algebraically)</li>
 								</ul>
 							</ul>
 						</div>
@@ -594,7 +994,7 @@
 				<section class = "box">
 
 					<div class = "title">
-						<span class = "title weight">Associativity</span> of EC Point Addition
+						<span class = "title weight">Commutivity/Associativity</span> of Point Addition
 					</div>
 
 					<!-- Graph -->
@@ -618,17 +1018,24 @@
 						<div class = "text_box"
 								 style = "width: 50%; font-size: 24px; margin: 40px 0 0 0">
 							<ul style = "margin: 0; padding: 0px; list-style-type: none;">
-								<li style = "font-weight: 600;">Illustration of EC point addition associativity</li>
+
+								<li style = "font-weight: 600;">EC point addition commutivity</li>
+								<ul>
+									<li>P1 + P2 = P2 + P1</li>
+									<li>(Same intersection point)</li>
+								</ul>
+								<hr style = "height: 1px; visibility: hidden;">
+
+								<li style = "font-weight: 600;">EC point addition associativity</li>
 								<ul>
 									<li>Order of addition doesn't change result.</li>
 									<li>Associativity proof is rather <a class="orange_link" href="https://www.maths.tcd.ie/pub/Maths/Courseware/EllipticCurves/2016/Associativity.pdf" target="_blank">involved</a>.</li>
-									<li>Back to distributivity of point operations:</li>
 									<ul>
-										<li><span class="inline_code">(P+P+P)+P=(P+P)+(P+P)=((P+P)+P)+P</span></li>
-										<li><span class="inline_code">3&#8901;P + P = 2&#8901;P + 2&#8901;P = 4&#8901;P</span></li>
-										<li><span class="inline_code">(a+b)&#8901;C = a&#8901;C + b&#8901;C</span></li>
+										<li><span class="inline_code">(P1 + P2) + P3 = P1 + (P2 + P3)</span></li>
+										<li>(Associativity can be observed in example)</li>
 									</ul>
 								</ul>
+								<hr style = "height: 1px; visibility: hidden;">
 
 							</ul>
 						</div>
@@ -811,12 +1218,11 @@
 				</section>
 				<!-- *********** END: EC Addition over Finite Fields *********** -->
 
-
-				<!-- *********** BEGIN: EC-point Groups *********** -->
+				<!-- *********** BEGIN: EC Cyclic Groups (I) *********** -->
 				<section class = "box">
 
 					<div class = "title">
-						EC-Point <span class = "title weight">Point Groups</span>
+						<span class = "title weight">Elliptic Curve</span> Point Groups (I)
 					</div>
 
 					<!-- Multi text Box -->
@@ -830,29 +1236,148 @@
 						<div class = "text_box" style = "width: 55%; font-size:22px">
 
 							<ul style = "margin: 0; padding: 0px; list-style-type: none;">
-								<li style ="font-weight: 600;">EC point group with <span class ="inline_code">generator G</span> and <span class ="inline_code">group order n</span></li>
+								<li style ="font-weight: 600;">Symmetry: Each point <span class="inline_code">P(x,y)</span> has an inverse <span class="inline_code">P(x,-y)</span></li>
 								<ul>
-									<li>G</li>
-									<li>2G = G + G</li>
-									<li>3G = G + 2G = G + G + G</li>
-									<li>...</li>
-									<li>nG = (Inf/Inf)</li>
+									<li>\(P(x,y)+P(x,-y)=(Inf/Inf)\)</li>
+									<li>Same relationship as over \(\mathbb{R}\)</li>
+
 								</ul>
 								<hr style = "height:3px; visibility:hidden;">
 
-								<li style ="font-weight: 600;"><span class ="inline_code">P = s&#8901;G</span> is discrete log problem</li>
+								<li style ="font-weight: 600;">Points form a cyclic point group</li>
 									<ul>
-										<li>No efficient way of computing s from P.</li>
-										<li>s can be used as secret.</li>
-										<li>P is unique to s.</li>
-										<li>Elliptic Curve over prime field more efficient than RSA.</li>
-										<li>Commitments/Pubkey Cryptography.</li>
+										<li>\(1 \circ G\)</li>
+										<li>\(2 \circ G\)</li>
+										<li>\(3 \circ G\)</li>
+										<li>\(...\)</li>
+										<li>\( \lvert \mathbb{G} \rvert \circ G = (Inf,Inf)  \)</li>
+										<li>(Proof of cyclic behaviour omitted)</li>
 									</ul>
 							</ul>
 						</div>
 					</div>
 				</section>
-				<!-- *********** END: EC-point Groups *********** -->
+				<!-- *********** END: EC-point Groups (I) *********** -->
+
+				<!-- *********** BEGIN: EC Cyclic Groups *********** -->
+				<section class = "box">
+
+					<div class = "title"
+						><span class = "title weight">Elliptic Curve</span> Point Groups (II)
+					</div>
+
+					<div style = "position: absolute; top: 150px; left: 120px;">
+						<ul style = "list-style-type: none; margin: 0;">
+							<div>
+								<ul class = "math_normal", style="margin: 0px; padding: 0px; list-style-type: none;">
+									<hr style = "height:1px; visibility:hidden;">
+									<li style="font-weight:600;">1) Closed group operation (Point addition)</li>
+									<ul>
+										<li>EC point addition over \(\mathbb{F}_p\)</li>
+										<li>EC point addition is Associative & Commutative</li>
+									</ul>
+									<hr style = "height:1px; visibility:hidden;">
+									<li style="font-weight:600;">2) Generator group element (\( G \))</li>
+									<ul>
+										<li><span class="inline_code">\(G+G+G...G+G+G = s \circ G = P \in \mathbb{G}\)</span></li>
+										<li>Finite number \(\lvert\mathbb{G}\rvert\) of elements in cyclical group \(\mathbb{G}\)
+									</ul>
+									<hr style = "height:1px; visibility:hidden;">
+									<li style="font-weight:600;">3) Neutral group element (inf/inf)</li>
+									<ul>
+										<li>\(P + (inf,inf)=P\)</li>
+									</ul>
+									<hr style = "height:1px; visibility:hidden;">
+									<li style="font-weight:600;">4) Group element inverse</li>
+									<ul>
+										<li>\(P(x,y)+P(x,-y)=(inf,inf)\)</li>
+									</ul>
+								</ul>
+							</div>
+						</ul>
+					</div>
+				</section>
+				<!-- *********** END: EC Cyclic Groups *********** -->
+
+				<!-- *********** BEGIN: EC Discrete log *********** -->
+				<section class = "box">
+
+					<div class = "title"
+						><span class = "title weight">Disrete Log</span> over Elliptic Curves
+					</div>
+
+					<div style = "position: absolute; top: 150px; left: 120px;">
+						<ul style = "list-style-type: none; margin: 0;">
+							<li class = "math_large" style="font-weight:600;">Discrete Log Problem:</li>
+							<div>
+								<ul class = "math_normal", style="margin: 0px; padding: 0px; list-style-type: none;">
+									<hr style = "height:1px; visibility:hidden;">
+									<li><span class="inline_code" style="font-weight:600;">\( P=G+G+G...G+G+G = k \circ G \)</span></li>
+									<ul>
+										<li>Given <span class="inline_code" style="font-weight:600;">\(P\)</span>, solve for  <span class="inline_code" style="font-weight:600;">\(k\)</span></li>
+										<li>\( \lvert\mathbb{G}\rvert \) is governed by Hasse's bound (approx. range of prime p)
+										<hr style = "height:1px; visibility:hidden;">
+									</ul>
+										<div class = "fragment">
+											<ul>
+												<li style="font-weight:600;">Only general discrete log solutions are known for Elliptic Curves <span style="font-weight:300;">\(O(\sqrt{ \lvert\mathbb{G}\rvert })\)</span></li>
+												<ul>
+													<li>160bit (group order) / 80bit (security)</li>
+													<li>256bit (group order) / 128bit (security)</li>
+													<li>512bit (group order) / 256bit (security)</li>
+
+												</ul>
+												<hr style = "height:1px; visibility:hidden;">
+
+												<li style="font-weight:600;">In Comparison: Index-calculus(DH, DSA, Elgamal), Factorization(RSA)</li>
+												<ul>
+													<li>1040bit (group order) / 80bit (security)</li>
+													<li>3072bit (group order) / 128bit (security)</li>
+													<li>15360bit (group order) / 256bit (security)</li>
+												</ul>
+
+											</ul>
+										<div>
+
+								</ul>
+							</div>
+						</ul>
+					</div>
+				</section>
+				<!-- *********** END: EC Discrete log *********** -->
+
+				<!-- *********** BEGIN: Double and Add *********** -->
+				<section class = "box">
+
+					<div class = "title"
+						><span class = "title weight">Double and Add</span>
+					</div>
+
+					<div style = "position: absolute; top: 150px; left: 120px;">
+						<ul style = "list-style-type: none; margin: 0;">
+							<li class = "math_large"><span style="font-weight:600;">Computing</span> \( P=k \circ G \) <span style="font-weight:600;">from known </span>\( k \) <span style="font-weight:600;">must be efficient</span></li>
+							<div>
+								<ul class = "math_normal", style="margin: 0px; padding: 0px; list-style-type: none;">
+									<hr style = "height:1px; visibility:hidden;">
+									<li><span class="inline_code" style="font-weight:600;">\( 26 \circ G = {11010} \circ G \)</span></li>
+									<ul>
+										<li>Bitscan from left to right.</li>
+										<li>Value of Bit0 is 1:  \( \:\: G \)</li>
+										<li>Value of Bit1 is 1:  \( \:\:2 \circ G + G = 3 \circ G \)</li>
+										<li>Value of Bit2 is 0:  \( \:\:2 \circ 3G  = 6 \circ G \)</li>
+										<li>Value of Bit3 is 1:  \( \:\:2 \circ 6G + G = 13 \circ G \)</li>
+										<li>Value of Bit4 is 0:  \( \:\:2 \circ 13G = 26 \circ G \)</li>
+										<hr style = "height:1px; visibility:hidden;">
+								</ul>
+								<div class="fragment">
+								<li style = "font-weight:600;">25 Group operations reduced to 6</li>
+								<li>\(O(\log n)\) Complexity</li>
+							</div>
+							</div>
+						</ul>
+					</div>
+				</section>
+				<!-- *********** END: Double and Add *********** -->
 
 				<!-- *********** BEGIN: BTC Private/Public Keys *********** -->
 				<section class = "box">
@@ -872,7 +1397,7 @@
 							<li class = "math_normal">\(n =\) <span style = "font-family: Roboto Mono; font-size: 20px;">FFFFFFFF FFFFFFFF FFFFFFFF FFFFFFFE BAAEDCE6 AF48A03B BFD25E8C D0364141</span></li>
 							<div class = "substep">
 								<li class = "math_normal" style = "font-weight: 600; margin: 30px 0 20px 0;">Bitcoin private & public keys:</li>
-								<li class = "math_normal weight">\(P = s \cdot G\)</li>
+								<li class = "math_normal weight">\(P = k \circ G\)</li>
 								<li class = "math_normal" style = "font-style:italic;">(Private key scalar \(s\) is chosen, secp256k1-point \(P\) is the public key)</li>
 							</div>
 					</div>
@@ -921,7 +1446,7 @@
 				</section>
 				<!-- *********** END: Public Key Serialisation *********** -->
 
-				<!-- *********** BEGIN: Chapter Subtopics Summary *********** -->
+				<!-- *********** REVISED - BEGIN: Chapter final *********** -->
 				<section class ="box">
 
 					<div class = "title">
@@ -931,43 +1456,42 @@
 					<!-- <img src="images/ec_math/chapter_subtopics_arrows.svg" class = "image" style = "z-index: -1;"> -->
 
 					<div class = "multi_text_box_container" style = "padding: 70px 0 0 0;">
-						<div class = "text_box" style = "width: 320px; font-size: 23px;">
+
+						<div class = "text_box " style = "width: 320px; font-size: 23px;">
+							<ul style = "margin: 0px; padding: 0px; list-style-type: none;">
+								<li style = "font-weight: 600;">Generalised Discrete Log</li>
+								<li>Generalised Cyclic Groups</li>
+								<li>Generalised DL Problem</li>
+								<li>Generalised DL security</li>
+							</ul>
+						</div>
+
+						<div class = "text_box " style = "width: 320px; font-size: 23px;">
 							<ul style = "margin: 0px; padding: 0px; list-style-type: none;">
 								<li style = "font-weight: 600;">Prime Fields \(\mathbb{F}_{p}\)</li>
-								<li><span class="inline_code">a + b</span> over \(\mathbb{F}_{p}\)</li>
-								<li><span class="inline_code">a - b</span> over \(\mathbb{F}_{p}\)</li>
-								<li><span class="inline_code">a &#8901; b</span> over \(\mathbb{F}_{p}\)</li>
-								<li><span class="inline_code">(a+b)&#8901;c = a&#8901;c + b&#8901;c</span></li>
-								<li><span class="inline_code">a^b</span> over \(\mathbb{F}_{p}\)</li>
-								<li><span class="inline_code">a/b</span> over \(\mathbb{F}_{p}\)</li>
+								<li>Operations over \(\mathbb{F}_{p}\)</li>
+								<li>Cyclic Groups over \(\mathbb{F}_{p}\)</li>
+								<li>Discrete Log over \(\mathbb{Z}_p^*\)</li>
+								<li>Discrete Log security</li>
 							</ul>
 						</div>
-						<div class = "text_box" style = "width: 320px; font-size: 23px;">
-							<ul style = "margin: 0px; padding: 0px; list-style-type: none;">
-								<li style = "font-weight: 600;">Elliptic Curves (EC) over \(\mathbb{R}\)</li>
-								<li><span class="inline_code">EC-Point P</span> over \(\mathbb{R}\)</li>
-								<li><span class="inline_code">A + B</span> over \(\mathbb{R}\)</li>
-								<li><span class="inline_code">a &#8901; B</span> over \(\mathbb{R}\)</li>
-								<li><span class="inline_code">(a+b)&#8901;C = a&#8901;C + b&#8901;C</span></li>
 
-							</ul>
-						</div>
 						<div class = "text_box" style = "width: 320px; font-size: 23px;">
 							<ul style = "margin: 0px; padding: 0px; list-style-type: none;">
-								<li style = "font-weight: 600;">EC over Prime Fields \(\mathbb{F}_{p}\)</li>
-								<li><span class="inline_code">EC-Point P</span> over \(\mathbb{F}_{p}\)</li>
-								<li><span class="inline_code">A + B</span> over \(\mathbb{F}_{p}\)</li>
-								<li><span class="inline_code">a &#8901; B</span> over \(\mathbb{F}_{p}\) </li>
-								<li><span class="inline_code">(a+b)&#8901;C = a&#8901;C + b&#8901;C</span></li>
+								<li style = "font-weight: 600;">Elliptic Curve Discrete Log</li>
+								<li>EC operations over \(\mathbb{R}\)</li>
+								<li>EC operations over \(\mathbb{F}_{p}\)</li>
+								<li>Cyclic Point Groups</li>
+								<li>Elliptic Curve DL problem</li>
+								<li>Elliptic Curve DL security</li>
 								<hr style = "height:3px; visibility:hidden;">
-								<li style = "font-weight: 600;">Bitcoin Keys:</li>
-								<li><span class="inline_code">s &#8901; G</span> over <span class="inline_code">secp256k1</span></li>
 							</ul>
 						</div>
 					</div>
 
 				</section>
-				<!-- *********** END: Chapter Subtopics Summary *********** -->
+				<!-- *********** END: Chapter Subtopics FINAL *********** -->
+
 
 
 
@@ -994,7 +1518,7 @@
 					mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
 					config: 'TeX-AMS_HTML-full'  // See http://docs.mathjax.org/en/latest/config-files.html
 				},
-				previewLinks: true,
+				previewLinks: false,
 
 				// Push each slide change to the browser history
 				history: true,
