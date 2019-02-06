@@ -22,8 +22,11 @@
 		<div class="reveal">
 			<div class="slides">
 
-        <!-- *********** BEGIN: Title Slide *********** -->
-        <!-- *********** END: Title Slide *********** -->
+				<!-- *********** BEGIN: Coverpage *********** -->
+				<section class ="box">
+					<img src="images/bitcoindevs_london_feb2019/title_slide.svg" class = "image" style = "z-index: -1;">
+				</section>
+				<!-- *********** END: Coverpage *********** -->
 
         <!-- *********** BEGIN: Libbitcoin Overview *********** -->
         <section class ="box">
@@ -41,10 +44,10 @@
               <hr style = "height:15px; visibility:hidden;">
 
               <div style="opacity: 0.5;">
-              <li><span class ="weight">Libbitcoin BX / System</span></li>
+              <li><span class ="weight">Libbitcoin Explorer / System</span></li>
               <ul style="list-style-type: circle;">
-                <li>HD Wallet Demo (BX/C++)</li>
-                <li>Coinjoin Demo (BX/C++)</li>
+                <li>HD Wallet Demo (Explorer/C++)</li>
+                <li>Transaction Endorsement Demo (Explorer/C++)</li>
                 <li>Script Machine Demo (C++)</li>
               </ul>
               <hr style = "height:15px; visibility:hidden;">
@@ -54,7 +57,7 @@
                 <li>Public Server Design</li>
                 <li>ZMQ Server Interface</li>
                 <li>Websockets (V4)</li>
-                <li>Payment Index</li> 
+                <li>Spender Index</li>
               </ul>
               <hr style = "height:15px; visibility:hidden;">
 
@@ -147,10 +150,10 @@
 
               </div>
 
-              <li><span class ="weight">Libbitcoin BX / System</span></li>
+              <li><span class ="weight">Libbitcoin Explorer / System</span></li>
               <ul style="list-style-type: circle;">
-                <li>HD Wallet Demo (BX/C++)</li>
-                <li>Coinjoin Demo (BX/C++)</li>
+                <li>HD Wallet Demo (Explorer/C++)</li>
+                <li>Transaction Endorsements (Explorer/C++)</li>
                 <li>Script Machine Demo (C++)</li>
               </ul>
               <hr style = "height:15px; visibility:hidden;">
@@ -162,7 +165,7 @@
                 <li>Public Server Design</li>
                 <li>ZMQ Server Interface</li>
                 <li>Websockets (V4)</li>
-                <li>Payment Index</li>
+                <li>Spender Index</li>
               </ul>
               <hr style = "height:15px; visibility:hidden;">
 
@@ -182,32 +185,32 @@
         </section>
         <!-- *********** END: BX / C++ Agenda *********** -->
 
-        <!-- *********** BEGIN: BX Demo Wallets *********** -->
+        <!-- *********** BEGIN: Explorer Demo Wallets *********** -->
         <section class ="box">
           <div class = "title">
-            BX Demo:<span class = "weight"> HD Wallets</span>
+            Explorer Demo:<span class = "weight"> HD Wallets</span>
           </div>
           <img src="images/bitcoindevs_london_feb2019/bx_0.svg" class = "image" style = "z-index: -3;">
         </section>
-        <!-- *********** END: BX Demo Wallets *********** -->
+        <!-- *********** END: Explorer Demo Wallets *********** -->
 
-        <!-- *********** BEGIN: BX Demo Coinjoin *********** -->
+        <!-- *********** BEGIN: Explorer Demo Coinjoin *********** -->
         <section class ="box">
           <div class = "title">
-            BX Demo:<span class = "weight"> Coinjoin</span>
+            Explorer Demo:<span class = "weight"> TX Endorsements</span>
           </div>
           <img src="images/bitcoindevs_london_feb2019/bx_1.svg" class = "image" style = "z-index: -3;">
         </section>
-        <!-- *********** END: BX Demo Coinjoin *********** -->
+        <!-- *********** END: Explorer Demo Coinjoin *********** -->
 
-        <!-- *********** BEGIN: BX Demo Script Machine *********** -->
+        <!-- *********** BEGIN: Explorer Demo Script Machine *********** -->
         <section class ="box">
           <div class = "title">
             C++ Demo:<span class = "weight"> Script Machine</span>
           </div>
           <img src="images/bitcoindevs_london_feb2019/bx_2.svg" class = "image" style = "z-index: -3;">
         </section>
-        <!-- *********** END: BX Demo Script Machine *********** -->
+        <!-- *********** END: Explorer Demo Script Machine *********** -->
 
         <!-- *********** BEGIN: Server Agenda *********** -->
         <section class ="box">
@@ -226,10 +229,10 @@
               <hr style = "height:15px; visibility:hidden;">
 
 
-              <li><span class ="weight">Libbitcoin BX / System</span></li>
+              <li><span class ="weight">Libbitcoin Explorer / System</span></li>
               <ul style="list-style-type: circle;">
-                <li>HD Wallet Demo (BX/C++)</li>
-                <li>Coinjoin Demo (BX/C++)</li>
+                <li>HD Wallet Demo (Explorer/C++)</li>
+                <li>Coinjoin Demo (Explorer/C++)</li>
                 <li>Script Machine Demo (C++)</li>
               </ul>
               <hr style = "height:15px; visibility:hidden;">
@@ -241,7 +244,7 @@
                 <li>Public Server Design</li>
                 <li>ZMQ Server Interface</li>
                 <li>Websockets (V4)</li>
-                <li>Payment Index</li>
+                <li>Spender Index</li>
               </ul>
               <hr style = "height:15px; visibility:hidden;">
 
@@ -332,7 +335,7 @@
                 <ul style = "list-style-type: circle;">
                   <li>Native browser support</li>
                   <li>JSON queries/response</li>
-                  <li>Async subscription queries</li>
+                  <li>Asynchronous subscription queries</li>
                 </ul>
                 <hr style = "height:5px; visibility:hidden;">
 
@@ -360,7 +363,7 @@
         <!-- *********** BEGIN: Payment Address(Wallet)  *********** -->
         <section class = "box">
           <div class = "title">
-            Payment Index: <span class = "weight">Wallet Client</span>
+            Spender Index: <span class = "weight">Wallet Client</span>
           </div>
 
           <!-- 2 column container -->
@@ -414,7 +417,7 @@
         <!-- *********** BEGIN: Payment Address(Payment Server)  *********** -->
         <section class = "box">
           <div class = "title">
-            Payment Index: <span class = "weight">Payment Server</span>
+            Spender Index: <span class = "weight">Payment Server</span>
           </div>
 
           <!-- 2 column container -->
@@ -435,7 +438,7 @@
 
                 <li style = "font-weight: bold;">Address Subscription</li>
                 <ul style = "list-style-type: circle;">
-                  <li>Async query</li>
+                  <li>Asynchronous query</li>
                   <li>Renewable Subscription</li>
                   <li>Notifications:</li>
                   <ul style = "list-style-type: circle;">
@@ -456,7 +459,7 @@
         <!-- *********** BEGIN: Payment Address(SPV Client)  *********** -->
         <section class = "box">
           <div class = "title">
-            Payment Index: <span class = "weight">SPV Client</span>
+            Spender Index: <span class = "weight">SPV Client</span>
           </div>
 
           <!-- 2 column container -->
@@ -522,10 +525,10 @@
               <hr style = "height:15px; visibility:hidden;">
 
 
-              <li><span class ="weight">Libbitcoin BX / System</span></li>
+              <li><span class ="weight">Libbitcoin Explorer / System</span></li>
               <ul style="list-style-type: circle;">
-                <li>HD Wallet Demo (BX/C++)</li>
-                <li>Coinjoin Demo (BX/C++)</li>
+                <li>HD Wallet Demo (Explorer/C++)</li>
+                <li>Coinjoin Demo (Explorer/C++)</li>
                 <li>Script Machine Demo (C++)</li>
               </ul>
               <hr style = "height:15px; visibility:hidden;">
@@ -536,7 +539,7 @@
                 <li>Public Server Design</li>
                 <li>ZMQ Server Interface</li>
                 <li>Websockets (V4)</li>
-                <li>Payment Index</li>
+                <li>Spender Index</li>
               </ul>
               <hr style = "height:15px; visibility:hidden;">
 
@@ -632,7 +635,7 @@
         <!-- *********** BEGIN: Parallel IBD  *********** -->
         <section class = "box">
           <div class = "title">
-            Libbitcoin V4: <span class = "weight">Parallel IBD</span>
+            V4: <span class = "weight">Continuous Parallel Block Download</span>
           </div>
 
           <!-- 2 column container -->
@@ -653,10 +656,10 @@
 
                 <!-- <hr style = "height:5px; visibility:hidden;"> -->
 
-                <li style = "font-weight: bold;">Scalability: Initial node sync</li>
+                <li style = "font-weight: bold;">Scalability: IBD/Catchup</li>
                 <ul style = "list-style-type: circle;">
                   <li>Parallelism & multiple threads</li>
-                  <li>IBD with significant parallel portion</li>
+                  <li>Significant parallel portion</li>
                 </ul>
                 <hr style = "height:5px; visibility:hidden;">
 
@@ -674,10 +677,11 @@
                 </ul>
                 <hr style = "height:5px; visibility:hidden;">
 
-                <li style = "font-weight: bold;">Parallel block validation</li>
+                <li style = "font-weight: bold;">(Parallel block validation)</li>
                 <ul style = "list-style-type: circle;">
-                  <li>Parallel context-free validation</li>
                   <li>(Standard input implies previous output)</li>
+									<li>(Not possible with native witness tx's)</li>
+
                 </ul>
                 <hr style = "height:5px; visibility:hidden;">
 
@@ -711,10 +715,10 @@
               <hr style = "height:15px; visibility:hidden;">
 
 
-              <li><span class ="weight">Libbitcoin BX / System</span></li>
+              <li><span class ="weight">Libbitcoin Explorer / System</span></li>
               <ul style="list-style-type: circle;">
-                <li>HD Wallet Demo (BX/C++)</li>
-                <li>Coinjoin Demo (BX/C++)</li>
+                <li>HD Wallet Demo (Explorer/C++)</li>
+                <li>Coinjoin Demo (Explorer/C++)</li>
                 <li>Script Machine Demo (C++)</li>
               </ul>
               <hr style = "height:15px; visibility:hidden;">
@@ -725,7 +729,7 @@
                 <li>Public Server Design</li>
                 <li>ZMQ Server Interface</li>
                 <li>Websockets (V4)</li>
-                <li>Payment Index</li>
+                <li>Spender Index</li>
               </ul>
               <hr style = "height:15px; visibility:hidden;">
 
