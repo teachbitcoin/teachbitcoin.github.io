@@ -1,0 +1,747 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Libbitcoin Introduction</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/simple.css">
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/xcode.css">
+		<!-- Theme override for teachbitcoin -->
+		<link rel="stylesheet" href="css/teachbitcoin.css">
+		<!-- Google Font Roboto -->
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+
+
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+				<!-- *********** BEGIN: Cover Page *********** -->
+        <section class ="box">
+          <img src="images/techdays_munich_feb2019/cover_slide.svg" class = "image" style = "z-index: -3;">
+        </section>
+        <!-- *********** END: Cover Page *********** -->
+
+				<!-- *********** BEGIN: ME *********** -->
+				<section class ="box">
+
+					<div class = "title">
+						<span class = "title weight">Myself</span>
+					</div>
+
+					<div class = "multi_text_box_container" style = "padding: 60px 0 0 0; font-size:30px; color: rgba(45,78,110,1);">
+						<ul style = "width: 100%; list-style-type: none;">
+
+							<li><span class ="weight">Libbitcoin Contributor / Trainer</span></li>
+							<ul style="list-style-type: circle; font-size: 85%;">
+								<li>Eric Voskuil (Libbitcoin/Cryptoeconomics)</li>
+								<li>Code Review / Documentation</li>
+								<li>Bitcoin Meetups / Conferences</li>
+							</ul>
+							<hr style = "height:15px; visibility:hidden;">
+
+							<li><span class ="weight">Bitcoin Protocol Educator</span></li>
+							<ul style="list-style-type: circle; font-size: 85%;">
+								<li><span class="weight">Online:</span> TeachBitcoin.io</li>
+								<li><span class="weight">Classroom:</span></li>
+								<ul>
+									<li>21Lectures (w/ Decker, Schnelli)</li>
+									<li>Swiss Universities (ETHZ, HSLU, HSR)</li>
+								</ul>
+							</ul>
+							<hr style = "height:15px; visibility:hidden;">
+
+							<li><span class ="weight">Bitcoin Protocol Researcher (WIP)</span></li>
+							<ul style="list-style-type: circle; font-size: 85%;">
+								<li>Protocol Design & Systems Development</li>
+							</ul>
+							<hr style = "height:15px; visibility:hidden;">
+
+						</ul> <!-- End of content list -->
+					</div>
+
+				</section>
+				<!-- *********** END: ME *********** -->
+
+				<!-- *********** BEGIN: Agenda *********** -->
+				<section class ="box">
+
+					<div class = "title">
+						<span class = "title weight">Routing, HTLC's, Security Trade-offs</span>
+					</div>
+
+					<div class = "multi_text_box_container" style = "padding: 80px 0 0 0; font-size:35px; color: rgba(45,78,110,1);">
+						<ul style = "width: 100%; list-style-type: none;">
+
+
+							<li><span class ="weight">Payment Channels</span></li>
+							<hr style = "height:15px; visibility:hidden;">
+
+
+							<li><span class ="weight">Payment Routing</span></li>
+							<hr style = "height:15px; visibility:hidden;">
+
+							<li><span class ="weight">Future Protocol Work</span></li>
+							<hr style = "height:15px; visibility:hidden;">
+
+							<li><span class ="weight">TeachBitcoin.io</span></li>
+							<hr style = "height:15px; visibility:hidden;">
+
+						</ul> <!-- End of content list -->
+					</div>
+
+				</section>
+				<!-- *********** END: Agenda *********** -->
+
+				<!-- *********** BEGIN: Agenda Payment Channels *********** -->
+				<section class ="box">
+
+					<div class = "title">
+						<span class = "title weight">Topics</span>
+					</div>
+
+					<div class = "multi_text_box_container" style = "padding: 60px 0 0 0; font-size:35px; color: rgba(45,78,110,1);">
+						<ul style = "width: 100%; list-style-type: none;">
+
+							<div style="opacity: 0.5;">
+							</div>
+
+							<li><span class ="weight">Payment Channels</span></li>
+							<ul style="list-style-type: circle;">
+								<li>1. Channel States</li>
+							</ul>
+							<hr style = "height:15px; visibility:hidden;">
+
+						</ul> <!-- End of content list -->
+					</div>
+
+				</section>
+				<!-- *********** END: Agenda Payment Channels  *********** -->
+
+				<!-- *********** BEGIN: Channel States *********** -->
+        <section class ="box">
+          <img src="images/techdays_munich_feb2019/channel_states0.svg" class = "image" style = "z-index: -3;">
+					<img src="images/techdays_munich_feb2019/channel_states1.svg" class = "fragment image" style = "z-index: -3;">
+					<img src="images/techdays_munich_feb2019/channel_states2.svg" class = "fragment image" style = "z-index: -3;">
+					<img src="images/techdays_munich_feb2019/channel_states3.svg" class = "fragment image" style = "z-index: -3;">
+
+        </section>
+        <!-- *********** Channel States *********** -->
+
+				<!-- *********** BEGIN: Agenda: Balance Delivery *********** -->
+				<section class ="box">
+
+					<div class = "title">
+						<span class = "title weight">Topics</span>
+					</div>
+
+					<div class = "multi_text_box_container" style = "padding: 60px 0 0 0; font-size:35px; color: rgba(45,78,110,1);">
+						<ul style = "width: 100%; list-style-type: none;">
+
+
+							<li><span class ="weight">Payment Channels</span></li>
+							<ul style="list-style-type: circle;">
+								<div style="opacity: 0.5;">
+									<li>1. Channel States</li>
+								</div>
+								<li>2. Balance Delivery</li>
+							</ul>
+							<hr style = "height:15px; visibility:hidden;">
+
+						</ul> <!-- End of content list -->
+					</div>
+
+				</section>
+				<!-- *********** END: Agenda: Balance Delivery *********** -->
+
+				<!-- *********** BEGIN: Channel States *********** -->
+        <section class ="box">
+          <img src="images/techdays_munich_feb2019/balance_delivery0.svg" class = "image" style = "z-index: -3;">
+					<img src="images/techdays_munich_feb2019/balance_delivery1.svg" class = "fragment image" style = "z-index: -3;">
+					<img src="images/techdays_munich_feb2019/balance_delivery3.svg" class = "fragment image" style = "z-index: -3;">
+					<img src="images/techdays_munich_feb2019/balance_delivery4.svg" class = "fragment image" style = "z-index: -3;">
+					<img src="images/techdays_munich_feb2019/balance_delivery5.svg" class = "fragment image" style = "z-index: -3;">
+					<img src="images/techdays_munich_feb2019/balance_delivery6.svg" class = "fragment image" style = "z-index: -3;">
+					<img src="images/techdays_munich_feb2019/balance_delivery7.svg" class = "fragment image" style = "z-index: -3;">
+        </section>
+        <!-- *********** Channel States *********** -->
+
+				<!-- *********** BEGIN: Agenda Malleability *********** -->
+				<section class ="box">
+
+					<div class = "title">
+						<span class = "title weight">Topics</span>
+					</div>
+
+					<div class = "multi_text_box_container" style = "padding: 60px 0 0 0; font-size:35px; color: rgba(45,78,110,1);">
+						<ul style = "width: 100%; list-style-type: none;">
+
+
+							<li><span class ="weight">Payment Channels</span></li>
+							<ul style="list-style-type: circle;">
+								<div style="opacity: 0.5;">
+									<li>1. Channel States</li>
+									<li>2. Balance Delivery</li>
+								</div>
+								<li>3. Malleability</li>
+
+							</ul>
+							<hr style = "height:15px; visibility:hidden;">
+
+						</ul> <!-- End of content list -->
+					</div>
+
+				</section>
+				<!-- *********** END: Agenda Malleability *********** -->
+
+				<!-- *********** BEGIN: Malleability *********** -->
+        <section class ="box">
+          <img src="images/techdays_munich_feb2019/malleability0.svg" class = "image" style = "z-index: -3;">
+					<img src="images/techdays_munich_feb2019/malleability1.svg" class = "fragment image" style = "z-index: -3;">
+					<img src="images/techdays_munich_feb2019/malleability2.svg" class = "fragment image" style = "z-index: -3;">
+        </section>
+        <!-- *********** END: Malleability *********** -->
+
+				<!-- *********** BEGIN: Agenda Malleability *********** -->
+				<section class ="box">
+
+					<div class = "title">
+						<span class = "title weight">Topics</span>
+					</div>
+
+					<div class = "multi_text_box_container" style = "padding: 60px 0 0 0; font-size:35px; color: rgba(45,78,110,1);">
+						<ul style = "width: 100%; list-style-type: none;">
+
+
+							<li><span class ="weight">Payment Channels</span></li>
+							<ul style="list-style-type: circle;">
+								<div style="opacity: 0.5;">
+									<li>1. Channel States</li>
+									<li>2. Balance Delivery</li>
+									<li>3. Malleability</li>
+								</div>
+								<li>4. State Revocation</li>
+
+							</ul>
+							<hr style = "height:15px; visibility:hidden;">
+
+						</ul> <!-- End of content list -->
+					</div>
+
+				</section>
+				<!-- *********** END: Agenda Malleability *********** -->
+
+				<!-- *********** BEGIN: State Revocation *********** -->
+        <section class ="box">
+          <img src="images/techdays_munich_feb2019/state_revocation0.svg" class = "image" style = "z-index: -3;">
+					<img src="images/techdays_munich_feb2019/state_revocation1.svg" class = "fragment image" style = "z-index: -3;">
+					<img src="images/techdays_munich_feb2019/state_revocation2.svg" class = "fragment image" style = "z-index: -3;">
+					<img src="images/techdays_munich_feb2019/state_revocation3.svg" class = "fragment image" style = "z-index: -3;">
+        </section>
+        <!-- *********** END: State Revocation *********** -->
+
+				<!-- *********** BEGIN: RSMC *********** -->
+        <section class ="box">
+          <img src="images/techdays_munich_feb2019/RSMC0.svg" class = "image" style = "z-index: -3;">
+					<img src="images/techdays_munich_feb2019/RSMC1.svg" class = "fragment image" style = "z-index: -3;">
+					<img src="images/techdays_munich_feb2019/RSMC2.svg" class = "fragment image" style = "z-index: -3;">
+					<img src="images/techdays_munich_feb2019/RSMC3.svg" class = "fragment image" style = "z-index: -3;">
+					<img src="images/techdays_munich_feb2019/RSMC4.svg" class = "fragment image" style = "z-index: -3;">
+					<img src="images/techdays_munich_feb2019/RSMC5.svg" class = "fragment image" style = "z-index: -3;">
+        </section>
+        <!-- *********** END: RSMC *********** -->
+
+				<!-- *********** BEGIN: Security *********** -->
+				<section class ="box">
+
+					<div class = "title">
+						<span class = "title weight">Topics</span>
+					</div>
+
+					<div class = "multi_text_box_container" style = "padding: 60px 0 0 0; font-size:35px; color: rgba(45,78,110,1);">
+						<ul style = "width: 100%; list-style-type: none;">
+
+
+							<li><span class ="weight">Payment Channels</span></li>
+							<ul style="list-style-type: circle;">
+								<div style="opacity: 0.5;">
+									<li>1. Channel States</li>
+									<li>2. Balance Delivery</li>
+									<li>3. Malleability</li>
+									<li>4. State Revocation</li>
+								</div>
+								<li>5. Security Trade-off</li>
+							</ul>
+							<hr style = "height:15px; visibility:hidden;">
+
+						</ul> <!-- End of content list -->
+					</div>
+
+				</section>
+				<!-- *********** END: Security *********** -->
+
+				<!-- *********** BEGIN: Security *********** -->
+        <section class ="box">
+          <img src="images/techdays_munich_feb2019/channel_security0.svg" class = "image" style = "z-index: -3;">
+					<img src="images/techdays_munich_feb2019/channel_security1.svg" class = "fragment image" style = "z-index: -3;">
+        </section>
+        <!-- *********** END: Security *********** -->
+
+				<!-- *********** BEGIN: Security *********** -->
+				<section class ="box">
+
+					<div class = "title">
+						<span class = "title weight">Topics</span>
+					</div>
+
+					<div class = "multi_text_box_container" style = "padding: 60px 0 0 0; font-size:35px; color: rgba(45,78,110,1);">
+						<ul style = "width: 100%; list-style-type: none;">
+
+
+							<li><span class ="weight">Payment Channels</span></li>
+							<ul style="list-style-type: circle;">
+								<div style="opacity: 0.5;">
+									<li>1. Channel States</li>
+									<li>2. Balance Delivery</li>
+									<li>3. Malleability</li>
+									<li>4. State Revocation</li>
+									<li>5. Security Trade-off</li>
+								</div>
+								<li>6. Denomination</li>
+							</ul>
+							<hr style = "height:15px; visibility:hidden;">
+
+						</ul> <!-- End of content list -->
+					</div>
+
+				</section>
+				<!-- *********** END: Security *********** -->
+
+				<!-- *********** BEGIN: Denomination *********** -->
+        <section class ="box">
+          <img src="images/techdays_munich_feb2019/millisat0.svg" class = "image" style = "z-index: -3;">
+					<img src="images/techdays_munich_feb2019/millisat1.svg" class = "fragment image" style = "z-index: -3;">
+        </section>
+        <!-- *********** END: Denomination *********** -->
+
+				<!-- *********** BEGIN: Routing *********** -->
+				<section class ="box">
+
+					<div class = "title">
+						<span class = "title weight">Topics</span>
+					</div>
+
+					<div class = "multi_text_box_container" style = "padding: 60px 0 0 0; font-size:35px; color: rgba(45,78,110,1);">
+						<ul style = "width: 100%; list-style-type: none;">
+
+							<div style="opacity: 0.5;">
+
+							<li><span class ="weight">Payment Channels</span></li>
+							<hr style = "height:15px; visibility:hidden;">
+
+							</div>
+
+							<li><span class ="weight">Payment Routing</span></li>
+							<ul style="list-style-type: circle;">
+									<li>1. Routing Across Channels</li>
+							</ul>
+							<hr style = "height:15px; visibility:hidden;">
+
+						</ul> <!-- End of content list -->
+					</div>
+
+				</section>
+				<!-- *********** END: Routing *********** -->
+
+				<!-- *********** BEGIN: Payment Routing *********** -->
+        <section class ="box">
+          <img src="images/techdays_munich_feb2019/payment_routing0.svg" class = "image" style = "z-index: -3;">
+					<img src="images/techdays_munich_feb2019/payment_routing1.svg" class = "fragment image" style = "z-index: -3;">
+					<img src="images/techdays_munich_feb2019/payment_routing2.svg" class = "fragment image" style = "z-index: -3;">
+        </section>
+        <!-- *********** END: Denomination *********** -->
+
+				<!-- *********** BEGIN: Hashlocks *********** -->
+				<section class ="box">
+
+					<div class = "title">
+						<span class = "title weight">Topics</span>
+					</div>
+
+					<div class = "multi_text_box_container" style = "padding: 60px 0 0 0; font-size:35px; color: rgba(45,78,110,1);">
+						<ul style = "width: 100%; list-style-type: none;">
+
+							<div style="opacity: 0.5;">
+
+							<li><span class ="weight">Payment Channels</span></li>
+							<hr style = "height:15px; visibility:hidden;">
+
+							</div>
+
+							<li><span class ="weight">Payment Routing</span></li>
+							<ul style="list-style-type: circle;">
+								<div style="opacity: 0.5;">
+									<li>1. Routing Across Channels</li>
+								</div>
+									<li>2. Hashlocks</li>
+							</ul>
+							<hr style = "height:15px; visibility:hidden;">
+
+						</ul> <!-- End of content list -->
+					</div>
+
+				</section>
+				<!-- *********** END: Hashlocks *********** -->
+
+				<!-- *********** BEGIN: Onion Routing *********** -->
+        <section class ="box">
+          <img src="images/techdays_munich_feb2019/onion_routing0.svg" class = "image" style = "z-index: -3;">
+					<img src="images/techdays_munich_feb2019/onion_routing1.svg" class = "fragment image" style = "z-index: -3;">
+					<img src="images/techdays_munich_feb2019/onion_routing2.svg" class = "fragment image" style = "z-index: -3;">
+					<img src="images/techdays_munich_feb2019/onion_routing3.svg" class = "fragment image" style = "z-index: -3;">
+
+        </section>
+        <!-- *********** END: Onion Routing *********** -->
+
+				<!-- *********** BEGIN: HashLocks *********** -->
+        <section class ="box">
+          <img src="images/techdays_munich_feb2019/hash_lock0.svg" class = "image" style = "z-index: -3;">
+					<img src="images/techdays_munich_feb2019/hash_lock1.svg" class = "fragment image" style = "z-index: -3;">
+					<img src="images/techdays_munich_feb2019/hash_lock2.svg" class = "fragment image" style = "z-index: -3;">
+					<img src="images/techdays_munich_feb2019/hash_lock3.svg" class = "fragment image" style = "z-index: -3;">
+					<img src="images/techdays_munich_feb2019/hash_lock4.svg" class = "fragment image" style = "z-index: -3;">
+					<img src="images/techdays_munich_feb2019/hash_lock5.svg" class = "fragment image" style = "z-index: -3;">
+					<img src="images/techdays_munich_feb2019/hash_lock6.svg" class = "fragment image" style = "z-index: -3;">
+        </section>
+        <!-- *********** END: HashLocks *********** -->
+
+				<!-- *********** BEGIN: Timelocks *********** -->
+				<section class ="box">
+
+					<div class = "title">
+						<span class = "title weight">Topics</span>
+					</div>
+
+					<div class = "multi_text_box_container" style = "padding: 60px 0 0 0; font-size:35px; color: rgba(45,78,110,1);">
+						<ul style = "width: 100%; list-style-type: none;">
+
+							<div style="opacity: 0.5;">
+
+							<li><span class ="weight">Payment Channels</span></li>
+							<hr style = "height:15px; visibility:hidden;">
+
+							</div>
+
+							<li><span class ="weight">Payment Routing</span></li>
+							<ul style="list-style-type: circle;">
+								<div style="opacity: 0.5;">
+									<li>1. Routing Across Channels</li>
+									<li>2. Hashlocks</li>
+								</div>
+
+									<li>3. Timelocks</li>
+
+							</ul>
+							<hr style = "height:15px; visibility:hidden;">
+
+						</ul> <!-- End of content list -->
+					</div>
+
+				</section>
+				<!-- *********** END: Timelocks *********** -->
+
+				<!-- *********** BEGIN: timelocks *********** -->
+        <section class ="box">
+          <img src="images/techdays_munich_feb2019/time_lock0.svg" class = "image" style = "z-index: -3;">
+					<img src="images/techdays_munich_feb2019/time_lock0b.svg" class = "fragment image" style = "z-index: -3;">
+					<img src="images/techdays_munich_feb2019/time_lock1.svg" class = "fragment image" style = "z-index: -3;">
+        </section>
+        <!-- *********** END: timelocks *********** -->
+
+				<!-- *********** BEGIN: HTLC *********** -->
+				<section class ="box">
+
+					<div class = "title">
+						<span class = "title weight">Topics</span>
+					</div>
+
+					<div class = "multi_text_box_container" style = "padding: 60px 0 0 0; font-size:35px; color: rgba(45,78,110,1);">
+						<ul style = "width: 100%; list-style-type: none;">
+
+							<div style="opacity: 0.5;">
+
+							<li><span class ="weight">Payment Channels</span></li>
+							<hr style = "height:15px; visibility:hidden;">
+
+							</div>
+
+							<li><span class ="weight">Payment Routing</span></li>
+							<ul style="list-style-type: circle;">
+								<div style="opacity: 0.5;">
+									<li>1. Routing Across Channels</li>
+									<li>2. Hashlocks</li>
+									<li>3. Timelocks</li>
+								</div>
+									<li>4. HTLC's</li>
+							</ul>
+							<hr style = "height:15px; visibility:hidden;">
+
+						</ul> <!-- End of content list -->
+					</div>
+
+				</section>
+				<!-- *********** END: HTLC *********** -->
+
+				<!-- *********** BEGIN: htlc naive *********** -->
+        <section class ="box">
+          <img src="images/techdays_munich_feb2019/htlc_naive0.svg" class = "image" style = "z-index: -3;">
+					<img src="images/techdays_munich_feb2019/htlc_naive1.svg" class = "fragment image" style = "z-index: -3;">
+					<img src="images/techdays_munich_feb2019/htlc_naive2.svg" class = "fragment image" style = "z-index: -3;">
+					<img src="images/techdays_munich_feb2019/htlc_naive3.svg" class = "fragment image" style = "z-index: -3;">
+					<img src="images/techdays_munich_feb2019/htlc_naive4.svg" class = "fragment image" style = "z-index: -3;">
+					<img src="images/techdays_munich_feb2019/htlc_naive5.svg" class = "fragment image" style = "z-index: -3;">
+					<img src="images/techdays_munich_feb2019/htlc_naive6.svg" class = "fragment image" style = "z-index: -3;">
+					<img src="images/techdays_munich_feb2019/htlc_naive7.svg" class = "fragment image" style = "z-index: -3;">
+					<img src="images/techdays_munich_feb2019/htlc_naive8.svg" class = "fragment image" style = "z-index: -3;">
+        </section>
+        <!-- *********** END: htlc naive *********** -->
+
+				<!-- *********** BEGIN: htlc staged *********** -->
+        <section class ="box">
+          <img src="images/techdays_munich_feb2019/htlc_staged0.svg" class = "image" style = "z-index: -3;">
+					<img src="images/techdays_munich_feb2019/htlc_staged1.svg" class = "fragment image" style = "z-index: -3;">
+					<img src="images/techdays_munich_feb2019/htlc_staged2.svg" class = "fragment image" style = "z-index: -3;">
+					<img src="images/techdays_munich_feb2019/htlc_staged3.svg" class = "fragment image" style = "z-index: -3;">
+					<img src="images/techdays_munich_feb2019/htlc_staged4.svg" class = "fragment image" style = "z-index: -3;">
+					<img src="images/techdays_munich_feb2019/htlc_staged5.svg" class = "fragment image" style = "z-index: -3;">
+					<img src="images/techdays_munich_feb2019/htlc_staged6.svg" class = "fragment image" style = "z-index: -3;">
+					<img src="images/techdays_munich_feb2019/htlc_staged7.svg" class = "fragment image" style = "z-index: -3;">
+					<img src="images/techdays_munich_feb2019/htlc_staged8.svg" class = "fragment image" style = "z-index: -3;">
+        </section>
+        <!-- *********** END: htlc staged *********** -->
+
+				<!-- *********** BEGIN: Dual Funding *********** -->
+				<section class ="box">
+
+					<div class = "title">
+						<span class = "title weight">Topics</span>
+					</div>
+
+					<div class = "multi_text_box_container" style = "padding: 60px 0 0 0; font-size:35px; color: rgba(45,78,110,1);">
+						<ul style = "width: 100%; list-style-type: none;">
+
+							<div style="opacity: 0.5;">
+
+							<li><span class ="weight">Payment Channels</span></li>
+							<hr style = "height:15px; visibility:hidden;">
+
+							<li><span class ="weight">Payment Routing</span></li>
+							<hr style = "height:15px; visibility:hidden;">
+
+							</div>
+
+							<li><span class ="weight">Future Protocol Work</span></li>
+							<ul style="list-style-type: circle;">
+								<li>1. Single/Dual-Funding</li>
+								<div style="opacity: 0.5;">
+								</div>
+							</ul>
+							<hr style = "height:15px; visibility:hidden;">
+
+						</ul> <!-- End of content list -->
+					</div>
+
+				</section>
+				<!-- *********** END: Dual Funding *********** -->
+
+				<!-- *********** BEGIN: Single Funded *********** -->
+        <section class ="box">
+          <div class = "title">
+            <span class = "weight">Single-funded</span> Channels
+          </div>
+          <img src="images/techdays_munich_feb2019/single_funded0.svg" class = "image" style = "z-index: -3;">
+					<img src="images/techdays_munich_feb2019/single_funded1.svg" class = "fragment image" style = "z-index: -3;">
+					<img src="images/techdays_munich_feb2019/single_funded2.svg" class = "fragment image" style = "z-index: -3;">
+					<img src="images/techdays_munich_feb2019/single_funded3.svg" class = "fragment image" style = "z-index: -3;">
+        </section>
+        <!-- *********** END: Single Funded  *********** -->
+				<!-- *********** BEGIN: Single Funded *********** -->
+        <section class ="box">
+          <div class = "title">
+            <span class = "weight">Dual-funded</span> Channels
+          </div>
+          <img src="images/techdays_munich_feb2019/dual_funded0.svg" class = "image" style = "z-index: -3;">
+					<img src="images/techdays_munich_feb2019/dual_funded1.svg" class = "fragment image" style = "z-index: -3;">
+					<img src="images/techdays_munich_feb2019/dual_funded2.svg" class = "fragment image" style = "z-index: -3;">
+					<img src="images/techdays_munich_feb2019/dual_funded3.svg" class = "fragment image" style = "z-index: -3;">
+        </section>
+        <!-- *********** END: Single Funded  *********** -->
+
+
+
+				<!-- *********** BEGIN: Fees *********** -->
+				<section class ="box">
+
+					<div class = "title">
+						<span class = "title weight">Topics</span>
+					</div>
+
+					<div class = "multi_text_box_container" style = "padding: 60px 0 0 0; font-size:35px; color: rgba(45,78,110,1);">
+						<ul style = "width: 100%; list-style-type: none;">
+
+							<div style="opacity: 0.5;">
+
+							<li><span class ="weight">Payment Channels</span></li>
+							<hr style = "height:15px; visibility:hidden;">
+
+							<li><span class ="weight">Payment Routing</span></li>
+							<hr style = "height:15px; visibility:hidden;">
+
+							</div>
+
+							<li><span class ="weight">Future Protocol Work</span></li>
+							<ul style="list-style-type: circle;">
+								<div style="opacity: 0.5;">
+									<li>1. Single/Dual-Funding</li>
+								</div>
+								<li>2. Fees (CPFP/RBF)</li>
+							</ul>
+							<hr style = "height:15px; visibility:hidden;">
+
+						</ul> <!-- End of content list -->
+					</div>
+
+				</section>
+				<!-- *********** END: Fees *********** -->
+
+				<!-- *********** BEGIN: CPFP *********** -->
+        <section class ="box">
+
+          <img src="images/techdays_munich_feb2019/cpfp_challenges.svg" class = "image" style = "z-index: -3;">
+        </section>
+        <!-- *********** END: CPFP  *********** -->
+
+
+				<!-- *********** BEGIN: Teachbitcoin *********** -->
+				<section class ="box">
+
+					<div class = "title">
+						<span class = "title weight">Topics</span>
+					</div>
+
+					<div class = "multi_text_box_container" style = "padding: 60px 0 0 0; font-size:35px; color: rgba(45,78,110,1);">
+						<ul style = "width: 100%; list-style-type: none;">
+
+							<div style="opacity: 0.5;">
+
+							<li><span class ="weight">Payment Channels</span></li>
+							<hr style = "height:15px; visibility:hidden;">
+
+							<li><span class ="weight">Payment Routing</span></li>
+							<hr style = "height:15px; visibility:hidden;">
+
+
+							<li><span class ="weight">Future Protocol Work</span></li>
+							<hr style = "height:15px; visibility:hidden;">
+
+							</div>
+
+							<li><span class ="weight">TeachBitcoin.io</span></li>
+							<hr style = "height:15px; visibility:hidden;">
+
+						</ul> <!-- End of content list -->
+					</div>
+
+				</section>
+				<!-- *********** END: Teachbitcoin *********** -->
+
+				<!-- *********** BEGIN: Teachbitcoin Slide *********** -->
+				<section class ="box">
+
+					<div class = "title">
+						<span class = "title weight">TeachBitcoin.io</span>
+					</div>
+
+					<div class = "multi_text_box_container" style = "padding: 60px 0 0 0; font-size:30px; color: rgba(45,78,110,1);">
+						<ul style = "width: 100%; list-style-type: none;">
+
+							<li><span class ="weight">First online course: Feb 22nd, 2019</span></li>
+							<ul style="list-style-type: circle; font-size: 85%;">
+								<li>In-depth Protocol Skillset for Production Environments (Wallets, Exchanges, R&D).</li>
+							 	<li>Coursework built with C++ Libbitcoin Library (Bash/C++).
+								<li>1 month duration, 8 Live Sessions, 6-10 hours/ week.</li>
+							</ul>
+							<hr style = "height:15px; visibility:hidden;">
+
+							<li><span class ="weight">Apply for first course:</span></li>
+							<ul style="list-style-type: circle; font-size: 85%;">
+								<li>Retake as often as you like in next 6 months.</li>
+								<li>Rolling admissions.</li>
+								<li>Student discount for all (175 EUR).</li>
+							</ul>
+							<hr style = "height:15px; visibility:hidden;">
+
+						</ul> <!-- End of content list -->
+					</div>
+
+				</section>
+				<!-- *********** END: Teachbitcoin Slide *********** -->
+
+      </div><!-- END: Slides Div -->
+		</div><!-- END: Reveal Div -->
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/math/math.js', async: true }
+				],
+
+				math: {
+					mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+					config: 'TeX-AMS_HTML-full'  // See http://docs.mathjax.org/en/latest/config-files.html
+				},
+
+				previewLinks: false,
+
+				// Push each slide change to the browser history
+				history: true,
+
+				// Enable keyboard shortcuts for navigation
+				keyboard: true,
+
+				// Enables touch navigation on devices with touch input
+				overview: false,
+				touch: false,
+
+				// The "normal" size of the presentation, aspect ratio will be preserved
+				// when the presentation is scaled to fit different resolutions. Can be
+				// specified using percentage units.
+				width: 1366,
+			  height: 768,
+				// Factor of the display size that should remain empty around the content
+				margin: 0.05,
+
+				// Bounds for smallest/largest possible scale to apply to content
+				minScale: 0.2,
+				maxScale: 1.5
+			});
+			Reveal.configure({ slideNumber: true });
+		</script>
+	</body>
+</html>
