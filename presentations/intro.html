@@ -1,0 +1,141 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>EC Math</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/simple.css">
+		<!-- Highlight.js used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/default.css">
+		<!-- Simple.css theme override for teachbitcoin -->
+		<link rel="stylesheet" href="css/teachbitcoin.css">
+		<!-- Google Fonts -->
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+
+				<!-- *********** REVISED - TeachBitcoin Introduction *********** -->
+        <section class = "box">
+
+					<div class = "title"
+						>Welcome to <span class = "title weight">TeachBitcoin</span>
+					</div>
+
+					<div style = "position: absolute; top: 150px; left: 120px;">
+						<ul style = "list-style-type: none; margin: 0;">
+							<div>
+								<ul class = "math_normal", style="margin: 0px; padding: 0px; list-style-type: none;">
+									<hr style = "height:1px; visibility:hidden;">
+									<li style="font-weight:600;">1) About Me:</li>
+									<ul>
+										<li>Bitcoin Instructor (University Lecturer, Scaling Bitcoin/Dev++, 21 Lectures)</li>
+										<li>Libbitcoin Trainer (Bitcoin Meetups)</li>
+									</ul>
+									<hr style = "height:1px; visibility:hidden;">
+
+									<div class="fragment">
+									<li style="font-weight:600;">2) About TeachBitcoin: </li>
+									<ul>
+										<li>Rigorous Bitcoin Protocol Training.</li>
+										<li>Provide prerequisite Knowledge for BIP’s/Bitcoin & L2 Implementations/Research.</li>
+									</ul>
+									<hr style = "height:1px; visibility:hidden;">
+									</div>
+
+									<div class="fragment">
+									<li style="font-weight:600;">3) Course Rules: </li>
+                  <ul>
+										<li>Be Nice.</li>
+                    <li>Be Patient.</li>
+										<li>Be Curious.</li>
+									</ul>
+									<hr style = "height:1px; visibility:hidden;">
+									</div>
+
+								</ul>
+							</div>
+						</ul>
+					</div>
+				</section>
+				<!-- *********** END: Chapter Modmath  *********** -->
+
+        <!-- *********** Begin - Course Roadmap *********** -->
+				<section class ="box">
+
+					<div class = "title">
+						Course <span class = "title weight">Roadmap</span>
+					</div>
+
+					<img src="images/introduction/course_roadmap.svg" class = "image" style = "z-index: -1;">
+
+				</section>
+				<!-- *********** End - Course Roadmap *********** -->
+
+    </div><!-- END: Lecture Materials Div -->
+  </div><!-- END: Reveal Div -->
+
+  <script src="lib/js/head.min.js"></script>
+  <script src="js/reveal.js"></script>
+
+  <script>
+    // More info about config & dependencies:
+    // - https://github.com/hakimel/reveal.js#configuration
+    // - https://github.com/hakimel/reveal.js#dependencies
+    Reveal.initialize({
+      dependencies: [
+        { src: 'plugin/markdown/marked.js' },
+        { src: 'plugin/markdown/markdown.js' },
+        { src: 'plugin/notes/notes.js', async: true },
+        { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+        // { src: 'plugin/math/math.js', async: true }
+      ],
+
+      // math: {
+      // 	mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+      // 	config: 'TeX-AMS_HTML-full'  // See http://docs.mathjax.org/en/latest/config-files.html
+      // },
+
+      previewLinks: false,
+
+      // Push each slide change to the browser history
+      history: true,
+
+      // Enable keyboard shortcuts for navigation
+      keyboard: true,
+
+      // Enables touch navigation on devices with touch input
+      overview: false,
+      touch: false,
+
+      // The "normal" size of the presentation, aspect ratio will be preserved
+      // when the presentation is scaled to fit different resolutions. Can be
+      // specified using percentage units.
+      width: 1366,
+      height: 768,
+      // Factor of the display size that should remain empty around the content
+      margin: 0.05,
+
+      // Bounds for smallest/largest possible scale to apply to content
+      minScale: 0.2,
+      maxScale: 1.5
+    });
+    Reveal.configure({ slideNumber: false });
+  </script>
+</body>
+</html>
