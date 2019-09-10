@@ -1,0 +1,848 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Libbitcoin Introduction</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/simple.css">
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/xcode.css">
+		<!-- Theme override for teachbitcoin -->
+		<link rel="stylesheet" href="css/teachbitcoin.css">
+		<!-- Google Font Roboto -->
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+
+
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+				<!-- *********** BEGIN: Coverpage *********** -->
+				<section class ="box">
+					<img src="images/bitcoinedge_tlv/bitcoinedge_libbitcoin_cover.svg" class = "image" style = "z-index: -1;">
+				</section>
+				<!-- *********** END: Coverpage *********** -->
+
+        <!-- *********** BEGIN: Libbitcoin Overview *********** -->
+        <section class ="box">
+
+          <div class = "title">
+            <span class = "title weight">Libbitcoin Introduction</span>
+          </div>
+
+          <div class = "multi_text_box_container" style = "padding: 60px 0 0 0; font-size:22px">
+            <ul style = "width: 100%; list-style-type: none;">
+
+              <li><span class ="weight">Libbitcoin Overview</span>
+              </li>
+
+              <hr style = "height:15px; visibility:hidden;">
+
+              <div style="opacity: 0.5;">
+              <li><span class ="weight">Libbitcoin Explorer / System</span></li>
+              <ul style="list-style-type: circle;">
+                  <li>HD Wallet Demo (Explorer/C++)</li>
+                  <li>Payment Channel Demo (Explorer/C++)</li>
+              </ul>
+              <hr style = "height:15px; visibility:hidden;">
+
+              <li><span class ="weight">Libbitcoin Server</span></li>
+              <ul style="list-style-type: circle;">
+                <li>Public Server Design</li>
+                <li>ZMQ Server Interface</li>
+                <li>Websockets (V4)</li>
+                <li>Address Index</li>
+              </ul>
+              <hr style = "height:15px; visibility:hidden;">
+
+              <li><span class ="weight">Libbitcoin Node</span></li>
+              <ul style="list-style-type: circle;">
+                <li>Libbitcoin-Network (P2P)</li>
+                <li>Libbitcoin-Database</li>
+                <li>Parallel Initial Block Download (V4)</li>
+              </ul>
+              <hr style = "height:15px; visibility:hidden;">
+
+              </div>
+
+            </ul> <!-- End of content list -->
+          </div>
+
+        </section>
+        <!-- *********** END: Libbitcoin Section *********** -->
+
+        <!-- *********** BEGIN: Libbitcoin Overview *********** -->
+        <section class = "box">
+          <div class = "title">
+            <span class = "weight">Libbitcoin</span> Introduction
+          </div>
+
+          <!-- 2 column container -->
+          <!-- 45% div for formula and curve--><!-- 45% text & bulletpoint -->
+          <div class = "multi_text_box_container" style = "padding: 40px 0 0 0; width: 1270px;">
+            <!-- 60% div for formula and curve-->
+            <div class = "" style = "width: 58%; font-size: 22px;">
+              <img src="images/bitcoindevs_london_feb2019/libbitcoin_repos.svg" class = "image" style = "z-index: -3;">
+            </div>
+            <!-- 45% text & bulletpoint -->
+            <div class = "text_box"
+                 style = "width: 45%; font-size: 24px; margin: 0px 0 0 0">
+              <ul style = "margin: 0; padding: 0px; list-style-type: none;">
+
+                <!-- <hr style = "height:5px; visibility:hidden;"> -->
+
+                <li style = "font-weight: bold;">C++ Bitcoin Library</li>
+                <ul style = "list-style-type: circle;">
+                  <li>Lead Maintainer: Eric Voskuil</li>
+                  <li>Initiator: Amir Taaki</li>
+                  <li>First alternative implementation to <br>Satoshi prototype</li>
+                </ul>
+                <hr style = "height:5px; visibility:hidden;">
+
+
+                <li style = "font-weight: bold;">Readability</li>
+                <ul style = "list-style-type: circle;">
+                  <li>Clearly exposes Bitcoin protocol</li>
+                </ul>
+                <hr style = "height:5px; visibility:hidden;">
+
+                <li style = "font-weight: bold;">Performance</li>
+                <ul style = "list-style-type: circle;">
+                  <li>Performant server design</li>
+                </ul>
+                <hr style = "height:5px; visibility:hidden;">
+
+                <li style = "font-weight: bold;">Scalability</li>
+                <ul style = "list-style-type: circle;">
+                  <li>Reliable scale out of server interface</li>
+                </ul>
+                <hr style = "height:5px; visibility:hidden;">
+
+              </ul>
+            </div>
+
+          </div><!-- End of 2 column container -->
+
+        </section>
+        <!-- *********** END: Libbitcoin Overview *********** -->
+
+        <!-- *********** BEGIN: Alt Implementations *********** -->
+        <section class ="box">
+          <div class = "title">
+            <span class = "weight">Alternative</span> Implementations
+          </div>
+					<div class = "multi_text_box_container" style = "padding: 100px 0 0 0; font-size:35px">
+						<ul style = "width: 100%; list-style-type: none;">
+							<!-- Beginning of content list -->
+
+              <li><span class ="weight" style="font-size:110%; line-height: 2">Genetic Purity Fallacy (Eric Voskuil)</span></li>
+							<ul>
+                <li type="circle" style="font-size:100%; line-height: 2; font-style: italic;">"Complexity requires single implementation."</li>
+                <ul>
+                  <li type="circle" style="font-size:100%; line-height: 2">“One true client” - Cannot not exist.</li>
+                  <li type="circle" style="font-size:100%; line-height: 2">"Systemic Risk" - Protocol divergence with one implementation.</li>
+                  <li type="circle" style="font-size:100%; line-height: 2">"Local Risk" - Divergence across separate implementations.</li>
+                </ul>
+              </ul>
+							<hr style = "height:15px; visibility:hidden;">
+
+						</ul> <!-- End of content list -->
+					</div>
+
+        </section>
+        <!-- *********** End: Alt Implementations *********** -->
+
+        <!-- *********** BEGIN: BX / C++ Agenda *********** -->
+        <section class ="box">
+
+          <div class = "title">
+            <span class = "title weight">Libbitcoin Introduction</span>
+          </div>
+
+          <div class = "multi_text_box_container" style = "padding: 60px 0 0 0; font-size:22px">
+            <ul style = "width: 100%; list-style-type: none;">
+
+              <div style="opacity: 0.5;">
+
+              <li><span class ="weight">Libbitcoin Overview</span>
+              </li>
+              <hr style = "height:15px; visibility:hidden;">
+
+              </div>
+
+              <li><span class ="weight">Libbitcoin Explorer / System</span></li>
+              <ul style="list-style-type: circle;">
+                  <li>HD Wallet Demo (Explorer/C++)</li>
+                  <li>Payment Channel Demo (Explorer/C++)</li>
+              </ul>
+              <hr style = "height:15px; visibility:hidden;">
+
+              <div style="opacity: 0.5;">
+
+              <li><span class ="weight">Libbitcoin Server</span></li>
+              <ul style="list-style-type: circle;">
+                <li>Public Server Design</li>
+                <li>ZMQ Server Interface</li>
+                <li>Websockets (V4)</li>
+                <li>Address Index</li>
+              </ul>
+              <hr style = "height:15px; visibility:hidden;">
+
+              <li><span class ="weight">Libbitcoin Node</span></li>
+              <ul style="list-style-type: circle;">
+                <li>Libbitcoin-Network (P2P)</li>
+                <li>Libbitcoin-Database</li>
+                <li>Parallel Initial Block Download (V4)</li>
+              </ul>
+              <hr style = "height:15px; visibility:hidden;">
+
+              </div>
+
+            </ul> <!-- End of content list -->
+          </div>
+
+        </section>
+        <!-- *********** END: BX / C++ Agenda *********** -->
+
+        <!-- *********** BEGIN: Explorer Demo Wallets *********** -->
+        <section class ="box">
+          <div class = "title">
+            Explorer Demo:<span class = "weight"> HD Wallets</span>
+          </div>
+          <img src="images/bitcoindevs_london_feb2019/bx_0.svg" class = "image" style = "z-index: -3;">
+        </section>
+        <!-- *********** END: Explorer Demo Wallets *********** -->
+
+        <!-- *********** BEGIN: Explorer Demo Coinjoin *********** -->
+        <section class ="box">
+          <div class = "title">
+            Explorer Demo:<span class = "weight"> TX Endorsements</span>
+          </div>
+          <img src="images/bitcoindevs_london_feb2019/bx_1.svg" class = "image" style = "z-index: -3;">
+        </section>
+        <!-- *********** END: Explorer Demo Coinjoin *********** -->
+
+        <!-- *********** BEGIN: Explorer Demo Script Machine *********** -->
+        <section class ="box">
+          <div class = "title">
+            C++ Demo:<span class = "weight"> Script Machine</span>
+          </div>
+          <img src="images/bitcoindevs_london_feb2019/bx_2.svg" class = "image" style = "z-index: -3;">
+        </section>
+        <!-- *********** END: Explorer Demo Script Machine *********** -->
+
+        <!-- *********** BEGIN: Server Agenda *********** -->
+        <section class ="box">
+
+          <div class = "title">
+            <span class = "title weight">Libbitcoin Introduction</span>
+          </div>
+
+          <div class = "multi_text_box_container" style = "padding: 60px 0 0 0; font-size:22px">
+            <ul style = "width: 100%; list-style-type: none;">
+
+              <div style="opacity: 0.5;">
+
+              <li><span class ="weight">Libbitcoin Overview</span>
+              </li>
+              <hr style = "height:15px; visibility:hidden;">
+
+
+              <li><span class ="weight">Libbitcoin Explorer / System</span></li>
+              <ul style="list-style-type: circle;">
+                <li>HD Wallet Demo (Explorer/C++)</li>
+                <li>Payment Channel Demo (Explorer/C++)</li>
+              </ul>
+              <hr style = "height:15px; visibility:hidden;">
+
+              </div>
+
+              <li><span class ="weight">Libbitcoin Server</span></li>
+              <ul style="list-style-type: circle;">
+                <li>Public Server Design</li>
+                <li>ZMQ Server Interface</li>
+                <li>Websockets (V4)</li>
+                <li>Address Index</li>
+              </ul>
+              <hr style = "height:15px; visibility:hidden;">
+
+              <div style="opacity: 0.5;">
+
+              <li><span class ="weight">Libbitcoin Node</span></li>
+              <ul style="list-style-type: circle;">
+                <li>Libbitcoin-Network (P2P)</li>
+                <li>Libbitcoin-Database</li>
+                <li>Parallel Initial Block Download (V4)</li>
+              </ul>
+              <hr style = "height:15px; visibility:hidden;">
+
+              </div>
+
+            </ul> <!-- End of content list -->
+          </div>
+
+        </section>
+        <!-- *********** END: Server Agenda *********** -->
+
+        <!-- *********** BEGIN: Public Server Design *********** -->
+        <section class ="box">
+          <div class = "title">
+            Libbitcoin <span class = "weight">Public Interface Design</span>
+          </div>
+
+          <img src="images/bitcoindevs_london_feb2019/bitcoind_libbitcoin_rpc0.svg" class = "image" style = "z-index: -3;">
+          <img src="images/bitcoindevs_london_feb2019/bitcoind_libbitcoin_rpc1.svg" class = "fragment image" style = "z-index: -1;">
+
+        </section>
+        <!-- *********** END: Public Server Design *********** -->
+
+        <!-- *********** BEGIN: Dealer Socket *********** -->
+        <section class ="box">
+          <div class = "title">
+            Client <span class = "weight"> ZMQ Dealer Socket</span>
+          </div>
+
+          <img src="images/bitcoindevs_london_feb2019/zmq_dealer0.svg" class = "image" style = "z-index: -3;">
+          <img src="images/bitcoindevs_london_feb2019/zmq_dealer1.svg" class = "fragment image" style = "z-index: -1;">
+          <img src="images/bitcoindevs_london_feb2019/zmq_dealer2.svg" class = "fragment image" style = "z-index: -1;">
+          <img src="images/bitcoindevs_london_feb2019/zmq_dealer3.svg" class = "fragment image" style = "z-index: -1;">
+          <img src="images/bitcoindevs_london_feb2019/zmq_dealer4.svg" class = "fragment image" style = "z-index: -1;">
+
+        </section>
+        <!-- *********** END: Dealer Socket  *********** -->
+
+        <!-- *********** BEGIN: Router Socket *********** -->
+        <section class ="box">
+          <div class = "title">
+            Libbitcoin <span class = "weight"> ZMQ Router Socket</span>
+          </div>
+
+          <img src="images/bitcoindevs_london_feb2019/zmq_router0.svg" class = "image" style = "z-index: -3;">
+          <img src="images/bitcoindevs_london_feb2019/zmq_router1.svg" class = "fragment image" style = "z-index: -3;">
+
+        </section>
+        <!-- *********** END: Router Socket  *********** -->
+
+        <!-- *********** BEGIN: Websockets  *********** -->
+        <section class = "box">
+          <div class = "title">
+            Libbitcoin V4: <span class = "weight">Websockets Interface</span>
+          </div>
+
+          <!-- 2 column container -->
+          <!-- 45% div for formula and curve--><!-- 45% text & bulletpoint -->
+          <div class = "multi_text_box_container" style = "padding: 115px 0 0 0; width: 1300px;">
+            <!-- 60% div for formula and curve-->
+            <div class = "" style = "width: 40%; font-size: 22px;">
+              <img src="images/bitcoindevs_london_feb2019/websockets.svg" class = "image" style = "z-index: -3;">
+            </div>
+            <!-- 45% text & bulletpoint -->
+            <div class = "text_box"
+                 style = "width: 35%; font-size: 20px; margin: 0px 0 0 0">
+              <ul style = "margin: 0; padding: 0px; list-style-type: none;">
+
+                <!-- <hr style = "height:5px; visibility:hidden;"> -->
+
+                <li style = "font-weight: bold;">V4: HTTP Server</li>
+                <ul style = "list-style-type: circle;">
+                  <li>On top of ZMQ internal interface</li>
+                </ul>
+                <hr style = "height:5px; visibility:hidden;">
+
+                <li style = "font-weight: bold;">Websockets Endpoint</li>
+                <ul style = "list-style-type: circle;">
+                  <li>Native browser support</li>
+                  <li>JSON queries/response</li>
+                  <li>Asynchronous subscription queries</li>
+                </ul>
+                <hr style = "height:5px; visibility:hidden;">
+
+                <li style = "font-weight: bold;">JSON-RPC Endpoint</li>
+                <ul style = "list-style-type: circle;">
+                  <li>Bitcoind compatibility</li>
+                </ul>
+                <hr style = "height:5px; visibility:hidden;">
+
+                <li style = "font-weight: bold;">Further Information</li>
+                <ul style = "list-style-type: circle;">
+                  <li>Developed by <span class="inline_code">@Neillm</span>, <br>Libbitcoin Maintainer</li>
+                </ul>
+                <hr style = "height:5px; visibility:hidden;">
+
+
+              </ul>
+            </div>
+
+          </div><!-- End of 2 column container -->
+
+        </section>
+        <!-- *********** END: Websockets  *********** -->
+
+        <!-- *********** BEGIN: Payment Address(Wallet)  *********** -->
+        <section class = "box">
+          <div class = "title">
+            Address Index: <span class = "weight">Wallet Client</span>
+          </div>
+
+          <!-- 2 column container -->
+          <!-- 45% div for formula and curve--><!-- 45% text & bulletpoint -->
+          <div class = "multi_text_box_container" style = "padding: 115px 0 0 0; width: 1300px;">
+            <!-- 60% div for formula and curve-->
+            <div class = "" style = "width: 40%; font-size: 22px;">
+              <img src="images/bitcoindevs_london_feb2019/address_index_wallet.svg" class = "image" style = "z-index: -3;">
+            </div>
+            <!-- 45% text & bulletpoint -->
+            <div class = "text_box"
+                 style = "width: 35%; font-size: 20px; margin: 0px 0 0 0">
+              <ul style = "margin: 0; padding: 0px; list-style-type: none;">
+
+                <!-- <hr style = "height:5px; visibility:hidden;"> -->
+
+                <li style = "font-weight: bold;">HD Wallet Restoration</li>
+                <ul style = "list-style-type: circle;">
+                  <li>No dedicated address index</li>
+                </ul>
+                <hr style = "height:5px; visibility:hidden;">
+
+                <li style = "font-weight: bold;">Address History</li>
+                <ul style = "list-style-type: circle;">
+                  <li>Standard payment types</li>
+                  <ul style = "list-style-type: circle;">
+                    <li>P2PK</li>
+                    <li>P2PKH</li>
+                    <li>Multisig</li>
+                    <li>P2SH & P2SH(P2W)</li>
+                  </ul>
+                  <li>Full payment history</li>
+                </ul>
+                <hr style = "height:5px; visibility:hidden;">
+
+
+                <li style = "font-weight: bold;">No blockchain scan required</li>
+                <ul style = "list-style-type: circle;">
+                  <li><span class="inline_code">scantxoutset</span> provides no history</li>
+                </ul>
+                <hr style = "height:5px; visibility:hidden;">
+
+              </ul>
+            </div>
+
+          </div><!-- End of 2 column container -->
+
+        </section>
+        <!-- *********** END: Payment Address(Wallet)  *********** -->
+
+        <!-- *********** BEGIN: Payment Address(Payment Server)  *********** -->
+        <section class = "box">
+          <div class = "title">
+            Address Index: <span class = "weight">Payment Server</span>
+          </div>
+
+          <!-- 2 column container -->
+          <!-- 45% div for formula and curve--><!-- 45% text & bulletpoint -->
+          <div class = "multi_text_box_container" style = "padding: 115px 0 0 0; width: 1300px;">
+            <!-- 60% div for formula and curve-->
+            <div class = "" style = "width: 40%; font-size: 22px;">
+              <img src="images/bitcoindevs_london_feb2019/address_index_payment0.svg" class = "image" style = "z-index: -3;">
+              <img src="images/bitcoindevs_london_feb2019/address_index_payment1.svg" class = "fragment image" style = "z-index: -3;">
+              <img src="images/bitcoindevs_london_feb2019/address_index_payment2.svg" class = "fragment image" style = "z-index: -3;">
+            </div>
+            <!-- 45% text & bulletpoint -->
+            <div class = "text_box"
+                 style = "width: 35%; font-size: 20px; margin: 0px 0 0 0">
+              <ul style = "margin: 0; padding: 0px; list-style-type: none;">
+
+                <!-- <hr style = "height:5px; visibility:hidden;"> -->
+
+                <li style = "font-weight: bold;">Address Subscription</li>
+                <ul style = "list-style-type: circle;">
+                  <li>Asynchronous query</li>
+                  <li>Renewable Subscription</li>
+                  <li>Notifications:</li>
+                  <ul style = "list-style-type: circle;">
+                    <li>Unconfirmed TX pool</li>
+                    <li>TX Confirmation</li>
+                  </ul>
+                </ul>
+                <hr style = "height:5px; visibility:hidden;">
+
+              </ul>
+            </div>
+
+          </div><!-- End of 2 column container -->
+
+        </section>
+        <!-- *********** END: Payment Address(Payment Server)  *********** -->
+
+        <!-- *********** BEGIN: Payment Address(SPV Client)  *********** -->
+        <section class = "box">
+          <div class = "title">
+            Address Index: <span class = "weight">SPV Client</span>
+          </div>
+
+          <!-- 2 column container -->
+          <!-- 45% div for formula and curve--><!-- 45% text & bulletpoint -->
+          <div class = "multi_text_box_container" style = "padding: 115px 0 0 0; width: 1300px;">
+            <!-- 60% div for formula and curve-->
+            <div class = "" style = "width: 40%; font-size: 22px;">
+              <img src="images/bitcoindevs_london_feb2019/address_index_spv0.svg" class = "image" style = "z-index: -3;">
+              <img src="images/bitcoindevs_london_feb2019/address_index_spv1.svg" class = "fragment image" style = "z-index: -3;">
+              <img src="images/bitcoindevs_london_feb2019/address_index_spv2.svg" class = "fragment image" style = "z-index: -3;">
+            </div>
+            <!-- 45% text & bulletpoint -->
+            <div class = "text_box"
+                 style = "width: 35%; font-size: 20px; margin: 0px 0 0 0">
+              <ul style = "margin: 0; padding: 0px; list-style-type: none;">
+
+                <!-- <hr style = "height:5px; visibility:hidden;"> -->
+
+                <li style = "font-weight: bold;">Address Subscription/Fetch History</li>
+                <ul style = "list-style-type: circle;">
+                  <li>For SPV wallet addresses</li>
+                  <li>Confirmation heights</li>
+                </ul>
+                <hr style = "height:5px; visibility:hidden;">
+
+                <li style = "font-weight: bold;">Fetch & Validate Header Chain</li>
+                <ul style = "list-style-type: circle;">
+                  <li>Libbitcoin-system: <span class="inline_code">chain_state</span></li>
+                  <ul style = "list-style-type: circle;">
+                    <li>Retargeting/Forks without lookups</li>
+                  </ul>
+                </ul>
+                <hr style = "height:5px; visibility:hidden;">
+
+                <li style = "font-weight: bold;">Validate TX Inclusion</li>
+                <ul style = "list-style-type: circle;">
+                  <li>Merkle block for TX associated with addresses</li>
+                </ul>
+                <hr style = "height:5px; visibility:hidden;">
+
+              </ul>
+            </div>
+
+          </div><!-- End of 2 column container -->
+
+        </section>
+        <!-- *********** END: Payment Address(SPV Client)  *********** -->
+
+        <!-- *********** Begin: Agenda(node)  *********** -->
+        <section class ="box">
+
+          <div class = "title">
+            <span class = "title weight">Libbitcoin Introduction</span>
+          </div>
+
+          <div class = "multi_text_box_container" style = "padding: 60px 0 0 0; font-size:22px">
+            <ul style = "width: 100%; list-style-type: none;">
+
+              <div style="opacity: 0.5;">
+
+              <li><span class ="weight">Libbitcoin Overview</span>
+              </li>
+              <hr style = "height:15px; visibility:hidden;">
+
+
+              <li><span class ="weight">Libbitcoin Explorer / System</span></li>
+              <ul style="list-style-type: circle;">
+                  <li>HD Wallet Demo (Explorer/C++)</li>
+                  <li>Payment Channel Demo (Explorer/C++)</li>
+              </ul>
+              <hr style = "height:15px; visibility:hidden;">
+
+
+              <li><span class ="weight">Libbitcoin Server</span></li>
+              <ul style="list-style-type: circle;">
+                <li>Public Server Design</li>
+                <li>ZMQ Server Interface</li>
+                <li>Websockets (V4)</li>
+                <li>Address Index</li>
+              </ul>
+              <hr style = "height:15px; visibility:hidden;">
+
+              </div>
+
+              <li><span class ="weight">Libbitcoin Node</span></li>
+              <ul style="list-style-type: circle;">
+                <li>Libbitcoin-Network (P2P)</li>
+                <li>Libbitcoin-Database</li>
+                <li>Parallel Initial Block Download (V4)</li>
+              </ul>
+              <hr style = "height:15px; visibility:hidden;">
+
+            </ul> <!-- End of content list -->
+          </div>
+
+        </section>
+        <!-- *********** END: Agenda(node)  *********** -->
+
+        <!-- *********** BEGIN: Libbitcoin-Network  *********** -->
+        <section class = "box">
+          <div class = "title">
+            Libbitcoin <span class = "weight">Network (P2P)</span>
+          </div>
+
+          <!-- 2 column container -->
+          <!-- 45% div for formula and curve--><!-- 45% text & bulletpoint -->
+          <div class = "multi_text_box_container" style = "padding: 115px 0 0 0; width: 1300px;">
+            <!-- 60% div for formula and curve-->
+            <div class = "" style = "width: 40%; font-size: 22px;">
+              <img src="images/bitcoindevs_london_feb2019/network.svg" class = "image" style = "z-index: -3;">
+            </div>
+            <!-- 45% text & bulletpoint -->
+            <div class = "text_box"
+                 style = "width: 35%; font-size: 20px; margin: 0px 0 0 0">
+              <ul style = "margin: 0; padding: 0px; list-style-type: none;">
+
+                <!-- <hr style = "height:5px; visibility:hidden;"> -->
+
+                <li style = "font-weight: bold;">Asynchronous: C++ Boost-Asio</li>
+                <ul style = "list-style-type: circle;">
+                  <li>Concurrency without threads</li>
+                </ul>
+                <hr style = "height:5px; visibility:hidden;">
+
+                <li style = "font-weight: bold;">P2P object maintains channels</li>
+                <ul style = "list-style-type: circle;">
+                  <li>Configurable</li>
+                  <li>Ping/Pong/Address channel protocols</li>
+                  <li>P2P object interface:</li>
+                  <ul style = "list-style-type: circle;">
+                    <li>Subscribe to new channel</li>
+                    <li>Subscribe to channel messages</li>
+                    <li>Connect to endpoint, etc.</li>
+                  </ul>
+                </ul>
+                <hr style = "height:5px; visibility:hidden;">
+
+                <li style = "font-weight: bold;">Additional protocols</li>
+                <ul style = "list-style-type: circle;">
+                  <li>See <span class="inline_code">libbitcoin-node</span></li>
+                </ul>
+                <hr style = "height:5px; visibility:hidden;">
+
+              </ul>
+            </div>
+
+          </div><!-- End of 2 column container -->
+
+        </section>
+        <!-- *********** END: Libbitcoin-Network  *********** -->
+
+        <!-- *********** BEGIN: Libbitcoin-Database  *********** -->
+        <section class = "box">
+          <div class = "title">
+            Libbitcoin <span class = "weight">Database</span>
+          </div>
+
+          <!-- 2 column container -->
+          <!-- 45% div for formula and curve--><!-- 45% text & bulletpoint -->
+          <div class = "multi_text_box_container" style = "padding: 115px 0 0 0; width: 1300px;">
+            <!-- 60% div for formula and curve-->
+            <div class = "" style = "width: 40%; font-size: 22px;">
+              <img src="images/bitcoindevs_london_feb2019/store0.svg" class = "image" style = "z-index: -3;">
+              <img src="images/bitcoindevs_london_feb2019/store1.svg" class = "fragment image" style = "z-index: -3;">
+              <img src="images/bitcoindevs_london_feb2019/store2.svg" class = "fragment image" style = "z-index: -3;">
+              <img src="images/bitcoindevs_london_feb2019/store3.svg" class = "fragment image" style = "z-index: -3;">
+            </div>
+
+        </section>
+        <!-- *********** END: Libbitcoin-Database  *********** -->
+
+        <!-- *********** BEGIN: Parallel IBD  *********** -->
+        <section class = "box">
+          <div class = "title">
+            V4: <span class = "weight">Continuous Parallel Block Download</span>
+          </div>
+
+          <!-- 2 column container -->
+          <!-- 45% div for formula and curve--><!-- 45% text & bulletpoint -->
+          <div class = "multi_text_box_container" style = "padding: 40px 0 0 0; width: 1270px;">
+            <!-- 60% div for formula and curve-->
+            <div class = "" style = "width: 40%; font-size: 22px;">
+              <img src="images/bitcoindevs_london_feb2019/parallel_IBD0.svg" class = "image" style = "z-index: -3;">
+              <img src="images/bitcoindevs_london_feb2019/parallel_IBD1.svg" class = "fragment image" style = "z-index: -3;">
+              <img src="images/bitcoindevs_london_feb2019/parallel_IBD2.svg" class = "fragment image" style = "z-index: -3;">
+
+
+            </div>
+            <!-- 45% text & bulletpoint -->
+            <div class = "text_box"
+                 style = "width: 40%; font-size: 20px; margin: 0px 0 0 0">
+              <ul style = "margin: 0; padding: 0px; list-style-type: none;">
+
+                <!-- <hr style = "height:5px; visibility:hidden;"> -->
+
+                <li style = "font-weight: bold;">Scalability: IBD/Catchup</li>
+                <ul style = "list-style-type: circle;">
+                  <li>Parallelism & multiple threads</li>
+                  <li>Significant parallel portion</li>
+                </ul>
+                <hr style = "height:5px; visibility:hidden;">
+
+                <li style = "font-weight: bold;">Parallel block download</li>
+                <ul style = "list-style-type: circle;">
+                  <li>Strong header chain first</li>
+                  <li>Block download work across channels</li>
+                  <li>Slow peers dropped (S.D.)</li>
+                </ul>
+                <hr style = "height:5px; visibility:hidden;">
+
+                <li style = "font-weight: bold;">Parallel block store</li>
+                <ul style = "list-style-type: circle;">
+                  <li>Parallel write of raw data</li>
+                </ul>
+                <hr style = "height:5px; visibility:hidden;">
+
+                <li style = "font-weight: bold;">(Parallel block validation)</li>
+                <ul style = "list-style-type: circle;">
+                  <li>(Standard input implies previous output)</li>
+									<li>(Not possible with native witness tx's)</li>
+
+                </ul>
+                <hr style = "height:5px; visibility:hidden;">
+
+                <li style = "font-weight: bold;">Further information</li>
+                <ul style = "list-style-type: circle;">
+                  <li>@evoskuil, lead Libbitcoin maintainer</li>
+                </ul>
+                <hr style = "height:5px; visibility:hidden;">
+
+              </ul>
+            </div>
+
+          </div><!-- End of 2 column container -->
+
+        </section>
+        <!-- *********** END: Parallel IBD  *********** -->
+
+        <!-- *********** BEGIN: Other V4 *********** -->
+        <section class ="box">
+            <div class = "title">
+              <span class = "weight">WIP: Version 4</span>
+            </div>
+            <div class = "multi_text_box_container" style = "padding: 100px 0 0 0; font-size:35px">
+              <ul style = "width: 100%; list-style-type: none;">
+                <!-- Beginning of content list -->
+                <ul>
+                  <li type="circle" style="font-size:100%; line-height: 2">HTTP Server: Websockets, JSON-RPC</li>
+                  <li type="circle" style="font-size:100%; line-height: 2">Improved IBD (Parallel Block Download)</li>
+                  <li type="circle" style="font-size:100%; line-height: 2">Neutrino Filter Support</li>
+                </ul>
+              </ul>
+              <hr style = "height:15px; visibility:hidden;">
+
+              </ul> <!-- End of content list -->
+            </div>
+
+          </section>
+          <!-- *********** End: Other V4 *********** -->
+
+        <!-- *********** Begin: Agenda(node)  *********** -->
+        <section class ="box">
+
+          <div class = "title">
+            <span class = "title weight">Libbitcoin Introduction</span>
+          </div>
+
+          <div class = "multi_text_box_container" style = "padding: 60px 0 0 0; font-size:22px">
+            <ul style = "width: 100%; list-style-type: none;">
+
+
+              <li><span class ="weight">Libbitcoin Overview</span>
+              </li>
+              <hr style = "height:15px; visibility:hidden;">
+
+
+              <li><span class ="weight">Libbitcoin Explorer / System</span></li>
+              <ul style="list-style-type: circle;">
+                  <li>HD Wallet Demo (Explorer/C++)</li>
+                  <li>Payment Channel Demo (Explorer/C++)</li>
+              </ul>
+              <hr style = "height:15px; visibility:hidden;">
+
+
+              <li><span class ="weight">Libbitcoin Server</span></li>
+              <ul style="list-style-type: circle;">
+                <li>Public Server Design</li>
+                <li>ZMQ Server Interface</li>
+                <li>Websockets (V4)</li>
+                <li>Address Index</li>
+              </ul>
+              <hr style = "height:15px; visibility:hidden;">
+
+
+              <li><span class ="weight">Libbitcoin Node</span></li>
+              <ul style="list-style-type: circle;">
+                <li>Libbitcoin-Network (P2P)</li>
+                <li>Libbitcoin-Database</li>
+                <li>Parallel Initial Block Download (V4)</li>
+              </ul>
+              <hr style = "height:15px; visibility:hidden;">
+
+            </ul> <!-- End of content list -->
+          </div>
+
+        </section>
+        <!-- *********** END: Agenda(node)  *********** -->
+
+
+
+
+      </div><!-- END: Slides Div -->
+		</div><!-- END: Reveal Div -->
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/math/math.js', async: true }
+				],
+
+				math: {
+					mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+					config: 'TeX-AMS_HTML-full'  // See http://docs.mathjax.org/en/latest/config-files.html
+				},
+
+				previewLinks: false,
+
+				// Push each slide change to the browser history
+				history: true,
+
+				// Enable keyboard shortcuts for navigation
+				keyboard: true,
+
+				// Enables touch navigation on devices with touch input
+				overview: false,
+				touch: false,
+
+				// The "normal" size of the presentation, aspect ratio will be preserved
+				// when the presentation is scaled to fit different resolutions. Can be
+				// specified using percentage units.
+				width: 1366,
+			  height: 768,
+				// Factor of the display size that should remain empty around the content
+				margin: 0.05,
+
+				// Bounds for smallest/largest possible scale to apply to content
+				minScale: 0.2,
+				maxScale: 1.5
+			});
+			Reveal.configure({ slideNumber: true });
+		</script>
+	</body>
+</html>
